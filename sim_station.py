@@ -131,7 +131,7 @@ class SimStation:
     def __init__(self, *, policy: str = "scripted", checkpoint: str | None = None, api_port: int = 8091,
                  view_port: int = 8093, realtime: bool | None = None, example_dir: str | None = None,
                  actions: int = 48, host: str = "127.0.0.1", scripted_latency_s: float = 0.05,
-                 max_trips: int = 50, scene: str = "fruit") -> None:
+                 max_trips: int = 50, scene: str = "fruit", viewer: bool = False) -> None:
         if policy not in ("dream", "scripted"):
             raise ValueError("policy must be 'dream' or 'scripted'")
         if scene not in SCENES:
@@ -195,6 +195,14 @@ class SimStation:
         self._threads: list[threading.Thread] = []
         self.api_url = ""
         self.view_url = ""
+        # live visualizers: the latest camera renders (GET /live on the view port) and the native MuJoCo viewer
+        self._images: dict[str, Any] = {}
+        self._images_n = 0
+        self._jpeg_cache: dict[str, tuple[int, bytes]] = {}
+        self.viewer_wanted = viewer
+        self._viewer: Any = None
+        self._viewer_panel: Any = None
+        self._viewer_sync = 0.0
 
     # ------------------------------------------------------------------ lifecycle
     def start(self) -> "SimStation":
@@ -329,6 +337,8 @@ class SimStation:
             self._track_poses(self.env)
             self.hold = self._current_targets()
             self._render()
+            if self.viewer_wanted:
+                self._open_viewer()
         except Exception as exc:  # pragma: no cover
             print(f"sim_station: could not build the scene: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
             self.env = None
@@ -348,6 +358,11 @@ class SimStation:
                     continue
                 self._idle_tick()
         finally:
+            if self._viewer is not None:
+                try:
+                    self._viewer.close()
+                except Exception:
+                    pass
             try:
                 self.env.close()
             except Exception:
@@ -355,7 +370,7 @@ class SimStation:
 
     def _track_poses(self, env: Any) -> None:
         """Wrap env.step/env.reset so every physics update refreshes the ground-truth snapshot behind /objects."""
-        step, reset = env.step, env.reset
+        step, reset, images = env.step, env.reset, env.images
 
         model = env.model
         self._body_names = [model.body(i).name for i in range(model.nbody)
@@ -367,17 +382,109 @@ class SimStation:
             if self._referee is not None:
                 self._referee.update(env.model, env.data)
             self._snap_poses()
+            self._sync_viewer()
             return out
 
         def was_reset(*args: Any, **kwargs: Any) -> Any:
             out = reset(*args, **kwargs)
             self._new_referee()
             self._snap_poses()
+            self._sync_viewer(force=True)
             return out
 
-        env.step, env.reset = stepped, was_reset
+        def rendered(*args: Any, **kwargs: Any) -> Any:
+            out = images(*args, **kwargs)
+            with self._lock:
+                self._images = out
+                self._images_n += 1
+            return out
+
+        env.step, env.reset, env.images = stepped, was_reset, rendered
         self._new_referee()
         self._snap_poses()
+
+    # ------------------------------------------------------------------ live visualizers
+    def _open_viewer(self) -> None:
+        """The native MuJoCo window (passive: this thread steps the physics, the viewer only draws), with Dream's
+        three camera tiles and a status overlay. On macOS it needs `mjpython` instead of `python`."""
+        try:
+            import mujoco.viewer
+
+            self._viewer = mujoco.viewer.launch_passive(self.env.model, self.env.data,
+                                                        show_left_ui=False, show_right_ui=False)
+        except Exception as exc:
+            hint = (" On macOS run it with mjpython (in the venv: .venv/bin/mjpython sim_station.py ... --viewer)."
+                    if sys.platform == "darwin" else "")
+            print(f"sim_station: no MuJoCo viewer ({type(exc).__name__}: {exc}).{hint} "
+                  f"The web view at /live on the view port still works.", file=sys.stderr, flush=True)
+            self._viewer = None
+            return
+        try:
+            self.yam_env.aim_viewer(self._viewer)
+            from camera_panel import CameraPanel  # type: ignore  # Dream's example, on sys.path via load_example
+
+            self._viewer_panel = CameraPanel(self.env, self._viewer)
+        except Exception:
+            self._viewer_panel = None
+        self._sync_viewer(force=True)
+
+    def _sync_viewer(self, force: bool = False) -> None:
+        viewer = self._viewer
+        if viewer is None:
+            return
+        now = time.monotonic()
+        if not force and now - self._viewer_sync < 1 / 30:
+            return
+        self._viewer_sync = now
+        try:
+            if not viewer.is_running():
+                self._viewer = None
+                return
+            import mujoco
+
+            with self._lock:
+                state, prompt, chunks, run = self.state, self.prompt, self.chunks, self.run_number
+                referee = (self._poses or {}).get("referee")
+            body = f"{state}  run {run}  chunks {chunks}\n{(prompt or '-')[:90]}"
+            if referee:
+                body += (f"\npoints {referee.get('points')}  unplugged {referee.get('unplugged')}  "
+                         f"tower {referee.get('tower_in')} in  golf {referee.get('golf_in_bin')}"
+                         + (f"  DQ {referee['dq']}" if referee.get("dq") else ""))
+            viewer.set_texts((mujoco.mjtFontScale.mjFONTSCALE_150, mujoco.mjtGridPos.mjGRID_TOPLEFT,
+                              "SIM STATION", body))
+            viewer.sync()
+            if self._viewer_panel is not None and self._images:
+                self._viewer_panel.update(self._images)
+        except Exception as exc:  # a viewer problem must never stop the station
+            print(f"sim_station: viewer closed ({type(exc).__name__}: {exc})", file=sys.stderr, flush=True)
+            self._viewer = None
+
+    def _camera_jpeg(self, name: str) -> bytes | None:
+        """The newest render of one camera as JPEG, encoded at most once per render."""
+        with self._lock:
+            rgb, n = self._images.get(name), self._images_n
+            cached = self._jpeg_cache.get(name)
+        if rgb is None:
+            return None
+        if cached and cached[0] == n:
+            return cached[1]
+        import io
+
+        from PIL import Image
+
+        buf = io.BytesIO()
+        Image.fromarray(rgb).save(buf, format="JPEG", quality=80)
+        data = buf.getvalue()
+        with self._lock:
+            self._jpeg_cache[name] = (n, data)
+        return data
+
+    def _live_state(self) -> dict[str, Any]:
+        with self._lock:
+            poses = dict(self._poses)
+        trips = self._trip_list()[-12:]
+        return {"status": self._status(), "objects": poses, "trips": trips, "scene": self.scene,
+                "cameras": sorted(self._images), "frame": self._images_n}
 
     def _new_referee(self) -> None:
         """A /reset starts a new match for the referee (scene=hill_climb only)."""
@@ -713,7 +820,14 @@ class SimStation:
             def do_GET(self) -> None:
                 path = self.path.split("?")[0]
                 number = path.removeprefix("/trip/")
-                if path == "/trips":
+                cam = path.removeprefix("/live/cam/").removesuffix(".jpg")
+                if path in ("/", "/live"):
+                    self._send(200, LIVE_PAGE.encode(), "text/html; charset=utf-8")
+                elif path == "/live/state":
+                    self._send(200, json.dumps(sim._live_state(), default=str).encode(), "application/json")
+                elif path.startswith("/live/cam/") and (jpeg := sim._camera_jpeg(cam)) is not None:
+                    self._send(200, jpeg, "image/jpeg")
+                elif path == "/trips":
                     self._send(200, json.dumps(sim._trip_list()).encode(), "application/json")
                 elif path.startswith("/trip/") and number.isdigit() and (trip := sim._trip(int(number))):
                     self._send(200, json.dumps(trip).encode(), "application/json")
@@ -724,6 +838,7 @@ class SimStation:
                 self.send_response(code)
                 self.send_header("Content-Type", kind)
                 self.send_header("Content-Length", str(len(body)))
+                self.send_header("Cache-Control", "no-store")
                 self.end_headers()
                 self.wfile.write(body)
 
@@ -731,6 +846,87 @@ class SimStation:
                 pass
 
         return Handler
+
+
+LIVE_PAGE = r"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Sim station · live</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#0f1115;--panel:#171a21;--line:#262b35;--ink:#e7e9ee;--dim:#8a93a3;--ok:#3ecf8e;--warn:#f5b84a;--bad:#ef5a5a;--info:#5aa7ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.4 ui-sans-serif,-apple-system,"Segoe UI",sans-serif}
+header{display:flex;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+h1{font-size:15px;margin:0;font-weight:600}h1 span{color:var(--dim);font-weight:400}.dim{color:var(--dim)}
+main{display:grid;grid-template-columns:minmax(560px,2fr) minmax(300px,1fr);gap:12px;padding:12px 16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+.card h2{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;font-weight:600}
+.cams{display:grid;grid-template-columns:2fr 1fr;gap:8px}.cams .side{display:grid;gap:8px}
+.cam{position:relative;background:#000;border-radius:8px;overflow:hidden}.cam img{display:block;width:100%}
+.cam span{position:absolute;left:8px;top:6px;font-size:11px;background:#0009;padding:1px 6px;border-radius:4px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;border:1px solid var(--line)}
+.pill.running{color:var(--ok);border-color:var(--ok)}.pill.starting,.pill.stopping,.pill.homing,.pill.resetting{color:var(--warn);border-color:var(--warn)}
+.pill.error{color:var(--bad);border-color:var(--bad)}.pill.idle{color:var(--dim)}
+table{width:100%;border-collapse:collapse;font:12px/1.5 ui-monospace,Menlo,monospace}td{padding:2px 4px;border-bottom:1px solid #1c2029}
+td:first-child{color:var(--dim)}.bad{color:var(--bad)}.ok{color:var(--ok)}
+#prompt{font-size:14px;margin-top:6px}
+</style></head><body>
+<header><h1>Sim station <span>· live view</span></h1><span class="pill" id="state">–</span>
+<span class="dim">run</span><b id="run">–</b><span class="dim">chunks</span><b id="chunks">0</b>
+<span class="dim">elapsed</span><b id="elapsed">–</b><span class="dim">policy</span><b id="policy">–</b>
+<span class="dim">fps</span><b id="fps">–</b></header>
+<main>
+<section style="display:grid;gap:12px">
+  <div class="card"><div class="cams">
+    <div class="cam"><img id="cam_top" alt=""><span>overhead (top)</span></div>
+    <div class="side"><div class="cam"><img id="cam_left" alt=""><span>left wrist</span></div>
+      <div class="cam"><img id="cam_right" alt=""><span>right wrist</span></div></div></div>
+    <div id="prompt"><span class="dim">prompt</span> <span id="ptext">–</span></div>
+    <div class="bad" id="err"></div></div>
+  <div class="card"><h2>Top-down map (ground truth)</h2><svg id="map" viewBox="0 0 600 300" width="100%"></svg></div>
+</section>
+<section style="display:grid;gap:12px;align-content:start">
+  <div class="card" id="refcard"><h2>Referee</h2><table id="ref"></table></div>
+  <div class="card"><h2>Station</h2><table id="st"></table></div>
+  <div class="card"><h2>Policy trips (newest last)</h2><table id="trips"></table></div>
+</section></main>
+<script>
+const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+let frames=[];
+for(const n of ['top','left','right']){const img=$('cam_'+n);
+  const load=()=>{img.src='/live/cam/'+n+'.jpg?t='+Date.now()};
+  img.onload=()=>{if(n=='top'){frames.push(Date.now());frames=frames.filter(t=>Date.now()-t<3000)}setTimeout(load,60)};
+  img.onerror=()=>setTimeout(load,1000);load()}
+const B={x0:1e9,x1:-1e9,y0:1e9,y1:-1e9};
+function col(n){if(/^eight_/.test(n))return['#050505','#ef5a5a'];if(/^golf_/.test(n))return['#f2f2f2','#999'];
+  if(/^cube_|^cylinder_|block/.test(n))return['#f0b04a','#7a5a20'];if(/plug|cable|usb/.test(n))return['#5aa7ef','#2a5a8a'];
+  if(/hub/.test(n))return['#3a4256','#8a93a3'];if(/bin|bowl|plate/.test(n))return['#2a2f3a','#cfd5e2'];return['#a58cf5','#55488a']}
+function map(o){if(!o||!o.bodies)return'';const pts=Object.entries(o.bodies).concat(Object.entries(o.tcp||{}).map(([s,p])=>['tcp_'+s,p]));
+  for(const[,p]of pts){B.x0=Math.min(B.x0,p[0]);B.x1=Math.max(B.x1,p[0]);B.y0=Math.min(B.y0,p[1]);B.y1=Math.max(B.y1,p[1])}
+  const m=.08,sx=(B.x1-B.x0+2*m)||1,sy=(B.y1-B.y0+2*m)||1,k=Math.min(560/sx,260/sy);
+  // as the overhead camera sees it: the arms at the bottom, the left arm on the left (world -x to the right,
+  // world +y down the page)
+  const X=p=>20+(B.x1+m-p[0])*k,Y=p=>20+(p[1]-B.y0+m)*k;let g='';
+  for(const[n,p]of Object.entries(o.bodies)){const[f,s]=col(n),r=/hub|bin|bowl|plate/.test(n)?14:/^eight_/.test(n)?7:6;
+    const z=p[2].toFixed(2);g+=`<g><title>${esc(n)} z=${z}</title>`+(/hub|bin|bowl|plate/.test(n)?
+      `<rect x="${X(p)-r}" y="${Y(p)-r}" width="${2*r}" height="${2*r}" rx="3" fill="${f}" stroke="${s}"/>`:
+      `<circle cx="${X(p)}" cy="${Y(p)}" r="${r}" fill="${f}" stroke="${s}"/>`)+
+      (/hub|bin|bowl|plate/.test(n)?`<text x="${X(p)}" y="${Y(p)+r+12}" fill="#8a93a3" font-size="10" text-anchor="middle">${esc(n)}</text>`:'')+`</g>`}
+  for(const[s,p]of Object.entries(o.tcp||{})){const x=X(p),y=Y(p),c=s=='left'?'#3ecf8e':'#ef5a5a';
+    g+=`<path d="M${x-9} ${y}H${x+9}M${x} ${y-9}V${y+9}" stroke="${c}" stroke-width="2"/><circle cx="${x}" cy="${y}" r="${4+8*Math.max(0,Math.min(1,(p[2]-0.75)/0.3))}" fill="none" stroke="${c}"/>
+      <text x="${x+11}" y="${y-6}" fill="${c}" font-size="10">${s} tcp z=${p[2].toFixed(2)}</text>`}
+  return g}
+function rows(obj){return Object.entries(obj||{}).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="${/dq|eight|error/.test(k)&&v&&v!=0&&!(Array.isArray(v)&&!v.length)?'bad':''}">${esc(typeof v=='object'?JSON.stringify(v):v)}</td></tr>`).join('')}
+async function tick(){try{const s=await (await fetch('/live/state')).json(),st=s.status;
+  $('state').textContent=st.state;$('state').className='pill '+st.state;$('run').textContent=st.run;$('chunks').textContent=st.chunks;
+  $('elapsed').textContent=st.run_elapsed_s==null?'–':st.run_elapsed_s+' s';$('policy').textContent=st.policy+' · '+st.checkpoint;
+  $('fps').textContent=(frames.length/3).toFixed(1);$('ptext').textContent=st.prompt||'–';
+  $('err').textContent=st.last_error?('last error: '+st.last_error.type+': '+st.last_error.message):'';
+  const ref=s.objects&&s.objects.referee;$('refcard').style.display=ref?'':'none';if(ref)$('ref').innerHTML=rows(ref);
+  $('st').innerHTML=rows({stalls:st.stalls,clamps:st.clamps,arms:st.arms,'camera age s':st.cameras,'sim t':s.objects&&s.objects.t,scene:s.scene});
+  $('trips').innerHTML=s.trips.map(t=>`<tr><td>#${t.n} @${t.sent_s}s</td><td class="${t.error?'bad':''}">${t.error?esc(t.error):t.rtt_ms+' ms'}</td></tr>`).join('')||'<tr><td>none yet</td></tr>';
+  $('map').innerHTML=map(s.objects)}catch(e){$('state').textContent='offline';$('state').className='pill error'}}
+setInterval(tick,250);tick();
+</script></body></html>
+"""
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -747,6 +943,9 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--actions", type=int, default=48, help="rows executed per chunk, 1-48")
     parser.add_argument("--scene", choices=SCENES, default="fruit",
                         help="fruit: Dream's example table; hill_climb: the relay table with a rubric referee")
+    parser.add_argument("--viewer", action="store_true",
+                        help="open the native MuJoCo 3D viewer (macOS: run with mjpython instead of python)")
+    parser.add_argument("--open", action="store_true", help="open the live web view (/live) in the browser")
     args = parser.parse_args(argv)
     if not 1 <= args.actions <= 48:
         parser.error("--actions must be 1-48")
@@ -755,9 +954,13 @@ def main(argv: list[str] | None = None) -> None:
         os.environ["MUJOCO_GL"] = "egl" if Path("/dev/dri").exists() else "osmesa"
     sim = SimStation(policy=args.policy, checkpoint=args.checkpoint, api_port=args.api_port,
                      view_port=args.view_port, realtime=args.realtime, example_dir=args.example_dir,
-                     actions=args.actions, scene=args.scene).start()
+                     actions=args.actions, scene=args.scene, viewer=args.viewer).start()
     print(f"sim station ({args.policy}, {'realtime' if sim.realtime else 'fast'}): api {sim.api_url}  "
-          f"view {sim.view_url}  (Ctrl+C to quit)", flush=True)
+          f"view {sim.view_url}  live {sim.view_url}/live  (Ctrl+C to quit)", flush=True)
+    if args.open:
+        import webbrowser
+
+        webbrowser.open(f"{sim.view_url}/live")
     try:
         while True:
             time.sleep(1)

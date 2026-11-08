@@ -6,8 +6,9 @@ data they are based on, and the results so far.
 
 The harness (`harness/`) supervises Dream-1 on the MakerMods Metal station: it sends one recorded task prompt per
 stage, asks a Claude vision monitor whether the stage is done, retries, recovers, and stops on an illegal ball. It is
-a copy of [hill-climb-harness](https://github.com/darshp848/hill-climb-harness) `main` at `0830701`; port changes
-back there (or the other way) by hand, the two repos don't sync themselves.
+a copy of [hill-climb-harness](https://github.com/darshp848/hill-climb-harness) `main` at `f2f400e` (tower target,
+subscription monitor backend, live visualizers, latency sweeps); port changes back there (or the other way) by
+hand, the two repos don't sync themselves.
 
 ```
 harness/            the harness (runner, plan parser, Claude monitor, station client, local detector)
@@ -40,15 +41,63 @@ estimate of this layout with the hub in front of the right arm; check its coordi
 Python 3.12 or 3.13.
 
 ```bash
-python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate
+python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate  (macOS: python3.13)
 pip install numpy pillow pyyaml scipy pytest
 python -m pytest -q                                  # ~3 min; 4 tests skip without the dreamlabs package
 ```
 
 The MuJoCo sim also needs `pip install "dreamlabs==1.0.37" mujoco` and a Dream key in `~/.dreamlabs/credentials`
-(a line `DREAM_API_KEY=...`). The real Claude monitor needs `ANTHROPIC_API_KEY` in the environment. Neither key is
-needed for the offline sim or the tests. **Never commit a key**: `.gitignore` covers `credentials` and `.env`, and
-this repo is public.
+(a line `DREAM_API_KEY=...`). The real Claude monitor needs either `ANTHROPIC_API_KEY` or a logged-in Claude
+subscription (see below). Neither is needed for the offline sim or the tests. **Never commit a key**: `.gitignore`
+covers `credentials` and `.env`, and this repo is public.
+
+### Claude monitor on a Claude subscription (no API key)
+
+With `--claude-backend subscription` (or `HARNESS_CLAUDE_BACKEND=subscription`), the `monitor` / `claude` verifiers
+send their request (the same images, prompt, model and effort) through the Claude Code CLI, `claude -p`, which runs
+on the subscription you're logged in to (`claude`, then `/login`). It runs with no tools, no MCP, no saved session,
+and `ANTHROPIC_API_KEY` stripped from the CLI's environment. Default is still `api`.
+
+```bash
+python tools/check_monitor.py --backend subscription --sim    # live check: real monitor, real photo + sim renders
+python -m harness plans/hill_climb_v4.yaml --live --verifier monitor --claude-backend subscription
+```
+
+`tools/check_monitor.py` asks the plan's own stage questions and the illegal-ball guard about a station photo
+(`tests/data/table_c_topdown.jpg`) and MuJoCo renders with known answers (including a black 8-ball held in the right
+gripper), and exits 1 on any wrong or unparseable answer. 7 Nov 2026, Haiku 5.5 on the subscription: 12/12 right
+(guard yes on the held 8-ball both times, no on empty grippers), **latency median 8.4 s, max 12.7 s** per call
+(~1 s of that is `claude` start-up). The stress sim assumes 4 s; at 9 s its happy path drops from ~95 to ~74
+points (6 seeds), at 13 s to ~65, with no extra losses. So prefer the API for matches if latency matters (the model
+alone takes 4.5-6 s, so expect 5 s or more there too).
+
+**Plan tuned for the real monitor latency** (`experiments/sweep_variants.py`, 24 scenarios x 4 seeds,
+`--latency 6.5-13`): taking the `skip_if_done` entry check (a synchronous monitor call) off `release_cable`,
+`put_more_down` and `arms_clear` raised mean points 54.9 -> 60.0 with no new losses, and is now in
+`plans/hill_climb_v4.yaml`. Also dropping the second unplug (`unplug_more` + `put_more_down`) reached 65.9 but
+added two 8-ball losses in the scenarios where only the monitor guards the balls (none with `--detect`): left as a
+strategy call. A harness change that waited at a timeout for a monitor verdict already in flight made no difference
+(54.9 vs 54.8) and was dropped.
+
+## Live visualizers
+
+```bash
+python experiments/live_stress.py -s black_ball --speed 10      # offline sim, in the browser (port 8765)
+python sim_station.py --policy dream --scene hill_climb --open    # MuJoCo sim; web view at http://127.0.0.1:8093/live
+.venv/bin/mjpython sim_station.py --policy scripted --scene hill_climb --realtime --viewer   # + native 3D window
+```
+
+- **`experiments/live_stress.py`**: one stress-sim match at N times real time (1x-30x or flat out), drawn live: hub
+  ports, cables, the tower against the 4" bar, the bin, what the gripper holds, the policy's current try; the
+  station state, monitor calls in flight and API outages; plan stages (active / done / skipped / failed); every
+  table event and harness decision on a timeline; the referee's live score. Pick scenario, seed and speed, pause,
+  or skip to the end on the page. Same match as `stress_match.py -s NAME` for that seed; logs in `runs_live/`.
+- **`sim_station.py` `/live`** (view port, any policy, works headless and over SSH port-forwarding from the
+  cluster): the three policy cameras (~5-15 fps), a ground-truth top-down map oriented like the overhead camera
+  (blocks, golf and 8-balls, plugs, hub, bin, both TCPs with height), the referee (hill_climb scene), station state,
+  prompt, last error and the last policy round trips.
+- **`sim_station.py --viewer`**: MuJoCo's own 3D window (orbit / zoom with the mouse) with a status + referee overlay
+  and Dream's three camera tiles. On macOS it must be started with `mjpython` (installed with mujoco in the venv).
 
 ## The two simulators
 

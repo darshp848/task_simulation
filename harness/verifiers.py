@@ -112,10 +112,7 @@ class ClaudeVerifier:
 
     def __init__(self, model: str = "claude-haiku-5-5", max_tokens: int = 200, api_key: str | None = None,
                  timeout_s: float = 30.0):
-        key = api_key if api_key is not None else os.environ.get("ANTHROPIC_API_KEY")
-        if not key:
-            raise ValueError("ClaudeVerifier needs ANTHROPIC_API_KEY to be set")
-        self._api_key = key
+        self._transport = default_transport(timeout_s, api_key, "ClaudeVerifier")
         self.model = model
         self.max_tokens = max_tokens
         self.timeout_s = timeout_s
@@ -124,15 +121,7 @@ class ClaudeVerifier:
         return f"ClaudeVerifier(model={self.model!r})"
 
     def _post(self, payload: dict[str, Any]) -> dict[str, Any]:
-        req = urllib.request.Request(
-            CLAUDE_URL,
-            data=json.dumps(payload).encode("utf-8"),
-            method="POST",
-            headers={"x-api-key": self._api_key, "anthropic-version": "2023-06-01",
-                     "content-type": "application/json"},
-        )
-        with urllib.request.urlopen(req, timeout=self.timeout_s) as resp:
-            return json.loads(resp.read())
+        return self._transport(payload)
 
     def check(self, stage: Stage, frames: dict[str, bytes], elapsed_s: float) -> Verdict:
         if not frames:
@@ -184,6 +173,78 @@ MONITOR_SCHEMA = (
     '"scene_ok": bool, "confidence": 0..1, "reason": str}')
 GUARD_SCHEMA = MONITOR_SCHEMA[:-1] + ', "guard": bool}'
 Transport = Callable[[dict[str, Any]], dict[str, Any]]
+
+
+BACKENDS = ("api", "subscription")
+CLI_SYSTEM_PROMPT = ("You are a vision monitor for a robot station. Judge only from the images and text given, and "
+                     "answer exactly in the output format the user asks for.")
+
+
+def claude_backend() -> str:
+    """Which way the Claude verifiers reach Claude: $HARNESS_CLAUDE_BACKEND, `api` (default) or `subscription`."""
+    name = os.environ.get("HARNESS_CLAUDE_BACKEND", "api").strip().lower() or "api"
+    if name not in BACKENDS:
+        raise ValueError(f"HARNESS_CLAUDE_BACKEND must be one of {BACKENDS}, not {name!r}")
+    return name
+
+
+def claude_cli_transport(timeout_s: float = 90.0, claude_bin: str | None = None) -> Transport:
+    """Sends the Messages request through the Claude Code CLI (`claude -p`), which runs on the Claude subscription
+    you are logged in to (`claude` then /login), so no API key is needed.
+
+    The request's content blocks (images + text) go in unchanged as one stream-json user message; the model and
+    effort come from the payload. No tools, no MCP servers, no session saved, Claude Code's own system prompt
+    replaced by a one-line one, and run from the temp dir so no CLAUDE.md is picked up. ANTHROPIC_API_KEY is
+    removed from the child's environment so the subscription is what pays. Each call starts a fresh `claude`
+    process: expect ~3-5 s per call (about 1-2 s more than the API)."""
+    import shutil
+    import subprocess
+    import tempfile
+
+    exe = claude_bin or os.environ.get("HARNESS_CLAUDE_BIN") or shutil.which("claude")
+    if not exe:
+        raise ValueError("HARNESS_CLAUDE_BACKEND=subscription needs the Claude Code CLI (`claude`) on PATH, "
+                         "logged in to your subscription (run `claude`, then /login)")
+    env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
+
+    def send(payload: dict[str, Any]) -> dict[str, Any]:
+        cmd = [exe, "-p", "--input-format", "stream-json", "--output-format", "stream-json", "--verbose",
+               "--model", str(payload["model"]), "--tools", "", "--strict-mcp-config", "--no-session-persistence",
+               "--system-prompt", CLI_SYSTEM_PROMPT]
+        effort = (payload.get("output_config") or {}).get("effort")
+        if effort:
+            cmd += ["--effort", str(effort)]
+        lines = "".join(json.dumps({"type": "user", "message": {"role": m["role"], "content": m["content"]}}) + "\n"
+                        for m in payload["messages"] if m.get("role") == "user")
+        proc = subprocess.run(cmd, input=lines, capture_output=True, text=True, timeout=timeout_s,
+                              cwd=tempfile.gettempdir(), env=env)
+        result = None
+        for line in proc.stdout.splitlines():
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if event.get("type") == "result":
+                result = event
+        if result is None:
+            raise RuntimeError(f"claude CLI exited {proc.returncode} with no result: {proc.stderr.strip()[-300:]}")
+        if result.get("is_error") or result.get("subtype") != "success":
+            raise RuntimeError(f"claude CLI: {result.get('subtype')}: {str(result.get('result'))[:300]}")
+        return {"content": [{"type": "text", "text": result.get("result") or ""}], "usage": result.get("usage"),
+                "stop_reason": result.get("stop_reason"), "duration_ms": result.get("duration_ms")}
+
+    return send
+
+
+def default_transport(timeout_s: float = 60.0, api_key: str | None = None, what: str = "MonitorVerifier") -> Transport:
+    """The transport $HARNESS_CLAUDE_BACKEND asks for: the API (ANTHROPIC_API_KEY) or the subscription (claude CLI)."""
+    if api_key is None and claude_backend() == "subscription":
+        return claude_cli_transport(max(timeout_s, 90.0))
+    key = api_key if api_key is not None else os.environ.get("ANTHROPIC_API_KEY")
+    if not key:
+        raise ValueError(f"{what} needs ANTHROPIC_API_KEY to be set (or HARNESS_CLAUDE_BACKEND=subscription / "
+                         "--claude-backend subscription to use your Claude subscription through the claude CLI)")
+    return anthropic_transport(key, timeout_s)
 
 
 def anthropic_transport(api_key: str, timeout_s: float = 60.0) -> Transport:
@@ -266,10 +327,7 @@ class MonitorVerifier:
         self.grip_note = ""   # set by the runner from /arms before each check (station_addons)
         self.history_frames = int(history_frames if history_frames is not None else user.get("history_frames", 6))
         if transport is None:
-            key = api_key if api_key is not None else os.environ.get("ANTHROPIC_API_KEY")
-            if not key:
-                raise ValueError("MonitorVerifier needs ANTHROPIC_API_KEY to be set")
-            transport = anthropic_transport(key, timeout_s)
+            transport = default_transport(timeout_s, api_key, "MonitorVerifier")
         self._transport = transport
         self._lock = threading.Lock()
         self._gen = 0

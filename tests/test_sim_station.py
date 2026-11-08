@@ -173,3 +173,16 @@ def test_run_start_error_is_reported(sim, monkeypatch):
     monkeypatch.undo()
     assert call(sim, "POST", "/start", {"prompt": "go"})[0] == 200  # error state allows a new start
     settle(sim)
+
+
+def test_live_view_serves_page_state_and_cameras(sim):
+    with urllib.request.urlopen(sim.view_url + "/live", timeout=10) as resp:
+        assert resp.status == 200 and b"Sim station" in resp.read()
+    with urllib.request.urlopen(sim.view_url + "/live/state", timeout=10) as resp:
+        state = json.load(resp)
+    assert state["status"]["sim"] is True and set(state["cameras"]) == {"top", "left", "right"}
+    assert "bodies" in state["objects"] and "tcp" in state["objects"]
+    with urllib.request.urlopen(sim.view_url + "/live/cam/top.jpg", timeout=10) as resp:
+        assert resp.headers["Content-Type"] == "image/jpeg" and resp.read()[:2] == b"\xff\xd8"
+    with pytest.raises(urllib.error.HTTPError):
+        urllib.request.urlopen(sim.view_url + "/live/cam/nope.jpg", timeout=10)

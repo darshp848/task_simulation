@@ -381,10 +381,12 @@ def frame_time(jpeg: bytes) -> float | None:
 class Scripted:
     """The monitor's transport. Reads the stage from the prompt text and the table state at the newest frame time."""
 
-    def __init__(self, clock: VClock, table: Table, plan: Plan, *, latency_s: float = 4.0, seed: int = 0) -> None:
+    def __init__(self, clock: VClock, table: Table, plan: Plan, *, latency_s: float | tuple[float, float] = 4.0,
+                 seed: int = 0) -> None:
         self.clock, self.table, self.plan = clock, table, plan
-        self.latency_s = latency_s
+        self.latency_s = latency_s               # seconds per call, or (lo, hi): uniform per call
         self.rng = random.Random(seed)
+        self.lat_rng = random.Random(seed + 7919)   # own stream: a latency range does not shift the other draws
         self.due: float | None = None
         self.outages: list[tuple[float, float]] = []
         self.false_done: dict[str, float] = {}   # stage name -> chance of a false stage_done
@@ -405,11 +407,12 @@ class Scripted:
         raw = [base64.b64decode(d) for d in images]
         newest = max((frame_time(j) or 0.0) for j in raw) if raw else t_req
         start = min((frame_time(j) or 0.0) for j in raw) if raw else t_req
-        due = t_req + self.latency_s
+        lat = (self.lat_rng.uniform(*self.latency_s) if isinstance(self.latency_s, tuple) else self.latency_s)
+        due = t_req + lat
         self.due = due
         try:
             if threading.current_thread() is threading.main_thread():
-                self.clock.advance(self.latency_s)    # a synchronous call: the runner waits for it
+                self.clock.advance(lat)               # a synchronous call: the runner waits for it
             else:
                 while self.clock.now < due - 1e-9:
                     time.sleep(0.0005)
@@ -496,14 +499,16 @@ class Scenario:
     empty: list[tuple[float, float]] = field(default_factory=list)
     corrupt: list[tuple[float, float]] = field(default_factory=list)
     false_done: dict[str, float] = field(default_factory=dict)
-    latency_s: float = 4.0
+    latency_s: float | tuple[float, float] = 4.0   # monitor seconds per call, or (lo, hi) drawn per call
     fast_guard: bool = False        # a local black-ball detector on the wrist frames (harness.detect), every poll
     frame_lag_s: float = 0.0        # frames show the table this long ago (trip cadence ~3.4 s on the station)
     plan: Path = PLAN
     note: str = ""
 
 
-def run_match(sc: Scenario, seed: int = 1, out_dir: Path | None = None) -> dict[str, Any]:
+def run_match(sc: Scenario, seed: int = 1, out_dir: Path | None = None, observe: Any = None) -> dict[str, Any]:
+    """One match. `observe(ctx)`, if given, sees the wired-up objects (clock, table, station, transport, runner, log,
+    plan) before the runner starts; the live visualizer (experiments/live_stress.py) uses it to pace and watch."""
     plan = load_plan(sc.plan)
     clock = VClock()
     table = Table(sc.beh, seed)
@@ -525,6 +530,9 @@ def run_match(sc: Scenario, seed: int = 1, out_dir: Path | None = None) -> dict[
                 return None, "no wrist view"
             return table.snapshot_at(frame_time(fr["wrist_r"]) or 0.0).held == "black", "sim detector"
         runner.fast_guard = local
+    if observe is not None:
+        observe({"clock": clock, "table": table, "station": station, "transport": tr, "runner": runner,
+                 "log": log, "plan": plan, "scenario": sc, "seed": seed})
     result = runner.run()
     ref = referee(table)
     return {"scenario": sc.name, "seed": seed, "harness_ok": result.ok, "reason": result.reason,
@@ -565,9 +573,20 @@ SCENARIOS: dict[str, Scenario] = {s.name: s for s in [
 ]}
 
 
-def _one(job: tuple[str, int]) -> dict[str, Any]:
-    name, seed = job
-    r = run_match(SCENARIOS[name], seed)
+def parse_latency(text: str) -> float | tuple[float, float]:
+    """'8.4' -> 8.4 s per call; '6.5-13' -> uniform 6.5-13 s per call."""
+    lo, sep, hi = text.partition("-")
+    return (float(lo), float(hi)) if sep else float(lo)
+
+
+def _one(job: tuple) -> dict[str, Any]:
+    name, seed, *rest = job
+    over = rest[0] if rest else {}
+    sc = SCENARIOS[name]
+    if over:
+        import dataclasses
+        sc = dataclasses.replace(sc, **over)
+    r = run_match(sc, seed)
     r.pop("posts", None)
     return r
 
@@ -581,13 +600,22 @@ def main() -> int:
     ap.add_argument("--out", help="append one JSON line per match to this file")
     ap.add_argument("--list", action="store_true", help="list the scenarios and exit")
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("--latency", type=parse_latency, metavar="S|LO-HI",
+                    help="monitor latency for every scenario: seconds, or a range drawn per call (measured on "
+                         "Haiku 5.5, 7 Nov: 6.5-13)")
+    ap.add_argument("--plan", type=Path, help="match plan for every scenario (default: each scenario's own)")
     args = ap.parse_args()
     if args.list:
         for n, sc in SCENARIOS.items():
             print(f"{n:32s} {sc.note}")
         return 0
     names = args.scenario or list(SCENARIOS)
-    jobs = [(n, s) for n in names for s in range(args.seed0, args.seed0 + args.seeds)]
+    over: dict[str, Any] = {}
+    if args.latency is not None:
+        over["latency_s"] = args.latency
+    if args.plan is not None:
+        over["plan"] = args.plan.resolve()
+    jobs = [(n, s, over) for n in names for s in range(args.seed0, args.seed0 + args.seeds)]
     if args.jobs > 1:
         from multiprocessing import Pool
         with Pool(args.jobs) as pool:

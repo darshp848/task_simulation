@@ -98,14 +98,18 @@ stages:
     on_fail: skip             # Stage 1 already passed
 
   # The policy often keeps holding the unplugged plug (sim: most matches), and a held plug stops the stacking.
-  # Open the grippers before anything else; skipped at once if they're already empty.
+  # Open the grippers before anything else.
+  # No skip_if_done on release_cable, put_more_down and arms_clear (8 Nov): the entry check is a synchronous monitor
+  # call, 6.5-13 s on Haiku 5.5 (tools/check_monitor.py), so it cost about as long as the 10-12 s stage it might skip.
+  # experiments/sweep_variants.py base no_entry, 24 scenarios x 4 seeds at --latency 6.5-13: 54.9 -> 60.0 mean
+  # points, no new losses. (Dropping unplug_more + put_more_down too: 65.9, but 2 more 8-ball losses where only the
+  # monitor guards the balls, none with the local --detect guard. A strategy call, not made here.)
   - name: release_cable
     prompt: "open both grippers and move the arms up"
     success: "Are both grippers open and empty, with no cable held?"
     timeout_s: 10
     min_run_s: 2
     confirm: 1
-    skip_if_done: true
     on_fail: skip
 
   # One extra unplug, +5. Same prompt as unplug_cable: once the end port is empty, the end cable nearest the right arm
@@ -124,7 +128,6 @@ stages:
     timeout_s: 12
     min_run_s: 3
     confirm: 1
-    skip_if_done: true        # nothing held (unplug_more failed or dropped it): skip at once
     on_fail: skip
 
   - name: arms_clear
@@ -133,7 +136,6 @@ stages:
     timeout_s: 10
     min_run_s: 2
     confirm: 1
-    skip_if_done: true        # usually already true after T2 or T3
     on_fail: skip
 
   # ---- Stage 2 (pass bar: tower > 4 in, free-standing 3 s after release) ----

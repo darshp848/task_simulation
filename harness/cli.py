@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import signal
 import socket
 import sys
@@ -40,6 +41,9 @@ def _parser() -> argparse.ArgumentParser:
                         "the monitor's frames")
     p.add_argument("--verifier", choices=["manual", "claude", "time", "claude+manual", "monitor", "monitor+manual"], default=None,
                    help="override every stage's verifier")
+    p.add_argument("--claude-backend", choices=["api", "subscription"], default=None,
+                   help="how the claude/monitor verifiers reach Claude: api (ANTHROPIC_API_KEY, the default) or "
+                        "subscription (the logged-in `claude` CLI); same as $HARNESS_CLAUDE_BACKEND")
     p.add_argument("--var", action="append", default=[], metavar="NAME=VALUE",
                    help="fill a {NAME} placeholder in the plan, e.g. --var color=orange (repeatable)")
     return p
@@ -59,6 +63,8 @@ def main(argv: list[str] | None = None) -> int:
     except (ValueError, OSError) as exc:
         print(f"plan error: {exc}", file=sys.stderr)
         return 2
+    if args.claude_backend:
+        os.environ["HARNESS_CLAUDE_BACKEND"] = args.claude_backend
     if args.verifier:
         for stage in plan.stages:
             stage.verifier = args.verifier
