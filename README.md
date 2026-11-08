@@ -6,7 +6,7 @@ data they are based on, and the results so far.
 
 The harness (`harness/`) supervises Dream-1 on the MakerMods Metal station: it sends one recorded task prompt per
 stage, asks a Claude vision monitor whether the stage is done, retries, recovers, and stops on an illegal ball. It is
-a copy of [hill-climb-harness](https://github.com/darshp848/hill-climb-harness) `main` at `d938644`; port changes
+a copy of [hill-climb-harness](https://github.com/darshp848/hill-climb-harness) `main` at `0830701`; port changes
 back there (or the other way) by hand, the two repos don't sync themselves.
 
 ```

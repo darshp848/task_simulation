@@ -10,7 +10,12 @@ point's position (Metal forward kinematics, Dream's TCP) relative to the hub:
   ending --tail s after the gripper opens). A grasp still closed at the end of the episode gives T1 only.
 - plug-in: closes more than --far from the hub and releases within --near of it -> T3 (approach + carry + insert,
   ending --tail s after it opens). Whether the plug went in is not known from the joints: CHECK THE SHEET.
+- pick-and-place: with --picks, any other grasp that is released (on the left arm: every grasp, since the hub
+  rules are in the right arm's frame) -> a segment from the approach to --tail s after the release, with the task
+  "LABEL ME". Look at the sheet and set its task text (or drop it) in the spec: split_episodes.py refuses LABEL ME.
 - anything else (an episode that starts closed, a grasp that never lifts, ...) is left out and reported.
+The working arm is chosen per episode (--arm auto): the one whose joints move more. In leader/follower takes the
+leader's side is recorded parked, so the follower is picked.
 Each segment starts where the previous one ended (so the episodes chain like the harness's prompt switches), or
 at most --max-approach s before the grasp, with leading stillness trimmed.
 
@@ -42,6 +47,8 @@ T2 = "put the held cable down on the table away from the hub"
 T3 = "plug the loose USB cable on the table into a free port on the hub"
 TCP = (0.135, 0.0, 0.0)            # Dream's tool point for the stock Metal gripper (the kit's station config)
 RIGHT_JOINTS, RIGHT_GRIP = slice(7, 13), 13
+ARMS = {"right": (slice(7, 13), 13), "left": (slice(0, 6), 6)}   # the Metal kit's layout: left arm first
+LABEL = "LABEL ME"
 MIN_FRAMES = 49
 
 
@@ -66,9 +73,22 @@ def grasps(cmd: np.ndarray, fps: float, min_s: float = 0.5, gap_s: float = 0.4) 
     return [(a, b) for a, b in out if (b if b is not None else n) - a >= min_s * fps]
 
 
+def working_arm(state: np.ndarray, action: np.ndarray | None = None, fps: float = 30.0) -> str:
+    """The arm that grasps (its gripper closes and opens again); if both or neither do, the one whose joints move
+    more. Quest takes can move both arms while only one works."""
+    rng = {side: float(np.ptp(state[:, j], axis=0).max()) for side, (j, _) in ARMS.items()}
+    if action is not None:
+        gripping = [side for side, (_, g) in ARMS.items() if any(c > 0 for c, _ in grasps(action[:, g], fps))]
+        if len(gripping) == 1:
+            return gripping[0]
+    return max(rng, key=rng.get)
+
+
 def plan_episode(state: np.ndarray, action: np.ndarray, fps: float, hub: np.ndarray, *, near: float, far: float,
-                 lift: float, tail_s: float, max_approach_s: float) -> tuple[list[dict], list[str]]:
-    p = np.array([tool_point(list(q), TCP) for q in state[:, RIGHT_JOINTS]])
+                 lift: float, tail_s: float, max_approach_s: float, arm: str = "right",
+                 picks: bool = False) -> tuple[list[dict], list[str]]:
+    joints, grip = ARMS[arm]
+    p = np.array([tool_point(list(q), TCP) for q in state[:, joints]])
     speed = np.r_[0.0, np.linalg.norm(np.diff(p, axis=0), axis=1) * fps]
     n = len(p)
     segs, notes = [], []
@@ -83,7 +103,7 @@ def plan_episode(state: np.ndarray, action: np.ndarray, fps: float, hub: np.ndar
             s = s + int(moving[0]) - int(0.5 * fps)
         return s
 
-    for close, release in grasps(action[:, RIGHT_GRIP], fps):
+    for close, release in grasps(action[:, grip], fps):
         t = f"{close / fps:.1f}-{(release or n) / fps:.1f}s"
         if close == 0:
             notes.append(f"{t}: starts closed (no grasp seen), left out")
@@ -92,6 +112,8 @@ def plan_episode(state: np.ndarray, action: np.ndarray, fps: float, hub: np.ndar
         d_close = float(np.linalg.norm(p[close, :2] - hub))
         d_rel = float(np.linalg.norm(p[release, :2] - hub)) if release is not None else None
         end = min(n, (release + int(tail_s * fps)) if release is not None else n)
+        if arm == "left":
+            d_close = float("inf")      # the hub rules are in the right arm's frame: every left grasp is a pick
         if d_close <= near:
             up = np.flatnonzero(p[close:(release or n), 2] >= p[close, 2] + lift)
             if not len(up):
@@ -113,8 +135,12 @@ def plan_episode(state: np.ndarray, action: np.ndarray, fps: float, hub: np.ndar
             s = start_from(close)
             segs.append({"start": s, "end": end, "task": T3, "kind": "plug-in (check it seated)"})
             prev_end = end
+        elif picks and release is not None:
+            s = start_from(close)
+            segs.append({"start": s, "end": end, "task": LABEL, "kind": "pick-place (label it)"})
+            prev_end = end
         else:
-            where = "never released" if d_rel is None else f"released {d_rel * 100:.0f} cm from the hub"
+            where = "never released" if d_rel is None or d_rel == float("inf") else f"released {d_rel * 100:.0f} cm from the hub"
             notes.append(f"{t}: grasp {d_close * 100:.0f} cm from the hub, {where}: unclear, left out")
             prev_end = end - 1 if release is not None else n
     kept = []
@@ -126,9 +152,9 @@ def plan_episode(state: np.ndarray, action: np.ndarray, fps: float, hub: np.ndar
     return kept, notes
 
 
-def _sheet(ds: Path, info: dict, ep: int, segs: list[dict], fps: float, dst: Path) -> None:
+def _sheet(ds: Path, info: dict, ep: int, segs: list[dict], fps: float, dst: Path, arm: str = "right") -> None:
     vp = info["video_path"]
-    wrist = ds / vp.format(episode_chunk=0, video_key="observation.images.right_wrist", episode_index=ep)
+    wrist = ds / vp.format(episode_chunk=0, video_key=f"observation.images.{arm}_wrist", episode_index=ep)
     scene_key = next(k for k, f in info["features"].items() if f.get("dtype") == "video" and "scene" in k)
     scene = ds / vp.format(episode_chunk=0, video_key=scene_key, episode_index=ep)
     rows = []
@@ -169,6 +195,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--tail", type=float, default=0.7, help="seconds kept after the gripper opens")
     ap.add_argument("--max-approach", type=float, default=10.0, help="longest approach kept before a grasp, s")
     ap.add_argument("--sheets", help="folder for one review image per episode")
+    ap.add_argument("--arm", choices=("auto", "left", "right"), default="auto", help="the arm that works")
+    ap.add_argument("--picks", action="store_true", help="also cut other grasp-and-release cycles, task LABEL ME")
     args = ap.parse_args(argv)
 
     ds = Path(args.dataset).expanduser()
@@ -187,11 +215,13 @@ def main(argv: list[str] | None = None) -> int:
     else:
         pts = []
         for s, a in data.values():
+            if working_arm(s, a, fps) != "right":
+                continue
             for c, _ in grasps(a[:, RIGHT_GRIP], fps):
                 if c:
                     pts.append(tool_point(list(s[c, RIGHT_JOINTS]), TCP)[:2])
         if not pts:
-            raise SystemExit("no grasps found: pass --hub X,Y")
+            hub = np.array([0.38, 0.13])   # the 7 Nov station layout; only used for right-arm grasps
         hub = np.median(np.array(pts), axis=0)
     print(f"hub at x {hub[0]:+.3f} y {hub[1]:+.3f} m (right arm base frame){'' if args.hub else ', estimated'}")
 
@@ -201,22 +231,24 @@ def main(argv: list[str] | None = None) -> int:
         sheets.mkdir(parents=True, exist_ok=True)
     for e in eps:
         i = e["episode_index"]
+        arm = working_arm(*data[i], fps) if args.arm == "auto" else args.arm
         segs, notes = plan_episode(*data[i], fps, hub, near=args.near, far=args.far, lift=args.lift,
-                                   tail_s=args.tail, max_approach_s=args.max_approach)
-        print(f"\nepisode {i} ({e['length'] / fps:.1f} s, {e['tasks'][0]!r})")
+                                   tail_s=args.tail, max_approach_s=args.max_approach, arm=arm, picks=args.picks)
+        print(f"\nepisode {i} ({e['length'] / fps:.1f} s, {arm} arm, {e['tasks'][0]!r})")
         for k, sg in enumerate(segs):
             print(f"  [{k}] {sg['start'] / fps:6.1f}-{sg['end'] / fps:6.1f} s  {sg['kind']:<26} {sg['task']!r}")
             segments.append({"episode": i, "start_s": round(sg["start"] / fps, 3), "end_s": round(sg["end"] / fps, 3),
-                             "task": sg["task"], "kind": sg["kind"]})
+                             "task": sg["task"], "kind": sg["kind"], "arm": arm})
         for note in notes:
             print(f"  - {note}")
         if sheets and segs:
-            _sheet(ds, info, i, segs, fps, sheets / f"episode_{i:03d}.png")
+            _sheet(ds, info, i, segs, fps, sheets / f"episode_{i:03d}.png", arm)
     spec = {"source": str(ds), "out": str(Path(args.out).expanduser()), "hub_xy": [round(float(v), 3) for v in hub],
             "segments": segments}
     Path(args.spec).write_text(json.dumps(spec, indent=2) + "\n")
-    counts = {k: sum(s["task"] == k for s in segments) for k in (T1, T2, T3)}
-    print(f"\n{len(segments)} segments -> {args.spec}: T1 {counts[T1]}, T2 {counts[T2]}, T3 {counts[T3]}"
+    counts = {k: sum(s["task"] == k for s in segments) for k in (T1, T2, T3, LABEL)}
+    print(f"\n{len(segments)} segments -> {args.spec}: T1 {counts[T1]}, T2 {counts[T2]}, T3 {counts[T3]}, "
+          f"to label {counts[LABEL]}"
           + (f"; review images in {sheets}" if sheets else ""))
     return 0
 

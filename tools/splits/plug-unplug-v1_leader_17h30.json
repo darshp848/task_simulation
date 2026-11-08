@@ -1,0 +1,32 @@
+{
+  "source": "~/hackathon_data/plug-unplug-v1",
+  "out": "~/hackathon_data/leader-split-v2",
+  "hub_xy": [
+    0.384,
+    0.126
+  ],
+  "segments": [
+    {
+      "episode": 6,
+      "start_s": 25.367,
+      "end_s": 42.733,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 9,
+      "start_s": 1.333,
+      "end_s": 14.167,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 9,
+      "start_s": 31.567,
+      "end_s": 38.067,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    }
+  ],
+  "note": "plug-unplug-v1 leader takes 6 and 9 (17:30-17:53, left arm leader); ep 9's put-downs were re-plugs, dropped. Freeze left_wrist after splitting."
+}

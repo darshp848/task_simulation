@@ -1,0 +1,43 @@
+{
+  "hub_xy": [
+    0.384,
+    0.126
+  ],
+  "source": "~/hackathon_data/plug-unplug-v1",
+  "out": "~/hackathon_data/stack-split-v1",
+  "segments": [
+    {
+      "episode": 10,
+      "start_s": 4.567,
+      "end_s": 31.1,
+      "task": "stand the cylinder upright in the hole of the top block",
+      "kind": "pick-place (label it)",
+      "arm": "left"
+    },
+    {
+      "episode": 11,
+      "start_s": 84.633,
+      "end_s": 114.533,
+      "task": "put a block on top of the stack",
+      "kind": "pick-place (label it)",
+      "arm": "left"
+    },
+    {
+      "episode": 11,
+      "start_s": 122.467,
+      "end_s": 138.233,
+      "task": "put a block on top of the stack",
+      "kind": "pick-place (label it)",
+      "arm": "left"
+    },
+    {
+      "episode": 11,
+      "start_s": 141.0,
+      "end_s": 177.433,
+      "task": "stand the cylinder upright in the hole of the top block",
+      "kind": "pick-place (label it)",
+      "arm": "left"
+    }
+  ],
+  "note": "leader-right takes 10-11 (17:53-18:01, left arm works): 2 cylinder-in-hole, 2 block-on-block. Freeze right_wrist after splitting. Operator's arm is in the overhead view."
+}

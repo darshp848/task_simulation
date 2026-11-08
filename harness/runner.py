@@ -11,7 +11,7 @@ from typing import Any
 
 from .frames import FrameSource
 from .log import RunLog
-from .plan import Plan, Recovery, Stage
+from .plan import TOWER_STAGES, Plan, Recovery, Stage
 from .station_client import StationClient, StationError
 from .verifiers import MonitorVerdict, Verdict, Verifier
 
@@ -85,6 +85,23 @@ def _fault_kind(last_error: Any) -> str | None:
     return None
 
 
+def _norm(piece: str) -> str:
+    return " ".join(w for w in piece.lower().replace(",", " ").split() if w not in ("a", "the", "an"))
+
+
+def tower_matches(seen: list[str], target: list[str]) -> bool:
+    """The seen tower is the target's first len(seen) pieces. Per piece, the colour (first word) and the shape (last
+    word before the comma) of the target must appear in the seen one; orientation wording varies and is not compared."""
+    if len(seen) > len(target):
+        return False
+    for s, t in zip(seen, target):
+        words = _norm(t.split(",")[0]).split()
+        key = [words[0], words[-1]] if words else []
+        if not all(k in _norm(s).split() or k in _norm(s) for k in key):
+            return False
+    return True
+
+
 def _inference_fault(last_error: Any) -> bool:
     return _fault_kind(last_error) == "transient"
 
@@ -131,6 +148,7 @@ class Runner:
         # frames -> (yes/no/None, why): a fast local answer to the plan guard (harness.detect.TableDetector.guard)
         self.fast_guard: Callable[[dict[str, bytes]], tuple[bool | None, str]] | None = None
         self._refusals: dict[str, int] = {}
+        self._tower: list[str] | None = None   # the tower the monitor last reported, bottom to top
         self._guard_answer_t: float | None = None   # last time the guard got a yes/no answer
 
     def request_stop(self) -> None:
@@ -358,8 +376,14 @@ class Runner:
 
     def _log_verdict(self, stage: Stage, attempt: int, elapsed: float, verdict: Verdict, saved: list[str],
                      st: dict[str, Any]) -> None:
-        extra = {k: getattr(verdict, k) for k in ("progress", "status", "recovery", "scene_ok", "holding", "guard")
+        extra = {k: getattr(verdict, k) for k in ("progress", "status", "recovery", "scene_ok", "holding", "guard",
+                                                   "tower")
                  if getattr(verdict, k, None) is not None}
+        tower = getattr(verdict, "tower", None)
+        if tower is not None:
+            self._tower = tower
+        if tower is not None and self.plan.tower_target:
+            extra["tower_order_ok"] = tower_matches(tower, self.plan.tower_target)
         self.log.event("verdict", stage=stage.name, attempt=attempt, elapsed_s=round(elapsed, 2),
                        done=verdict.done, confidence=verdict.confidence, reason=verdict.reason,
                        frames=saved, chunks=st.get("chunks"), **extra)
@@ -624,6 +648,29 @@ class Runner:
                        reason=verdict.reason, skipped=bool(done))
         return bool(done)
 
+    def _stage_prompt(self, stage: Stage, verifier: Verifier) -> str:
+        """The stage's prompt, or with plan.tower_prompts on a stacking stage: the next target piece by name, after
+        the tower the monitor last reported (one synchronous look if it hasn't reported one yet)."""
+        plan = self.plan
+        if not plan.tower_prompts or not stage.name.startswith(TOWER_STAGES):
+            return stage.prompt
+        if self._tower is None:
+            v = self._ask(verifier, stage, self._frames_for_check(stage), 0.0, sync=True)
+            if getattr(v, "tower", None) is not None:
+                self._tower = v.tower
+        n = len(self._tower) if self._tower is not None else None
+        if n is None or n >= len(plan.tower_target):
+            self.log.event("tower_prompt", stage=stage.name, tower=self._tower, prompt=stage.prompt,
+                           note="no tower reported" if n is None else "target complete: generic prompt")
+            return stage.prompt
+        if n == 0:
+            n = 1   # an empty tower: the first target piece is the base, so the next to place is the second
+        name = plan.tower_target[n].split(",")[0].strip()
+        prompt = next(v for k, v in plan.tower_prompts.items() if name.endswith(k)).replace("<piece>", name)
+        self.log.event("tower_prompt", stage=stage.name, tower=self._tower, next=name, prompt=prompt,
+                       order_ok=tower_matches(self._tower, plan.tower_target))
+        return prompt
+
     def _run_stage(self, stage: Stage, first: bool) -> StageResult:
         t0 = self._clock()
         verifier = self.verifiers.get(stage.verifier)
@@ -638,7 +685,7 @@ class Runner:
         if stage.skip_if_done and self._entry_check(stage, verifier):
             self.log.event("stage_already_done", stage=stage.name)
             return StageResult(stage.name, True, 0, self._clock() - t0, "already done at entry")
-        refused = self._try_issue(stage.prompt, "stage", force_start=first)
+        refused = self._try_issue(self._stage_prompt(stage, verifier), "stage", force_start=first)
         attempts = 0
         uses: dict[int, int] = {}
         last_rec: int | None = None
@@ -649,7 +696,7 @@ class Runner:
                 out = _Attempt(False, refused)
                 self._nap(min(self.plan.check_every_s, 3.0))   # don't spin on a prompt Dream keeps refusing
             else:
-                out = self._attempt(stage, verifier, attempts, stage.prompt)
+                out = self._attempt(stage, verifier, attempts, self._prompt or stage.prompt)
             if out.ok:
                 return StageResult(stage.name, True, attempts, self._clock() - t0, out.reason)
             reason, hint = out.reason, out.recovery_hint
@@ -678,7 +725,7 @@ class Runner:
                 self._wait({"idle"}, IDLE_TIMEOUT_S, "idle after stop")
                 self.station.home()
                 self._wait({"idle"}, IDLE_TIMEOUT_S, "idle after home")
-                refused = self._try_issue(stage.prompt, "retry", force_start=True)
+                refused = self._try_issue(self._stage_prompt(stage, verifier), "retry", force_start=True)
             else:
-                refused = self._try_issue(stage.prompt, "retry")
+                refused = self._try_issue(self._stage_prompt(stage, verifier), "retry")
                 self.log.event("retry", stage=stage.name, attempt=attempts + 1, mode="retry_in_place")

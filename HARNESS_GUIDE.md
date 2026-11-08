@@ -203,7 +203,7 @@ python -m harness plans/hill_climb_v4.yaml --live --var plug_cam=wrist_l --var s
 Still unclear in the rubric (ask the organizers):
 
 - Is an outside model (Claude) as the harness's checker allowed? The rubric bans human input to the policy and teleop.
-- Does pressing Enter to start the harness at "go" count as keyboard input?
+- ~~Does pressing Enter to start the harness at "go" count as keyboard input?~~ Settled (team, 7 Nov): starting it at "go" is fine.
 
 ## 6c. Prompts must be the task texts you recorded (`python -m harness.tasks`)
 
@@ -411,7 +411,7 @@ If the adapters are CANables in slcan mode (a `/dev/tty…` serial device), the 
 ## 10. Open questions for the organizers
 
 - Can an outside model (Claude) check stages during a match? (Human `y`/`n` is clearly not allowed.)
-- How do we start the harness at "go" without it counting as keyboard input?
+- ~~How do we start the harness at "go" without it counting as keyboard input?~~ Settled (team, 7 Nov): starting the harness at "go" is fine.
 - Can the harness change the prompt live during a match, or is it one prompt per run?
 - Is Ethernet hard mode on, and how tall is one block (are 3 layers already 6 inches)?
 

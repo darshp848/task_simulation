@@ -14,7 +14,8 @@ RECOVERY_KINDS = ("retry", "reset")
 ON_FAIL = ("retry_in_place", "home_and_retry", "skip", "abort")
 MAX_PROMPT_CHARS = 512
 
-_PLAN_KEYS = {"task", "checkpoint", "time_budget_s", "check_every_s", "verifier", "claude", "cameras_for_check", "stages", "confirm", "done_message", "vars", "guard"}
+_PLAN_KEYS = {"task", "checkpoint", "time_budget_s", "check_every_s", "verifier", "claude", "cameras_for_check", "stages", "confirm", "done_message", "vars", "guard", "tower_target", "tower_prompts"}
+TOWER_STAGES = ("stack", "tower", "higher")   # stage-name prefixes the tower target applies to
 _STAGE_KEYS = {"name", "prompt", "success", "timeout_s", "max_attempts", "min_run_s", "verifier", "recovery", "on_fail",
                "stall_s", "settle_s", "skip_if_done", "skip_unless", "confirm", "expect",
                "cameras", "camera_notes", "history_cameras", "watch"}
@@ -119,6 +120,14 @@ class Plan:
     claude_user: dict[str, Any] = field(default_factory=dict)  # only the keys the plan file set
     done_message: str = ""  # printed large (with a bell) when every stage passed, e.g. "CALL STOP NOW"
     guard: Guard | None = None
+    # The tower to build, bottom to top, one piece per entry ("blue cube, hole facing sideways"). The monitor gets it
+    # as the expected result on stacking stages and reports the tower it sees; the runner logs whether the order
+    # matches. It does not gate a stage: the stack prompt is one recorded text, so Dream can't be told which piece.
+    tower_target: list[str] = field(default_factory=list)
+    # Optional: name the next piece in the prompt instead of the stage's generic one. Shape word -> template with
+    # <piece>, e.g. {"cube": "put the <piece> on top of the stack"}. The piece is the target's next entry after the
+    # tower the monitor last reported. Off (empty) for a fine-tune that only knows its recorded texts.
+    tower_prompts: dict[str, str] = field(default_factory=dict)
 
 
 def _roles(value: Any, where: str) -> list[str]:
@@ -312,9 +321,14 @@ def parse_plan(data: Any) -> Plan:
         for prefix in guard.stages:
             if not any(n.startswith(prefix) for n in names):
                 raise ValueError(f"plan.guard.stages: {prefix!r} matches no stage name")
+    tower = data.get("tower_target") or []
+    if not isinstance(tower, list) or not all(isinstance(x, str) and x.strip() for x in tower):
+        raise ValueError("plan.tower_target: must be a list of pieces, bottom to top")
     return Plan(
         task=task,
         guard=guard,
+        tower_target=[x.strip() for x in tower],
+        tower_prompts=_tower_prompts(data.get("tower_prompts"), [x.strip() for x in tower]),
         done_message=done_message,
         stages=stages,
         checkpoint=checkpoint,
@@ -326,6 +340,23 @@ def parse_plan(data: Any) -> Plan:
         confirm=int(_num(data.get("confirm", 1), "plan.confirm", integer=True)),
         claude_user=claude_user,
     )
+
+
+def _tower_prompts(raw: Any, target: list[str]) -> dict[str, str]:
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict) or not all(isinstance(k, str) and isinstance(v, str) and "<piece>" in v
+                                            for k, v in raw.items()):
+        raise ValueError("plan.tower_prompts: must map a shape word to a prompt containing <piece>")
+    if not target:
+        raise ValueError("plan.tower_prompts: needs tower_target")
+    for piece in target:
+        name = piece.split(",")[0].strip()
+        if not any(name.endswith(k) for k in raw):
+            raise ValueError(f"plan.tower_prompts: no template for {name!r}")
+        prompt = next(v for k, v in raw.items() if name.endswith(k)).replace("<piece>", name)
+        _prompt(prompt, "plan.tower_prompts")
+    return {k: v.strip() for k, v in raw.items()}
 
 
 def _guard(raw: Any) -> Guard | None:

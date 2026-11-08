@@ -52,6 +52,24 @@ guard:
   # each, a black ball in the bin loses the match, and nobody would be looking for one.
   max_blind_s: 20
 
+# The tower to build (Darsh's photo, Drive IMG_2697, 7 Nov 20:30), bottom to top. The monitor gets it as the expected
+# result on stack_* / tower_* / higher_* stages and reports the tower it sees; events.jsonl logs `tower` and
+# `tower_order_ok` on every check. It does NOT gate a stage: the stack prompt is one recorded text, so Dream can't be
+# told which piece comes next, and a wrong piece must not cost the +20 for height. The order comes from demos.
+tower_target:
+  - "blue cube, hole facing sideways"
+  - "pink cube, hole facing sideways"
+  - "blue cube, hole facing sideways"
+  - "yellow square stick, standing upright"
+  - "pink round stick, standing upright"
+# Name the next piece in the stack prompt (Darsh, 8 Nov): the monitor reports the tower bottom to top, the harness
+# picks the next target piece and sends e.g. "put the pink cube on top of the stack". Only for base Dream-1, which
+# stacks zero-shot and followed colour prompts on the station on 7 Nov ("put the pink block on top of a blue block").
+# DELETE this block when stacking runs on a fine-tune: it only knows the recorded text "put a block on top of the stack".
+tower_prompts:
+  cube: "put the <piece> on top of the stack"
+  stick: "stand the <piece> upright on top of the stack"
+
 stages:
   # ---- Stage 1 (pass bar: one cable out) ----
   - name: unplug_cable

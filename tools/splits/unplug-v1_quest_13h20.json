@@ -1,0 +1,32 @@
+{
+  "source": "~/hackathon_data/unplug-v1",
+  "out": "~/hackathon_data/unplug-v1-split",
+  "hub_xy": [
+    0.356,
+    0.103
+  ],
+  "segments": [
+    {
+      "episode": 1,
+      "start_s": 6.267,
+      "end_s": 11.6,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 2,
+      "start_s": 36.133,
+      "end_s": 40.567,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 2,
+      "start_s": 40.567,
+      "end_s": 42.933,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    }
+  ],
+  "note": "unplug-v1 Quest takes 13:20-13:47 (laptop copy numbering 3, 4 = station 1, 2 since the 17:00 drop); only segments whose last frame shows the plug held up / the cable put down"
+}

@@ -14,7 +14,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import IO, Any, Protocol
 
-from .plan import Plan, Stage
+from .plan import TOWER_STAGES, Plan, Stage
 
 CLAUDE_URL = "https://api.anthropic.com/v1/messages"
 MIN_CONFIDENCE = 0.7
@@ -39,6 +39,7 @@ class MonitorVerdict(Verdict):
     guard: bool | None = None  # the plan guard's yes/no answer, on guarded stages only
     watch_ok: bool | None = None  # only for stages with a watcher arm
     frames_sig: str | None = None  # digest of the newest frames this verdict was computed on
+    tower: list[str] | None = None  # the tower the monitor sees, bottom to top (stacking stages with a tower_target)
 
 
 def valid_jpeg(data: bytes) -> bool:
@@ -228,6 +229,8 @@ def parse_monitor_reply(text: str, menu_len: int) -> MonitorVerdict:
     rec = rec if isinstance(rec, int) and not isinstance(rec, bool) and 0 <= rec < menu_len else None
     scene = obj.get("scene_ok") if isinstance(obj.get("scene_ok"), bool) else None
     watch_ok = obj.get("watch_ok") if isinstance(obj.get("watch_ok"), bool) else None
+    tower = obj.get("tower")
+    tower = [str(x) for x in tower] if isinstance(tower, list) else None
     holding = obj.get("holding")
     if isinstance(holding, dict):
         holding = {str(k): str(v) for k, v in holding.items()}
@@ -241,7 +244,8 @@ def parse_monitor_reply(text: str, menu_len: int) -> MonitorVerdict:
         else:
             reason = f"low confidence: {reason}"
     return MonitorVerdict(done, confidence, reason, progress=_clamp01(obj.get("progress")), status=status,
-                          recovery=rec, scene_ok=scene, holding=holding, guard=guard, watch_ok=watch_ok)
+                          recovery=rec, scene_ok=scene, holding=holding, guard=guard, watch_ok=watch_ok,
+                          tower=tower)
 
 
 class MonitorVerifier:
@@ -342,6 +346,11 @@ class MonitorVerifier:
         if guarded:
             lines.append(f"Safety question, answer it as `guard` (true = yes): {guard.question}")
         schema = GUARD_SCHEMA if guarded else MONITOR_SCHEMA
+        if self.plan.tower_target and stage.name.startswith(TOWER_STAGES):
+            target = "; ".join(f"{i}. {p}" for i, p in enumerate(self.plan.tower_target, 1))
+            lines.append(f"Target tower, bottom to top: {target}. Report the tower you see as `tower`: a list of its "
+                         "pieces bottom to top, worded like the target (empty list if there is no tower).")
+            schema = schema.rstrip()[:-1] + ', "tower": [str]}'
         if stage.watch is not None:
             lines.append(f"Watcher check (answer it as watch_ok, from the {stage.watch.camera} images): "
                          f"{stage.watch.check}")

@@ -1,4 +1,4 @@
-# Teleop recording plan: Sat 7 Nov, until the fine-tune is queued at 20:00
+# Teleop recording plan: Sat 7 Nov, until the fine-tune is queued
 
 ## Decision (17:50): one fine-tune on UNPLUG and PUT-DOWN only
 
@@ -9,15 +9,16 @@
 - **Stacking and balls stay on base Dream-1's own skill** (it stacks 2-4 cubes zero-shot). The fine-tune mixes in
   Dream's data by default (`base_share` 0.5), which keeps general skill. Sunday morning, test the fine-tune on a
   stack; if it got worse than base, run those stages on base Dream-1 (the harness can switch checkpoint per run).
-- **One job at 20:00**, 1000 steps (the default, ~$200), constant learning rate. Ready around 04:00, plus up to 1 h
-  of warm-up on its first call.
+- **One job, queued when recording stops** (not at 20:00: takes are still coming in). 1000 steps (the default,
+  ~$200), constant learning rate. Training takes 7-8 h, plus any queue, plus up to 1 h of warm-up on the first call:
+  queue no later than about 10 h before the first match.
 
 ## The two task texts (set one in the dashboard before EVERY take)
 
 | # | Task text | Take | Have | Want by 19:45 |
 | --- | --- | --- | --- | --- |
-| T1 | `unplug the USB cable at the end of the hub nearest the right arm` | Enter with the gripper open ~5 cm from the end plug. Squeeze fully, pause, pull straight up until clear. Save while holding it up. 5-10 s | ~14 | 35+ |
-| T2 | `put the held cable down on the table away from the hub` | Starts holding the cable. Carry it to the same spot each time, open, lift. Save. 3-6 s | ~10 | 25 |
+| T1 | `unplug the USB cable at the end of the hub nearest the right arm` | Enter with the gripper open ~5 cm from the end plug. Squeeze fully, pause, pull straight up until clear. Save while holding it up. 5-10 s | 56 (19:00) | done; more is better |
+| T2 | `put the held cable down on the table away from the hub` | Starts holding the cable. Carry it to the same spot each time, open, lift. Save. 3-6 s | 45 (19:00) | done |
 
 Chain them: T1, save, switch the text to T2, Enter, put down, save. Then plug the cable back in by hand
 (arms still, between takes) and repeat. About 1 in 3 T1 takes with the end port already empty (the harness's extra
@@ -58,8 +59,27 @@ end). Look at every row, delete bad segments from the spec, then run `split_epis
 python tools/auto_split.py ~/hackathon_data/<dataset> --out ~/hackathon_data/<dataset>-split --spec spec.json --sheets sheets/
 ```
 
-Done so far: `unplug-split-v1` (3 × T1 + 3 × T2 from the 60 s Quest take) and `leader-split-v1-frozen`
-(7 × T1 + 7 × T2 from the 17:09-17:16 leader takes, left wrist frozen); both have `-eef` built and pass Dream's checks.
+Done so far (18:30), each with `-eef` built and Dream's checks passing; specs in `tools/splits/`:
+
+| Folder | From | T1 | T2 |
+| --- | --- | --- | --- |
+| `unplug-split-v1` | the 60 s Quest take (16:44) | 3 | 3 |
+| `leader-split-v1-frozen` | leader takes 17:09-17:16, left wrist frozen | 8 | 6 |
+| `unplug-v1-split` | the reviewed good parts of `unplug-v1` (13:20-13:47) | 2 | 1 |
+| `leader-split-v2-frozen` | leader takes 6 and 9 (17:30-17:53), left wrist frozen | 3 | 0 |
+| `quest-split-v3` | Quest takes 12-22 (18:12-18:31); every unplug ends with the plug in the jaws | 40 | 35 |
+| **total** | | **56** | **45** |
+
+Optional, stacking (`stack-split-v1-frozen`, from leader-right takes 10-11, right wrist frozen, the operator's
+arm is in the overhead view): 2 × `put a block on top of the stack` and 2 × T7
+`stand the cylinder upright in the hole of the top block`. Zero-shot stacks cubes but not cylinders, so T7 is the
+stacking skill worth demos: 20+ short takes under that exact text would make it count. The match plan does not send
+T7 yet; add a cylinder stage once there are demos.
+
+Not used: raw `unplug-v1` (its other cuts end with an empty gripper); `plug-unplug-v1` 3-5, 7, 8 (start already
+holding, plug-in fumbling), 23 (59 s, nothing moves), and the unlabelled parts of 10-11. The raw `plug-unplug-v1`
+(placeholder text) never goes up as it is. `~/hackathon_backup/plug-unplug-v1-1714` is a 17:14 copy of its first
+5 takes, already covered.
 Better still, record each sub-task as its own episode from the start.
 
 ## Leader/follower episodes: freeze the left wrist camera
@@ -87,16 +107,16 @@ separate folders, so `--episodes all` is right. Dream's checks pass on a frozen 
 (30, 15, 46 and 96 s). Long multi-task takes stay in `plug-unplug-v1` and never go up as they are: only their
 reviewed splits do.
 
-## Queue the fine-tune (20:00, arms not needed)
+## Queue the fine-tune (when recording stops, arms not needed)
 
-What goes in: `unplug-v1`, `unplug-split-v1`, `leader-split-v1-frozen`, and whatever is recorded from now on
-(leader takes: split or recorded short with the exact text, then left wrist frozen). Each as its `-eef` copy:
+What goes in: the four reviewed folders above, and whatever is recorded from now on (leader takes: split or
+recorded short with the exact text, then left wrist frozen). Each as its `-eef` copy:
 
 ```bash
 cd ~/physical-ai-hacks
-~/dream-env/bin/python tools/add_eef.py ~/hackathon_data/unplug-v1 --arm metal --replace
-# + add_eef on each new folder (the frozen copy for leader takes)
-mkdir -p ~/hackathon_data/ft-v1 && cp -r ~/hackathon_data/{unplug-v1,unplug-split-v1,leader-split-v1-frozen}-eef ~/hackathon_data/ft-v1/
+# add_eef on each new folder (the frozen copy for leader takes); the four reviewed ones already have -eef
+mkdir -p ~/hackathon_data/ft-v1 && cp -r ~/hackathon_data/{unplug-split-v1,leader-split-v1-frozen,unplug-v1-split,leader-split-v2-frozen,quest-split-v3}-eef ~/hackathon_data/ft-v1/
+# optional: cp -r ~/hackathon_data/stack-split-v1-frozen-eef ~/hackathon_data/ft-v1/
 (cd ~/hill-climb-harness && python3 -m harness.tasks plans/hill_climb_v4.yaml ~/hackathon_data/ft-v1)   # T1, T2 counts
 ~/dream-env/bin/python tools/finetune.py ~/hackathon_data/ft-v1 --arm metal --name unplug-v1 --suffix unplug-v1 --check
 # PAID, about $200 (1000 steps): only with the team's yes

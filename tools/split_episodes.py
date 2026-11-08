@@ -73,6 +73,10 @@ def split(spec: dict) -> Path:
     fps = int(info["fps"])
     videos = {k: f for k, f in info["features"].items() if f.get("dtype") == "video"}
     data_path, video_path = info["data_path"], info["video_path"]
+    unlabelled = [k for k, s in enumerate(spec["segments"]) if s["task"].startswith("LABEL")]
+    if unlabelled:
+        raise SystemExit(f"segments {unlabelled} still say {spec['segments'][unlabelled[0]]['task']!r}: "
+                         "set their task text or remove them")
     tasks: list[str] = list(dict.fromkeys(s["task"] for s in spec["segments"]))
     episodes, stats_lines, total = [], [], 0
     for new_ep, seg in enumerate(spec["segments"]):

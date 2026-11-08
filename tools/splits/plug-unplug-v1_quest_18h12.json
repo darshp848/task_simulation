@@ -1,0 +1,611 @@
+{
+  "hub_xy": [
+    0.384,
+    0.126
+  ],
+  "source": "~/hackathon_data/plug-unplug-v1",
+  "out": "~/hackathon_data/quest-split-v3",
+  "segments": [
+    {
+      "episode": 12,
+      "start_s": 0.0,
+      "end_s": 8.233,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 12,
+      "start_s": 8.233,
+      "end_s": 12.033,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 12,
+      "start_s": 12.033,
+      "end_s": 17.533,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 12,
+      "start_s": 17.533,
+      "end_s": 21.4,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 13.367,
+      "end_s": 24.867,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 24.867,
+      "end_s": 29.467,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 38.967,
+      "end_s": 41.867,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 41.867,
+      "end_s": 50.633,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 50.633,
+      "end_s": 58.9,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 58.9,
+      "end_s": 61.533,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 61.533,
+      "end_s": 67.1,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 13,
+      "start_s": 67.1,
+      "end_s": 69.533,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 6.767,
+      "end_s": 14.1,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 14.1,
+      "end_s": 19.433,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 29.667,
+      "end_s": 32.567,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 32.567,
+      "end_s": 42.267,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 42.267,
+      "end_s": 45.9,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 45.9,
+      "end_s": 56.067,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 56.067,
+      "end_s": 58.533,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 58.533,
+      "end_s": 65.967,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 14,
+      "start_s": 65.967,
+      "end_s": 68.567,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 2.167,
+      "end_s": 10.233,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 10.233,
+      "end_s": 13.467,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 13.467,
+      "end_s": 21.767,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 22.8,
+      "end_s": 29.7,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 29.7,
+      "end_s": 32.6,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 32.6,
+      "end_s": 39.233,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 15,
+      "start_s": 39.233,
+      "end_s": 43.433,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 0.9,
+      "end_s": 8.1,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 8.1,
+      "end_s": 11.967,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 11.967,
+      "end_s": 19.067,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 19.067,
+      "end_s": 21.8,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 21.8,
+      "end_s": 28.6,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 16,
+      "start_s": 28.6,
+      "end_s": 31.867,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 9.533,
+      "end_s": 14.7,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 14.7,
+      "end_s": 18.8,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 18.8,
+      "end_s": 23.667,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 23.667,
+      "end_s": 26.567,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 26.567,
+      "end_s": 30.8,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 17,
+      "start_s": 30.8,
+      "end_s": 33.633,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 0.0,
+      "end_s": 9.567,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 9.567,
+      "end_s": 12.2,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 31.433,
+      "end_s": 34.367,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 34.367,
+      "end_s": 40.967,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 42.0,
+      "end_s": 46.533,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 18,
+      "start_s": 46.533,
+      "end_s": 49.6,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 0.0,
+      "end_s": 10.833,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 10.833,
+      "end_s": 14.267,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 14.267,
+      "end_s": 23.9,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 23.9,
+      "end_s": 27.233,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 27.233,
+      "end_s": 36.267,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 19,
+      "start_s": 36.267,
+      "end_s": 39.033,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 1.1,
+      "end_s": 9.233,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 9.233,
+      "end_s": 12.967,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 12.967,
+      "end_s": 22.667,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 22.667,
+      "end_s": 25.333,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 25.333,
+      "end_s": 33.367,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 20,
+      "start_s": 33.367,
+      "end_s": 35.933,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 8.4,
+      "end_s": 21.2,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 21.2,
+      "end_s": 30.667,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 30.667,
+      "end_s": 33.833,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 48.233,
+      "end_s": 49.967,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 54.5,
+      "end_s": 67.333,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 67.333,
+      "end_s": 70.367,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 70.367,
+      "end_s": 80.267,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 80.267,
+      "end_s": 83.967,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 83.967,
+      "end_s": 91.167,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 21,
+      "start_s": 91.167,
+      "end_s": 93.7,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 1.333,
+      "end_s": 13.5,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 13.5,
+      "end_s": 16.367,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 28.767,
+      "end_s": 37.0,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 38.233,
+      "end_s": 46.333,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 46.333,
+      "end_s": 48.867,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 48.867,
+      "end_s": 58.467,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug",
+      "arm": "right"
+    },
+    {
+      "episode": 22,
+      "start_s": 58.467,
+      "end_s": 60.667,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down",
+      "arm": "right"
+    }
+  ],
+  "note": "Quest takes 18:12-18:31 (plug-unplug-v1 episodes 12-22): every unplug ends with the plug in the jaws (jaw 2-7% at the end); dropped spec segments 21 (jaw 13.7, unclear), 50, 59 (closed on nothing)"
+}
