@@ -1,0 +1,72 @@
+{
+  "match": 1,
+  "wall_s": 297.7,
+  "log": "/out/w2/20261108T010217Z",
+  "harness": {
+    "ok": false,
+    "seconds": 297.7450801935047,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "stages": [
+    {
+      "name": "unplug_cable",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 37.10334554314613,
+      "reason": "oracle: unplug_cable met"
+    },
+    {
+      "name": "put_cable_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 21.04167515784502,
+      "reason": "timeout after 20 s"
+    },
+    {
+      "name": "unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 21.06177401728928,
+      "reason": "timeout after 20 s"
+    },
+    {
+      "name": "put_more_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 12.026939308270812,
+      "reason": "timeout after 12 s"
+    },
+    {
+      "name": "plug_1",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 42.103065541014075,
+      "reason": "timeout after 40 s"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 12.027483811601996,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "referee": {
+    "t": 215.0,
+    "points": 10,
+    "dq": null,
+    "loses": false,
+    "unplugged": 1,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 23.899999999997632,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_0": 14.3,
+      "cube_4": 120.45
+    }
+  }
+}

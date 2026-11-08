@@ -1,0 +1,109 @@
+{
+  "source": "~/hackathon_data/plug-unplug-v1",
+  "out": "~/hackathon_data/leader-split-v1",
+  "hub_xy": [
+    0.384,
+    0.126
+  ],
+  "segments": [
+    {
+      "episode": 0,
+      "start_s": 2.5,
+      "end_s": 15.433,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 0,
+      "start_s": 15.433,
+      "end_s": 30.233,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    },
+    {
+      "episode": 0,
+      "start_s": 30.233,
+      "end_s": 40.2,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 0,
+      "start_s": 40.2,
+      "end_s": 48.867,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    },
+    {
+      "episode": 0,
+      "start_s": 48.867,
+      "end_s": 53.567,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 1,
+      "start_s": 9.0,
+      "end_s": 16.8,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 1,
+      "start_s": 16.8,
+      "end_s": 21.333,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    },
+    {
+      "episode": 1,
+      "start_s": 21.333,
+      "end_s": 29.667,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 1,
+      "start_s": 29.667,
+      "end_s": 35.167,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    },
+    {
+      "episode": 1,
+      "start_s": 35.167,
+      "end_s": 42.233,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 2,
+      "start_s": 6.133,
+      "end_s": 10.433,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 2,
+      "start_s": 10.433,
+      "end_s": 16.667,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    },
+    {
+      "episode": 2,
+      "start_s": 16.667,
+      "end_s": 20.933,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm",
+      "kind": "unplug"
+    },
+    {
+      "episode": 2,
+      "start_s": 20.933,
+      "end_s": 25.7,
+      "task": "put the held cable down on the table away from the hub",
+      "kind": "put down"
+    }
+  ],
+  "note": "leader_collect takes of 17:09-17:16 in plug-unplug-v1 (episodes 0-2 as numbered at 17:20); episode 3 left out (plug-in not verifiable, unplug of a just-inserted cable); 4 had no grasp. Then: freeze_camera.py --episodes all --ref <Quest take, 16:34 layout>:0:0 -> leader-split-v1-frozen"
+}

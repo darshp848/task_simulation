@@ -1,0 +1,31 @@
+{
+  "start_time": "2026-11-07T23:39:53.492992+00:00",
+  "station_status": {
+    "state": "idle",
+    "prompt": null,
+    "checkpoint": "dreamlabs/dream-1-beta",
+    "action_space": "joint",
+    "steps": 1,
+    "run": 0,
+    "chunks": 0,
+    "stalls": 0,
+    "clamps": 0,
+    "arms": {
+      "left": true,
+      "right": true
+    },
+    "cameras": {
+      "overhead": 0.03,
+      "wrist_l": 0.03,
+      "wrist_r": 0.03
+    },
+    "last_error": null,
+    "started_at": null,
+    "run_elapsed_s": null,
+    "sim": true,
+    "policy": "dream"
+  },
+  "end_time": "2026-11-07T23:44:48.556249+00:00",
+  "ok": false,
+  "reason": "match work cutoff reached (5 s stop reserve)"
+}

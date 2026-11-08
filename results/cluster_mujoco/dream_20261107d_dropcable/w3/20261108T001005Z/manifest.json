@@ -1,0 +1,31 @@
+{
+  "start_time": "2026-11-08T00:10:05.368664+00:00",
+  "station_status": {
+    "state": "idle",
+    "prompt": "drop any cable you are holding, then put a block on top of another block",
+    "checkpoint": "dreamlabs/dream-1-beta",
+    "action_space": "joint",
+    "steps": 1,
+    "run": 1,
+    "chunks": 89,
+    "stalls": 0,
+    "clamps": 170,
+    "arms": {
+      "left": true,
+      "right": true
+    },
+    "cameras": {
+      "overhead": 0.03,
+      "wrist_l": 0.03,
+      "wrist_r": 0.03
+    },
+    "last_error": null,
+    "started_at": null,
+    "run_elapsed_s": 295.1,
+    "sim": true,
+    "policy": "dream"
+  },
+  "end_time": "2026-11-08T00:15:00.432583+00:00",
+  "ok": false,
+  "reason": "match work cutoff reached (5 s stop reserve)"
+}

@@ -1,0 +1,70 @@
+{
+  "match": 2,
+  "wall_s": 179.2,
+  "log": "/out/w1/20261107T235506Z",
+  "harness": {
+    "ok": false,
+    "seconds": 179.1916400231421,
+    "reason": "station error: DreamAPI refused the inference request: DA-6000 GATEWAY_FAULT (connection_timed_out): Connection timed out. Please try again.",
+    "match_gates_passed": false,
+    "stop_confirmed": false
+  },
+  "stages": [
+    {
+      "name": "unplug_cable",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 31.084658132866025,
+      "reason": "oracle: unplug_cable met",
+      "abandoned": false
+    },
+    {
+      "name": "put_cable_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 20.000241396948695,
+      "reason": "stage time budget exhausted",
+      "abandoned": true
+    },
+    {
+      "name": "watcher_into_place",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 9.02892510034144,
+      "reason": "oracle: watcher_into_place met",
+      "abandoned": false
+    },
+    {
+      "name": "plug_loose_cable",
+      "ok": false,
+      "attempts": 2,
+      "seconds": 24.010573908686638,
+      "reason": "timeout after 12 s",
+      "abandoned": true
+    },
+    {
+      "name": "release_before_stack",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 15.00040609948337,
+      "reason": "stage time budget exhausted",
+      "abandoned": true
+    }
+  ],
+  "referee": {
+    "t": 129.3,
+    "points": 10,
+    "dq": null,
+    "loses": false,
+    "unplugged": 1,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 19.05000000000032,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 18.1
+    }
+  }
+}

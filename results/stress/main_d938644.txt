@@ -1,0 +1,24 @@
+happy                    pts=[83, 94, 95, 95] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+unplug_never             pts=[0, 0, 0, 0] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+slow_unplug              pts=[54, 10, 86, 75] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+no_release               pts=[78, 89, 95, 90] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+stuck_cable              pts=[10, 10, 10, 10] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+false_done_unplug        pts=[88, 101, 95, 100] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+refusal_at_start         pts=[83, 94, 95, 95] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+refusal_twice            pts=[78, 74, 95, 90] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+starve_mid               pts=[79, 94, 95, 100] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+linalg_mid               pts=[83, 84, 95, 95] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+gateway_x3               pts=[78, 89, 100, 92] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+refusal_put_down         pts=[88, 99, 95, 100] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+arm_loss                 pts=[15, 10, 15, 15] lost=0/4 replug=0 ended_early=4 | station error: arm 'right' driver stopped answering
+api_outage_30s           pts=[63, 89, 80, 80] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+api_outage_balls         pts=[20, 15, 20, 20] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+black_ball               pts=[41, 99, 107, 77] lost=3/4 replug=0 ended_early=2 | guard tripped in stage 'ball_1': Is either gripper holding the white ball or a black 8-bal
+black_ball_slow_monitor  pts=[58, 89, 89, 95] lost=1/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+black_ball_lagged        pts=[65, 99, 107, 77] lost=2/4 replug=0 ended_early=1 | time budget of 295 s exceeded
+black_ball_local_guard   pts=[65, 99, 107, 77] lost=1/4 replug=0 ended_early=1 | time budget of 295 s exceeded
+black_ball_local_guard_api_down pts=[53, 89, 95, 95] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+frozen_cam               pts=[58, 79, 90, 85] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+empty_frames             pts=[58, 84, 75, 75] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+corrupt_first_frame      pts=[83, 94, 95, 95] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+reach_across             pts=[0, 0, 0, 0] lost=4/4 replug=0 ended_early=0 | time budget of 295 s exceeded

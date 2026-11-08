@@ -1,0 +1,29 @@
+{
+  "match": 2,
+  "wall_s": 295.1,
+  "log": "/out/w2/20261107T235818Z",
+  "harness": {
+    "ok": false,
+    "seconds": 295.08171726204455,
+    "reason": "match work cutoff reached (5 s stop reserve)",
+    "match_gates_passed": false,
+    "stop_confirmed": true
+  },
+  "stages": [],
+  "referee": {
+    "t": 216.8,
+    "points": 0,
+    "dq": null,
+    "loses": false,
+    "unplugged": 0,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": null,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 17.2
+    }
+  }
+}

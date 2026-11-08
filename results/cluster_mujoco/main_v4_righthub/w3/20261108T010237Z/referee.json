@@ -1,0 +1,28 @@
+{
+  "match": 1,
+  "wall_s": 296.2,
+  "log": "/out/w3/20261108T010237Z",
+  "harness": {
+    "ok": false,
+    "seconds": 296.2325361967087,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "stages": [],
+  "referee": {
+    "t": 222.35,
+    "points": 0,
+    "dq": null,
+    "loses": false,
+    "unplugged": 0,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": null,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_0": 20.5
+    }
+  }
+}

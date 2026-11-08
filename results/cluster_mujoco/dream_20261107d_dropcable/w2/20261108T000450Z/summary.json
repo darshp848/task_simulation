@@ -1,0 +1,51 @@
+{
+  "task": "Hill Climb relay: first unplug one USB cable from the hub and put it down, then stack blocks into a free-standing tower at least four inches tall and move the arms away from it. Keep clear of the blocks until a cable is unplugged. Once the stack passes, put shared golf balls into our bin one at a time, keeping clear of both black 8-balls and the tower.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [
+    {
+      "name": "unplug_cable",
+      "ok": true,
+      "attempts": 7,
+      "seconds": 244.5602070838213,
+      "reason": "oracle: unplug_cable met",
+      "abandoned": false
+    },
+    {
+      "name": "put_cable_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 20.000466261059046,
+      "reason": "stage time budget exhausted",
+      "abandoned": true
+    },
+    {
+      "name": "watcher_into_place",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 8.537061512470245e-05,
+      "reason": "insufficient time for the stage after its reserve",
+      "abandoned": true
+    },
+    {
+      "name": "plug_loose_cable",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 5.9429556131362915e-05,
+      "reason": "prerequisite 'watcher_into_place' was not verified",
+      "abandoned": true
+    },
+    {
+      "name": "release_before_stack",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 15.000395020470023,
+      "reason": "stage time budget exhausted",
+      "abandoned": true
+    }
+  ],
+  "seconds": 295.0422440376133,
+  "reason": "match work cutoff reached (5 s stop reserve)",
+  "match_gates_passed": false,
+  "stop_confirmed": true
+}

@@ -1,0 +1,9 @@
+arm_loss                 pts=[10, 15, 15, 15] lost=0/4 replug=0 ended_early=4 | station error: arm 'right' driver stopped answering
+api_outage_30s           pts=[62, 74, 85, 111] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+api_outage_balls         pts=[20, 15, 20, 20] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+black_ball               pts=[93, 89, 102, 123] lost=1/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+black_ball_slow_monitor  pts=[85, 83, 97, 137] lost=0/4 replug=1 ended_early=0 | time budget of 295 s exceeded
+frozen_cam               pts=[87, 85, 85, 111] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+empty_frames             pts=[62, 71, 85, 111] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+corrupt_first_frame      pts=[20, 15, 20, 20] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+reach_across             pts=[0, 0, 0, 0] lost=4/4 replug=0 ended_early=0 | time budget of 295 s exceeded

@@ -1,0 +1,29 @@
+{
+  "match": 1,
+  "wall_s": 123.0,
+  "log": "/out/w1/20261107T235303Z",
+  "harness": {
+    "ok": false,
+    "seconds": 123.04044986516237,
+    "reason": "station error: DreamAPI refused the inference request: DA-6000 GATEWAY_FAULT (connection_timed_out): Connection timed out. Please try again.",
+    "match_gates_passed": false,
+    "stop_confirmed": false
+  },
+  "stages": [],
+  "referee": {
+    "t": 94.5,
+    "points": 0,
+    "dq": null,
+    "loses": false,
+    "unplugged": 0,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": null,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 16.7
+    }
+  }
+}

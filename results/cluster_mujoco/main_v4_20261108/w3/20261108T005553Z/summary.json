@@ -1,0 +1,9 @@
+{
+  "task": "Hill Climb relay. Stage 1: unplug one USB cable that starts in the hub and put it down away from the hub; then plug loose USB cables (ones that started lying on the table) into free hub ports. Never plug an unplugged cable back in. Stage 2: stack blocks into a free-standing tower more than 4 inches (10 cm) tall. Do not touch the blocks before a cable is unplugged. Stage 3: put golf balls into the bin, never either black 8-ball, without touching the tower. Do not touch the golf balls before the tower passes.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [],
+  "seconds": 296.63647706247866,
+  "reason": "time budget of 295 s exceeded",
+  "guard_tripped": false
+}

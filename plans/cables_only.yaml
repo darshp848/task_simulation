@@ -1,0 +1,77 @@
+# Cable practice: the unplug skill only (all 4 cables start in the hub). Not a match plan.
+# Hill Climb relay, SPRINT plan (from hillclimb_rubric_v2.pdf, 7-8 Nov 2026).
+# Pass Stage 1 (unplug one cable, +10) and Stage 2 (a free-standing 3-layer / 6 inch stack, +20), then end the
+# run so the designated team member calls "stop" for the time bonus (+1 per 2 s left, only if Stages 1 and 2
+# passed). At that rate a ball (+5) is only worth chasing if it takes under 10 s, an extra block (+10) under
+# 20 s, so stopping early usually wins. Use hill_climb_full.yaml if the balls turn out to be fast.
+#
+# Rules that shape this plan:
+# - Touching a later stage's object before the current pass bar is met is a DQ. So a false "done" is a DQ:
+#   confirm: 2, the monitor's questions, and never on_fail: skip on Stages 1-2 (keep retrying until time).
+# - No human input after "go": the verifier is `monitor` only. Do NOT use manual or monitor+manual in a match
+#   (a y/n key press is human input). Do NOT use `time` either: it would move on without the pass bar (DQ risk).
+# - The stack must stand 3 s after the gripper lets go: the last stage needs 2 "done" verdicts 3 s apart.
+# - An unplugged cable may not be plugged back in, so the cable is put down away from the hub.
+task: >-
+  Cable practice: unplug the USB cables from the hub one at a time, nearest the right arm first, putting each
+  one down on the table away from the hub. Do not touch the blocks or the ping-pong balls.
+checkpoint: dreamlabs/dream-1-beta   # base Dream-1; a Metal/Maker station has no default model. Set your dream-1-ft:... fine-tune here
+time_budget_s: 295          # 5-minute match; a little margin for the start
+check_every_s: 3.0
+verifier: monitor
+confirm: 2
+done_message: "ALL CABLES OUT"
+claude: {model: claude-haiku-5-5, max_tokens: 4000, history_frames: 6}   # 600 cut off every reply: Haiku 5.5 thinks before answering
+
+stages:
+  - name: unplug_cable
+    # The end cable nearest the working arm: a clear approach (no neighbouring plug in the fingers' way), an unblocked
+    # view for the overhead and wrist cameras, and the shortest reach. Middle cables got wire grabs and half grips.
+    prompt: "unplug the USB cable at the end of the hub nearest the right arm"
+    success: "Compared with the stage-start overhead image, is at least one cable that was plugged into the hub at the start now fully out of its port (lying on the table or held in a gripper)?"
+    expect: "A gripper closes on the plug of a cable in the hub and pulls it straight out until the plug is clear."
+    timeout_s: 60
+    max_attempts: 8
+    min_run_s: 4
+    settle_s: 4
+    stall_s: 20
+    recovery:
+      - {name: keep_pulling, kind: retry, when: "the gripper is on a plug or right next to the hub", max_uses: 3}
+      - {name: let_go_and_lift, kind: reset, prompt: "open both grippers and move the arms up",
+         when: "the gripper is stuck, holds the wire instead of the plug, or has pushed the hub", settle_s: 6, max_uses: 3}
+    on_fail: retry_in_place   # never skip: the blocks are off limits until a cable is out
+
+  - name: put_cable_down
+    prompt: "put the USB cable down on the table away from the hub and open the gripper"
+    success: "Are both grippers empty, with the unplugged cable lying on the table outside the hub?"
+    expect: "The arm moves the loose cable away from the hub, lowers it to the table and opens."
+    timeout_s: 25
+    max_attempts: 4
+    min_run_s: 3
+    recovery:
+      - {name: release, kind: reset, prompt: "open both grippers and move the arms up",
+         when: "the cable is still held or tangled on the gripper", settle_s: 5, max_uses: 3}
+    on_fail: retry_in_place
+
+  # Optional +20 per cable: plug a LOOSE cable (one that started on the table) into a free hub port.
+  # Stage 1's pass bar is already met, so these are allowed; on_fail skip keeps them from eating the clock.
+  # Extra unplugs: +5 each (all 4 cables start in the hub). The time bonus pays +1 per 2 s, so one is only worth it
+  # if it takes under ~10 s: short timeout, one attempt, skip on failure. Off the critical path to the stack.
+  - &more_unplug
+    name: unplug_more_2
+    prompt: "unplug the next USB cable along the hub, nearest the right arm, and put it down on the table"
+    success: "Compared with the stage-start overhead image, is one more cable now fully out of the hub than at the start of this stage?"
+    expect: "A gripper closes fully on the next plug, pulls it straight out along the port and puts it down away from the hub."
+    timeout_s: 45
+    max_attempts: 3
+    min_run_s: 3
+    stall_s: 20
+    recovery:
+      - {name: keep_pulling, kind: retry, when: "the gripper is on a plug or right next to the hub", max_uses: 2}
+      - {name: let_go_and_lift, kind: reset, prompt: "open both grippers and move the arms up",
+         when: "the gripper holds the wire instead of the plug, is stuck, or has pushed the hub", settle_s: 6, max_uses: 2}
+    on_fail: skip
+  - <<: *more_unplug
+    name: unplug_more_3
+  - <<: *more_unplug
+    name: unplug_more_4

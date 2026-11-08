@@ -1,0 +1,43 @@
+{
+  "source": "~/hackathon_data/plug-unplug-v1",
+  "out": "~/hackathon_data/unplug-split-v1",
+  "note": "The 60 s take recorded at 16:44 (episode 3 then, episode 1 since the junk drop at ~17:00): three unplug + put-down cycles. The fourth cycle (44-54 s) is left out: a person's hand reaches to the strip.",
+  "segments": [
+    {
+      "episode": 1,
+      "start_s": 3.0,
+      "end_s": 17.9,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm"
+    },
+    {
+      "episode": 1,
+      "start_s": 17.9,
+      "end_s": 20.8,
+      "task": "put the held cable down on the table away from the hub"
+    },
+    {
+      "episode": 1,
+      "start_s": 20.8,
+      "end_s": 29.3,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm"
+    },
+    {
+      "episode": 1,
+      "start_s": 29.3,
+      "end_s": 32.7,
+      "task": "put the held cable down on the table away from the hub"
+    },
+    {
+      "episode": 1,
+      "start_s": 32.7,
+      "end_s": 40.6,
+      "task": "unplug the USB cable at the end of the hub nearest the right arm"
+    },
+    {
+      "episode": 1,
+      "start_s": 40.6,
+      "end_s": 44.3,
+      "task": "put the held cable down on the table away from the hub"
+    }
+  ]
+}

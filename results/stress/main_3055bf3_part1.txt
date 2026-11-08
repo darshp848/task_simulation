@@ -1,0 +1,36 @@
+happy                    pts=[87, 74, 90, 116] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+unplug_never             pts=[0, 0, 0, 0] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+slow_unplug              pts=[59, 30, 80, 126] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+no_release               pts=[39, 86, 86, 126] lost=0/4 replug=4 ended_early=0 | time budget of 295 s exceeded
+stuck_cable              pts=[39, 86, 86, 126] lost=0/4 replug=4 ended_early=0 | time budget of 295 s exceeded
+false_done_unplug        pts=[92, 106, 95, 116] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+refusal_at_start         pts=[0, 0, 0, 0] lost=0/4 replug=0 ended_early=4 | station error: DreamAPI refused the inference request: DA-4000 BAD_REQUEST (malformed): un
+refusal_twice            pts=[0, 0, 0, 0] lost=0/4 replug=0 ended_early=4 | station error: DreamAPI refused the inference request: DA-4000 BAD_REQUEST (malformed): un
+starve_mid               pts=[10, 10, 15, 15] lost=0/4 replug=0 ended_early=4 | station error: action buffer empty for 241 consecutive ticks (12.05 s), more than max_stal
+linalg_mid               pts=[10, 0, 10, 10] lost=0/4 replug=0 ended_early=4 | station error: SVD did not converge
+gateway_x3               pts=[84, 71, 85, 111] lost=0/4 replug=1 ended_early=0 | time budget of 295 s exceeded
+refusal_plug             pts=[87, 74, 90, 116] lost=0/4 replug=0 ended_early=0 | time budget of 295 s exceeded
+Traceback (most recent call last):
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\experiments\stress_match.py", line 571, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\experiments\stress_match.py", line 554, in main
+    rows = [run_match(sc, seed) for seed in range(1, args.seeds + 1)]
+            ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\experiments\stress_match.py", line 511, in run_match
+    result = runner.run()
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\harness\runner.py", line 119, in run
+    results.append(self._run_stage(stage, first=(i == 0)))
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\harness\runner.py", line 518, in _run_stage
+    self._issue(stage.prompt, "stage", force_start=first)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\harness\runner.py", line 231, in _issue
+    reply, how = self._start_run(prompt), "start"
+                 ~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\harness\runner.py", line 224, in _start_run
+    self.station.start(prompt, self.plan.checkpoint)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\darsh\AppData\Local\Temp\claude\ec0fdcddefa95148\872c2d9b-b382-4cf1-a507-4a5a3df03937\scratchpad\main_snap\experiments\stress_match.py", line 296, in start
+    raise RuntimeError("arm dead")
+RuntimeError: arm dead

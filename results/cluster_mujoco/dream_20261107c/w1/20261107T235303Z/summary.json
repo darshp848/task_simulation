@@ -1,0 +1,10 @@
+{
+  "task": "Hill Climb relay: first unplug one USB cable from the hub and put it down, then stack blocks into a free-standing tower at least four inches tall and move the arms away from it. Keep clear of the blocks until a cable is unplugged. Once the stack passes, put shared golf balls into our bin one at a time, keeping clear of both black 8-balls and the tower.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [],
+  "seconds": 123.04044986516237,
+  "reason": "station error: DreamAPI refused the inference request: DA-6000 GATEWAY_FAULT (connection_timed_out): Connection timed out. Please try again.",
+  "match_gates_passed": false,
+  "stop_confirmed": false
+}

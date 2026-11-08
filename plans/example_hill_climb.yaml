@@ -1,0 +1,41 @@
+# Example: a 4-stage bimanual tidy-up. Copy and edit. See README.md "Writing a plan".
+task: "tidy the table: cups into the bin, then fold the towel"
+checkpoint: null            # or "dream-1-ft:..." for a fine-tune
+time_budget_s: 900
+check_every_s: 3.0
+verifier: manual            # manual: you type y / n + Enter while watching the robot
+claude: {model: claude-haiku-5-5, max_tokens: 200}   # only used if a stage says verifier: claude
+# cameras_for_check: [scene]                        # which roles a verifier sees (default: all)
+
+stages:
+  - name: pick_left_cup
+    prompt: "pick up the cup on the left with the left arm"
+    success: "Is a cup held in the left gripper, off the table?"
+    timeout_s: 45
+    max_attempts: 3
+    min_run_s: 4
+    recovery:
+      - "open both grippers and move the arms up"
+      - "move the left arm back above the cup"
+    on_fail: retry_in_place
+
+  - name: drop_cup_in_bin
+    prompt: "put the cup in the bin"
+    success: "Is the cup inside the bin, with the gripper empty?"
+    timeout_s: 45
+    max_attempts: 3
+    on_fail: home_and_retry
+
+  - name: pick_towel
+    prompt: "pick up the towel with both arms"
+    success: "Are both grippers holding the towel, lifted off the table?"
+    timeout_s: 60
+    max_attempts: 2
+    on_fail: retry_in_place
+
+  - name: fold_towel
+    prompt: "fold the towel in half and put it down on the table"
+    success: "Is the towel folded in half and lying on the table, with both grippers empty?"
+    timeout_s: 60
+    max_attempts: 2
+    on_fail: skip           # a bad fold should not stop the run

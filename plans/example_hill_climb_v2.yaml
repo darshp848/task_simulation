@@ -1,0 +1,57 @@
+# Example v2 plan: the same tidy-up as example_hill_climb.yaml, using every v2 field.
+# See DESIGN_v2.md. Needs ANTHROPIC_API_KEY in the environment for the monitor verifier
+# (the key is only ever sent to api.anthropic.com and is never logged).
+task: "tidy the table: cups into the bin, then fold the towel"
+checkpoint: null
+time_budget_s: 900
+check_every_s: 3.0
+verifier: monitor+manual        # monitor judges; typing y / n + Enter still overrules it at once
+confirm: 2                      # a stage needs 2 consecutive "done" verdicts; "failing" needs 2 as well
+claude:
+  model: claude-haiku-5-5       # monitor model (default claude-haiku-5-5)
+  max_tokens: 600               # monitor default 600: it writes a few questions before the JSON
+  history_frames: 6             # earlier overhead frames sent with each call
+
+stages:
+  - name: pick_left_cup
+    prompt: "pick up the cup on the left with the left arm"
+    success: "Is a cup held in the left gripper, off the table?"
+    expect: "The left arm reaches the cup, closes on it and lifts it clear of the table."
+    timeout_s: 45
+    max_attempts: 4
+    min_run_s: 4
+    settle_s: 6                 # after a prompt change, no verifier and no stall clock for 6 s (default min_run_s)
+    stall_s: 15                 # fail with "stalled" if progress has not risen by 0.05 for 15 s
+    skip_if_done: true          # entry check: a cup already held (confidence >= 0.8) skips the stage
+    recovery:
+      - name: keep_going        # retry: the scene is fine, just re-issue the stage prompt
+        kind: retry
+        when: "the arm is still near the cup and the cup is upright"
+        max_uses: 2
+      - name: reopen_and_lift   # reset: scene broken; run this prompt, check scene_ok, then re-issue the stage prompt
+        kind: reset
+        prompt: "open both grippers and move the arms up"
+        when: "the cup was dropped, toppled, or the gripper is stuck on it"
+        settle_s: 8             # default 8; the reset runs settle_s .. min(timeout_s/2, 20) s
+        max_uses: 1
+      - "move the left arm back above the cup"   # a v1 plain string still works (hold, then re-issue)
+    on_fail: retry_in_place
+
+  - name: drop_cup_in_bin
+    prompt: "put the cup in the bin"
+    success: "Is the cup inside the bin, with the gripper empty?"
+    expect: "The arm carries the cup over the bin and opens the gripper; the cup falls in."
+    timeout_s: 45
+    max_attempts: 3
+    stall_s: 20
+    recovery:
+      - {name: regrasp, kind: reset, prompt: "pick up the cup from the table with the left arm",
+         when: "the cup fell outside the bin", settle_s: 6}
+    on_fail: home_and_retry     # used when the recovery menu is used up
+
+  - name: fold_towel
+    prompt: "fold the towel in half and put it down on the table"
+    success: "Is the towel folded in half and lying on the table, with both grippers empty?"
+    timeout_s: 60
+    max_attempts: 2
+    on_fail: skip               # a bad fold should not stop the run

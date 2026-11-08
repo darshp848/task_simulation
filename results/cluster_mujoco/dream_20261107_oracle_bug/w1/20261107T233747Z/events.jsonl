@@ -1,0 +1,47 @@
+{"t": 1794094667.866, "event": "run_start", "task": "Hill Climb relay: first unplug one USB cable from the hub and put it down, then stack blocks into a free-standing tower at least four inches tall and move the arms away from it. Keep clear of the blocks until a cable is unplugged. Once the stack passes, put shared golf balls into our bin one at a time, keeping clear of both black 8-balls and the tower.", "dry_run": false, "stages": ["unplug_cable", "put_cable_down", "watcher_into_place", "plug_loose_cable", "release_before_stack", "stack_two", "raise_stack", "clear_of_stack", "ball_1", "ball_2", "ball_3", "ball_4", "ball_5", "ball_6", "ball_7", "ball_8"]}
+{"t": 1794094667.867, "event": "preflight", "status": {"state": "idle", "prompt": "put the USB cable down on the table away from the hub and open the gripper", "checkpoint": "dreamlabs/dream-1-beta", "action_space": "joint", "steps": 1, "run": 1, "chunks": 93, "stalls": 0, "clamps": 145, "arms": {"left": true, "right": true}, "cameras": {"overhead": 0.03, "wrist_l": 0.03, "wrist_r": 0.03}, "last_error": null, "started_at": null, "run_elapsed_s": 295.1, "sim": true, "policy": "dream"}, "problems": [], "dry_run": false}
+{"t": 1794094667.867, "event": "match_clock_start", "budget_s": 300.0, "stop_reserve_s": 5.0}
+{"t": 1794094667.867, "event": "stage_start", "stage": "unplug_cable", "prompt": "unplug a USB cable from the hub"}
+{"t": 1794094667.869, "event": "start", "prompt": "unplug a USB cable from the hub", "checkpoint": null}
+{"t": 1794094671.885, "event": "prompt_change", "prompt": "unplug a USB cable from the hub", "why": "stage", "how": "start", "chunks": 1}
+{"t": 1794094677.895, "event": "verdict", "stage": "unplug_cable", "attempt": 1, "elapsed_s": 6.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0001_unplug_cable_a1_overhead.jpg", "0001_unplug_cable_a1_wrist_l.jpg", "0001_unplug_cable_a1_wrist_r.jpg"], "chunks": 3, "scene_ok": true, "trip": 96}
+{"t": 1794094680.901, "event": "verdict", "stage": "unplug_cable", "attempt": 1, "elapsed_s": 9.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0002_unplug_cable_a1_overhead.jpg", "0002_unplug_cable_a1_wrist_l.jpg", "0002_unplug_cable_a1_wrist_r.jpg"], "chunks": 4, "scene_ok": false, "trip": 97}
+{"t": 1794094680.901, "event": "attempt_end", "stage": "unplug_cable", "attempt": 1, "ok": false, "reason": "verifier said no: oracle: unplug_cable not met"}
+{"t": 1794094680.901, "event": "recovery", "stage": "unplug_cable", "name": "keep_pulling", "kind": "retry", "prompt": "", "attempt": 1}
+{"t": 1794094680.902, "event": "set_prompt", "prompt": "unplug a USB cable from the hub"}
+{"t": 1794094680.902, "event": "prompt_change", "prompt": "unplug a USB cable from the hub", "why": "retry", "how": "set_prompt", "chunks": 4}
+{"t": 1794094680.902, "event": "retry", "stage": "unplug_cable", "attempt": 2, "mode": "retry_in_place"}
+{"t": 1794094686.911, "event": "verdict", "stage": "unplug_cable", "attempt": 2, "elapsed_s": 6.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0003_unplug_cable_a2_overhead.jpg", "0003_unplug_cable_a2_wrist_l.jpg", "0003_unplug_cable_a2_wrist_r.jpg"], "chunks": 6, "scene_ok": false, "trip": 99}
+{"t": 1794094689.916, "event": "verdict", "stage": "unplug_cable", "attempt": 2, "elapsed_s": 9.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0004_unplug_cable_a2_overhead.jpg", "0004_unplug_cable_a2_wrist_l.jpg", "0004_unplug_cable_a2_wrist_r.jpg"], "chunks": 7, "scene_ok": false, "trip": 100}
+{"t": 1794094689.916, "event": "attempt_end", "stage": "unplug_cable", "attempt": 2, "ok": false, "reason": "verifier said no: oracle: unplug_cable not met"}
+{"t": 1794094689.916, "event": "recovery", "stage": "unplug_cable", "name": "let_go_and_lift", "kind": "reset", "prompt": "open both grippers and move the arms up", "attempt": 2}
+{"t": 1794094689.917, "event": "set_prompt", "prompt": "open both grippers and move the arms up"}
+{"t": 1794094689.917, "event": "prompt_change", "prompt": "open both grippers and move the arms up", "why": "recovery let_go_and_lift", "how": "set_prompt", "chunks": 7}
+{"t": 1794094695.925, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 6.0, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094698.933, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 9.01, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094701.938, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 12.02, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094704.948, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 15.02, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094707.954, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 18.03, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094710.961, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 21.04, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094713.966, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 24.05, "reason": "oracle: unplug_cable not met"}
+{"t": 1794094715.92, "event": "attempt_end", "stage": "unplug_cable", "attempt": 3, "ok": false, "reason": "scene not verified within recovery 'let_go_and_lift' budget"}
+{"t": 1794094715.923, "event": "set_prompt", "prompt": "unplug a USB cable from the hub"}
+{"t": 1794094715.923, "event": "prompt_change", "prompt": "unplug a USB cable from the hub", "why": "retry", "how": "set_prompt", "chunks": 15}
+{"t": 1794094715.923, "event": "retry", "stage": "unplug_cable", "attempt": 4, "mode": "retry_in_place"}
+{"t": 1794094721.937, "event": "verdict", "stage": "unplug_cable", "attempt": 4, "elapsed_s": 6.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0005_unplug_cable_a4_overhead.jpg", "0005_unplug_cable_a4_wrist_l.jpg", "0005_unplug_cable_a4_wrist_r.jpg"], "chunks": 17, "scene_ok": false, "trip": 110}
+{"t": 1794094724.945, "event": "verdict", "stage": "unplug_cable", "attempt": 4, "elapsed_s": 9.02, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0006_unplug_cable_a4_overhead.jpg", "0006_unplug_cable_a4_wrist_l.jpg", "0006_unplug_cable_a4_wrist_r.jpg"], "chunks": 18, "scene_ok": false, "trip": 111}
+{"t": 1794094724.945, "event": "attempt_end", "stage": "unplug_cable", "attempt": 4, "ok": false, "reason": "verifier said no: oracle: unplug_cable not met"}
+{"t": 1794094724.945, "event": "recovery", "stage": "unplug_cable", "name": "keep_pulling", "kind": "retry", "prompt": "", "attempt": 4}
+{"t": 1794094724.946, "event": "set_prompt", "prompt": "unplug a USB cable from the hub"}
+{"t": 1794094724.946, "event": "prompt_change", "prompt": "unplug a USB cable from the hub", "why": "retry", "how": "set_prompt", "chunks": 18}
+{"t": 1794094724.947, "event": "retry", "stage": "unplug_cable", "attempt": 5, "mode": "retry_in_place"}
+{"t": 1794094730.954, "event": "verdict", "stage": "unplug_cable", "attempt": 5, "elapsed_s": 6.0, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0007_unplug_cable_a5_overhead.jpg", "0007_unplug_cable_a5_wrist_l.jpg", "0007_unplug_cable_a5_wrist_r.jpg"], "chunks": 20, "scene_ok": false, "trip": 113}
+{"t": 1794094733.959, "event": "verdict", "stage": "unplug_cable", "attempt": 5, "elapsed_s": 9.01, "done": false, "confidence": 1.0, "reason": "oracle: unplug_cable not met", "frames": ["0008_unplug_cable_a5_overhead.jpg", "0008_unplug_cable_a5_wrist_l.jpg", "0008_unplug_cable_a5_wrist_r.jpg"], "chunks": 21, "scene_ok": false, "trip": 114}
+{"t": 1794094733.959, "event": "attempt_end", "stage": "unplug_cable", "attempt": 5, "ok": false, "reason": "verifier said no: oracle: unplug_cable not met"}
+{"t": 1794094733.959, "event": "recovery", "stage": "unplug_cable", "name": "let_go_and_lift", "kind": "reset", "prompt": "open both grippers and move the arms up", "attempt": 5}
+{"t": 1794094733.96, "event": "set_prompt", "prompt": "open both grippers and move the arms up"}
+{"t": 1794094733.96, "event": "prompt_change", "prompt": "open both grippers and move the arms up", "why": "recovery let_go_and_lift", "how": "set_prompt", "chunks": 21}
+{"t": 1794094739.973, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 6.01, "reason": "oracle: unplug_cable met"}
+{"t": 1794094742.98, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 9.02, "reason": "oracle: unplug_cable met"}
+{"t": 1794094745.991, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 12.02, "reason": "oracle: unplug_cable met"}
+{"t": 1794094749.0, "event": "scene_check", "stage": "unplug_cable", "recovery": "let_go_and_lift", "scene_ok": false, "elapsed_s": 15.03, "reason": "oracle: unplug_cable met"}

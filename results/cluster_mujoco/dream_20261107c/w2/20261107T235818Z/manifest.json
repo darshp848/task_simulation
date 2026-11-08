@@ -1,0 +1,31 @@
+{
+  "start_time": "2026-11-07T23:58:18.365817+00:00",
+  "station_status": {
+    "state": "idle",
+    "prompt": "open both grippers and move both arms up, away from the hub",
+    "checkpoint": "dreamlabs/dream-1-beta",
+    "action_space": "joint",
+    "steps": 1,
+    "run": 1,
+    "chunks": 88,
+    "stalls": 0,
+    "clamps": 178,
+    "arms": {
+      "left": true,
+      "right": true
+    },
+    "cameras": {
+      "overhead": 0.03,
+      "wrist_l": 0.03,
+      "wrist_r": 0.03
+    },
+    "last_error": null,
+    "started_at": null,
+    "run_elapsed_s": 295.1,
+    "sim": true,
+    "policy": "dream"
+  },
+  "end_time": "2026-11-08T00:03:13.448471+00:00",
+  "ok": false,
+  "reason": "match work cutoff reached (5 s stop reserve)"
+}

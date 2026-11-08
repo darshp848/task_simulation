@@ -1,0 +1,36 @@
+# Simulation plan for sim_station.py (see README.md "Test in simulation"). The scene (Dream's yam_mujoco example)
+# has an apple, banana, orange and water bottle on the table, a bowl in the middle and a blue plate on the
+# right-hand (right arm) side. Three stages; the verifier is you: watch the sim viewer or the saved frames.
+task: "put the apple in the bowl, then the orange on the plate, then the banana in the bowl"
+checkpoint: null            # base Dream-1 (beta); or "dream-1-ft:..." for a fine-tune
+time_budget_s: 600
+check_every_s: 3.0
+verifier: manual            # y / n + Enter; or --verifier time to run unattended, or claude (see README)
+claude: {model: claude-haiku-5-5, max_tokens: 200}
+
+stages:
+  - name: apple_in_bowl
+    prompt: "put the apple in the bowl"
+    success: "Is the apple inside the bowl?"
+    timeout_s: 60
+    max_attempts: 2
+    min_run_s: 6
+    recovery:
+      - "move the arms up and open both grippers"
+    on_fail: retry_in_place
+
+  - name: orange_on_plate
+    prompt: "put the orange on the blue plate"
+    success: "Is the orange on the blue plate?"
+    timeout_s: 60
+    max_attempts: 2
+    min_run_s: 6
+    on_fail: home_and_retry
+
+  - name: banana_in_bowl
+    prompt: "put the banana in the bowl"
+    success: "Is the banana in the bowl, with both grippers empty?"
+    timeout_s: 60
+    max_attempts: 2
+    min_run_s: 6
+    on_fail: skip

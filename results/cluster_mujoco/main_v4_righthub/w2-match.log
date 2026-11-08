@@ -1,0 +1,3 @@
+match 1 ...
+  harness ok=False guard=False (time budget of 295 s exceeded); referee points=10 dq=None 8ball_in_bin=0 unplugged=1 tower=2.36 in golf=0
+exit=0

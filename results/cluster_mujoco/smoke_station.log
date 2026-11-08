@@ -1,0 +1,1 @@
+sim station (scripted, fast): api http://127.0.0.1:8091  view http://127.0.0.1:8093  (Ctrl+C to quit)

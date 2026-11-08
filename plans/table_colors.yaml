@@ -1,0 +1,27 @@
+# Colour classes for harness/detect.py. HSV on PIL's 0-255 scale (hue 0-255, not 0-360).
+# Tuned on Darsh's top-down phone photo of station C (Drive IMG_2698, 7 Nov 20:30): light wood table (S ~13,
+# V ~230), blue and pink cubes with a hole, yellow and pink sticks, green / yellow / orange / white golf balls,
+# white bin. Re-check on a frame from the station's own overhead camera before a match:
+#   python -m harness.detect plans/table_colors.yaml frame.jpg --out boxed.jpg
+# Shapes come from the blob, not the colour: ball (round), cube (compact square; an upright stick seen from above
+# looks the same), stick (long and thin = lying on its side). `kinds` keeps only the listed shapes of a colour.
+# Legal balls are the coloured ones; the WHITE ball is illegal (Darsh, 8 Nov), as are black 8-balls if present.
+# White: the ball is a little brighter and bluer than the wood table (photo: ball H 149 S 37 V 245, table H 31 S 13
+# V 232), but the white bin has the same colour as the ball, so only round blobs count. No black 8-ball is in the
+# photos: that class is a guess (dark and round; the black gripper fingers are long, so they are dropped).
+annotate: true
+# Overhead view only: blobs outside this box are ignored (people, chairs, laptops behind the table). Station C's
+# scene camera shows the table below ~32% of the image height (last-run_inputs, 7 Nov).
+table_roi: [0.0, 0.32, 1.0, 1.0]
+guard:   # the guard trips on any ball whose role is avoid
+  wrist_roles: [wrist]
+  grip_roi: [0.25, 0.35, 0.75, 1.0]   # where a held object sits in the wrist image (x0 y0 x1 y1)
+  grip_min_frac: 0.01
+classes:
+  white:  {hsv: [[135, 22, 225], [168, 70, 255]], min_frac: 0.0001, max_frac: 0.25, kinds: {ball: avoid}, small_ball: true}
+  black:  {hsv: [[0, 0, 0], [255, 255, 55]], min_frac: 0.002, max_frac: 0.25, kinds: {ball: avoid}}
+  green:  {hsv: [[72, 60, 120], [110, 255, 255]], min_frac: 0.0001, kinds: {ball: target}, small_ball: true}
+  orange: {hsv: [[3, 90, 150], [24, 255, 255]], min_frac: 0.0001, kinds: {ball: target}, small_ball: true}
+  yellow: {hsv: [[30, 70, 150], [55, 255, 255]], min_frac: 0.0001, kinds: {ball: target, cube: info, stick: info}}
+  blue:   {hsv: [[135, 110, 80], [165, 255, 255]], min_frac: 0.0003, kinds: {cube: info, stick: info}}
+  pink:   {hsv: [[200, 60, 120], [240, 255, 255]], min_frac: 0.0003, kinds: {cube: info, stick: info}}
