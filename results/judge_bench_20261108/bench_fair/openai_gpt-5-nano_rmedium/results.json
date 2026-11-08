@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:openai/gpt-5-nano;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.7833333333333333,
+      "accepted_done_accuracy": 0.7833333333333333,
+      "guard_accuracy": 0.6333333333333333,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.016666666666666666,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 21.37449999999808,
+      "latency_p90_s": 28.490899999997055,
+      "latency_max_s": 84.04700000000594,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.06839728,
+      "cost_usd": 0.06839728,
+      "cost_per_call_usd": 0.0011399546666666668,
+      "cost_per_trial_usd": 0.0011399546666666668
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 22.594000000011874,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00111125,
+      "cost_usd": 0.00111125,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2626,
+            "total_tokens": 3843,
+            "cost": 0.00111125
+          },
+          "cost_usd": 0.00111125,
+          "latency_s": 22.594000000011874,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 15.671999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00097045,
+      "cost_usd": 0.00097045,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2274,
+            "total_tokens": 3491,
+            "cost": 0.00097045
+          },
+          "cost_usd": 0.00097045,
+          "latency_s": 15.671999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 23.75,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00124997,
+      "cost_usd": 0.00124997,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 3088,
+            "total_tokens": 4305,
+            "cost": 0.00124997
+          },
+          "cost_usd": 0.00124997,
+          "latency_s": 23.75,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 24.156000000002678,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00101205,
+      "cost_usd": 0.00101205,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2378,
+            "total_tokens": 3595,
+            "cost": 0.00101205
+          },
+          "cost_usd": 0.00101205,
+          "latency_s": 24.156000000002678,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 22.985000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00105245,
+      "cost_usd": 0.00105245,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2479,
+            "total_tokens": 3696,
+            "cost": 0.00105245
+          },
+          "cost_usd": 0.00105245,
+          "latency_s": 22.985000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.34299999999348,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00086997,
+      "cost_usd": 0.00086997,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2138,
+            "total_tokens": 3355,
+            "cost": 0.00086997
+          },
+          "cost_usd": 0.00086997,
+          "latency_s": 21.34299999999348,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.422000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00071677,
+      "cost_usd": 0.00071677,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 1755,
+            "total_tokens": 2972,
+            "cost": 0.00071677
+          },
+          "cost_usd": 0.00071677,
+          "latency_s": 18.422000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 22.343999999997322,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00085517,
+      "cost_usd": 0.00085517,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2101,
+            "total_tokens": 3318,
+            "cost": 0.00085517
+          },
+          "cost_usd": 0.00085517,
+          "latency_s": 22.343999999997322,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 22.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00100917,
+      "cost_usd": 0.00100917,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2486,
+            "total_tokens": 3703,
+            "cost": 0.00100917
+          },
+          "cost_usd": 0.00100917,
+          "latency_s": 22.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.812000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00098837,
+      "cost_usd": 0.00098837,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1217,
+            "completion_tokens": 2434,
+            "total_tokens": 3651,
+            "cost": 0.00098837
+          },
+          "cost_usd": 0.00098837,
+          "latency_s": 19.812000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 28.468999999997322,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.001225,
+      "cost_usd": 0.001225,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2884,
+            "total_tokens": 4312,
+            "cost": 0.001225
+          },
+          "cost_usd": 0.001225,
+          "latency_s": 28.468999999997322,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.406000000002678,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.001015,
+      "cost_usd": 0.001015,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2359,
+            "total_tokens": 3787,
+            "cost": 0.001015
+          },
+          "cost_usd": 0.001015,
+          "latency_s": 21.406000000002678,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 23.671999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0008674,
+      "cost_usd": 0.0008674,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2134,
+            "total_tokens": 3562,
+            "cost": 0.0008674
+          },
+          "cost_usd": 0.0008674,
+          "latency_s": 23.671999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 23.344000000011874,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011618,
+      "cost_usd": 0.0011618,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2870,
+            "total_tokens": 4298,
+            "cost": 0.0011618
+          },
+          "cost_usd": 0.0011618,
+          "latency_s": 23.344000000011874,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.827999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007062,
+      "cost_usd": 0.0007062,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 1731,
+            "total_tokens": 3159,
+            "cost": 0.0007062
+          },
+          "cost_usd": 0.0007062,
+          "latency_s": 18.827999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 15.811999999990803,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000845,
+      "cost_usd": 0.000845,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2078,
+            "total_tokens": 3506,
+            "cost": 0.000845
+          },
+          "cost_usd": 0.000845,
+          "latency_s": 15.811999999990803,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 17.063000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.001013,
+      "cost_usd": 0.001013,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2354,
+            "total_tokens": 3782,
+            "cost": 0.001013
+          },
+          "cost_usd": 0.001013,
+          "latency_s": 17.063000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.296999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0009362,
+      "cost_usd": 0.0009362,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2306,
+            "total_tokens": 3734,
+            "cost": 0.0009362
+          },
+          "cost_usd": 0.0009362,
+          "latency_s": 21.296999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 33.13999999999942,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0014346,
+      "cost_usd": 0.0014346,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 3552,
+            "total_tokens": 4980,
+            "cost": 0.0014346
+          },
+          "cost_usd": 0.0014346,
+          "latency_s": 33.13999999999942,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 22.78200000000652,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000947,
+      "cost_usd": 0.000947,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1428,
+            "completion_tokens": 2333,
+            "total_tokens": 3761,
+            "cost": 0.000947
+          },
+          "cost_usd": 0.000947,
+          "latency_s": 22.78200000000652,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.827999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011385,
+      "cost_usd": 0.0011385,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 2667,
+            "total_tokens": 4101,
+            "cost": 0.0011385
+          },
+          "cost_usd": 0.0011385,
+          "latency_s": 21.827999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 50.73400000001129,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0014949,
+      "cost_usd": 0.0014949,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 3702,
+            "total_tokens": 5136,
+            "cost": 0.0014949
+          },
+          "cost_usd": 0.0014949,
+          "latency_s": 50.73400000001129,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 24.843999999997322,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011157,
+      "cost_usd": 0.0011157,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 2754,
+            "total_tokens": 4188,
+            "cost": 0.0011157
+          },
+          "cost_usd": 0.0011157,
+          "latency_s": 24.843999999997322,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 25.281000000002678,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011769,
+      "cost_usd": 0.0011769,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 2763,
+            "total_tokens": 4197,
+            "cost": 0.0011769
+          },
+          "cost_usd": 0.0011769,
+          "latency_s": 25.281000000002678,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 32.13999999999942,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0014817,
+      "cost_usd": 0.0014817,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 3669,
+            "total_tokens": 5103,
+            "cost": 0.0014817
+          },
+          "cost_usd": 0.0014817,
+          "latency_s": 32.13999999999942,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 33.29700000000594,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0014417,
+      "cost_usd": 0.0014417,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 3569,
+            "total_tokens": 5003,
+            "cost": 0.0014417
+          },
+          "cost_usd": 0.0014417,
+          "latency_s": 33.29700000000594,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.875,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0012869,
+      "cost_usd": 0.0012869,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 3182,
+            "total_tokens": 4616,
+            "cost": 0.0012869
+          },
+          "cost_usd": 0.0012869,
+          "latency_s": 21.875,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 28.687999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0015081,
+      "cost_usd": 0.0015081,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 3591,
+            "total_tokens": 5025,
+            "cost": 0.0015081
+          },
+          "cost_usd": 0.0015081,
+          "latency_s": 28.687999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007913,
+      "cost_usd": 0.0007913,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 1943,
+            "total_tokens": 3377,
+            "cost": 0.0007913
+          },
+          "cost_usd": 0.0007913,
+          "latency_s": 18.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.578000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011009,
+      "cost_usd": 0.0011009,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1434,
+            "completion_tokens": 2717,
+            "total_tokens": 4151,
+            "cost": 0.0011009
+          },
+          "cost_usd": 0.0011009,
+          "latency_s": 18.578000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 26.718999999997322,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00108565,
+      "cost_usd": 0.00108565,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 2550,
+            "total_tokens": 3863,
+            "cost": 0.00108565
+          },
+          "cost_usd": 0.00108565,
+          "latency_s": 26.718999999997322,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.311999999990803,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00102405,
+      "cost_usd": 0.00102405,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 2396,
+            "total_tokens": 3709,
+            "cost": 0.00102405
+          },
+          "cost_usd": 0.00102405,
+          "latency_s": 18.311999999990803,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.297000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00112245,
+      "cost_usd": 0.00112245,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 2642,
+            "total_tokens": 3955,
+            "cost": 0.00112245
+          },
+          "cost_usd": 0.00112245,
+          "latency_s": 21.297000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.062999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00134205,
+      "cost_usd": 0.00134205,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 3191,
+            "total_tokens": 4504,
+            "cost": 0.00134205
+          },
+          "cost_usd": 0.00134205,
+          "latency_s": 21.062999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 20.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00116661,
+      "cost_usd": 0.00116661,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 2882,
+            "total_tokens": 4195,
+            "cost": 0.00116661
+          },
+          "cost_usd": 0.00116661,
+          "latency_s": 20.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.578000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00098541,
+      "cost_usd": 0.00098541,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 2429,
+            "total_tokens": 3742,
+            "cost": 0.00098541
+          },
+          "cost_usd": 0.00098541,
+          "latency_s": 18.578000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.73399999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00131325,
+      "cost_usd": 0.00131325,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 3119,
+            "total_tokens": 4432,
+            "cost": 0.00131325
+          },
+          "cost_usd": 0.00131325,
+          "latency_s": 19.73399999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": true,
+      "dry_run_valid": null,
+      "latency_s": 84.04700000000594,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00160101,
+      "cost_usd": 0.00160101,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 3968,
+            "total_tokens": 5281,
+            "cost": 0.00160101
+          },
+          "cost_usd": 0.00160101,
+          "latency_s": 84.03100000000268,
+          "error_type": "RuntimeError"
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 25.280999999988126,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00134181,
+      "cost_usd": 0.00134181,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 3320,
+            "total_tokens": 4633,
+            "cost": 0.00134181
+          },
+          "cost_usd": 0.00134181,
+          "latency_s": 25.280999999988126,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.094000000011874,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00127621,
+      "cost_usd": 0.00127621,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1313,
+            "completion_tokens": 3156,
+            "total_tokens": 4469,
+            "cost": 0.00127621
+          },
+          "cost_usd": 0.00127621,
+          "latency_s": 19.094000000011874,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 25.952999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0013939,
+      "cost_usd": 0.0013939,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3253,
+            "total_tokens": 5107,
+            "cost": 0.0013939
+          },
+          "cost_usd": 0.0013939,
+          "latency_s": 25.952999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.797000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00100662,
+      "cost_usd": 0.00100662,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2472,
+            "total_tokens": 4326,
+            "cost": 0.00100662
+          },
+          "cost_usd": 0.00100662,
+          "latency_s": 19.797000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 17.890999999988708,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00111182,
+      "cost_usd": 0.00111182,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2735,
+            "total_tokens": 4589,
+            "cost": 0.00111182
+          },
+          "cost_usd": 0.00111182,
+          "latency_s": 17.890999999988708,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 16.718000000008033,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00116142,
+      "cost_usd": 0.00116142,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2859,
+            "total_tokens": 4713,
+            "cost": 0.00116142
+          },
+          "cost_usd": 0.00116142,
+          "latency_s": 16.718000000008033,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.937999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011623,
+      "cost_usd": 0.0011623,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2674,
+            "total_tokens": 4528,
+            "cost": 0.0011623
+          },
+          "cost_usd": 0.0011623,
+          "latency_s": 19.937999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 16.764999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011099,
+      "cost_usd": 0.0011099,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2543,
+            "total_tokens": 4397,
+            "cost": 0.0011099
+          },
+          "cost_usd": 0.0011099,
+          "latency_s": 16.764999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.485000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00123902,
+      "cost_usd": 0.00123902,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3053,
+            "total_tokens": 4907,
+            "cost": 0.00123902
+          },
+          "cost_usd": 0.00123902,
+          "latency_s": 18.485000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 17.046000000002095,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00095142,
+      "cost_usd": 0.00095142,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2334,
+            "total_tokens": 4188,
+            "cost": 0.00095142
+          },
+          "cost_usd": 0.00095142,
+          "latency_s": 17.046000000002095,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.078999999997905,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00101222,
+      "cost_usd": 0.00101222,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2486,
+            "total_tokens": 4340,
+            "cost": 0.00101222
+          },
+          "cost_usd": 0.00101222,
+          "latency_s": 19.078999999997905,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 23.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00116942,
+      "cost_usd": 0.00116942,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2879,
+            "total_tokens": 4733,
+            "cost": 0.00116942
+          },
+          "cost_usd": 0.00116942,
+          "latency_s": 23.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.718000000008033,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0009947,
+      "cost_usd": 0.0009947,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2255,
+            "total_tokens": 4109,
+            "cost": 0.0009947
+          },
+          "cost_usd": 0.0009947,
+          "latency_s": 19.718000000008033,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.952999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0011139,
+      "cost_usd": 0.0011139,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2553,
+            "total_tokens": 4407,
+            "cost": 0.0011139
+          },
+          "cost_usd": 0.0011139,
+          "latency_s": 21.952999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 27.297000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00138502,
+      "cost_usd": 0.00138502,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3418,
+            "total_tokens": 5272,
+            "cost": 0.00138502
+          },
+          "cost_usd": 0.00138502,
+          "latency_s": 27.297000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 25.797000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00150382,
+      "cost_usd": 0.00150382,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3715,
+            "total_tokens": 5569,
+            "cost": 0.00150382
+          },
+          "cost_usd": 0.00150382,
+          "latency_s": 25.797000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 17.187999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00114222,
+      "cost_usd": 0.00114222,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2811,
+            "total_tokens": 4665,
+            "cost": 0.00114222
+          },
+          "cost_usd": 0.00114222,
+          "latency_s": 17.187999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 20.813000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00115462,
+      "cost_usd": 0.00115462,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2842,
+            "total_tokens": 4696,
+            "cost": 0.00115462
+          },
+          "cost_usd": 0.00115462,
+          "latency_s": 20.813000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.60899999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0015471,
+      "cost_usd": 0.0015471,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3636,
+            "total_tokens": 5490,
+            "cost": 0.0015471
+          },
+          "cost_usd": 0.0015471,
+          "latency_s": 21.60899999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.718999999997322,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00112662,
+      "cost_usd": 0.00112662,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2772,
+            "total_tokens": 4626,
+            "cost": 0.00112662
+          },
+          "cost_usd": 0.00112662,
+          "latency_s": 21.718999999997322,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 18.514999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0009543,
+      "cost_usd": 0.0009543,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 2154,
+            "total_tokens": 4008,
+            "cost": 0.0009543
+          },
+          "cost_usd": 0.0009543,
+          "latency_s": 18.514999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-5-nano;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-5-nano"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 19.172000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00137502,
+      "cost_usd": 0.00137502,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-5-nano",
+          "usage": {
+            "prompt_tokens": 1854,
+            "completion_tokens": 3393,
+            "total_tokens": 5247,
+            "cost": 0.00137502
+          },
+          "cost_usd": 0.00137502,
+          "latency_s": 19.172000000005937,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

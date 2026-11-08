@@ -1,0 +1,4 @@
+Will create one dream/openrouter match and logs under /out/e4b3e7006d3b42509b6d52ccbe3618f0/hybrid_v4-7
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+{"result": "/out/e4b3e7006d3b42509b6d52ccbe3618f0/hybrid_v4-7/match.json", "metrics": {"wall_s": 293.774, "cpu_s": 185.004, "peak_rss_mib": 634.34, "host_cpu_count": 2, "platform": "posix"}, "referee": {"t": 275.15, "points": 0, "dq": null, "loses": false, "unplugged": 0, "seated": 0, "tower_in": 2.36, "stage1_at": null, "stage2_at": null, "golf_in_bin": 0, "eight_in_bin": 0, "first_touch": {}}}

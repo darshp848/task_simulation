@@ -1,0 +1,2 @@
+corrupt_first_frame          mean=  70.4 pts=[56, 71, 71, 80, 74] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4_live: matches=5 mean=70.4 lost=0 crash=0 wall=144s

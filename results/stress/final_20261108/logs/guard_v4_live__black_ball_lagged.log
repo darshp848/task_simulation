@@ -1,0 +1,2 @@
+black_ball_lagged            mean=  86.6 pts=[65, 89, 89, 101, 89] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4_live: matches=5 mean=86.6 lost=0 crash=0 wall=158s

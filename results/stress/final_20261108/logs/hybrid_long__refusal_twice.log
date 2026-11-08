@@ -1,0 +1,2 @@
+refusal_twice                mean=  78.4 pts=[71, 81, 82, 82, 76] lost=0/5 black=0 dq=0 early=4 | completed with failed stages: cable_2, ball_all
+TOTAL hybrid_long: matches=5 mean=78.4 lost=0 crash=0 wall=2s

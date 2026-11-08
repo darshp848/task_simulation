@@ -1,0 +1,2 @@
+calibrated_base              mean=  43.8 pts=[39, 47, 15, 67, 51] lost=2/5 black=2 dq=0 early=2 | guard tripped in stage 'ball_1': Is either gripper holding the white b
+TOTAL hybrid_v4_fast: matches=5 mean=43.8 lost=2 crash=0 wall=59s

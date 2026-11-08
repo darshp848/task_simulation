@@ -1,0 +1,2 @@
+refusal_twice                mean=  66.8 pts=[53, 62, 71, 74, 74] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4_live: matches=5 mean=66.8 lost=0 crash=0 wall=3444s

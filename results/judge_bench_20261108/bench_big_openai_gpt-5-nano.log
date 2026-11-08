@@ -1,0 +1,4 @@
+judge benchmark: LIVE, billable; 3 configs
+{"judge": "openrouter:openai/gpt-5-nano;hedge=1", "trials": 39, "guard_trials": 9, "stage_done_accuracy": 0.6410256410256411, "accepted_done_accuracy": 0.6410256410256411, "guard_accuracy": 0.8888888888888888, "parse_failure_rate": 0.05128205128205128, "transport_failure_rate": 0.02564102564102564, "dry_run_valid_rate": null, "latency_p50_s": 20.297000000005937, "latency_p90_s": 28.65899999999965, "latency_max_s": 95.35899999999674, "attempts_finished": 39, "cost_complete": false, "known_cost_usd": 0.04144182, "cost_usd": null, "cost_per_call_usd": null, "cost_per_trial_usd": null}
+reports: runs\bench_big\openai_gpt-5-nano\summary.csv and runs\bench_big\openai_gpt-5-nano\results.json
+stopped: incomplete_cost_accounting

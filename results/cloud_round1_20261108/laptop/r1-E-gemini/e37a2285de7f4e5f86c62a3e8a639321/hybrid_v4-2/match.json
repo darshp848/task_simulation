@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 2,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "google/gemini-3.1-flash-lite",
+  "judge_mode": "race",
+  "judge_reasoning": "none",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 510,
+    "replies": 508,
+    "errors": 0,
+    "dry_rows": 227,
+    "call_hz": 1.733,
+    "rtt_p50_s": 0.86,
+    "rtt_p90_s": 1.563
+  },
+  "harness": {
+    "ok": false,
+    "stages": [],
+    "seconds": 297.56299999999464,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 299.05,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 64.35000000003143,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1_seg0": 20.7,
+      "plugged_1": 20.85,
+      "plugged_0_seg6": 34.85,
+      "plugged_0_c": 34.85,
+      "hub": 58.65,
+      "plugged_1_c": 69.0,
+      "plugged_0": 72.95,
+      "plugged_1_seg1": 139.45,
+      "world": 219.85,
+      "plugged_1_seg6": 252.85
+    }
+  },
+  "stages": [],
+  "match_wall_s": 300.0,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 69,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 299.05,
+  "sim_rate": 0.997,
+  "monitor_calls": 67,
+  "milestones": {
+    "stage1_at": 64.35000000003143,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_1_seg0": 20.7,
+      "plugged_1": 20.85,
+      "plugged_0_seg6": 34.85,
+      "plugged_0_c": 34.85,
+      "hub": 58.65,
+      "plugged_1_c": 69.0,
+      "plugged_0": 72.95,
+      "plugged_1_seg1": 139.45,
+      "world": 219.85,
+      "plugged_1_seg6": 252.85
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "local",
+  "metrics": {
+    "wall_s": 301.0,
+    "cpu_s": 184.125,
+    "peak_rss_mib": 709.12,
+    "host_cpu_count": 20,
+    "platform": "nt"
+  }
+}

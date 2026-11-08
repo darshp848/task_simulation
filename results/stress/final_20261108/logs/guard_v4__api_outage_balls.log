@@ -1,0 +1,2 @@
+api_outage_balls             mean=  19.0 pts=[20, 15, 20, 20, 20] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=19.0 lost=0 crash=0 wall=2s

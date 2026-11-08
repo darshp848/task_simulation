@@ -1,0 +1,2 @@
+refusal_put_down             mean=  97.8 pts=[117, 99, 90, 96, 87] lost=0/5 black=0 dq=0 early=0 | completed with failed stages: cable_unplug_more, cable_put_more_down, 
+TOTAL hybrid_v4_fast: matches=5 mean=97.8 lost=0 crash=0 wall=76s

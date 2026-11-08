@@ -1,0 +1,2 @@
+frozen_cam                   mean=  78.2 pts=[71, 86, 81, 71, 82] lost=0/5 black=0 dq=0 early=4 | completed with failed stages: cable_2, ball_all
+TOTAL hybrid_long: matches=5 mean=78.2 lost=0 crash=0 wall=2s

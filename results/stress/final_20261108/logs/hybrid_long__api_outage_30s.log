@@ -1,0 +1,2 @@
+api_outage_30s               mean=  84.8 pts=[76, 102, 82, 82, 82] lost=0/5 black=0 dq=0 early=4 | completed with failed stages: cable_2, arms_clear, ball_all
+TOTAL hybrid_long: matches=5 mean=84.8 lost=0 crash=0 wall=3s

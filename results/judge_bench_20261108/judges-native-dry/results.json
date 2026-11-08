@@ -1,0 +1,425 @@
+{
+  "dry_run": true,
+  "max_cost_usd": 1.0,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 1,
+  "sim": false,
+  "configs": [
+    "api:claude-haiku-5-5;hedge=2",
+    "subscription:claude-haiku-5-5;hedge=2"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "api:claude-haiku-5-5;hedge=2",
+      "trials": 4,
+      "guard_trials": 1,
+      "stage_done_accuracy": null,
+      "accepted_done_accuracy": null,
+      "guard_accuracy": null,
+      "parse_failure_rate": null,
+      "transport_failure_rate": null,
+      "dry_run_valid_rate": 1.0,
+      "latency_p50_s": null,
+      "latency_p90_s": null,
+      "latency_max_s": null,
+      "attempts_finished": 8,
+      "cost_complete": false,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_per_call_usd": null,
+      "cost_per_trial_usd": null
+    },
+    {
+      "judge": "subscription:claude-haiku-5-5;hedge=2",
+      "trials": 4,
+      "guard_trials": 1,
+      "stage_done_accuracy": null,
+      "accepted_done_accuracy": null,
+      "guard_accuracy": null,
+      "parse_failure_rate": null,
+      "transport_failure_rate": null,
+      "dry_run_valid_rate": 1.0,
+      "latency_p50_s": null,
+      "latency_p90_s": null,
+      "latency_max_s": null,
+      "attempts_finished": 8,
+      "cost_complete": false,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_per_call_usd": null,
+      "cost_per_trial_usd": null
+    }
+  ],
+  "trials": [
+    {
+      "judge": "api:claude-haiku-5-5;hedge=2",
+      "backend": "api",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "api:claude-haiku-5-5;hedge=2",
+      "backend": "api",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "api:claude-haiku-5-5;hedge=2",
+      "backend": "api",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "api:claude-haiku-5-5;hedge=2",
+      "backend": "api",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "subscription:claude-haiku-5-5;hedge=2",
+      "backend": "subscription",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "subscription:claude-haiku-5-5;hedge=2",
+      "backend": "subscription",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "subscription:claude-haiku-5-5;hedge=2",
+      "backend": "subscription",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "subscription:claude-haiku-5-5;hedge=2",
+      "backend": "subscription",
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "hedge": 2,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": null,
+      "accepted_done": null,
+      "guard": null,
+      "stage_correct": null,
+      "accepted_done_correct": null,
+      "guard_correct": null,
+      "parse_failure": null,
+      "transport_failure": null,
+      "dry_run_valid": true,
+      "latency_s": null,
+      "attempts_expected": 2,
+      "attempts_finished": 2,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": null,
+      "cost_complete": false,
+      "attempts": [
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "usage": {},
+          "cost_usd": null,
+          "latency_s": 0.0,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "task": "Hill Climb relay. Stage 1: unplug a USB cable from the power strip and put it down away from the strip (then one more the same way). Never plug a cable in. Stage 2: stack the blocks into a free-standing tower more than 4 inches (10 cm) tall. Do not touch the blocks before a cable is unplugged. Stage 3: put coloured golf balls into the white bin, never the white ball or a black ball, without touching the tower. Do not touch the balls before the tower passes.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 163.22223022900002,
+      "reason": "At least one plug is fully out and lying loose beside the strip, as shown in the wrist_r view and the overhead. The right gripper reads empty (0.10), and the strip is not pushed or dragged. Confidence is moderate because the plug count from the images is approximate."
+    },
+    {
+      "name": "cable_put_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 23.622302090000005,
+      "reason": "timeout after 20 s"
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 32.914638201,
+      "reason": "timeout after 30 s"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 0.0,
+      "reason": "cable_unplug_more did not pass"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 13.253054686999974,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "seconds": 298.67087276,
+  "reason": "time budget of 295 s exceeded",
+  "guard_tripped": false
+}

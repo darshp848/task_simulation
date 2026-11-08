@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:mistralai/mistral-small-2603;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.8833333333333333,
+      "accepted_done_accuracy": 0.8833333333333333,
+      "guard_accuracy": 0.6333333333333333,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.0,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 2.437999999994645,
+      "latency_p90_s": 3.0382000000055998,
+      "latency_max_s": 4.812000000005355,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.016657395,
+      "cost_usd": 0.016657395,
+      "cost_per_call_usd": 0.00027762325,
+      "cost_per_trial_usd": 0.00027762325
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6089999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00030615,
+      "cost_usd": 0.00030615,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 208,
+            "total_tokens": 1417,
+            "cost": 0.00030615
+          },
+          "cost_usd": 0.00030615,
+          "latency_s": 2.6089999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8440000000118744,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000336105,
+      "cost_usd": 0.000336105,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 207,
+            "total_tokens": 1416,
+            "cost": 0.000336105
+          },
+          "cost_usd": 0.000336105,
+          "latency_s": 2.8440000000118744,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.937999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00029955,
+      "cost_usd": 0.00029955,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 197,
+            "total_tokens": 1406,
+            "cost": 0.00029955
+          },
+          "cost_usd": 0.00029955,
+          "latency_s": 2.937999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.4210000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000155793,
+      "cost_usd": 0.000155793,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 193,
+            "total_tokens": 1402,
+            "cost": 0.000155793
+          },
+          "cost_usd": 0.000155793,
+          "latency_s": 1.4060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.687999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000321585,
+      "cost_usd": 0.000321585,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 185,
+            "total_tokens": 1394,
+            "cost": 0.000321585
+          },
+          "cost_usd": 0.000321585,
+          "latency_s": 2.687999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1089999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00030135,
+      "cost_usd": 0.00030135,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 200,
+            "total_tokens": 1409,
+            "cost": 0.00030135
+          },
+          "cost_usd": 0.00030135,
+          "latency_s": 2.1089999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9690000000118744,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000336765,
+      "cost_usd": 0.000336765,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 208,
+            "total_tokens": 1417,
+            "cost": 0.000336765
+          },
+          "cost_usd": 0.000336765,
+          "latency_s": 3.9690000000118744,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8909999999887077,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000337425,
+      "cost_usd": 0.000337425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 209,
+            "total_tokens": 1418,
+            "cost": 0.000337425
+          },
+          "cost_usd": 0.000337425,
+          "latency_s": 2.8909999999887077,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9530000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014151,
+      "cost_usd": 0.00014151,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 200,
+            "total_tokens": 1409,
+            "cost": 0.00014151
+          },
+          "cost_usd": 0.00014151,
+          "latency_s": 1.9530000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1089999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000163713,
+      "cost_usd": 0.000163713,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 205,
+            "total_tokens": 1414,
+            "cost": 0.000163713
+          },
+          "cost_usd": 0.000163713,
+          "latency_s": 2.1089999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00027096,
+      "cost_usd": 0.00027096,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 254,
+            "total_tokens": 1678,
+            "cost": 0.00027096
+          },
+          "cost_usd": 0.00027096,
+          "latency_s": 2.4689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6089999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00027816,
+      "cost_usd": 0.00027816,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 266,
+            "total_tokens": 1690,
+            "cost": 0.00027816
+          },
+          "cost_usd": 0.00027816,
+          "latency_s": 2.6089999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8280000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00032802,
+      "cost_usd": 0.00032802,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 141,
+            "total_tokens": 1565,
+            "cost": 0.00032802
+          },
+          "cost_usd": 0.00032802,
+          "latency_s": 2.8280000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.937999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00022716,
+      "cost_usd": 0.00022716,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 181,
+            "total_tokens": 1605,
+            "cost": 0.00022716
+          },
+          "cost_usd": 0.00022716,
+          "latency_s": 1.937999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.2339999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000183612,
+      "cost_usd": 0.000183612,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 239,
+            "total_tokens": 1663,
+            "cost": 0.000183612
+          },
+          "cost_usd": 0.000183612,
+          "latency_s": 2.2339999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.438000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003861,
+      "cost_usd": 0.0003861,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 229,
+            "total_tokens": 1653,
+            "cost": 0.0003861
+          },
+          "cost_usd": 0.0003861,
+          "latency_s": 2.438000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000206052,
+      "cost_usd": 0.000206052,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 273,
+            "total_tokens": 1697,
+            "cost": 0.000206052
+          },
+          "cost_usd": 0.000206052,
+          "latency_s": 2.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00017028,
+      "cost_usd": 0.00017028,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 241,
+            "total_tokens": 1665,
+            "cost": 0.00017028
+          },
+          "cost_usd": 0.00017028,
+          "latency_s": 2.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5160000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00027936,
+      "cost_usd": 0.00027936,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 268,
+            "total_tokens": 1692,
+            "cost": 0.00027936
+          },
+          "cost_usd": 0.00027936,
+          "latency_s": 2.5160000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.8279999999940628,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00021096,
+      "cost_usd": 0.00021096,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1424,
+            "completion_tokens": 154,
+            "total_tokens": 1578,
+            "cost": 0.00021096
+          },
+          "cost_usd": 0.00021096,
+          "latency_s": 1.8279999999940628,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9220000000059372,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00020361,
+      "cost_usd": 0.00020361,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 158,
+            "total_tokens": 1589,
+            "cost": 0.00020361
+          },
+          "cost_usd": 0.00020361,
+          "latency_s": 1.9220000000059372,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.437999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00024501,
+      "cost_usd": 0.00024501,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 227,
+            "total_tokens": 1658,
+            "cost": 0.00024501
+          },
+          "cost_usd": 0.00024501,
+          "latency_s": 2.437999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.4530000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00038445,
+      "cost_usd": 0.00038445,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 283,
+            "total_tokens": 1714,
+            "cost": 0.00038445
+          },
+          "cost_usd": 0.00038445,
+          "latency_s": 3.4530000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.639999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000235587,
+      "cost_usd": 0.000235587,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 316,
+            "total_tokens": 1747,
+            "cost": 0.000235587
+          },
+          "cost_usd": 0.000235587,
+          "latency_s": 2.639999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.312999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000342375,
+      "cost_usd": 0.000342375,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 161,
+            "total_tokens": 1592,
+            "cost": 0.000342375
+          },
+          "cost_usd": 0.000342375,
+          "latency_s": 2.312999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000173547,
+      "cost_usd": 0.000173547,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 222,
+            "total_tokens": 1653,
+            "cost": 0.000173547
+          },
+          "cost_usd": 0.000173547,
+          "latency_s": 2.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.577999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000311751,
+      "cost_usd": 0.000311751,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 291,
+            "total_tokens": 1722,
+            "cost": 0.000311751
+          },
+          "cost_usd": 0.000311751,
+          "latency_s": 2.577999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.937000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000133947,
+      "cost_usd": 0.000133947,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 162,
+            "total_tokens": 1593,
+            "cost": 0.000133947
+          },
+          "cost_usd": 0.000133947,
+          "latency_s": 1.937000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9369999999908032,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00030525,
+      "cost_usd": 0.00030525,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 151,
+            "total_tokens": 1582,
+            "cost": 0.00030525
+          },
+          "cost_usd": 0.00030525,
+          "latency_s": 1.9369999999908032,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00037185,
+      "cost_usd": 0.00037185,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1431,
+            "completion_tokens": 262,
+            "total_tokens": 1693,
+            "cost": 0.00037185
+          },
+          "cost_usd": 0.00037185,
+          "latency_s": 2.485000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.2820000000065193,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00021441,
+      "cost_usd": 0.00021441,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 189,
+            "total_tokens": 1496,
+            "cost": 0.00021441
+          },
+          "cost_usd": 0.00021441,
+          "latency_s": 2.2820000000065193,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000176055,
+      "cost_usd": 0.000176055,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 228,
+            "total_tokens": 1535,
+            "cost": 0.000176055
+          },
+          "cost_usd": 0.000176055,
+          "latency_s": 2.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9679999999934807,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000164175,
+      "cost_usd": 0.000164175,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 210,
+            "total_tokens": 1517,
+            "cost": 0.000164175
+          },
+          "cost_usd": 0.000164175,
+          "latency_s": 1.9679999999934807,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00032265,
+      "cost_usd": 0.00032265,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 211,
+            "total_tokens": 1518,
+            "cost": 0.00032265
+          },
+          "cost_usd": 0.00032265,
+          "latency_s": 2.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": false,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1570000000065193,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00031425,
+      "cost_usd": 0.00031425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 197,
+            "total_tokens": 1504,
+            "cost": 0.00031425
+          },
+          "cost_usd": 0.00031425,
+          "latency_s": 2.1570000000065193,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.639999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000161535,
+      "cost_usd": 0.000161535,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 206,
+            "total_tokens": 1513,
+            "cost": 0.000161535
+          },
+          "cost_usd": 0.000161535,
+          "latency_s": 1.639999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.2660000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015645,
+      "cost_usd": 0.00015645,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 222,
+            "total_tokens": 1529,
+            "cost": 0.00015645
+          },
+          "cost_usd": 0.00015645,
+          "latency_s": 2.2660000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.639999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000352935,
+      "cost_usd": 0.000352935,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 208,
+            "total_tokens": 1515,
+            "cost": 0.000352935
+          },
+          "cost_usd": 0.000352935,
+          "latency_s": 2.639999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": false,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1410000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00022581,
+      "cost_usd": 0.00022581,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 226,
+            "total_tokens": 1533,
+            "cost": 0.00022581
+          },
+          "cost_usd": 0.00022581,
+          "latency_s": 2.1410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.3589999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000170775,
+      "cost_usd": 0.000170775,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1307,
+            "completion_tokens": 220,
+            "total_tokens": 1527,
+            "cost": 0.000170775
+          },
+          "cost_usd": 0.000170775,
+          "latency_s": 2.3589999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5469999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00040635,
+      "cost_usd": 0.00040635,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 241,
+            "total_tokens": 1986,
+            "cost": 0.00040635
+          },
+          "cost_usd": 0.00040635,
+          "latency_s": 2.5469999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.047000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000426525,
+      "cost_usd": 0.000426525,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 210,
+            "total_tokens": 1955,
+            "cost": 0.000426525
+          },
+          "cost_usd": 0.000426525,
+          "latency_s": 4.047000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00038175,
+      "cost_usd": 0.00038175,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 200,
+            "total_tokens": 1945,
+            "cost": 0.00038175
+          },
+          "cost_usd": 0.00038175,
+          "latency_s": 3.0939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.2179999999934807,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000118041,
+      "cost_usd": 0.000118041,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 117,
+            "total_tokens": 1862,
+            "cost": 0.000118041
+          },
+          "cost_usd": 0.000118041,
+          "latency_s": 1.2179999999934807,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5780000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000180741,
+      "cost_usd": 0.000180741,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 212,
+            "total_tokens": 1957,
+            "cost": 0.000180741
+          },
+          "cost_usd": 0.000180741,
+          "latency_s": 1.5780000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.2339999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039615,
+      "cost_usd": 0.00039615,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 224,
+            "total_tokens": 1969,
+            "cost": 0.00039615
+          },
+          "cost_usd": 0.00039615,
+          "latency_s": 2.2339999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.812999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000214401,
+      "cost_usd": 0.000214401,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 263,
+            "total_tokens": 2008,
+            "cost": 0.000214401
+          },
+          "cost_usd": 0.000214401,
+          "latency_s": 3.812999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.812000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000189057,
+      "cost_usd": 0.000189057,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 239,
+            "total_tokens": 1984,
+            "cost": 0.000189057
+          },
+          "cost_usd": 0.000189057,
+          "latency_s": 4.812000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5469999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00041895,
+      "cost_usd": 0.00041895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 262,
+            "total_tokens": 2007,
+            "cost": 0.00041895
+          },
+          "cost_usd": 0.00041895,
+          "latency_s": 2.5469999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.8280000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000166221,
+      "cost_usd": 0.000166221,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 190,
+            "total_tokens": 1935,
+            "cost": 0.000166221
+          },
+          "cost_usd": 0.000166221,
+          "latency_s": 1.8280000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5309999999881256,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000436425,
+      "cost_usd": 0.000436425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 225,
+            "total_tokens": 1970,
+            "cost": 0.000436425
+          },
+          "cost_usd": 0.000436425,
+          "latency_s": 2.5309999999881256,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0320000000065193,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039375,
+      "cost_usd": 0.00039375,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 220,
+            "total_tokens": 1965,
+            "cost": 0.00039375
+          },
+          "cost_usd": 0.00039375,
+          "latency_s": 3.0320000000065193,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039015,
+      "cost_usd": 0.00039015,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 214,
+            "total_tokens": 1959,
+            "cost": 0.00039015
+          },
+          "cost_usd": 0.00039015,
+          "latency_s": 2.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.389999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000186417,
+      "cost_usd": 0.000186417,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 235,
+            "total_tokens": 1980,
+            "cost": 0.000186417
+          },
+          "cost_usd": 0.000186417,
+          "latency_s": 2.389999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.437999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039795,
+      "cost_usd": 0.00039795,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 227,
+            "total_tokens": 1972,
+            "cost": 0.00039795
+          },
+          "cost_usd": 0.00039795,
+          "latency_s": 2.437999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4530000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00038355,
+      "cost_usd": 0.00038355,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 203,
+            "total_tokens": 1948,
+            "cost": 0.00038355
+          },
+          "cost_usd": 0.00038355,
+          "latency_s": 2.4530000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1569999999919673,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039735,
+      "cost_usd": 0.00039735,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 226,
+            "total_tokens": 1971,
+            "cost": 0.00039735
+          },
+          "cost_usd": 0.00039735,
+          "latency_s": 2.1569999999919673,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9840000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00018507,
+      "cost_usd": 0.00018507,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 261,
+            "total_tokens": 2006,
+            "cost": 0.00018507
+          },
+          "cost_usd": 0.00018507,
+          "latency_s": 2.9840000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.889999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00035895,
+      "cost_usd": 0.00035895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 162,
+            "total_tokens": 1907,
+            "cost": 0.00035895
+          },
+          "cost_usd": 0.00035895,
+          "latency_s": 1.889999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:mistralai/mistral-small-2603;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "mistralai/mistral-small-2603"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.610000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000422565,
+      "cost_usd": 0.000422565,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "mistralai/mistral-small-2603",
+          "usage": {
+            "prompt_tokens": 1745,
+            "completion_tokens": 204,
+            "total_tokens": 1949,
+            "cost": 0.000422565
+          },
+          "cost_usd": 0.000422565,
+          "latency_s": 2.610000000000582,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

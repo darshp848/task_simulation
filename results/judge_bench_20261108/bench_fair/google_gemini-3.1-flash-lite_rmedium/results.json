@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:google/gemini-3.1-flash-lite;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.8,
+      "accepted_done_accuracy": 0.8,
+      "guard_accuracy": 0.8666666666666667,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.0,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 3.5310000000026776,
+      "latency_p90_s": 4.964899999997579,
+      "latency_max_s": 6.014999999999418,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.0924244,
+      "cost_usd": 0.0924244,
+      "cost_per_call_usd": 0.0015404066666666668,
+      "cost_per_trial_usd": 0.0015404066666666668
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00149725,
+      "cost_usd": 0.00149725,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 712,
+            "total_tokens": 2429,
+            "cost": 0.00149725
+          },
+          "cost_usd": 0.00149725,
+          "latency_s": 3.9219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.735000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00124375,
+      "cost_usd": 0.00124375,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 543,
+            "total_tokens": 2260,
+            "cost": 0.00124375
+          },
+          "cost_usd": 0.00124375,
+          "latency_s": 2.7189999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.187000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00125275,
+      "cost_usd": 0.00125275,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 549,
+            "total_tokens": 2266,
+            "cost": 0.00125275
+          },
+          "cost_usd": 0.00125275,
+          "latency_s": 3.187000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00091225,
+      "cost_usd": 0.00091225,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 322,
+            "total_tokens": 2039,
+            "cost": 0.00091225
+          },
+          "cost_usd": 0.00091225,
+          "latency_s": 2.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.562999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00080875,
+      "cost_usd": 0.00080875,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 253,
+            "total_tokens": 1970,
+            "cost": 0.00080875
+          },
+          "cost_usd": 0.00080875,
+          "latency_s": 2.562999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7030000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00111925,
+      "cost_usd": 0.00111925,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 460,
+            "total_tokens": 2177,
+            "cost": 0.00111925
+          },
+          "cost_usd": 0.00111925,
+          "latency_s": 2.7030000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.889999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00117475,
+      "cost_usd": 0.00117475,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 497,
+            "total_tokens": 2214,
+            "cost": 0.00117475
+          },
+          "cost_usd": 0.00117475,
+          "latency_s": 2.889999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.860000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00122425,
+      "cost_usd": 0.00122425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 530,
+            "total_tokens": 2247,
+            "cost": 0.00122425
+          },
+          "cost_usd": 0.00122425,
+          "latency_s": 2.860000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00116425,
+      "cost_usd": 0.00116425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 490,
+            "total_tokens": 2207,
+            "cost": 0.00116425
+          },
+          "cost_usd": 0.00116425,
+          "latency_s": 3.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0469999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00133975,
+      "cost_usd": 0.00133975,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1717,
+            "completion_tokens": 607,
+            "total_tokens": 2324,
+            "cost": 0.00133975
+          },
+          "cost_usd": 0.00133975,
+          "latency_s": 3.0469999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.514999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0018485,
+      "cost_usd": 0.0018485,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 911,
+            "total_tokens": 2839,
+            "cost": 0.0018485
+          },
+          "cost_usd": 0.0018485,
+          "latency_s": 3.514999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.2810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.001634,
+      "cost_usd": 0.001634,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 768,
+            "total_tokens": 2696,
+            "cost": 0.001634
+          },
+          "cost_usd": 0.001634,
+          "latency_s": 3.2810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0015605,
+      "cost_usd": 0.0015605,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 719,
+            "total_tokens": 2647,
+            "cost": 0.0015605
+          },
+          "cost_usd": 0.0015605,
+          "latency_s": 3.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.0310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0019685,
+      "cost_usd": 0.0019685,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 991,
+            "total_tokens": 2919,
+            "cost": 0.0019685
+          },
+          "cost_usd": 0.0019685,
+          "latency_s": 4.0310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.577999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.001607,
+      "cost_usd": 0.001607,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 750,
+            "total_tokens": 2678,
+            "cost": 0.001607
+          },
+          "cost_usd": 0.001607,
+          "latency_s": 3.577999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.7810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0019775,
+      "cost_usd": 0.0019775,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 997,
+            "total_tokens": 2925,
+            "cost": 0.0019775
+          },
+          "cost_usd": 0.0019775,
+          "latency_s": 3.7810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.062999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0024035,
+      "cost_usd": 0.0024035,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 1281,
+            "total_tokens": 3209,
+            "cost": 0.0024035
+          },
+          "cost_usd": 0.0024035,
+          "latency_s": 5.062999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.467999999993481,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.002159,
+      "cost_usd": 0.002159,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 1118,
+            "total_tokens": 3046,
+            "cost": 0.002159
+          },
+          "cost_usd": 0.002159,
+          "latency_s": 4.467999999993481,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0027095,
+      "cost_usd": 0.0027095,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 1485,
+            "total_tokens": 3413,
+            "cost": 0.0027095
+          },
+          "cost_usd": 0.0027095,
+          "latency_s": 5.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0013925,
+      "cost_usd": 0.0013925,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1928,
+            "completion_tokens": 607,
+            "total_tokens": 2535,
+            "cost": 0.0013925
+          },
+          "cost_usd": 0.0013925,
+          "latency_s": 3.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.547000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00164525,
+      "cost_usd": 0.00164525,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 774,
+            "total_tokens": 2711,
+            "cost": 0.00164525
+          },
+          "cost_usd": 0.00164525,
+          "latency_s": 3.547000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00271775,
+      "cost_usd": 0.00271775,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 1489,
+            "total_tokens": 3426,
+            "cost": 0.00271775
+          },
+          "cost_usd": 0.00271775,
+          "latency_s": 6.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00156875,
+      "cost_usd": 0.00156875,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 723,
+            "total_tokens": 2660,
+            "cost": 0.00156875
+          },
+          "cost_usd": 0.00156875,
+          "latency_s": 3.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.7660000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00180875,
+      "cost_usd": 0.00180875,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 883,
+            "total_tokens": 2820,
+            "cost": 0.00180875
+          },
+          "cost_usd": 0.00180875,
+          "latency_s": 3.7660000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.062999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00190175,
+      "cost_usd": 0.00190175,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 945,
+            "total_tokens": 2882,
+            "cost": 0.00190175
+          },
+          "cost_usd": 0.00190175,
+          "latency_s": 4.062999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00206525,
+      "cost_usd": 0.00206525,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 1054,
+            "total_tokens": 2991,
+            "cost": 0.00206525
+          },
+          "cost_usd": 0.00206525,
+          "latency_s": 4.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.797000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00221825,
+      "cost_usd": 0.00221825,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 1156,
+            "total_tokens": 3093,
+            "cost": 0.00221825
+          },
+          "cost_usd": 0.00221825,
+          "latency_s": 4.797000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.1560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00238325,
+      "cost_usd": 0.00238325,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 1266,
+            "total_tokens": 3203,
+            "cost": 0.00238325
+          },
+          "cost_usd": 0.00238325,
+          "latency_s": 5.1560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00138425,
+      "cost_usd": 0.00138425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 600,
+            "total_tokens": 2537,
+            "cost": 0.00138425
+          },
+          "cost_usd": 0.00138425,
+          "latency_s": 3.0310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00205475,
+      "cost_usd": 0.00205475,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1937,
+            "completion_tokens": 1047,
+            "total_tokens": 2984,
+            "cost": 0.00205475
+          },
+          "cost_usd": 0.00205475,
+          "latency_s": 4.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.797000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00132075,
+      "cost_usd": 0.00132075,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 578,
+            "total_tokens": 2393,
+            "cost": 0.00132075
+          },
+          "cost_usd": 0.00132075,
+          "latency_s": 2.797000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00121275,
+      "cost_usd": 0.00121275,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 506,
+            "total_tokens": 2321,
+            "cost": 0.00121275
+          },
+          "cost_usd": 0.00121275,
+          "latency_s": 2.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9839999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00134025,
+      "cost_usd": 0.00134025,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 591,
+            "total_tokens": 2406,
+            "cost": 0.00134025
+          },
+          "cost_usd": 0.00134025,
+          "latency_s": 2.9839999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.1410000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00141825,
+      "cost_usd": 0.00141825,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 643,
+            "total_tokens": 2458,
+            "cost": 0.00141825
+          },
+          "cost_usd": 0.00141825,
+          "latency_s": 3.1410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.8589999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00165825,
+      "cost_usd": 0.00165825,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 803,
+            "total_tokens": 2618,
+            "cost": 0.00165825
+          },
+          "cost_usd": 0.00165825,
+          "latency_s": 3.8589999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.6569999999919673,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00174075,
+      "cost_usd": 0.00174075,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 858,
+            "total_tokens": 2673,
+            "cost": 0.00174075
+          },
+          "cost_usd": 0.00174075,
+          "latency_s": 3.6569999999919673,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.203000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00199275,
+      "cost_usd": 0.00199275,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 1026,
+            "total_tokens": 2841,
+            "cost": 0.00199275
+          },
+          "cost_usd": 0.00199275,
+          "latency_s": 4.203000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.702999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00117675,
+      "cost_usd": 0.00117675,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 482,
+            "total_tokens": 2297,
+            "cost": 0.00117675
+          },
+          "cost_usd": 0.00117675,
+          "latency_s": 2.702999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.797000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00127425,
+      "cost_usd": 0.00127425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 547,
+            "total_tokens": 2362,
+            "cost": 0.00127425
+          },
+          "cost_usd": 0.00127425,
+          "latency_s": 2.7810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.3589999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00157425,
+      "cost_usd": 0.00157425,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 1815,
+            "completion_tokens": 747,
+            "total_tokens": 2562,
+            "cost": 0.00157425
+          },
+          "cost_usd": 0.00157425,
+          "latency_s": 3.3589999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00191875,
+      "cost_usd": 0.00191875,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 600,
+            "total_tokens": 4675,
+            "cost": 0.00191875
+          },
+          "cost_usd": 0.00191875,
+          "latency_s": 3.9689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00095815,
+      "cost_usd": 0.00095815,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 568,
+            "total_tokens": 4643,
+            "cost": 0.00095815
+          },
+          "cost_usd": 0.00095815,
+          "latency_s": 3.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00088915,
+      "cost_usd": 0.00088915,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 522,
+            "total_tokens": 4597,
+            "cost": 0.00088915
+          },
+          "cost_usd": 0.00088915,
+          "latency_s": 3.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.1410000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00103015,
+      "cost_usd": 0.00103015,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 616,
+            "total_tokens": 4691,
+            "cost": 0.00103015
+          },
+          "cost_usd": 0.00103015,
+          "latency_s": 3.1410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.1710000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00124465,
+      "cost_usd": 0.00124465,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 759,
+            "total_tokens": 4834,
+            "cost": 0.00124465
+          },
+          "cost_usd": 0.00124465,
+          "latency_s": 4.1710000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.7659999999887077,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00115465,
+      "cost_usd": 0.00115465,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 699,
+            "total_tokens": 4774,
+            "cost": 0.00115465
+          },
+          "cost_usd": 0.00115465,
+          "latency_s": 3.7659999999887077,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.4840000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00105265,
+      "cost_usd": 0.00105265,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 631,
+            "total_tokens": 4706,
+            "cost": 0.00105265
+          },
+          "cost_usd": 0.00105265,
+          "latency_s": 3.4840000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00083365,
+      "cost_usd": 0.00083365,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 485,
+            "total_tokens": 4560,
+            "cost": 0.00083365
+          },
+          "cost_usd": 0.00083365,
+          "latency_s": 2.9689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.952999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00074215,
+      "cost_usd": 0.00074215,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 424,
+            "total_tokens": 4499,
+            "cost": 0.00074215
+          },
+          "cost_usd": 0.00074215,
+          "latency_s": 2.952999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00088765,
+      "cost_usd": 0.00088765,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 521,
+            "total_tokens": 4596,
+            "cost": 0.00088765
+          },
+          "cost_usd": 0.00088765,
+          "latency_s": 3.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00268075,
+      "cost_usd": 0.00268075,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 1108,
+            "total_tokens": 5183,
+            "cost": 0.00268075
+          },
+          "cost_usd": 0.00268075,
+          "latency_s": 5.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.4210000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00188515,
+      "cost_usd": 0.00188515,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 1186,
+            "total_tokens": 5261,
+            "cost": 0.00188515
+          },
+          "cost_usd": 0.00188515,
+          "latency_s": 5.4210000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.9539999999979045,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00244225,
+      "cost_usd": 0.00244225,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 949,
+            "total_tokens": 5024,
+            "cost": 0.00244225
+          },
+          "cost_usd": 0.00244225,
+          "latency_s": 4.9539999999979045,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00077815,
+      "cost_usd": 0.00077815,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 448,
+            "total_tokens": 4523,
+            "cost": 0.00077815
+          },
+          "cost_usd": 0.00077815,
+          "latency_s": 2.6560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.3439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00133015,
+      "cost_usd": 0.00133015,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 816,
+            "total_tokens": 4891,
+            "cost": 0.00133015
+          },
+          "cost_usd": 0.00133015,
+          "latency_s": 4.3439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.0310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00150115,
+      "cost_usd": 0.00150115,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 930,
+            "total_tokens": 5005,
+            "cost": 0.00150115
+          },
+          "cost_usd": 0.00150115,
+          "latency_s": 4.0310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.562999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00110665,
+      "cost_usd": 0.00110665,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 667,
+            "total_tokens": 4742,
+            "cost": 0.00110665
+          },
+          "cost_usd": 0.00110665,
+          "latency_s": 3.562999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.35899999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00118465,
+      "cost_usd": 0.00118465,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 719,
+            "total_tokens": 4794,
+            "cost": 0.00118465
+          },
+          "cost_usd": 0.00118465,
+          "latency_s": 4.35899999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9530000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00123415,
+      "cost_usd": 0.00123415,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 752,
+            "total_tokens": 4827,
+            "cost": 0.00123415
+          },
+          "cost_usd": 0.00123415,
+          "latency_s": 3.9530000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemini-3.1-flash-lite"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.031999999991967,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00211525,
+      "cost_usd": 0.00211525,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemini-3.1-flash-lite",
+          "usage": {
+            "prompt_tokens": 4075,
+            "completion_tokens": 731,
+            "total_tokens": 4806,
+            "cost": 0.00211525
+          },
+          "cost_usd": 0.00211525,
+          "latency_s": 4.031999999991967,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

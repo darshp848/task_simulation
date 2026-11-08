@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:anthropic/claude-haiku-5.5;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 1.0,
+      "accepted_done_accuracy": 1.0,
+      "guard_accuracy": 0.9,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.0,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 5.0314999999973224,
+      "latency_p90_s": 6.048599999993167,
+      "latency_max_s": 6.437000000005355,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.034758,
+      "cost_usd": 0.034758,
+      "cost_per_call_usd": 0.0005792999999999999,
+      "cost_per_trial_usd": 0.0005792999999999999
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.7810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005139,
+      "cost_usd": 0.0005139,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 753,
+            "total_tokens": 2127,
+            "cost": 0.0005139
+          },
+          "cost_usd": 0.0005139,
+          "latency_s": 4.7810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.8439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004984,
+      "cost_usd": 0.0004984,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 722,
+            "total_tokens": 2096,
+            "cost": 0.0004984
+          },
+          "cost_usd": 0.0004984,
+          "latency_s": 4.8439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.9689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005124,
+      "cost_usd": 0.0005124,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 750,
+            "total_tokens": 2124,
+            "cost": 0.0005124
+          },
+          "cost_usd": 0.0005124,
+          "latency_s": 4.9689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.282000000006519,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004694,
+      "cost_usd": 0.0004694,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 664,
+            "total_tokens": 2038,
+            "cost": 0.0004694
+          },
+          "cost_usd": 0.0004694,
+          "latency_s": 4.282000000006519,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.1710000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004389,
+      "cost_usd": 0.0004389,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 603,
+            "total_tokens": 1977,
+            "cost": 0.0004389
+          },
+          "cost_usd": 0.0004389,
+          "latency_s": 4.1710000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.546999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005104,
+      "cost_usd": 0.0005104,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 746,
+            "total_tokens": 2120,
+            "cost": 0.0005104
+          },
+          "cost_usd": 0.0005104,
+          "latency_s": 4.546999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.187000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004694,
+      "cost_usd": 0.0004694,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 664,
+            "total_tokens": 2038,
+            "cost": 0.0004694
+          },
+          "cost_usd": 0.0004694,
+          "latency_s": 4.187000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004974,
+      "cost_usd": 0.0004974,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 720,
+            "total_tokens": 2094,
+            "cost": 0.0004974
+          },
+          "cost_usd": 0.0004974,
+          "latency_s": 4.610000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.610000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005159,
+      "cost_usd": 0.0005159,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 757,
+            "total_tokens": 2131,
+            "cost": 0.0005159
+          },
+          "cost_usd": 0.0005159,
+          "latency_s": 4.610000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.687999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005159,
+      "cost_usd": 0.0005159,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1374,
+            "completion_tokens": 757,
+            "total_tokens": 2131,
+            "cost": 0.0005159
+          },
+          "cost_usd": 0.0005159,
+          "latency_s": 4.687999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.23399999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005035,
+      "cost_usd": 0.0005035,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 673,
+            "total_tokens": 2343,
+            "cost": 0.0005035
+          },
+          "cost_usd": 0.0005035,
+          "latency_s": 4.23399999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.110000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005225,
+      "cost_usd": 0.0005225,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 711,
+            "total_tokens": 2381,
+            "cost": 0.0005225
+          },
+          "cost_usd": 0.0005225,
+          "latency_s": 5.110000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.203000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006115,
+      "cost_usd": 0.0006115,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 889,
+            "total_tokens": 2559,
+            "cost": 0.0006115
+          },
+          "cost_usd": 0.0006115,
+          "latency_s": 5.203000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.89100000000326,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00054,
+      "cost_usd": 0.00054,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 746,
+            "total_tokens": 2416,
+            "cost": 0.00054
+          },
+          "cost_usd": 0.00054,
+          "latency_s": 4.89100000000326,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.155999999988126,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000501,
+      "cost_usd": 0.000501,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 668,
+            "total_tokens": 2338,
+            "cost": 0.000501
+          },
+          "cost_usd": 0.000501,
+          "latency_s": 5.155999999988126,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.64100000000326,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005195,
+      "cost_usd": 0.0005195,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 705,
+            "total_tokens": 2375,
+            "cost": 0.0005195
+          },
+          "cost_usd": 0.0005195,
+          "latency_s": 4.64100000000326,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.8439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005555,
+      "cost_usd": 0.0005555,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 777,
+            "total_tokens": 2447,
+            "cost": 0.0005555
+          },
+          "cost_usd": 0.0005555,
+          "latency_s": 5.8439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.514999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000523,
+      "cost_usd": 0.000523,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 712,
+            "total_tokens": 2382,
+            "cost": 0.000523
+          },
+          "cost_usd": 0.000523,
+          "latency_s": 4.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.485000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000508,
+      "cost_usd": 0.000508,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 682,
+            "total_tokens": 2352,
+            "cost": 0.000508
+          },
+          "cost_usd": 0.000508,
+          "latency_s": 4.485000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.9060000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005595,
+      "cost_usd": 0.0005595,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1670,
+            "completion_tokens": 785,
+            "total_tokens": 2455,
+            "cost": 0.0005595
+          },
+          "cost_usd": 0.0005595,
+          "latency_s": 4.9060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.437000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000644,
+      "cost_usd": 0.000644,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 950,
+            "total_tokens": 2640,
+            "cost": 0.000644
+          },
+          "cost_usd": 0.000644,
+          "latency_s": 6.437000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.360000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006035,
+      "cost_usd": 0.0006035,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 869,
+            "total_tokens": 2559,
+            "cost": 0.0006035
+          },
+          "cost_usd": 0.0006035,
+          "latency_s": 5.360000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.5939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005245,
+      "cost_usd": 0.0005245,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 711,
+            "total_tokens": 2401,
+            "cost": 0.0005245
+          },
+          "cost_usd": 0.0005245,
+          "latency_s": 4.5939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000644,
+      "cost_usd": 0.000644,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 950,
+            "total_tokens": 2640,
+            "cost": 0.000644
+          },
+          "cost_usd": 0.000644,
+          "latency_s": 6.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005885,
+      "cost_usd": 0.0005885,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 839,
+            "total_tokens": 2529,
+            "cost": 0.0005885
+          },
+          "cost_usd": 0.0005885,
+          "latency_s": 5.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.827999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006395,
+      "cost_usd": 0.0006395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 941,
+            "total_tokens": 2631,
+            "cost": 0.0006395
+          },
+          "cost_usd": 0.0006395,
+          "latency_s": 5.827999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.688000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005515,
+      "cost_usd": 0.0005515,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 765,
+            "total_tokens": 2455,
+            "cost": 0.0005515
+          },
+          "cost_usd": 0.0005515,
+          "latency_s": 4.688000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.4689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006295,
+      "cost_usd": 0.0006295,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 921,
+            "total_tokens": 2611,
+            "cost": 0.0006295
+          },
+          "cost_usd": 0.0006295,
+          "latency_s": 5.4689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.577999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006305,
+      "cost_usd": 0.0006305,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 923,
+            "total_tokens": 2613,
+            "cost": 0.0006305
+          },
+          "cost_usd": 0.0006305,
+          "latency_s": 5.577999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.110000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000627,
+      "cost_usd": 0.000627,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1690,
+            "completion_tokens": 916,
+            "total_tokens": 2606,
+            "cost": 0.000627
+          },
+          "cost_usd": 0.000627,
+          "latency_s": 5.110000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.51600000000326,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005386,
+      "cost_usd": 0.0005386,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 774,
+            "total_tokens": 2290,
+            "cost": 0.0005386
+          },
+          "cost_usd": 0.0005386,
+          "latency_s": 5.51600000000326,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.8439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006516,
+      "cost_usd": 0.0006516,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 1000,
+            "total_tokens": 2516,
+            "cost": 0.0006516
+          },
+          "cost_usd": 0.0006516,
+          "latency_s": 5.8439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.937000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005576,
+      "cost_usd": 0.0005576,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 812,
+            "total_tokens": 2328,
+            "cost": 0.0005576
+          },
+          "cost_usd": 0.0005576,
+          "latency_s": 4.922000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.936999999990803,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005681,
+      "cost_usd": 0.0005681,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 833,
+            "total_tokens": 2349,
+            "cost": 0.0005681
+          },
+          "cost_usd": 0.0005681,
+          "latency_s": 4.936999999990803,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.578000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005586,
+      "cost_usd": 0.0005586,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 814,
+            "total_tokens": 2330,
+            "cost": 0.0005586
+          },
+          "cost_usd": 0.0005586,
+          "latency_s": 4.578000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.296999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006051,
+      "cost_usd": 0.0006051,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 907,
+            "total_tokens": 2423,
+            "cost": 0.0006051
+          },
+          "cost_usd": 0.0006051,
+          "latency_s": 5.296999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.39100000000326,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006091,
+      "cost_usd": 0.0006091,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 915,
+            "total_tokens": 2431,
+            "cost": 0.0006091
+          },
+          "cost_usd": 0.0006091,
+          "latency_s": 5.39100000000326,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006996,
+      "cost_usd": 0.0006996,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 1096,
+            "total_tokens": 2612,
+            "cost": 0.0006996
+          },
+          "cost_usd": 0.0006996,
+          "latency_s": 6.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.187000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006501,
+      "cost_usd": 0.0006501,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 997,
+            "total_tokens": 2513,
+            "cost": 0.0006501
+          },
+          "cost_usd": 0.0006501,
+          "latency_s": 6.187000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.0939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005721,
+      "cost_usd": 0.0005721,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1516,
+            "completion_tokens": 841,
+            "total_tokens": 2357,
+            "cost": 0.0005721
+          },
+          "cost_usd": 0.0005721,
+          "latency_s": 5.0939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005212,
+      "cost_usd": 0.0005212,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 654,
+            "total_tokens": 2596,
+            "cost": 0.0005212
+          },
+          "cost_usd": 0.0005212,
+          "latency_s": 4.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.7189999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005522,
+      "cost_usd": 0.0005522,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 716,
+            "total_tokens": 2658,
+            "cost": 0.0005522
+          },
+          "cost_usd": 0.0005522,
+          "latency_s": 4.7189999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005767,
+      "cost_usd": 0.0005767,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 765,
+            "total_tokens": 2707,
+            "cost": 0.0005767
+          },
+          "cost_usd": 0.0005767,
+          "latency_s": 4.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.7340000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004782,
+      "cost_usd": 0.0004782,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 568,
+            "total_tokens": 2510,
+            "cost": 0.0004782
+          },
+          "cost_usd": 0.0004782,
+          "latency_s": 3.7340000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.140999999988708,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005177,
+      "cost_usd": 0.0005177,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 647,
+            "total_tokens": 2589,
+            "cost": 0.0005177
+          },
+          "cost_usd": 0.0005177,
+          "latency_s": 4.140999999988708,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.828000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005897,
+      "cost_usd": 0.0005897,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 791,
+            "total_tokens": 2733,
+            "cost": 0.0005897
+          },
+          "cost_usd": 0.0005897,
+          "latency_s": 4.828000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.0939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005442,
+      "cost_usd": 0.0005442,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 700,
+            "total_tokens": 2642,
+            "cost": 0.0005442
+          },
+          "cost_usd": 0.0005442,
+          "latency_s": 4.0939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.437999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006832,
+      "cost_usd": 0.0006832,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 978,
+            "total_tokens": 2920,
+            "cost": 0.0006832
+          },
+          "cost_usd": 0.0006832,
+          "latency_s": 5.437999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9840000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005157,
+      "cost_usd": 0.0005157,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 643,
+            "total_tokens": 2585,
+            "cost": 0.0005157
+          },
+          "cost_usd": 0.0005157,
+          "latency_s": 3.9840000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.327999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005382,
+      "cost_usd": 0.0005382,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 688,
+            "total_tokens": 2630,
+            "cost": 0.0005382
+          },
+          "cost_usd": 0.0005382,
+          "latency_s": 4.327999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006852,
+      "cost_usd": 0.0006852,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 982,
+            "total_tokens": 2924,
+            "cost": 0.0006852
+          },
+          "cost_usd": 0.0006852,
+          "latency_s": 6.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.1560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006987,
+      "cost_usd": 0.0006987,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 1009,
+            "total_tokens": 2951,
+            "cost": 0.0006987
+          },
+          "cost_usd": 0.0006987,
+          "latency_s": 6.139999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.781999999991967,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006367,
+      "cost_usd": 0.0006367,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 885,
+            "total_tokens": 2827,
+            "cost": 0.0006367
+          },
+          "cost_usd": 0.0006367,
+          "latency_s": 5.781999999991967,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006642,
+      "cost_usd": 0.0006642,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 940,
+            "total_tokens": 2882,
+            "cost": 0.0006642
+          },
+          "cost_usd": 0.0006642,
+          "latency_s": 5.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.922000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006887,
+      "cost_usd": 0.0006887,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 989,
+            "total_tokens": 2931,
+            "cost": 0.0006887
+          },
+          "cost_usd": 0.0006887,
+          "latency_s": 5.922000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.389999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007312,
+      "cost_usd": 0.0007312,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 1074,
+            "total_tokens": 3016,
+            "cost": 0.0007312
+          },
+          "cost_usd": 0.0007312,
+          "latency_s": 6.389999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.046999999991385,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006692,
+      "cost_usd": 0.0006692,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 950,
+            "total_tokens": 2892,
+            "cost": 0.0006692
+          },
+          "cost_usd": 0.0006692,
+          "latency_s": 6.046999999991385,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.422000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006617,
+      "cost_usd": 0.0006617,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 935,
+            "total_tokens": 2877,
+            "cost": 0.0006617
+          },
+          "cost_usd": 0.0006617,
+          "latency_s": 5.422000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.967999999993481,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007022,
+      "cost_usd": 0.0007022,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 1016,
+            "total_tokens": 2958,
+            "cost": 0.0007022
+          },
+          "cost_usd": 0.0007022,
+          "latency_s": 5.967999999993481,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:anthropic/claude-haiku-5.5;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.063000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007242,
+      "cost_usd": 0.0007242,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "anthropic/claude-haiku-5.5",
+          "usage": {
+            "prompt_tokens": 1942,
+            "completion_tokens": 1060,
+            "total_tokens": 3002,
+            "cost": 0.0007242
+          },
+          "cost_usd": 0.0007242,
+          "latency_s": 6.063000000009197,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

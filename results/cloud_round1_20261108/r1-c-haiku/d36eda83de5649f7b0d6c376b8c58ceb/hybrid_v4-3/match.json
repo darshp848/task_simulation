@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 3,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "anthropic/claude-haiku-5.5",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 353,
+    "replies": 339,
+    "errors": 13,
+    "dry_rows": 192,
+    "call_hz": 1.181,
+    "rtt_p50_s": 0.545,
+    "rtt_p90_s": 0.891
+  },
+  "harness": {
+    "ok": false,
+    "stages": [
+      {
+        "name": "cable_unplug",
+        "ok": true,
+        "attempts": 2,
+        "seconds": 237.024964834,
+        "reason": "Overhead and wrist views show one plug pulled out of its port and lying loose on the table next to the strip, which counts as unplugged. The right gripper is empty per sensors and the strip is not disturbed. Do not regrab that plug; the next plug to take is the rightmost one still seated in the strip."
+      },
+      {
+        "name": "cable_put_down",
+        "ok": true,
+        "attempts": 1,
+        "seconds": 10.121641084000032,
+        "reason": "Right gripper sensor shows open with no squeeze; the orange cable lies flat on the table to the right of the strip, clear of the tower, bin and balls."
+      },
+      {
+        "name": "cable_unplug_more",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 32.43006437299999,
+        "reason": "timeout after 30 s"
+      },
+      {
+        "name": "cable_put_more_down",
+        "ok": false,
+        "attempts": 0,
+        "seconds": 0.0,
+        "reason": "cable_unplug_more did not pass"
+      },
+      {
+        "name": "arms_clear",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 10.75499585,
+        "reason": "timeout after 10 s"
+      }
+    ],
+    "seconds": 302.614964165,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 301.1,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 180.20000000013232,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_0": 139.25,
+      "hub": 187.55,
+      "plugged_1": 201.1,
+      "cube_1": 225.2
+    }
+  },
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 2,
+      "seconds": 237.024964834,
+      "reason": "Overhead and wrist views show one plug pulled out of its port and lying loose on the table next to the strip, which counts as unplugged. The right gripper is empty per sensors and the strip is not disturbed. Do not regrab that plug; the next plug to take is the rightmost one still seated in the strip."
+    },
+    {
+      "name": "cable_put_down",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 10.121641084000032,
+      "reason": "Right gripper sensor shows open with no squeeze; the orange cable lies flat on the table to the right of the strip, clear of the tower, bin and balls."
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 32.43006437299999,
+      "reason": "timeout after 30 s"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 0.0,
+      "reason": "cable_unplug_more did not pass"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 10.75499585,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "match_wall_s": 302.618000165,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 47,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 301.1,
+  "sim_rate": 0.995,
+  "monitor_calls": 36,
+  "milestones": {
+    "stage1_at": 180.20000000013232,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_0": 139.25,
+      "hub": 187.55,
+      "plugged_1": 201.1,
+      "cube_1": 225.2
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 310.44,
+    "cpu_s": 278.505,
+    "peak_rss_mib": 659.87,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

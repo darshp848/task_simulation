@@ -1,0 +1,2 @@
+api_outage_30s               mean=  65.0 pts=[47, 74, 65, 74, 65] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=65.0 lost=0 crash=0 wall=91s

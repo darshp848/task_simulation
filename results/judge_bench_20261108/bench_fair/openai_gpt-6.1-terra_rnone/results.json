@@ -1,0 +1,2671 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:openai/gpt-6.1-terra;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.9833333333333333,
+      "accepted_done_accuracy": 0.9833333333333333,
+      "guard_accuracy": 0.9666666666666667,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.016666666666666666,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 2.7810000000026776,
+      "latency_p90_s": 3.144100000002072,
+      "latency_max_s": 3.625,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.0467329,
+      "cost_usd": 0.0467329,
+      "cost_per_call_usd": 0.0007788816666666667,
+      "cost_per_trial_usd": 0.0007788816666666667
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.1719999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005881,
+      "cost_usd": 0.0005881,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 106,
+            "total_tokens": 1211,
+            "cost": 0.0005881
+          },
+          "cost_usd": 0.0005881,
+          "latency_s": 3.1719999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.562000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005631,
+      "cost_usd": 0.0005631,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 101,
+            "total_tokens": 1206,
+            "cost": 0.0005631
+          },
+          "cost_usd": 0.0005631,
+          "latency_s": 2.562000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005631,
+      "cost_usd": 0.0005631,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 101,
+            "total_tokens": 1206,
+            "cost": 0.0005631
+          },
+          "cost_usd": 0.0005631,
+          "latency_s": 2.4689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.75,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006131,
+      "cost_usd": 0.0006131,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 111,
+            "total_tokens": 1216,
+            "cost": 0.0006131
+          },
+          "cost_usd": 0.0006131,
+          "latency_s": 2.75,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.172000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006581,
+      "cost_usd": 0.0006581,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 120,
+            "total_tokens": 1225,
+            "cost": 0.0006581
+          },
+          "cost_usd": 0.0006581,
+          "latency_s": 3.172000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7969999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005931,
+      "cost_usd": 0.0005931,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 107,
+            "total_tokens": 1212,
+            "cost": 0.0005931
+          },
+          "cost_usd": 0.0005931,
+          "latency_s": 2.7969999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.687000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005831,
+      "cost_usd": 0.0005831,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 105,
+            "total_tokens": 1210,
+            "cost": 0.0005831
+          },
+          "cost_usd": 0.0005831,
+          "latency_s": 2.687000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005831,
+      "cost_usd": 0.0005831,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 105,
+            "total_tokens": 1210,
+            "cost": 0.0005831
+          },
+          "cost_usd": 0.0005831,
+          "latency_s": 2.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005631,
+      "cost_usd": 0.0005631,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 101,
+            "total_tokens": 1206,
+            "cost": 0.0005631
+          },
+          "cost_usd": 0.0005631,
+          "latency_s": 2.4219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006381,
+      "cost_usd": 0.0006381,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1105,
+            "completion_tokens": 116,
+            "total_tokens": 1221,
+            "cost": 0.0006381
+          },
+          "cost_usd": 0.0006381,
+          "latency_s": 2.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.764999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00065865,
+      "cost_usd": 0.00065865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 118,
+            "total_tokens": 1434,
+            "cost": 0.00065865
+          },
+          "cost_usd": 0.00065865,
+          "latency_s": 2.764999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.922000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00061865,
+      "cost_usd": 0.00061865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 110,
+            "total_tokens": 1426,
+            "cost": 0.00061865
+          },
+          "cost_usd": 0.00061865,
+          "latency_s": 2.922000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6089999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00066865,
+      "cost_usd": 0.00066865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 120,
+            "total_tokens": 1436,
+            "cost": 0.00066865
+          },
+          "cost_usd": 0.00066865,
+          "latency_s": 2.5930000000080327,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.937999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00063865,
+      "cost_usd": 0.00063865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 114,
+            "total_tokens": 1430,
+            "cost": 0.00063865
+          },
+          "cost_usd": 0.00063865,
+          "latency_s": 2.9219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7339999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00064365,
+      "cost_usd": 0.00064365,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 115,
+            "total_tokens": 1431,
+            "cost": 0.00064365
+          },
+          "cost_usd": 0.00064365,
+          "latency_s": 2.7339999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.688000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00063865,
+      "cost_usd": 0.00063865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 114,
+            "total_tokens": 1430,
+            "cost": 0.00063865
+          },
+          "cost_usd": 0.00063865,
+          "latency_s": 2.688000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.062999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00067365,
+      "cost_usd": 0.00067365,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 121,
+            "total_tokens": 1437,
+            "cost": 0.00067365
+          },
+          "cost_usd": 0.00067365,
+          "latency_s": 3.062999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00062865,
+      "cost_usd": 0.00062865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 112,
+            "total_tokens": 1428,
+            "cost": 0.00062865
+          },
+          "cost_usd": 0.00062865,
+          "latency_s": 2.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7339999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00066865,
+      "cost_usd": 0.00066865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 120,
+            "total_tokens": 1436,
+            "cost": 0.00066865
+          },
+          "cost_usd": 0.00066865,
+          "latency_s": 2.7339999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8440000000118744,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00064865,
+      "cost_usd": 0.00064865,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1316,
+            "completion_tokens": 116,
+            "total_tokens": 1432,
+            "cost": 0.00064865
+          },
+          "cost_usd": 0.00064865,
+          "latency_s": 2.8440000000118744,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7809999999881256,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00070395,
+      "cost_usd": 0.00070395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 127,
+            "total_tokens": 1449,
+            "cost": 0.00070395
+          },
+          "cost_usd": 0.00070395,
+          "latency_s": 2.7809999999881256,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00068895,
+      "cost_usd": 0.00068895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 124,
+            "total_tokens": 1446,
+            "cost": 0.00068895
+          },
+          "cost_usd": 0.00068895,
+          "latency_s": 2.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.313000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00067895,
+      "cost_usd": 0.00067895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 122,
+            "total_tokens": 1444,
+            "cost": 0.00067895
+          },
+          "cost_usd": 0.00067895,
+          "latency_s": 3.313000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6569999999919673,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00070395,
+      "cost_usd": 0.00070395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 127,
+            "total_tokens": 1449,
+            "cost": 0.00070395
+          },
+          "cost_usd": 0.00070395,
+          "latency_s": 2.6569999999919673,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0160000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00068895,
+      "cost_usd": 0.00068895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 124,
+            "total_tokens": 1446,
+            "cost": 0.00068895
+          },
+          "cost_usd": 0.00068895,
+          "latency_s": 3.0160000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00071395,
+      "cost_usd": 0.00071395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 129,
+            "total_tokens": 1451,
+            "cost": 0.00071395
+          },
+          "cost_usd": 0.00071395,
+          "latency_s": 2.7810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00062395,
+      "cost_usd": 0.00062395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 111,
+            "total_tokens": 1433,
+            "cost": 0.00062395
+          },
+          "cost_usd": 0.00062395,
+          "latency_s": 2.4689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9060000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00065395,
+      "cost_usd": 0.00065395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 117,
+            "total_tokens": 1439,
+            "cost": 0.00065395
+          },
+          "cost_usd": 0.00065395,
+          "latency_s": 2.9060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00066395,
+      "cost_usd": 0.00066395,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 119,
+            "total_tokens": 1441,
+            "cost": 0.00066395
+          },
+          "cost_usd": 0.00066395,
+          "latency_s": 2.5310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.2969999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00066895,
+      "cost_usd": 0.00066895,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1322,
+            "completion_tokens": 120,
+            "total_tokens": 1442,
+            "cost": 0.00066895
+          },
+          "cost_usd": 0.00066895,
+          "latency_s": 3.2969999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8280000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0022205,
+      "cost_usd": 0.0022205,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 144,
+            "total_tokens": 1345,
+            "cost": 0.0022205
+          },
+          "cost_usd": 0.0022205,
+          "latency_s": 2.8280000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.625,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007879,
+      "cost_usd": 0.0007879,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 145,
+            "total_tokens": 1346,
+            "cost": 0.0007879
+          },
+          "cost_usd": 0.0007879,
+          "latency_s": 3.625,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9840000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0008429,
+      "cost_usd": 0.0008429,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 156,
+            "total_tokens": 1357,
+            "cost": 0.0008429
+          },
+          "cost_usd": 0.0008429,
+          "latency_s": 2.9840000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7809999999881256,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007679,
+      "cost_usd": 0.0007679,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 141,
+            "total_tokens": 1342,
+            "cost": 0.0007679
+          },
+          "cost_usd": 0.0007679,
+          "latency_s": 2.7809999999881256,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.922000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007679,
+      "cost_usd": 0.0007679,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 141,
+            "total_tokens": 1342,
+            "cost": 0.0007679
+          },
+          "cost_usd": 0.0007679,
+          "latency_s": 2.922000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0008179,
+      "cost_usd": 0.0008179,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 151,
+            "total_tokens": 1352,
+            "cost": 0.0008179
+          },
+          "cost_usd": 0.0008179,
+          "latency_s": 2.8439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007379,
+      "cost_usd": 0.0007379,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 135,
+            "total_tokens": 1336,
+            "cost": 0.0007379
+          },
+          "cost_usd": 0.0007379,
+          "latency_s": 3.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.875,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007579,
+      "cost_usd": 0.0007579,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 139,
+            "total_tokens": 1340,
+            "cost": 0.0007579
+          },
+          "cost_usd": 0.0007579,
+          "latency_s": 2.875,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9060000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007729,
+      "cost_usd": 0.0007729,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 142,
+            "total_tokens": 1343,
+            "cost": 0.0007729
+          },
+          "cost_usd": 0.0007729,
+          "latency_s": 2.9060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7339999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007179,
+      "cost_usd": 0.0007179,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1201,
+            "completion_tokens": 131,
+            "total_tokens": 1332,
+            "cost": 0.0007179
+          },
+          "cost_usd": 0.0007179,
+          "latency_s": 2.7180000000080327,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7039999999979045,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0026355,
+      "cost_usd": 0.0026355,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 117,
+            "total_tokens": 1758,
+            "cost": 0.0026355
+          },
+          "cost_usd": 0.0026355,
+          "latency_s": 2.7039999999979045,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9210000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0008349,
+      "cost_usd": 0.0008349,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 150,
+            "total_tokens": 1791,
+            "cost": 0.0008349
+          },
+          "cost_usd": 0.0008349,
+          "latency_s": 2.9210000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.1410000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007999,
+      "cost_usd": 0.0007999,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 143,
+            "total_tokens": 1784,
+            "cost": 0.0007999
+          },
+          "cost_usd": 0.0007999,
+          "latency_s": 3.1410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007849,
+      "cost_usd": 0.0007849,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 140,
+            "total_tokens": 1781,
+            "cost": 0.0007849
+          },
+          "cost_usd": 0.0007849,
+          "latency_s": 3.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007449,
+      "cost_usd": 0.0007449,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 132,
+            "total_tokens": 1773,
+            "cost": 0.0007449
+          },
+          "cost_usd": 0.0007449,
+          "latency_s": 2.9219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.812000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007499,
+      "cost_usd": 0.0007499,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 133,
+            "total_tokens": 1774,
+            "cost": 0.0007499
+          },
+          "cost_usd": 0.0007499,
+          "latency_s": 2.812000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7189999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007049,
+      "cost_usd": 0.0007049,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 124,
+            "total_tokens": 1765,
+            "cost": 0.0007049
+          },
+          "cost_usd": 0.0007049,
+          "latency_s": 2.7189999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007549,
+      "cost_usd": 0.0007549,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 134,
+            "total_tokens": 1775,
+            "cost": 0.0007549
+          },
+          "cost_usd": 0.0007549,
+          "latency_s": 2.7810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.9689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007499,
+      "cost_usd": 0.0007499,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 133,
+            "total_tokens": 1774,
+            "cost": 0.0007499
+          },
+          "cost_usd": 0.0007499,
+          "latency_s": 2.9689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7189999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007349,
+      "cost_usd": 0.0007349,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 130,
+            "total_tokens": 1771,
+            "cost": 0.0007349
+          },
+          "cost_usd": 0.0007349,
+          "latency_s": 2.7189999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8589999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0027205,
+      "cost_usd": 0.0027205,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 134,
+            "total_tokens": 1775,
+            "cost": 0.0027205
+          },
+          "cost_usd": 0.0027205,
+          "latency_s": 2.8589999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007599,
+      "cost_usd": 0.0007599,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 135,
+            "total_tokens": 1776,
+            "cost": 0.0007599
+          },
+          "cost_usd": 0.0007599,
+          "latency_s": 3.0939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007549,
+      "cost_usd": 0.0007549,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 134,
+            "total_tokens": 1775,
+            "cost": 0.0007549
+          },
+          "cost_usd": 0.0007549,
+          "latency_s": 3.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.75,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007749,
+      "cost_usd": 0.0007749,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 138,
+            "total_tokens": 1779,
+            "cost": 0.0007749
+          },
+          "cost_usd": 0.0007749,
+          "latency_s": 2.75,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007549,
+      "cost_usd": 0.0007549,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 134,
+            "total_tokens": 1775,
+            "cost": 0.0007549
+          },
+          "cost_usd": 0.0007549,
+          "latency_s": 2.6560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007299,
+      "cost_usd": 0.0007299,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 129,
+            "total_tokens": 1770,
+            "cost": 0.0007299
+          },
+          "cost_usd": 0.0007299,
+          "latency_s": 2.6560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.735000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007599,
+      "cost_usd": 0.0007599,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 135,
+            "total_tokens": 1776,
+            "cost": 0.0007599
+          },
+          "cost_usd": 0.0007599,
+          "latency_s": 2.735000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7179999999934807,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0007599,
+      "cost_usd": 0.0007599,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 135,
+            "total_tokens": 1776,
+            "cost": 0.0007599
+          },
+          "cost_usd": 0.0007599,
+          "latency_s": 2.7179999999934807,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.438000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0008099,
+      "cost_usd": 0.0008099,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {
+            "prompt_tokens": 1641,
+            "completion_tokens": 145,
+            "total_tokens": 1786,
+            "cost": 0.0008099
+          },
+          "cost_usd": 0.0008099,
+          "latency_s": 3.438000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:openai/gpt-6.1-terra;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "openai/gpt-6.1-terra"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": true,
+      "dry_run_valid": null,
+      "latency_s": 0.3119999999908032,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0,
+      "cost_usd": 0.0,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "openai/gpt-6.1-terra",
+          "usage": {},
+          "cost_usd": 0.0,
+          "latency_s": 0.3119999999908032,
+          "error_type": "HTTPError"
+        }
+      ]
+    }
+  ]
+}

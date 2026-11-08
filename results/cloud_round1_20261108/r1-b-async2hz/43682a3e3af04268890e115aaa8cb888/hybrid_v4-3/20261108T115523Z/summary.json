@@ -1,0 +1,9 @@
+{
+  "task": "Hill Climb relay. Stage 1: unplug a USB cable from the power strip and put it down away from the strip (then one more the same way). Never plug a cable in. Stage 2: stack the blocks into a free-standing tower more than 4 inches (10 cm) tall. Do not touch the blocks before a cable is unplugged. Stage 3: put coloured golf balls into the white bin, never the white ball or a black ball, without touching the tower. Do not touch the balls before the tower passes.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [],
+  "seconds": 121.515668937,
+  "reason": "timed out waiting for running: station state 'starting' did not reach ['error', 'running'] within 0.291054 s",
+  "guard_tripped": false
+}

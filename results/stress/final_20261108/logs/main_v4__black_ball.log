@@ -1,0 +1,2 @@
+black_ball                   mean=  89.2 pts=[60, 89, 95, 101, 101] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL main_v4: matches=5 mean=89.2 lost=0 crash=0 wall=118s

@@ -1,0 +1,2 @@
+reach_across                 mean=  16.2 pts=[0, 0, 0, 0, 81] lost=4/5 black=0 dq=4 early=4 | time budget of 295 s exceeded
+TOTAL hybrid_long: matches=5 mean=16.2 lost=4 crash=0 wall=2s

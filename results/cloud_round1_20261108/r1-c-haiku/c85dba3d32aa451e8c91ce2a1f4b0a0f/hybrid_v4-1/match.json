@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 1,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "anthropic/claude-haiku-5.5",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 90,
+    "replies": 54,
+    "errors": 34,
+    "dry_rows": 2883,
+    "call_hz": 0.304,
+    "rtt_p50_s": 0.693,
+    "rtt_p90_s": 1.201
+  },
+  "harness": {
+    "ok": false,
+    "stages": [],
+    "seconds": 296.99480130999996,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 297.1,
+    "points": 10,
+    "dq": null,
+    "loses": false,
+    "unplugged": 1,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 289.80000000065564,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 283.25
+    }
+  },
+  "stages": [],
+  "match_wall_s": 300.000224575,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 42,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 297.1,
+  "sim_rate": 0.99,
+  "monitor_calls": 36,
+  "milestones": {
+    "stage1_at": 289.80000000065564,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_1": 283.25
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 308.586,
+    "cpu_s": 288.05,
+    "peak_rss_mib": 658.58,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

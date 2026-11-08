@@ -1,0 +1,2 @@
+slow_unplug                  mean=  42.0 pts=[49, 10, 81, 70, 0] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=42.0 lost=0 crash=0 wall=57s

@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:google/gemma-4-26b-a4b-it;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.9666666666666667,
+      "accepted_done_accuracy": 0.9666666666666667,
+      "guard_accuracy": 0.9,
+      "parse_failure_rate": 0.0,
+      "transport_failure_rate": 0.0,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 2.3594999999986612,
+      "latency_p90_s": 3.9329000000056116,
+      "latency_max_s": 5.827999999994063,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.0072354655,
+      "cost_usd": 0.0072354655,
+      "cost_per_call_usd": 0.00012059109166666666,
+      "cost_per_trial_usd": 0.00012059109166666666
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.264999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00010021,
+      "cost_usd": 0.00010021,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 146,
+            "total_tokens": 1077,
+            "cost": 0.00010021
+          },
+          "cost_usd": 0.00010021,
+          "latency_s": 3.264999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 9.068e-05,
+      "cost_usd": 9.068e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 162,
+            "total_tokens": 1093,
+            "cost": 9.068e-05
+          },
+          "cost_usd": 9.068e-05,
+          "latency_s": 1.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.985000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 7.07775e-05,
+      "cost_usd": 7.07775e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 159,
+            "total_tokens": 1090,
+            "cost": 7.07775e-05
+          },
+          "cost_usd": 7.07775e-05,
+          "latency_s": 2.985000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000102488,
+      "cost_usd": 0.000102488,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 207,
+            "total_tokens": 1138,
+            "cost": 0.000102488
+          },
+          "cost_usd": 0.000102488,
+          "latency_s": 2.5310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 7.19025e-05,
+      "cost_usd": 7.19025e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 164,
+            "total_tokens": 1095,
+            "cost": 7.19025e-05
+          },
+          "cost_usd": 7.19025e-05,
+          "latency_s": 3.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0780000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 7.14525e-05,
+      "cost_usd": 7.14525e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 162,
+            "total_tokens": 1093,
+            "cost": 7.14525e-05
+          },
+          "cost_usd": 7.14525e-05,
+          "latency_s": 3.0780000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.42775e-05,
+      "cost_usd": 8.42775e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 219,
+            "total_tokens": 1150,
+            "cost": 8.42775e-05
+          },
+          "cost_usd": 8.42775e-05,
+          "latency_s": 3.9219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.3590000000112923,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 6.2316e-05,
+      "cost_usd": 6.2316e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 183,
+            "total_tokens": 1114,
+            "cost": 6.2316e-05
+          },
+          "cost_usd": 6.2316e-05,
+          "latency_s": 1.3590000000112923,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0001336,
+      "cost_usd": 0.0001336,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 135,
+            "total_tokens": 1066,
+            "cost": 0.0001336
+          },
+          "cost_usd": 0.0001336,
+          "latency_s": 3.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.788e-05,
+      "cost_usd": 8.788e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 931,
+            "completion_tokens": 134,
+            "total_tokens": 1065,
+            "cost": 8.788e-05
+          },
+          "cost_usd": 8.788e-05,
+          "latency_s": 1.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.297000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014541,
+      "cost_usd": 0.00014541,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 233,
+            "total_tokens": 1375,
+            "cost": 0.00014541
+          },
+          "cost_usd": 0.00014541,
+          "latency_s": 2.297000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8429999999934807,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00012338,
+      "cost_usd": 0.00012338,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 181,
+            "total_tokens": 1323,
+            "cost": 0.00012338
+          },
+          "cost_usd": 0.00012338,
+          "latency_s": 2.8429999999934807,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00011776,
+      "cost_usd": 0.00011776,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 264,
+            "total_tokens": 1406,
+            "cost": 0.00011776
+          },
+          "cost_usd": 0.00011776,
+          "latency_s": 1.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.063000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014873,
+      "cost_usd": 0.00014873,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 309,
+            "total_tokens": 1451,
+            "cost": 0.00014873
+          },
+          "cost_usd": 0.00014873,
+          "latency_s": 2.063000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000125235,
+      "cost_usd": 0.000125235,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 214,
+            "total_tokens": 1356,
+            "cost": 0.000125235
+          },
+          "cost_usd": 0.000125235,
+          "latency_s": 3.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.547000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000144652,
+      "cost_usd": 0.000144652,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 216,
+            "total_tokens": 1358,
+            "cost": 0.000144652
+          },
+          "cost_usd": 0.000144652,
+          "latency_s": 3.547000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9369999999908032,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0001161,
+      "cost_usd": 0.0001161,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 220,
+            "total_tokens": 1362,
+            "cost": 0.0001161
+          },
+          "cost_usd": 0.0001161,
+          "latency_s": 1.9369999999908032,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.2190000000118744,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 7.5435e-05,
+      "cost_usd": 7.5435e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 142,
+            "total_tokens": 1284,
+            "cost": 7.5435e-05
+          },
+          "cost_usd": 7.5435e-05,
+          "latency_s": 2.2190000000118744,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5309999999881256,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00012396,
+      "cost_usd": 0.00012396,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 168,
+            "total_tokens": 1310,
+            "cost": 0.00012396
+          },
+          "cost_usd": 0.00012396,
+          "latency_s": 1.5309999999881256,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.9070000000065193,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 9.956e-05,
+      "cost_usd": 9.956e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1142,
+            "completion_tokens": 160,
+            "total_tokens": 1302,
+            "cost": 9.956e-05
+          },
+          "cost_usd": 9.956e-05,
+          "latency_s": 3.9070000000065193,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 9.96675e-05,
+      "cost_usd": 9.96675e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 247,
+            "total_tokens": 1398,
+            "cost": 9.96675e-05
+          },
+          "cost_usd": 9.96675e-05,
+          "latency_s": 4.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.889999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00012709,
+      "cost_usd": 0.00012709,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 203,
+            "total_tokens": 1354,
+            "cost": 0.00012709
+          },
+          "cost_usd": 0.00012709,
+          "latency_s": 1.889999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.3439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00013433,
+      "cost_usd": 0.00013433,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 224,
+            "total_tokens": 1375,
+            "cost": 0.00013433
+          },
+          "cost_usd": 0.00013433,
+          "latency_s": 3.3439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.093000000008033,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 9.89925e-05,
+      "cost_usd": 9.89925e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 244,
+            "total_tokens": 1395,
+            "cost": 9.89925e-05
+          },
+          "cost_usd": 9.89925e-05,
+          "latency_s": 4.093000000008033,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.6410000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00011536,
+      "cost_usd": 0.00011536,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 215,
+            "total_tokens": 1366,
+            "cost": 0.00011536
+          },
+          "cost_usd": 0.00011536,
+          "latency_s": 2.6410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.952999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014177,
+      "cost_usd": 0.00014177,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 255,
+            "total_tokens": 1406,
+            "cost": 0.00014177
+          },
+          "cost_usd": 0.00014177,
+          "latency_s": 2.952999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.1720000000059372,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00010848,
+      "cost_usd": 0.00010848,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 164,
+            "total_tokens": 1315,
+            "cost": 0.00010848
+          },
+          "cost_usd": 0.00010848,
+          "latency_s": 1.1720000000059372,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00010141,
+      "cost_usd": 0.00010141,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 170,
+            "total_tokens": 1321,
+            "cost": 0.00010141
+          },
+          "cost_usd": 0.00010141,
+          "latency_s": 2.4060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.2660000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00012384,
+      "cost_usd": 0.00012384,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 166,
+            "total_tokens": 1317,
+            "cost": 0.00012384
+          },
+          "cost_usd": 0.00012384,
+          "latency_s": 3.2660000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.4060000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00011198,
+      "cost_usd": 0.00011198,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1151,
+            "completion_tokens": 199,
+            "total_tokens": 1350,
+            "cost": 0.00011198
+          },
+          "cost_usd": 0.00011198,
+          "latency_s": 1.4060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.061999999990803,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000100714,
+      "cost_usd": 0.000100714,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 188,
+            "total_tokens": 1217,
+            "cost": 0.000100714
+          },
+          "cost_usd": 0.000100714,
+          "latency_s": 2.061999999990803,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8910000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0001095075,
+      "cost_usd": 0.0001095075,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 178,
+            "total_tokens": 1207,
+            "cost": 0.0001095075
+          },
+          "cost_usd": 0.0001095075,
+          "latency_s": 2.8910000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.1720000000059372,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.4212e-05,
+      "cost_usd": 8.4212e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 193,
+            "total_tokens": 1222,
+            "cost": 8.4212e-05
+          },
+          "cost_usd": 8.4212e-05,
+          "latency_s": 1.1720000000059372,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5779999999940628,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.7912e-05,
+      "cost_usd": 8.7912e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 230,
+            "total_tokens": 1259,
+            "cost": 8.7912e-05
+          },
+          "cost_usd": 8.7912e-05,
+          "latency_s": 1.5779999999940628,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.2960000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.57625e-05,
+      "cost_usd": 8.57625e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 209,
+            "total_tokens": 1238,
+            "cost": 8.57625e-05
+          },
+          "cost_usd": 8.57625e-05,
+          "latency_s": 3.2960000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.235000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 6.7904e-05,
+      "cost_usd": 6.7904e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 204,
+            "total_tokens": 1233,
+            "cost": 6.7904e-05
+          },
+          "cost_usd": 6.7904e-05,
+          "latency_s": 1.2189999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 0.9839999999967404,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.8864e-05,
+      "cost_usd": 8.8864e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 196,
+            "total_tokens": 1225,
+            "cost": 8.8864e-05
+          },
+          "cost_usd": 8.8864e-05,
+          "latency_s": 0.9839999999967404,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.8910000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00012307,
+      "cost_usd": 0.00012307,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 213,
+            "total_tokens": 1242,
+            "cost": 0.00012307
+          },
+          "cost_usd": 0.00012307,
+          "latency_s": 1.8910000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.1560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 8.12625e-05,
+      "cost_usd": 8.12625e-05,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 189,
+            "total_tokens": 1218,
+            "cost": 8.12625e-05
+          },
+          "cost_usd": 8.12625e-05,
+          "latency_s": 3.1410000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.7970000000059372,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00011781,
+      "cost_usd": 0.00011781,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1029,
+            "completion_tokens": 199,
+            "total_tokens": 1228,
+            "cost": 0.00011781
+          },
+          "cost_usd": 0.00011781,
+          "latency_s": 1.7970000000059372,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.687000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000106365,
+      "cost_usd": 0.000106365,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 206,
+            "total_tokens": 1792,
+            "cost": 0.000106365
+          },
+          "cost_usd": 0.000106365,
+          "latency_s": 3.687000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.937000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000125738,
+      "cost_usd": 0.000125738,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 193,
+            "total_tokens": 1779,
+            "cost": 0.000125738
+          },
+          "cost_usd": 0.000125738,
+          "latency_s": 1.937000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.827999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002162,
+      "cost_usd": 0.0002162,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 192,
+            "total_tokens": 1778,
+            "cost": 0.0002162
+          },
+          "cost_usd": 0.0002162,
+          "latency_s": 5.827999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014228,
+      "cost_usd": 0.00014228,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 154,
+            "total_tokens": 1740,
+            "cost": 0.00014228
+          },
+          "cost_usd": 0.00014228,
+          "latency_s": 1.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.4689999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015338,
+      "cost_usd": 0.00015338,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 265,
+            "total_tokens": 1851,
+            "cost": 0.00015338
+          },
+          "cost_usd": 0.00015338,
+          "latency_s": 1.4689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.0310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015518,
+      "cost_usd": 0.00015518,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 184,
+            "total_tokens": 1770,
+            "cost": 0.00015518
+          },
+          "cost_usd": 0.00015518,
+          "latency_s": 4.0310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.2969999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00014358,
+      "cost_usd": 0.00014358,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 167,
+            "total_tokens": 1753,
+            "cost": 0.00014358
+          },
+          "cost_usd": 0.00014358,
+          "latency_s": 1.2969999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.875,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015494,
+      "cost_usd": 0.00015494,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 183,
+            "total_tokens": 1769,
+            "cost": 0.00015494
+          },
+          "cost_usd": 0.00015494,
+          "latency_s": 4.875,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.688000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000115388,
+      "cost_usd": 0.000115388,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 175,
+            "total_tokens": 1761,
+            "cost": 0.000115388
+          },
+          "cost_usd": 0.000115388,
+          "latency_s": 2.688000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.75,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000118918,
+      "cost_usd": 0.000118918,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 171,
+            "total_tokens": 1757,
+            "cost": 0.000118918
+          },
+          "cost_usd": 0.000118918,
+          "latency_s": 1.75,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9529999999940628,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000117058,
+      "cost_usd": 0.000117058,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 165,
+            "total_tokens": 1751,
+            "cost": 0.000117058
+          },
+          "cost_usd": 0.000117058,
+          "latency_s": 1.9529999999940628,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.3280000000086147,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00027778,
+      "cost_usd": 0.00027778,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 179,
+            "total_tokens": 1765,
+            "cost": 0.00027778
+          },
+          "cost_usd": 0.00027778,
+          "latency_s": 3.3280000000086147,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.4219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00016742,
+      "cost_usd": 0.00016742,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 235,
+            "total_tokens": 1821,
+            "cost": 0.00016742
+          },
+          "cost_usd": 0.00016742,
+          "latency_s": 3.4219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.922000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00016382,
+      "cost_usd": 0.00016382,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 220,
+            "total_tokens": 1806,
+            "cost": 0.00016382
+          },
+          "cost_usd": 0.00016382,
+          "latency_s": 3.922000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.6560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015148,
+      "cost_usd": 0.00015148,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 246,
+            "total_tokens": 1832,
+            "cost": 0.00015148
+          },
+          "cost_usd": 0.00015148,
+          "latency_s": 1.6560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.687000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00020006,
+      "cost_usd": 0.00020006,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 371,
+            "total_tokens": 1957,
+            "cost": 0.00020006
+          },
+          "cost_usd": 0.00020006,
+          "latency_s": 4.687000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000117678,
+      "cost_usd": 0.000117678,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 167,
+            "total_tokens": 1753,
+            "cost": 0.000117678
+          },
+          "cost_usd": 0.000117678,
+          "latency_s": 2.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.7029999999940628,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000112408,
+      "cost_usd": 0.000112408,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 150,
+            "total_tokens": 1736,
+            "cost": 0.000112408
+          },
+          "cost_usd": 0.000112408,
+          "latency_s": 1.7029999999940628,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5630000000091968,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00015718,
+      "cost_usd": 0.00015718,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 303,
+            "total_tokens": 1889,
+            "cost": 0.00015718
+          },
+          "cost_usd": 0.00015718,
+          "latency_s": 1.5630000000091968,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "google/gemma-4-26b-a4b-it"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": true,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.139999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.000132868,
+      "cost_usd": 0.000132868,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "google/gemma-4-26b-a4b-it",
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 216,
+            "total_tokens": 1802,
+            "cost": 0.000132868
+          },
+          "cost_usd": 0.000132868,
+          "latency_s": 2.139999999999418,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

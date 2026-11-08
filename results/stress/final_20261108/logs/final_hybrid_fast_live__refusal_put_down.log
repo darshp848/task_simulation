@@ -1,0 +1,2 @@
+refusal_put_down             mean=  93.0 pts=[74, 94, 100, 100, 97] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=93.0 lost=0 crash=0 wall=74s

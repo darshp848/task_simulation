@@ -1,0 +1,2 @@
+calibrated_base              mean=  32.4 pts=[57, 15, 15, 65, 10] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4_live: matches=5 mean=32.4 lost=0 crash=0 wall=120s

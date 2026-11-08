@@ -1,0 +1,2 @@
+gateway_x3                   mean=  68.2 pts=[42, 74, 80, 74, 71] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=68.2 lost=0 crash=0 wall=144s

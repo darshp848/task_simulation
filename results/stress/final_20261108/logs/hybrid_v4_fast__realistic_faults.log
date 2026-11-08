@@ -1,0 +1,2 @@
+realistic_faults             mean=  45.0 pts=[39, 53, 48, 70, 15] lost=1/5 black=1 dq=0 early=1 | guard tripped in stage 'ball_1': Is either gripper holding the white b
+TOTAL hybrid_v4_fast: matches=5 mean=45.0 lost=1 crash=0 wall=66s

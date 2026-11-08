@@ -1,0 +1,2 @@
+calibrated_ft                mean=  51.2 pts=[38, 48, 63, 56, 51] lost=2/5 black=2 dq=0 early=3 | guard tripped in stage 'ball_all': Is either gripper holding the white
+TOTAL hybrid_long: matches=5 mean=51.2 lost=2 crash=0 wall=3s

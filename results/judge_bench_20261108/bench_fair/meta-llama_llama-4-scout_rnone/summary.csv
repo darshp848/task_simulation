@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:meta-llama/llama-4-scout;hedge=1,60,30,0.8666666666666667,0.8666666666666667,0.6333333333333333,0.1,0.0,,4.1875,8.081999999997787,21.09299999999348,60,True,0.0228524,0.0228524,0.0003808733333333333,0.0003808733333333333

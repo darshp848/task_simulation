@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "openrouter:google/gemini-3.1-flash-lite;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 0.8, "accepted_done_accuracy": 0.8, "guard_accuracy": 0.8666666666666667, "parse_failure_rate": 0.0, "transport_failure_rate": 0.0, "dry_run_valid_rate": null, "latency_p50_s": 3.5310000000026776, "latency_p90_s": 4.964899999997579, "latency_max_s": 6.014999999999418, "attempts_finished": 60, "cost_complete": true, "known_cost_usd": 0.0924244, "cost_usd": 0.0924244, "cost_per_call_usd": 0.0015404066666666668, "cost_per_trial_usd": 0.0015404066666666668}
+reports: runs\bench_fair\google_gemini-3.1-flash-lite_rmedium\summary.csv and runs\bench_fair\google_gemini-3.1-flash-lite_rmedium\results.json

@@ -1,0 +1,2 @@
+black_ball_local_guard       mean=  67.8 pts=[60, 71, 66, 76, 66] lost=1/5 black=1 dq=0 early=5 | guard tripped in stage 'ball_all' (local detector): sim detector
+TOTAL hybrid_long: matches=5 mean=67.8 lost=1 crash=0 wall=5s

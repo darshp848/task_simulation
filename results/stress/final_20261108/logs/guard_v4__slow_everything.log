@@ -1,0 +1,2 @@
+slow_everything              mean=  52.6 pts=[51, 47, 62, 56, 47] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=52.6 lost=0 crash=0 wall=148s

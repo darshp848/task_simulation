@@ -1,0 +1,2 @@
+api_outage_balls             mean=  15.0 pts=[15, 15, 15, 15, 15] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_long: matches=5 mean=15.0 lost=0 crash=0 wall=3s

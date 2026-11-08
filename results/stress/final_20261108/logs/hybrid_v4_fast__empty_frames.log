@@ -1,0 +1,2 @@
+empty_frames                 mean=  72.6 pts=[54, 84, 75, 75, 75] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4_fast: matches=5 mean=72.6 lost=0 crash=0 wall=81s

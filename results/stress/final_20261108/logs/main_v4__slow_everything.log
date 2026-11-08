@@ -1,0 +1,2 @@
+slow_everything              mean=  53.4 pts=[57, 51, 60, 57, 42] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL main_v4: matches=5 mean=53.4 lost=0 crash=0 wall=109s

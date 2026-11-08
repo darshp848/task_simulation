@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:google/gemini-3.1-flash-lite;hedge=1,60,30,0.9,0.9,0.8333333333333334,0.0,0.0,,1.8130000000019209,2.267499999990105,2.8280000000086147,60,True,0.0406021,0.0406021,0.0006767016666666667,0.0006767016666666667

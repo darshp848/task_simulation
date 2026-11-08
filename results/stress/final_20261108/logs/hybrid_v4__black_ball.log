@@ -1,0 +1,2 @@
+black_ball                   mean=  88.8 pts=[70, 95, 89, 95, 95] lost=1/5 black=1 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=88.8 lost=1 crash=0 wall=96s

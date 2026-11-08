@@ -1,0 +1,2 @@
+starve_mid                   mean=  90.6 pts=[74, 94, 95, 100, 90] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=90.6 lost=0 crash=0 wall=79s

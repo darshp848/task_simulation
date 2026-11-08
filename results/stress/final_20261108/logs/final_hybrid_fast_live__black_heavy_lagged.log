@@ -1,0 +1,2 @@
+black_heavy_lagged           mean=  79.8 pts=[47, 94, 92, 83, 83] lost=0/5 black=0 dq=0 early=5 | guard tripped (live frames): sim live detector
+TOTAL final_hybrid_fast_live: matches=5 mean=79.8 lost=0 crash=0 wall=80s

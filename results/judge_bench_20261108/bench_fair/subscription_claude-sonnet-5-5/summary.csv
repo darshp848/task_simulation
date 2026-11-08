@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+subscription:claude-sonnet-5-5;hedge=1,60,30,1.0,1.0,1.0,0.0,0.0,,7.140500000001339,9.337400000006891,13.562000000005355,60,False,0,,,

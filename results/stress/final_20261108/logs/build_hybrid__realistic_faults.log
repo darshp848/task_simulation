@@ -1,0 +1,2 @@
+realistic_faults             mean=  44.0 pts=[48, 48, 38, 71, 15] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_hybrid: matches=5 mean=44.0 lost=0 crash=0 wall=98s

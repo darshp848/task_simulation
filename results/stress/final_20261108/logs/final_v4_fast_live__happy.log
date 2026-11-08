@@ -1,0 +1,2 @@
+happy                        mean=  91.8 pts=[74, 99, 96, 96, 94] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_v4_fast_live: matches=5 mean=91.8 lost=0 crash=0 wall=75s

@@ -1,0 +1,2 @@
+realistic                    mean=  59.2 pts=[57, 65, 47, 80, 47] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_hybrid: matches=5 mean=59.2 lost=0 crash=0 wall=99s

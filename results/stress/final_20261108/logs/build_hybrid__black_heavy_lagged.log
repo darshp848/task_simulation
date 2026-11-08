@@ -1,0 +1,2 @@
+black_heavy_lagged           mean=  87.8 pts=[65, 89, 95, 95, 95] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_hybrid: matches=5 mean=87.8 lost=0 crash=0 wall=119s

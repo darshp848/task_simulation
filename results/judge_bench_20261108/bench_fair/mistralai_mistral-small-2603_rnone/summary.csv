@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:mistralai/mistral-small-2603;hedge=1,60,30,0.8833333333333333,0.8833333333333333,0.6333333333333333,0.0,0.0,,2.437999999994645,3.0382000000055998,4.812000000005355,60,True,0.016657395,0.016657395,0.00027762325,0.00027762325

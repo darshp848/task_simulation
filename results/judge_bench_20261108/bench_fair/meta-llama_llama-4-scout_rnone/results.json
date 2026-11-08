@@ -1,0 +1,2676 @@
+{
+  "dry_run": false,
+  "max_cost_usd": 0.5,
+  "plan": "C:\\Users\\darsh\\TAMU\\EMPE_Lab\\Actuator-controls\\hill_climb_harness_test\\hedged-calls\\plans\\hill_climb_v4.yaml",
+  "plan_sha256": "53746dd9c72e2080b8bf61f9c152fe87e450306e49298ee313258206771370da",
+  "repeats": 10,
+  "sim": true,
+  "configs": [
+    "openrouter:meta-llama/llama-4-scout;hedge=1"
+  ],
+  "stopped": null,
+  "summary": [
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "trials": 60,
+      "guard_trials": 30,
+      "stage_done_accuracy": 0.8666666666666667,
+      "accepted_done_accuracy": 0.8666666666666667,
+      "guard_accuracy": 0.6333333333333333,
+      "parse_failure_rate": 0.1,
+      "transport_failure_rate": 0.0,
+      "dry_run_valid_rate": null,
+      "latency_p50_s": 4.1875,
+      "latency_p90_s": 8.081999999997787,
+      "latency_max_s": 21.09299999999348,
+      "attempts_finished": 60,
+      "cost_complete": true,
+      "known_cost_usd": 0.0228524,
+      "cost_usd": 0.0228524,
+      "cost_per_call_usd": 0.0003808733333333333,
+      "cost_per_trial_usd": 0.0003808733333333333
+    }
+  ],
+  "trials": [
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.014999999999418,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002476,
+      "cost_usd": 0.0002476,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 168,
+            "total_tokens": 2140,
+            "cost": 0.0002476
+          },
+          "cost_usd": 0.0002476,
+          "latency_s": 4.014999999999418,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 8.735000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004066,
+      "cost_usd": 0.0004066,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 698,
+            "total_tokens": 2670,
+            "cost": 0.0004066
+          },
+          "cost_usd": 0.0004066,
+          "latency_s": 8.735000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.093000000008033,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00038085,
+      "cost_usd": 0.00038085,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 189,
+            "total_tokens": 2161,
+            "cost": 0.00038085
+          },
+          "cost_usd": 0.00038085,
+          "latency_s": 4.093000000008033,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.610000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00038625,
+      "cost_usd": 0.00038625,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 201,
+            "total_tokens": 2173,
+            "cost": 0.00038625
+          },
+          "cost_usd": 0.00038625,
+          "latency_s": 4.610000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.827999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00035565,
+      "cost_usd": 0.00035565,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 133,
+            "total_tokens": 2105,
+            "cost": 0.00035565
+          },
+          "cost_usd": 0.00035565,
+          "latency_s": 2.827999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.875,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00033045,
+      "cost_usd": 0.00033045,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 77,
+            "total_tokens": 2049,
+            "cost": 0.00033045
+          },
+          "cost_usd": 0.00033045,
+          "latency_s": 1.875,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.672000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002359,
+      "cost_usd": 0.0002359,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 129,
+            "total_tokens": 2101,
+            "cost": 0.0002359
+          },
+          "cost_usd": 0.0002359,
+          "latency_s": 2.672000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.8119999999908032,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00033,
+      "cost_usd": 0.00033,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 76,
+            "total_tokens": 2048,
+            "cost": 0.00033
+          },
+          "cost_usd": 0.00033,
+          "latency_s": 1.8119999999908032,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002341,
+      "cost_usd": 0.0002341,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 123,
+            "total_tokens": 2095,
+            "cost": 0.0002341
+          },
+          "cost_usd": 0.0002341,
+          "latency_s": 4.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "release_cable",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": true,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.953000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00035565,
+      "cost_usd": 0.00035565,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 1972,
+            "completion_tokens": 133,
+            "total_tokens": 2105,
+            "cost": 0.00035565
+          },
+          "cost_usd": 0.00035565,
+          "latency_s": 4.953000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00040755,
+      "cost_usd": 0.00040755,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 177,
+            "total_tokens": 2363,
+            "cost": 0.00040755
+          },
+          "cost_usd": 0.00040755,
+          "latency_s": 5.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 8.140999999988708,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00049845,
+      "cost_usd": 0.00049845,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 379,
+            "total_tokens": 2565,
+            "cost": 0.00049845
+          },
+          "cost_usd": 0.00049845,
+          "latency_s": 8.140999999988708,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.422000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002849,
+      "cost_usd": 0.0002849,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 221,
+            "total_tokens": 2407,
+            "cost": 0.0002849
+          },
+          "cost_usd": 0.0002849,
+          "latency_s": 5.422000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.2810000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002435,
+      "cost_usd": 0.0002435,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 83,
+            "total_tokens": 2269,
+            "cost": 0.0002435
+          },
+          "cost_usd": 0.0002435,
+          "latency_s": 1.2810000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.125,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002813,
+      "cost_usd": 0.0002813,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 209,
+            "total_tokens": 2395,
+            "cost": 0.0002813
+          },
+          "cost_usd": 0.0002813,
+          "latency_s": 5.125,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.952999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003873,
+      "cost_usd": 0.0003873,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 132,
+            "total_tokens": 2318,
+            "cost": 0.0003873
+          },
+          "cost_usd": 0.0003873,
+          "latency_s": 2.952999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 7.1560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005574,
+      "cost_usd": 0.0005574,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 510,
+            "total_tokens": 2696,
+            "cost": 0.0005574
+          },
+          "cost_usd": 0.0005574,
+          "latency_s": 7.1560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.8439999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002441,
+      "cost_usd": 0.0002441,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 85,
+            "total_tokens": 2271,
+            "cost": 0.0002441
+          },
+          "cost_usd": 0.0002441,
+          "latency_s": 1.8439999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.937000000005355,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002957,
+      "cost_usd": 0.0002957,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 257,
+            "total_tokens": 2443,
+            "cost": 0.0002957
+          },
+          "cost_usd": 0.0002957,
+          "latency_s": 4.937000000005355,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "stack_2",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1719999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00039045,
+      "cost_usd": 0.00039045,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2186,
+            "completion_tokens": 139,
+            "total_tokens": 2325,
+            "cost": 0.00039045
+          },
+          "cost_usd": 0.00039045,
+          "latency_s": 2.1719999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.047000000005937,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002876,
+      "cost_usd": 0.0002876,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 228,
+            "total_tokens": 2420,
+            "cost": 0.0002876
+          },
+          "cost_usd": 0.0002876,
+          "latency_s": 3.047000000005937,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00042375,
+      "cost_usd": 0.00042375,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 211,
+            "total_tokens": 2403,
+            "cost": 0.00042375
+          },
+          "cost_usd": 0.00042375,
+          "latency_s": 3.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.9219999999913853,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002798,
+      "cost_usd": 0.0002798,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 202,
+            "total_tokens": 2394,
+            "cost": 0.0002798
+          },
+          "cost_usd": 0.0002798,
+          "latency_s": 1.9219999999913853,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.2660000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002996,
+      "cost_usd": 0.0002996,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 268,
+            "total_tokens": 2460,
+            "cost": 0.0002996
+          },
+          "cost_usd": 0.0002996,
+          "latency_s": 3.2660000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.875,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00041925,
+      "cost_usd": 0.00041925,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 201,
+            "total_tokens": 2393,
+            "cost": 0.00041925
+          },
+          "cost_usd": 0.00041925,
+          "latency_s": 2.875,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.4060000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002762,
+      "cost_usd": 0.0002762,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 190,
+            "total_tokens": 2382,
+            "cost": 0.0002762
+          },
+          "cost_usd": 0.0002762,
+          "latency_s": 2.4060000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": true,
+      "accepted_done": true,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002846,
+      "cost_usd": 0.0002846,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 218,
+            "total_tokens": 2410,
+            "cost": 0.0002846
+          },
+          "cost_usd": 0.0002846,
+          "latency_s": 3.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.5789999999979045,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004296,
+      "cost_usd": 0.0004296,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 224,
+            "total_tokens": 2416,
+            "cost": 0.0004296
+          },
+          "cost_usd": 0.0004296,
+          "latency_s": 3.5789999999979045,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 3.6560000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00044985,
+      "cost_usd": 0.00044985,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 269,
+            "total_tokens": 2461,
+            "cost": 0.00044985
+          },
+          "cost_usd": 0.00044985,
+          "latency_s": 3.6560000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "tower_pass",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": null,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": null,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.8910000000032596,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002762,
+      "cost_usd": 0.0002762,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2192,
+            "completion_tokens": 190,
+            "total_tokens": 2382,
+            "cost": 0.0002762
+          },
+          "cost_usd": 0.0002762,
+          "latency_s": 2.8910000000032596,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.140999999988708,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003433,
+      "cost_usd": 0.0003433,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 455,
+            "total_tokens": 2523,
+            "cost": 0.0003433
+          },
+          "cost_usd": 0.0003433,
+          "latency_s": 6.140999999988708,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.5,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003313,
+      "cost_usd": 0.0003313,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 415,
+            "total_tokens": 2483,
+            "cost": 0.0003313
+          },
+          "cost_usd": 0.0003313,
+          "latency_s": 6.5,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.5310000000026776,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002548,
+      "cost_usd": 0.0002548,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 160,
+            "total_tokens": 2228,
+            "cost": 0.0002548
+          },
+          "cost_usd": 0.0002548,
+          "latency_s": 2.5310000000026776,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.23399999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002737,
+      "cost_usd": 0.0002737,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 223,
+            "total_tokens": 2291,
+            "cost": 0.0002737
+          },
+          "cost_usd": 0.0002737,
+          "latency_s": 4.23399999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.985000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002659,
+      "cost_usd": 0.0002659,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 197,
+            "total_tokens": 2265,
+            "cost": 0.0002659
+          },
+          "cost_usd": 0.0002659,
+          "latency_s": 2.985000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00053565,
+      "cost_usd": 0.00053565,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 501,
+            "total_tokens": 2569,
+            "cost": 0.00053565
+          },
+          "cost_usd": 0.00053565,
+          "latency_s": 6.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.7180000000080327,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0002629,
+      "cost_usd": 0.0002629,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 187,
+            "total_tokens": 2255,
+            "cost": 0.0002629
+          },
+          "cost_usd": 0.0002629,
+          "latency_s": 2.7180000000080327,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 8.812999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003169,
+      "cost_usd": 0.0003169,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 367,
+            "total_tokens": 2435,
+            "cost": 0.0003169
+          },
+          "cost_usd": 0.0003169,
+          "latency_s": 8.812999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.0939999999973224,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003876,
+      "cost_usd": 0.0003876,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 172,
+            "total_tokens": 2240,
+            "cost": 0.0003876
+          },
+          "cost_usd": 0.0003876,
+          "latency_s": 4.0939999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "photo",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "55704908135d5290",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 10.53200000000652,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003223,
+      "cost_usd": 0.0003223,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2068,
+            "completion_tokens": 385,
+            "total_tokens": 2453,
+            "cost": 0.0003223
+          },
+          "cost_usd": 0.0003223,
+          "latency_s": 10.53200000000652,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 7.452999999994063,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005973,
+      "cost_usd": 0.0005973,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 340,
+            "total_tokens": 3302,
+            "cost": 0.0005973
+          },
+          "cost_usd": 0.0005973,
+          "latency_s": 7.452999999994063,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 7.782000000006519,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003958,
+      "cost_usd": 0.0003958,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 332,
+            "total_tokens": 3294,
+            "cost": 0.0003958
+          },
+          "cost_usd": 0.0003958,
+          "latency_s": 7.782000000006519,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 8.10899999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0006252,
+      "cost_usd": 0.0006252,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 402,
+            "total_tokens": 3364,
+            "cost": 0.0006252
+          },
+          "cost_usd": 0.0006252,
+          "latency_s": 8.10899999999674,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": false,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5470000000059372,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00046095,
+      "cost_usd": 0.00046095,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 37,
+            "total_tokens": 2999,
+            "cost": 0.00046095
+          },
+          "cost_usd": 0.00046095,
+          "latency_s": 1.5470000000059372,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.186999999990803,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00060315,
+      "cost_usd": 0.00060315,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 353,
+            "total_tokens": 3315,
+            "cost": 0.00060315
+          },
+          "cost_usd": 0.00060315,
+          "latency_s": 5.186999999990803,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.578000000008615,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004027,
+      "cost_usd": 0.0004027,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 355,
+            "total_tokens": 3317,
+            "cost": 0.0004027
+          },
+          "cost_usd": 0.0004027,
+          "latency_s": 5.578000000008615,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.812999999994645,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003901,
+      "cost_usd": 0.0003901,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 313,
+            "total_tokens": 3275,
+            "cost": 0.0003901
+          },
+          "cost_usd": 0.0003901,
+          "latency_s": 4.812999999994645,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003883,
+      "cost_usd": 0.0003883,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 307,
+            "total_tokens": 3269,
+            "cost": 0.0003883
+          },
+          "cost_usd": 0.0003883,
+          "latency_s": 5.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 7.1710000000020955,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004633,
+      "cost_usd": 0.0004633,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 557,
+            "total_tokens": 3519,
+            "cost": 0.0004633
+          },
+          "cost_usd": 0.0004633,
+          "latency_s": 7.1710000000020955,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_empty",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "003505f6338fb180",
+      "expected_stage_done": false,
+      "expected_guard": false,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": true,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.0,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004624,
+      "cost_usd": 0.0004624,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 554,
+            "total_tokens": 3516,
+            "cost": 0.0004624
+          },
+          "cost_usd": 0.0004624,
+          "latency_s": 6.0,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 1,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.1559999999881256,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003331,
+      "cost_usd": 0.0003331,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 123,
+            "total_tokens": 3085,
+            "cost": 0.0003331
+          },
+          "cost_usd": 0.0003331,
+          "latency_s": 2.1559999999881256,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 2,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 2.313000000009197,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00053025,
+      "cost_usd": 0.00053025,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 191,
+            "total_tokens": 3153,
+            "cost": 0.00053025
+          },
+          "cost_usd": 0.00053025,
+          "latency_s": 2.313000000009197,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 3,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.25,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004282,
+      "cost_usd": 0.0004282,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 440,
+            "total_tokens": 3402,
+            "cost": 0.0004282
+          },
+          "cost_usd": 0.0004282,
+          "latency_s": 5.25,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 4,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 6.360000000000582,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.00058875,
+      "cost_usd": 0.00058875,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 321,
+            "total_tokens": 3283,
+            "cost": 0.00058875
+          },
+          "cost_usd": 0.00058875,
+          "latency_s": 6.360000000000582,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 5,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.14100000000326,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003706,
+      "cost_usd": 0.0003706,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 248,
+            "total_tokens": 3210,
+            "cost": 0.0003706
+          },
+          "cost_usd": 0.0003706,
+          "latency_s": 4.14100000000326,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 6,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": null,
+      "accepted_done": false,
+      "guard": null,
+      "stage_correct": false,
+      "accepted_done_correct": false,
+      "guard_correct": false,
+      "parse_failure": true,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 1.5930000000080327,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003241,
+      "cost_usd": 0.0003241,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 93,
+            "total_tokens": 3055,
+            "cost": 0.0003241
+          },
+          "cost_usd": 0.0003241,
+          "latency_s": 1.5930000000080327,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 7,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 8.078999999997905,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0004534,
+      "cost_usd": 0.0004534,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 524,
+            "total_tokens": 3486,
+            "cost": 0.0004534
+          },
+          "cost_usd": 0.0004534,
+          "latency_s": 8.078999999997905,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 8,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 5.375,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0003442,
+      "cost_usd": 0.0003442,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 160,
+            "total_tokens": 3122,
+            "cost": 0.0003442
+          },
+          "cost_usd": 0.0003442,
+          "latency_s": 5.375,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 9,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 4.98399999999674,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005298,
+      "cost_usd": 0.0005298,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 190,
+            "total_tokens": 3152,
+            "cost": 0.0005298
+          },
+          "cost_usd": 0.0005298,
+          "latency_s": 4.9689999999973224,
+          "error_type": null
+        }
+      ]
+    },
+    {
+      "judge": "openrouter:meta-llama/llama-4-scout;hedge=1",
+      "backend": "openrouter",
+      "models": [
+        "meta-llama/llama-4-scout"
+      ],
+      "hedge": 1,
+      "source": "sim_eight_held",
+      "stage": "ball_1",
+      "repeat": 10,
+      "frames_sha1": "6814323d9aeb8194",
+      "expected_stage_done": false,
+      "expected_guard": true,
+      "stage_done": false,
+      "accepted_done": false,
+      "guard": false,
+      "stage_correct": true,
+      "accepted_done_correct": true,
+      "guard_correct": false,
+      "parse_failure": false,
+      "transport_failure": false,
+      "dry_run_valid": null,
+      "latency_s": 21.09299999999348,
+      "attempts_expected": 1,
+      "attempts_finished": 1,
+      "drained": true,
+      "known_cost_usd": 0.0005863,
+      "cost_usd": 0.0005863,
+      "cost_complete": true,
+      "attempts": [
+        {
+          "model": "meta-llama/llama-4-scout",
+          "usage": {
+            "prompt_tokens": 2962,
+            "completion_tokens": 967,
+            "total_tokens": 3929,
+            "cost": 0.0005863
+          },
+          "cost_usd": 0.0005863,
+          "latency_s": 21.09299999999348,
+          "error_type": null
+        }
+      ]
+    }
+  ]
+}

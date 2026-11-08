@@ -1,0 +1,2 @@
+calibrated_base_faults       mean=  38.2 pts=[63, 10, 42, 66, 10] lost=1/5 black=1 dq=0 early=1 | time budget of 295 s exceeded
+TOTAL hybrid_long: matches=5 mean=38.2 lost=1 crash=0 wall=3s

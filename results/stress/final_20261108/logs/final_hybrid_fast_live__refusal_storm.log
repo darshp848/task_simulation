@@ -1,0 +1,2 @@
+refusal_storm                mean=  76.0 pts=[77, 74, 81, 72, 76] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=76.0 lost=0 crash=0 wall=75s

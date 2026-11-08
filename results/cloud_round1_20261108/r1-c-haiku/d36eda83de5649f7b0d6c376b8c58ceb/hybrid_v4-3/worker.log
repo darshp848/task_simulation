@@ -1,0 +1,6 @@
+Will create one dream/openrouter match and logs under /out/d36eda83de5649f7b0d6c376b8c58ceb/hybrid_v4-3
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+{"result": "/out/d36eda83de5649f7b0d6c376b8c58ceb/hybrid_v4-3/match.json", "metrics": {"wall_s": 310.44, "cpu_s": 278.505, "peak_rss_mib": 659.87, "host_cpu_count": 2, "platform": "posix"}, "referee": {"t": 301.1, "points": 15, "dq": null, "loses": false, "unplugged": 2, "seated": 0, "tower_in": 2.36, "stage1_at": 180.20000000013232, "stage2_at": null, "golf_in_bin": 0, "eight_in_bin": 0, "first_touch": {"plugged_0": 139.25, "hub": 187.55, "plugged_1": 201.1, "cube_1": 225.2}}}

@@ -1,0 +1,2 @@
+linalg_mid                   mean=  78.2 pts=[73, 83, 81, 71, 83] lost=0/5 black=0 dq=0 early=5 | completed with failed stages: cable_2, ball_all
+TOTAL hybrid_long: matches=5 mean=78.2 lost=0 crash=0 wall=1s

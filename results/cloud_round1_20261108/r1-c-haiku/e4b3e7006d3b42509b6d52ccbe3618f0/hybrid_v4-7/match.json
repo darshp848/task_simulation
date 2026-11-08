@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 7,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "anthropic/claude-haiku-5.5",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "async",
+    "execution_horizon": 10,
+    "requests": 12,
+    "replies": 0,
+    "errors": 12,
+    "dry_rows": 0,
+    "call_hz": 0.098,
+    "rtt_p50_s": null,
+    "rtt_p90_s": null
+  },
+  "harness": {
+    "ok": false,
+    "stages": [],
+    "seconds": 121.33387935400003,
+    "reason": "timed out waiting for running: station state 'starting' did not reach ['error', 'running'] within 0.375783 s",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 275.15,
+    "points": 0,
+    "dq": null,
+    "loses": false,
+    "unplugged": 0,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": null,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {}
+  },
+  "stages": [],
+  "match_wall_s": 290.004904143,
+  "complete": false,
+  "valid": false,
+  "invalid_because": [
+    "harness stopped on an error",
+    "no judge verdicts"
+  ],
+  "health": {
+    "verdicts": 0,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 275.15,
+  "sim_rate": 0.949,
+  "monitor_calls": 0,
+  "milestones": {
+    "stage1_at": null,
+    "stage2_at": null,
+    "first_touch": {}
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 293.774,
+    "cpu_s": 185.004,
+    "peak_rss_mib": 634.34,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

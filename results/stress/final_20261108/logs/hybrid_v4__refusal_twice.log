@@ -1,0 +1,2 @@
+refusal_twice                mean=  71.0 pts=[56, 74, 80, 71, 74] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=71.0 lost=0 crash=0 wall=3402s

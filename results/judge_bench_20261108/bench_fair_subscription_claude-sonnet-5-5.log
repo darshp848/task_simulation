@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "subscription:claude-sonnet-5-5;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 1.0, "accepted_done_accuracy": 1.0, "guard_accuracy": 1.0, "parse_failure_rate": 0.0, "transport_failure_rate": 0.0, "dry_run_valid_rate": null, "latency_p50_s": 7.140500000001339, "latency_p90_s": 9.337400000006891, "latency_max_s": 13.562000000005355, "attempts_finished": 60, "cost_complete": false, "known_cost_usd": 0, "cost_usd": null, "cost_per_call_usd": null, "cost_per_trial_usd": null}
+reports: runs\bench_fair\subscription_claude-sonnet-5-5\summary.csv and runs\bench_fair\subscription_claude-sonnet-5-5\results.json

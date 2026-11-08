@@ -1,0 +1,44 @@
+Will create one dream/openrouter match and logs under /out/33c87be44ed049e3ae8110c526daafd4/hybrid_v4-0
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 51100)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 51116)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/local/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/local/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/usr/local/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/usr/local/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/app/sim_station.py", line 1120, in do_GET
+    self.wfile.write(jpeg)
+  File "/usr/local/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/local/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/local/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/usr/local/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/usr/local/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/app/sim_station.py", line 1120, in do_GET
+    self.wfile.write(jpeg)
+  File "/usr/local/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+{"result": "/out/33c87be44ed049e3ae8110c526daafd4/hybrid_v4-0/match.json", "metrics": {"wall_s": 308.517, "cpu_s": 290.235, "peak_rss_mib": 657.82, "host_cpu_count": 2, "platform": "posix"}, "referee": {"t": 297.3, "points": 0, "dq": null, "loses": false, "unplugged": 0, "seated": 0, "tower_in": 2.36, "stage1_at": null, "stage2_at": null, "golf_in_bin": 0, "eight_in_bin": 0, "first_touch": {"plugged_0": 291.15, "plugged_1": 292.55}}}

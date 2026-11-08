@@ -1,0 +1,2 @@
+empty_frames                 mean=  57.2 pts=[44, 56, 62, 62, 62] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=57.2 lost=0 crash=0 wall=117s

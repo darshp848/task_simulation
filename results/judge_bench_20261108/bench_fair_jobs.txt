@@ -1,0 +1,11 @@
+anthropic/claude-haiku-5.5|none
+anthropic/claude-haiku-5.5|low
+google/gemini-3.1-flash-lite|none
+google/gemini-3.1-flash-lite|low
+google/gemma-4-26b-a4b-it|none
+google/gemma-4-26b-a4b-it|low
+mistralai/mistral-small-2603|none
+mistralai/mistral-small-2603|low
+meta-llama/llama-4-scout|none
+meta-llama/llama-4-scout|low
+openai/gpt-5-nano|low

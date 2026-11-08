@@ -1,0 +1,2 @@
+calibrated_base              mean=  55.0 pts=[48, 58, 52, 66, 51] lost=1/5 black=1 dq=0 early=2 | completed with failed stages: cable_2, arms_clear, tower_higher, ball_
+TOTAL hybrid_long: matches=5 mean=55.0 lost=1 crash=0 wall=7s

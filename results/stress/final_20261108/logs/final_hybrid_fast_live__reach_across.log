@@ -1,0 +1,2 @@
+reach_across                 mean=  20.4 pts=[0, 0, 0, 0, 102] lost=4/5 black=0 dq=4 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=20.4 lost=4 crash=0 wall=67s

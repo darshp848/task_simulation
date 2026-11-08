@@ -1,0 +1,2 @@
+calibrated_ft                mean=  54.6 pts=[39, 53, 66, 62, 53] lost=1/5 black=1 dq=0 early=1 | time budget of 295 s exceeded
+TOTAL hybrid_v4_fast: matches=5 mean=54.6 lost=1 crash=0 wall=80s

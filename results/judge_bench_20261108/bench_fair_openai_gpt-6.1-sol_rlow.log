@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "openrouter:openai/gpt-6.1-sol;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 1.0, "accepted_done_accuracy": 1.0, "guard_accuracy": 1.0, "parse_failure_rate": 0.0, "transport_failure_rate": 0.0, "dry_run_valid_rate": null, "latency_p50_s": 3.742000000005646, "latency_p90_s": 5.970599999997648, "latency_max_s": 7.827999999994063, "attempts_finished": 60, "cost_complete": true, "known_cost_usd": 0.105888, "cost_usd": 0.105888, "cost_per_call_usd": 0.0017648, "cost_per_trial_usd": 0.0017648}
+reports: runs\bench_fair\openai_gpt-6.1-sol_rlow\summary.csv and runs\bench_fair\openai_gpt-6.1-sol_rlow\results.json

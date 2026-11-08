@@ -1,0 +1,4 @@
+Will create one dream/oracle match and logs under /out/c97b64ee55ba40ad9b60ed1cec5a1db0/hybrid_v4-2
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+{"result": "/out/c97b64ee55ba40ad9b60ed1cec5a1db0/hybrid_v4-2/match.json", "metrics": {"wall_s": 308.148, "cpu_s": 93.955, "peak_rss_mib": 641.64, "host_cpu_count": 2, "platform": "posix"}, "referee": {"t": 166.1, "points": 0, "dq": null, "loses": false, "unplugged": 0, "seated": 0, "tower_in": 2.36, "stage1_at": null, "stage2_at": null, "golf_in_bin": 0, "eight_in_bin": 0, "first_touch": {}}}

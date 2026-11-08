@@ -1,0 +1,45 @@
+{
+  "task": "Hill Climb relay. Stage 1: unplug a USB cable from the power strip and put it down away from the strip (then one more the same way). Never plug a cable in. Stage 2: stack the blocks into a free-standing tower more than 4 inches (10 cm) tall. Do not touch the blocks before a cable is unplugged. Stage 3: put coloured golf balls into the white bin, never the white ball or a black ball, without touching the tower. Do not touch the balls before the tower passes.",
+  "dry_run": false,
+  "ok": false,
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 67.31814377999996,
+      "reason": "oracle: unplug_cable met"
+    },
+    {
+      "name": "cable_put_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 22.405425641999955,
+      "reason": "timeout after 20 s"
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 33.09480441599999,
+      "reason": "timeout after 30 s"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 0.0,
+      "reason": "cable_unplug_more did not pass"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 13.400435258000016,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "seconds": 276.61173754,
+  "reason": "station error: DreamAPI refused the inference request: DA-1000 UNAUTHORIZED (disabled): 'nuck5-dp'; called https://api.dreamlabs.ai:443 (the built-in production default for DREAM_GATEWAY_URL: no such line in the environment or in /root/.dreamlabs/credentials; a key from another environment needs that environment's credentials file); keys work only on the site that made them (dev, staging and production are separate), so this key may be from another site, mistyped or revoked",
+  "guard_tripped": false
+}

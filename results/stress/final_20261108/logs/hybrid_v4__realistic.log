@@ -1,0 +1,2 @@
+realistic                    mean=  60.0 pts=[58, 71, 47, 71, 53] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=60.0 lost=0 crash=0 wall=119s

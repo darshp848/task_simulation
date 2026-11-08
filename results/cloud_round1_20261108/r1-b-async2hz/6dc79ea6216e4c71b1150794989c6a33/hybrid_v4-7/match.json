@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 7,
+  "policy": "dream",
+  "judge": "oracle",
+  "judge_models": "google/gemini-3.1-flash-lite",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 456,
+    "replies": 450,
+    "errors": 6,
+    "dry_rows": 3,
+    "call_hz": null,
+    "rtt_p50_s": 0.59,
+    "rtt_p90_s": 1.0
+  },
+  "harness": {
+    "ok": false,
+    "stages": [
+      {
+        "name": "cable_unplug",
+        "ok": true,
+        "attempts": 2,
+        "seconds": 114.129724506,
+        "reason": "oracle: unplug_cable met"
+      },
+      {
+        "name": "cable_put_down",
+        "ok": true,
+        "attempts": 1,
+        "seconds": 23.005059265,
+        "reason": "oracle: put_cable_down met"
+      },
+      {
+        "name": "cable_unplug_more",
+        "ok": true,
+        "attempts": 1,
+        "seconds": 36.76862615599998,
+        "reason": "oracle: unplug_more met"
+      },
+      {
+        "name": "cable_put_more_down",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 16.79716762199996,
+        "reason": "timeout after 15 s"
+      },
+      {
+        "name": "arms_clear",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 13.801432098999953,
+        "reason": "timeout after 10 s"
+      }
+    ],
+    "seconds": 271.12104391400004,
+    "reason": "station error: DreamAPI refused the inference request: DA-1000 UNAUTHORIZED (disabled): 'nuck5-dp'; called https://api.dreamlabs.ai:443 (the built-in production default for DREAM_GATEWAY_URL: no such line in the environment or in /root/.dreamlabs/credentials; a key from another environment needs that environment's credentials file); keys work only on the site that made them (dev, staging and production are separate), so this key may be from another site, mistyped or revoked",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 292.65,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 95.8999999999579,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "loose_1": 19.75,
+      "world": 21.5,
+      "plugged_0": 26.7,
+      "plugged_1": 143.2,
+      "hub": 160.8,
+      "left_link2": 189.7,
+      "right_link2": 226.6
+    }
+  },
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 2,
+      "seconds": 114.129724506,
+      "reason": "oracle: unplug_cable met"
+    },
+    {
+      "name": "cable_put_down",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 23.005059265,
+      "reason": "oracle: put_cable_down met"
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 36.76862615599998,
+      "reason": "oracle: unplug_more met"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 16.79716762199996,
+      "reason": "timeout after 15 s"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 13.801432098999953,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "match_wall_s": 300.00014168900003,
+  "complete": true,
+  "valid": false,
+  "invalid_because": [
+    "harness stopped on an error"
+  ],
+  "health": {
+    "verdicts": 59,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 292.65,
+  "sim_rate": 0.975,
+  "monitor_calls": 33,
+  "milestones": {
+    "stage1_at": 95.8999999999579,
+    "stage2_at": null,
+    "first_touch": {
+      "loose_1": 19.75,
+      "world": 21.5,
+      "plugged_0": 26.7,
+      "plugged_1": 143.2,
+      "hub": 160.8,
+      "left_link2": 189.7,
+      "right_link2": 226.6
+    }
+  },
+  "effective_plan_sha256": "1dec6d4ad54f2282e2ce110f4aeabab0cfa7099bb9c18c00076a8106752328b9",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 304.124,
+    "cpu_s": 254.453,
+    "peak_rss_mib": 653.16,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

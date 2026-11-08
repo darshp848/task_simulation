@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:openai/gpt-5-nano;hedge=1,60,30,0.7666666666666667,0.8,0.6666666666666666,0.0,0.0,,8.0625,10.79559999999765,16.98399999999674,60,True,0.02042064,0.02042064,0.000340344,0.000340344

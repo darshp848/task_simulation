@@ -1,0 +1,2 @@
+realistic_faults             mean=  48.2 pts=[42, 53, 66, 70, 10] lost=0/5 black=0 dq=0 early=1 | guard tripped (live frames): sim live detector
+TOTAL final_v4_fast_live: matches=5 mean=48.2 lost=0 crash=0 wall=74s

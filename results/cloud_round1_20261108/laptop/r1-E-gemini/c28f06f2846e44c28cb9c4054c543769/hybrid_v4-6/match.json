@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 6,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "google/gemini-3.1-flash-lite",
+  "judge_mode": "race",
+  "judge_reasoning": "none",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 496,
+    "replies": 491,
+    "errors": 2,
+    "dry_rows": 204,
+    "call_hz": 5.519,
+    "rtt_p50_s": 0.61,
+    "rtt_p90_s": 1.406
+  },
+  "harness": {
+    "ok": false,
+    "stages": [],
+    "seconds": 297.7340000000113,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 295.85,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 184.65000000015357,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1_c": 24.95,
+      "plugged_1_seg6": 89.2,
+      "plugged_0": 290.4,
+      "plugged_0_seg0": 291.6
+    }
+  },
+  "stages": [],
+  "match_wall_s": 300.0,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 63,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 295.85,
+  "sim_rate": 0.986,
+  "monitor_calls": 62,
+  "milestones": {
+    "stage1_at": 184.65000000015357,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_1_c": 24.95,
+      "plugged_1_seg6": 89.2,
+      "plugged_0": 290.4,
+      "plugged_0_seg0": 291.6
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "local",
+  "metrics": {
+    "wall_s": 301.0,
+    "cpu_s": 187.797,
+    "peak_rss_mib": 710.14,
+    "host_cpu_count": 20,
+    "platform": "nt"
+  }
+}

@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "openrouter:openai/gpt-6-luna;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 0.6166666666666667, "accepted_done_accuracy": 0.6166666666666667, "guard_accuracy": 0.06666666666666667, "parse_failure_rate": 0.0, "transport_failure_rate": 0.36666666666666664, "dry_run_valid_rate": null, "latency_p50_s": 2.07050000000163, "latency_p90_s": 2.84709999999759, "latency_max_s": 5.514999999999418, "attempts_finished": 60, "cost_complete": true, "known_cost_usd": 0.003635735, "cost_usd": 0.003635735, "cost_per_call_usd": 6.0595583333333336e-05, "cost_per_trial_usd": 6.0595583333333336e-05}
+reports: runs\bench_fair\openai_gpt-6-luna_rnone\summary.csv and runs\bench_fair\openai_gpt-6-luna_rnone\results.json

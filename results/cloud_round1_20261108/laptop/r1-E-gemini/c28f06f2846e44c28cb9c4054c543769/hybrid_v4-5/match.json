@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 5,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "google/gemini-3.1-flash-lite",
+  "judge_mode": "race",
+  "judge_reasoning": "none",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 476,
+    "replies": 474,
+    "errors": 0,
+    "dry_rows": 141,
+    "call_hz": 1.62,
+    "rtt_p50_s": 1.078,
+    "rtt_p90_s": 1.516
+  },
+  "harness": {
+    "ok": false,
+    "stages": [],
+    "seconds": 296.4530000000086,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 298.95,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 34.799999999996565,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 12.5,
+      "plugged_0": 13.05,
+      "cube_1": 50.75,
+      "hub": 66.8,
+      "left_link2": 238.6,
+      "world": 291.15
+    }
+  },
+  "stages": [],
+  "match_wall_s": 300.0,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 63,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 298.95,
+  "sim_rate": 0.996,
+  "monitor_calls": 71,
+  "milestones": {
+    "stage1_at": 34.799999999996565,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_1": 12.5,
+      "plugged_0": 13.05,
+      "cube_1": 50.75,
+      "hub": 66.8,
+      "left_link2": 238.6,
+      "world": 291.15
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "local",
+  "metrics": {
+    "wall_s": 301.922,
+    "cpu_s": 133.078,
+    "peak_rss_mib": 692.22,
+    "host_cpu_count": 20,
+    "platform": "nt"
+  }
+}

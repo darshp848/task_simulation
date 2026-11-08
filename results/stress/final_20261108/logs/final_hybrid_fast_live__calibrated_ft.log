@@ -1,0 +1,2 @@
+calibrated_ft                mean=  57.4 pts=[39, 47, 63, 85, 53] lost=0/5 black=0 dq=0 early=1 | guard tripped (live frames): sim live detector
+TOTAL final_hybrid_fast_live: matches=5 mean=57.4 lost=0 crash=0 wall=70s

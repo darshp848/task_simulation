@@ -1,0 +1,10 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:anthropic/claude-haiku-5.5;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:google/gemini-3.1-flash-lite;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:qwen/qwen3.8-flash;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:z-ai/glm-5.3-flash;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:meta-llama/llama-4-scout;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:openai/gpt-5-nano;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:mistralai/mistral-small-2603;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+openrouter:google/gemma-4-26b-a4b-it;hedge=1,6,3,,,,,,1.0,,,,6,False,0,,,
+"openrouter:anthropic/claude-haiku-5.5,google/gemini-3.1-flash-lite;hedge=1",6,3,,,,,,1.0,,,,12,False,0,,,

@@ -1,0 +1,2 @@
+starve_mid                   mean=  76.0 pts=[71, 81, 81, 71, 76] lost=0/5 black=0 dq=0 early=5 | completed with failed stages: cable_2, ball_all
+TOTAL hybrid_long: matches=5 mean=76.0 lost=0 crash=0 wall=2s

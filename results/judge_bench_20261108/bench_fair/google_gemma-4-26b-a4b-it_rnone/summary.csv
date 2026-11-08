@@ -1,0 +1,2 @@
+judge,trials,guard_trials,stage_done_accuracy,accepted_done_accuracy,guard_accuracy,parse_failure_rate,transport_failure_rate,dry_run_valid_rate,latency_p50_s,latency_p90_s,latency_max_s,attempts_finished,cost_complete,known_cost_usd,cost_usd,cost_per_call_usd,cost_per_trial_usd
+openrouter:google/gemma-4-26b-a4b-it;hedge=1,60,30,0.9666666666666667,0.9666666666666667,0.9,0.0,0.0,,2.3594999999986612,3.9329000000056116,5.827999999994063,60,True,0.0072354655,0.0072354655,0.00012059109166666666,0.00012059109166666666

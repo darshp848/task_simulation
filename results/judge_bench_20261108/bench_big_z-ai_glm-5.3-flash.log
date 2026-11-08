@@ -1,0 +1,4 @@
+judge benchmark: LIVE, billable; 3 configs
+{"judge": "openrouter:z-ai/glm-5.3-flash;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 0.75, "accepted_done_accuracy": 0.75, "guard_accuracy": 0.6, "parse_failure_rate": 0.016666666666666666, "transport_failure_rate": 0.23333333333333334, "dry_run_valid_rate": null, "latency_p50_s": 12.125, "latency_p90_s": 23.402499999999424, "latency_max_s": 104.57799999999406, "attempts_finished": 60, "cost_complete": false, "known_cost_usd": 0.0654509333, "cost_usd": null, "cost_per_call_usd": null, "cost_per_trial_usd": null}
+reports: runs\bench_big\z-ai_glm-5.3-flash\summary.csv and runs\bench_big\z-ai_glm-5.3-flash\results.json
+stopped: incomplete_cost_accounting

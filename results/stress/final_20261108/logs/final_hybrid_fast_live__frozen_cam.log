@@ -1,0 +1,2 @@
+frozen_cam                   mean=  78.4 pts=[69, 71, 95, 85, 72] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=78.4 lost=0 crash=0 wall=82s

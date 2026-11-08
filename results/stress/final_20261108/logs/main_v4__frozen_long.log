@@ -1,0 +1,2 @@
+frozen_long                  mean=  63.2 pts=[48, 25, 80, 83, 80] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL main_v4: matches=5 mean=63.2 lost=0 crash=0 wall=87s

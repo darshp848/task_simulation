@@ -1,0 +1,2 @@
+calibrated_base              mean=  32.6 pts=[57, 15, 15, 66, 10] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_v4: matches=5 mean=32.6 lost=0 crash=0 wall=74s

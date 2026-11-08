@@ -1,0 +1,2 @@
+knocky_tower                 mean=  56.0 pts=[53, 56, 44, 62, 65] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4_live: matches=5 mean=56.0 lost=0 crash=0 wall=139s

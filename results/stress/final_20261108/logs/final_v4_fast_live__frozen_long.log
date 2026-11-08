@@ -1,0 +1,2 @@
+frozen_long                  mean=  77.4 pts=[60, 53, 90, 90, 94] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_v4_fast_live: matches=5 mean=77.4 lost=0 crash=0 wall=92s

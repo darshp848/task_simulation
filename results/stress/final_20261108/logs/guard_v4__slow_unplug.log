@@ -1,0 +1,2 @@
+slow_unplug                  mean=  39.2 pts=[57, 10, 60, 69, 0] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=39.2 lost=0 crash=0 wall=97s

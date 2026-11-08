@@ -1,0 +1,12 @@
+done google_gemini-3.1-flash-lite_rnone exit=1
+done mistralai_mistral-small-2603_rnone exit=1
+done google_gemini-3.1-flash-lite_rlow exit=1
+done google_gemma-4-26b-a4b-it_rnone exit=1
+done anthropic_claude-haiku-5.5_rnone exit=1
+done meta-llama_llama-4-scout_rlow exit=1
+done anthropic_claude-haiku-5.5_rlow exit=1
+done meta-llama_llama-4-scout_rnone exit=1
+done openai_gpt-5-nano_rlow exit=1
+done mistralai_mistral-small-2603_rlow exit=1
+done google_gemma-4-26b-a4b-it_rlow exit=0
+ALL FAIR DONE

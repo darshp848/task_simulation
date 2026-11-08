@@ -1,0 +1,2 @@
+api_flaky                    mean=  83.0 pts=[87, 97, 82, 71, 78] lost=0/5 black=0 dq=0 early=4 | completed with failed stages: cable_2, arms_clear, ball_all
+TOTAL hybrid_long: matches=5 mean=83.0 lost=0 crash=0 wall=2s

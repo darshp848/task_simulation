@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "openrouter:google/gemma-4-26b-a4b-it;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 1.0, "accepted_done_accuracy": 1.0, "guard_accuracy": 1.0, "parse_failure_rate": 0.0, "transport_failure_rate": 0.0, "dry_run_valid_rate": null, "latency_p50_s": 11.953000000001339, "latency_p90_s": 30.78280000000087, "latency_max_s": 54.59399999999732, "attempts_finished": 60, "cost_complete": true, "known_cost_usd": 0.026605523, "cost_usd": 0.026605523, "cost_per_call_usd": 0.00044342538333333334, "cost_per_trial_usd": 0.00044342538333333334}
+reports: runs\bench_fair\google_gemma-4-26b-a4b-it_rlow\summary.csv and runs\bench_fair\google_gemma-4-26b-a4b-it_rlow\results.json

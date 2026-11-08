@@ -1,0 +1,2 @@
+black_ball                   mean=  78.0 pts=[42, 99, 83, 83, 83] lost=0/5 black=0 dq=0 early=5 | guard tripped (live frames): sim live detector
+TOTAL final_v4_fast_live: matches=5 mean=78.0 lost=0 crash=0 wall=73s

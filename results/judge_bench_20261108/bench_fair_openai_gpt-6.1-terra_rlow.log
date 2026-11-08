@@ -1,0 +1,3 @@
+judge benchmark: LIVE, billable; 1 configs
+{"judge": "openrouter:openai/gpt-6.1-terra;hedge=1", "trials": 60, "guard_trials": 30, "stage_done_accuracy": 1.0, "accepted_done_accuracy": 1.0, "guard_accuracy": 1.0, "parse_failure_rate": 0.0, "transport_failure_rate": 0.0, "dry_run_valid_rate": null, "latency_p50_s": 3.7185000000026776, "latency_p90_s": 4.845499999997264, "latency_max_s": 5.812000000005355, "attempts_finished": 60, "cost_complete": true, "known_cost_usd": 0.0660036, "cost_usd": 0.0660036, "cost_per_call_usd": 0.00110006, "cost_per_trial_usd": 0.00110006}
+reports: runs\bench_fair\openai_gpt-6.1-terra_rlow\summary.csv and runs\bench_fair\openai_gpt-6.1-terra_rlow\results.json

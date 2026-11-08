@@ -1,0 +1,31 @@
+.........................................................F.............. [ 22%]
+........................................................................ [ 44%]
+........................................................................ [ 67%]
+........................................................................ [ 89%]
+..................................                                       [100%]
+================================== FAILURES ===================================
+_______________ test_hedged_monitor_takes_the_first_good_reply ________________
+
+write_plan = <function write_plan.<locals>._write at 0x00000195896A5760>
+
+    def test_hedged_monitor_takes_the_first_good_reply(write_plan):
+        path = write_plan([stage("a")])
+        path.write_text(path.read_text(encoding="utf-8") + "\nclaude: {hedge: 3}\n", encoding="utf-8")
+        plan = load_plan(path)
+        delays = iter([0.4, 0.05, 0.3])
+        reply = "<json>" + json.dumps({"stage_done": True, "progress": 0.9, "status": "ok", "reason": "fast one"}) + "</json>"
+    
+        def transport(payload):
+            time.sleep(next(delays))
+            return {"content": [{"type": "text", "text": reply}]}
+        mv = MonitorVerifier(plan, transport=transport)
+        t = time.monotonic()
+        v = mv._call({"_frames_sig": "x"}, 0)
+>       assert v.done is True and time.monotonic() - t < 0.3 and mv.hedge_wins == [1]
+E       AssertionError: assert (None is True)
+E        +  where None = MonitorVerdict(done=None, confidence=0.0, reason='low confidence: fast one', immediate=False, progress=0.9, status='ok..., scene_ok=None, holding=None, guard=None, watch_ok=None, frames_sig='x', tower=None, next_prompt=None, latency_s=None).done
+
+tests\test_fast_additions.py:61: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_fast_additions.py::test_hedged_monitor_takes_the_first_good_reply
+1 failed, 321 passed, 1 skipped, 2 deselected in 376.83s (0:06:16)

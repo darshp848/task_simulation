@@ -1,0 +1,2 @@
+arm_loss                     mean=  16.4 pts=[10, 10, 10, 42, 10] lost=0/5 black=0 dq=0 early=5 | station error: arm 'right' driver stopped answering
+TOTAL hybrid_long: matches=5 mean=16.4 lost=0 crash=0 wall=1s

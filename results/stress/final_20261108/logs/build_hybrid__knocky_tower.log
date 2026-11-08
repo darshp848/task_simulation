@@ -1,0 +1,2 @@
+knocky_tower                 mean=  63.2 pts=[53, 80, 44, 65, 74] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_hybrid: matches=5 mean=63.2 lost=0 crash=0 wall=113s

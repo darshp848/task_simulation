@@ -1,0 +1,2 @@
+realistic_faults             mean=  46.4 pts=[48, 47, 51, 71, 15] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_v4: matches=5 mean=46.4 lost=0 crash=0 wall=99s

@@ -1,0 +1,2 @@
+knocky_tower                 mean=  83.4 pts=[117, 79, 58, 82, 81] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_hybrid_fast_live: matches=5 mean=83.4 lost=0 crash=0 wall=69s

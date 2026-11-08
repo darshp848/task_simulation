@@ -1,0 +1,2 @@
+happy                        mean=  99.6 pts=[112, 94, 100, 100, 92] lost=0/5 black=0 dq=0 early=0 | completed with failed stages: cable_unplug_more, cable_put_more_down, 
+TOTAL hybrid_v4_fast: matches=5 mean=99.6 lost=0 crash=0 wall=74s

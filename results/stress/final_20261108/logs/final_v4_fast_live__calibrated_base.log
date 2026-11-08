@@ -1,0 +1,2 @@
+calibrated_base              mean=  41.6 pts=[33, 47, 15, 65, 48] lost=0/5 black=0 dq=0 early=1 | time budget of 295 s exceeded
+TOTAL final_v4_fast_live: matches=5 mean=41.6 lost=0 crash=0 wall=83s

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 5,
+  "policy": "dream",
+  "judge": "openrouter",
+  "judge_models": "anthropic/claude-haiku-5.5",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": true,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 2,
+  "execution_horizon": 10,
+  "dream": {
+    "mode": "pipelined",
+    "execution_horizon": 10,
+    "requests": 262,
+    "replies": 247,
+    "errors": 14,
+    "dry_rows": 432,
+    "call_hz": null,
+    "rtt_p50_s": 0.8,
+    "rtt_p90_s": 1.362
+  },
+  "harness": {
+    "ok": false,
+    "stages": [
+      {
+        "name": "cable_unplug",
+        "ok": true,
+        "attempts": 2,
+        "seconds": 162.34799753599998,
+        "reason": "wrist_r shows the strip's ports empty and an orange-cord plug lying loose beside the strip, so at least one plug is fully out. The right gripper sensor reads nearly shut with no squeeze torque, so it holds nothing. Per the rules a loose plug is done and must not be regrabbed. The strip was not pushed or dragged."
+      },
+      {
+        "name": "cable_put_down",
+        "ok": true,
+        "attempts": 1,
+        "seconds": 13.343968713000095,
+        "reason": "Right gripper sensor reads 0.00 with no squeeze torque, so it is empty and open. The unplugged orange cable lies on the table to the right, away from the power strip, and clear of the tower and balls."
+      },
+      {
+        "name": "cable_unplug_more",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 32.03725383999995,
+        "reason": "timeout after 30 s"
+      },
+      {
+        "name": "cable_put_more_down",
+        "ok": false,
+        "attempts": 0,
+        "seconds": 0.0,
+        "reason": "cable_unplug_more did not pass"
+      },
+      {
+        "name": "arms_clear",
+        "ok": true,
+        "attempts": 1,
+        "seconds": 10.286234534999949,
+        "reason": "Both grippers are commanded open and neither is squeezing anything. The right arm is raised at the right edge, clear of the power strip, cables and blocks. Both cables were unplugged earlier and are not in either gripper."
+      }
+    ],
+    "seconds": 259.063181769,
+    "reason": "station error: DreamAPI refused the inference request: DA-1000 UNAUTHORIZED (disabled): 'nuck5-dp'; called https://api.dreamlabs.ai:443 (the built-in production default for DREAM_GATEWAY_URL: no such line in the environment or in /root/.dreamlabs/credentials; a key from another environment needs that environment's credentials file); keys work only on the site that made them (dev, staging and production are separate), so this key may be from another site, mistyped or revoked",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 290.85,
+    "points": 15,
+    "dq": null,
+    "loses": false,
+    "unplugged": 2,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 98.84999999995102,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_0": 90.6,
+      "plugged_1": 92.1,
+      "world": 163.2,
+      "bin": 212.8
+    }
+  },
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 2,
+      "seconds": 162.34799753599998,
+      "reason": "wrist_r shows the strip's ports empty and an orange-cord plug lying loose beside the strip, so at least one plug is fully out. The right gripper sensor reads nearly shut with no squeeze torque, so it holds nothing. Per the rules a loose plug is done and must not be regrabbed. The strip was not pushed or dragged."
+    },
+    {
+      "name": "cable_put_down",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 13.343968713000095,
+      "reason": "Right gripper sensor reads 0.00 with no squeeze torque, so it is empty and open. The unplugged orange cable lies on the table to the right, away from the power strip, and clear of the tower and balls."
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 32.03725383999995,
+      "reason": "timeout after 30 s"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 0.0,
+      "reason": "cable_unplug_more did not pass"
+    },
+    {
+      "name": "arms_clear",
+      "ok": true,
+      "attempts": 1,
+      "seconds": 10.286234534999949,
+      "reason": "Both grippers are commanded open and neither is squeezing anything. The right arm is raised at the right edge, clear of the power strip, cables and blocks. Both cables were unplugged earlier and are not in either gripper."
+    }
+  ],
+  "match_wall_s": 300.000107009,
+  "complete": true,
+  "valid": false,
+  "invalid_because": [
+    "harness stopped on an error"
+  ],
+  "health": {
+    "verdicts": 40,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 290.85,
+  "sim_rate": 0.969,
+  "monitor_calls": 30,
+  "milestones": {
+    "stage1_at": 98.84999999995102,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_0": 90.6,
+      "plugged_1": 92.1,
+      "world": 163.2,
+      "bin": 212.8
+    }
+  },
+  "effective_plan_sha256": "7a866589e7fe95f0edab83ead173f14e3d514d2a84bc0f4ee40179d980c4150f",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 303.744,
+    "cpu_s": 249.489,
+    "peak_rss_mib": 658.38,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

@@ -1,0 +1,2 @@
+realistic                    mean=  48.6 pts=[57, 53, 38, 80, 15] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL guard_v4: matches=5 mean=48.6 lost=0 crash=0 wall=157s

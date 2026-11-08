@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "scenario": "hill_climb",
+  "label": "hybrid_v4",
+  "seed": 3,
+  "policy": "dream",
+  "judge": "oracle",
+  "judge_models": "google/gemini-3.1-flash-lite",
+  "judge_mode": "race",
+  "judge_reasoning": "low",
+  "operator_notes": false,
+  "prompt_technique": true,
+  "prompt_level": 1,
+  "dream_hedge": 1,
+  "dream_pipeline": 1,
+  "execution_horizon": 0,
+  "dream": {
+    "mode": "sync",
+    "execution_horizon": null,
+    "requests": 0,
+    "replies": 0,
+    "errors": 0,
+    "dry_rows": 0,
+    "call_hz": null,
+    "rtt_p50_s": null,
+    "rtt_p90_s": null
+  },
+  "harness": {
+    "ok": false,
+    "stages": [
+      {
+        "name": "cable_unplug",
+        "ok": true,
+        "attempts": 2,
+        "seconds": 107.631755823,
+        "reason": "oracle: unplug_cable met"
+      },
+      {
+        "name": "cable_put_down",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 22.761469311000013,
+        "reason": "timeout after 20 s"
+      },
+      {
+        "name": "cable_unplug_more",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 32.518543574999995,
+        "reason": "timeout after 30 s"
+      },
+      {
+        "name": "cable_put_more_down",
+        "ok": false,
+        "attempts": 0,
+        "seconds": 0.0,
+        "reason": "cable_unplug_more did not pass"
+      },
+      {
+        "name": "arms_clear",
+        "ok": false,
+        "attempts": 1,
+        "seconds": 12.994591817000014,
+        "reason": "timeout after 10 s"
+      }
+    ],
+    "seconds": 297.311770781,
+    "reason": "time budget of 295 s exceeded",
+    "guard_tripped": false
+  },
+  "referee": {
+    "t": 192.15,
+    "points": 10,
+    "dq": null,
+    "loses": false,
+    "unplugged": 1,
+    "seated": 0,
+    "tower_in": 2.36,
+    "stage1_at": 35.34999999999724,
+    "stage2_at": null,
+    "golf_in_bin": 0,
+    "eight_in_bin": 0,
+    "first_touch": {
+      "plugged_1": 26.6,
+      "plugged_0": 102.95,
+      "cube_4": 159.8
+    }
+  },
+  "stages": [
+    {
+      "name": "cable_unplug",
+      "ok": true,
+      "attempts": 2,
+      "seconds": 107.631755823,
+      "reason": "oracle: unplug_cable met"
+    },
+    {
+      "name": "cable_put_down",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 22.761469311000013,
+      "reason": "timeout after 20 s"
+    },
+    {
+      "name": "cable_unplug_more",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 32.518543574999995,
+      "reason": "timeout after 30 s"
+    },
+    {
+      "name": "cable_put_more_down",
+      "ok": false,
+      "attempts": 0,
+      "seconds": 0.0,
+      "reason": "cable_unplug_more did not pass"
+    },
+    {
+      "name": "arms_clear",
+      "ok": false,
+      "attempts": 1,
+      "seconds": 12.994591817000014,
+      "reason": "timeout after 10 s"
+    }
+  ],
+  "match_wall_s": 300.00009610300003,
+  "complete": true,
+  "valid": true,
+  "invalid_because": [],
+  "health": {
+    "verdicts": 72,
+    "monitor_errors": 0,
+    "guard_blind": 0,
+    "attempts_aborted": 0,
+    "last_error": null
+  },
+  "sim_t": 192.15,
+  "sim_rate": 0.64,
+  "monitor_calls": 40,
+  "milestones": {
+    "stage1_at": 35.34999999999724,
+    "stage2_at": null,
+    "first_touch": {
+      "plugged_1": 26.6,
+      "plugged_0": 102.95,
+      "cube_4": 159.8
+    }
+  },
+  "effective_plan_sha256": "5e8d7637087edc93d993ed59d3a0071161b28947a3ce9e6c2e02710009d26087",
+  "versions": {
+    "mujoco": "4.0.0",
+    "dreamlabs": "1.0.37"
+  },
+  "source_revision": "097d34b107a3fb205ecdcbc7bab9e5dab1d321c6ea1762af80568179b293aae5",
+  "metrics": {
+    "wall_s": 309.057,
+    "cpu_s": 189.849,
+    "peak_rss_mib": 651.42,
+    "host_cpu_count": 2,
+    "platform": "posix"
+  }
+}

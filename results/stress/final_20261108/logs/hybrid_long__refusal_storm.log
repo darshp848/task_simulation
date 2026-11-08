@@ -1,0 +1,2 @@
+refusal_storm                mean=  77.8 pts=[71, 83, 82, 77, 76] lost=0/5 black=0 dq=0 early=2 | completed with failed stages: cable_2, ball_all
+TOTAL hybrid_long: matches=5 mean=77.8 lost=0 crash=0 wall=3s

@@ -1,0 +1,2 @@
+no_release                   mean=  86.0 pts=[64, 89, 91, 96, 90] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL final_v4_fast_live: matches=5 mean=86.0 lost=0 crash=0 wall=78s

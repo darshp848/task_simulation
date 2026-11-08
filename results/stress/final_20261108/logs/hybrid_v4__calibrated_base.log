@@ -1,0 +1,2 @@
+calibrated_base              mean=  49.4 pts=[57, 47, 15, 71, 57] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=49.4 lost=0 crash=0 wall=90s

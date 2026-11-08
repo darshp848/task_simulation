@@ -1,0 +1,1 @@
+{"wall_s": 287.5, "sim_t": 272.65, "stage": "cable_unplug", "attempt": null, "points": 0, "unplugged": 0, "tower_in": 2.36, "balls": 0, "eight_in_bin": 0, "dream": {"mode": "async", "execution_horizon": 10, "requests": 12, "replies": 0, "errors": 12, "dry_rows": 0, "call_hz": 0.098, "rtt_p50_s": null, "rtt_p90_s": null}, "last_verdict": null}

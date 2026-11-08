@@ -1,0 +1,7 @@
+Will create one dream/oracle match and logs under /out/b12fcec402094760bdecdc1ea02c3109/hybrid_v4-6
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+/usr/local/lib/python3.12/concurrent/futures/thread.py:59: UserWarning: no one has checked what the model sees for these cameras and this robot: run python -m dream.check before the arms move for real. Checked another way? The person who looked (never an agent) records it: python -m dream.input_check 4932209e541e
+  result = self.fn(*self.args, **self.kwargs)
+sim_station: run 1 failed: ValueError: left step 45 gripper: requested -0.050399; expected normalized opening 0..1. No rows executed.
+{"result": "/out/b12fcec402094760bdecdc1ea02c3109/hybrid_v4-6/match.json", "metrics": {"wall_s": 303.965, "cpu_s": 169.732, "peak_rss_mib": 647.18, "host_cpu_count": 2, "platform": "posix"}, "referee": {"t": 283.2, "points": 10, "dq": null, "loses": false, "unplugged": 1, "seated": 0, "tower_in": 2.36, "stage1_at": 42.30000000000573, "stage2_at": null, "golf_in_bin": 0, "eight_in_bin": 0, "first_touch": {"plugged_0": 14.2, "plugged_1": 28.95}}}

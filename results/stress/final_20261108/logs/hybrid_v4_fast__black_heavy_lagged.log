@@ -1,0 +1,2 @@
+black_heavy_lagged           mean=  79.0 pts=[47, 89, 99, 77, 83] lost=4/5 black=4 dq=0 early=2 | guard tripped in stage 'ball_1': Is either gripper holding the white b
+TOTAL hybrid_v4_fast: matches=5 mean=79.0 lost=4 crash=0 wall=75s

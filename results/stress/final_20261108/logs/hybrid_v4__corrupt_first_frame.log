@@ -1,0 +1,2 @@
+corrupt_first_frame          mean=  73.4 pts=[53, 74, 80, 80, 80] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL hybrid_v4: matches=5 mean=73.4 lost=0 crash=0 wall=142s

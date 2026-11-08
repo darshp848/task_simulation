@@ -1,0 +1,2 @@
+knocky_tower                 mean=  61.6 pts=[48, 62, 53, 71, 74] lost=0/5 black=0 dq=0 early=0 | time budget of 295 s exceeded
+TOTAL build_v4: matches=5 mean=61.6 lost=0 crash=0 wall=116s
