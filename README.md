@@ -166,6 +166,34 @@ SEED0=51 cluster/run_stress.sh 50 2 sweep1 happy black_ball           # another 
 `~/.dreamlabs/credentials`, and staggers start-up by 20 s. About 3 MuJoCo workers fit on the Inspiron. The offline
 sweep is pure CPU (~5 s per match), so the small worker nodes can take seed ranges too.
 
+## Status (8 Nov 2026)
+
+The harness survives faults in simulation. We have no real per-stage success numbers yet. Cloud round 1 stopped at
+12:05 UTC when the Dream account ran out of credits (`DA-1000 ... (disabled)`), so its numbers can't compare arms.
+Full write-up: [LAST_NIGHT_2026-11-08.md](https://github.com/darshp848/hill-climb-harness/blob/main/docs/LAST_NIGHT_2026-11-08.md).
+
+| Test | Kind | Result | Files |
+|---|---|---|---|
+| Offline stress, 37 scenarios x 5 seeds | simulated | `main` v4 60.5 points, final hybrid with live guard 69.8, no illegal-ball losses | `results/stress/final_20261108/` |
+| Before and after the fixes, 4 seeds | simulated | table in the section below | `results/stress/` |
+| MuJoCo with real Dream-1, 25 matches | sim table, real model | cable out in 14 of 25, first unplug median 57 s, put-down 0 of 54 tries, stack 0 of 25, balls never reached | `results/cluster_mujoco/` |
+| Cloud round 1 | sim table, real model | 10 of 28 valid, 0-42 points, stopped by credits | `results/cloud_round1_20261108/` |
+| Judge benchmark | real model calls | GPT-6.1 Terra best per decision: 98% done, 97% guard at 2.8 s, 100%/100% at 3.7 s with low reasoning | `results/judge_bench_20261108/` |
+| Station logs, 52 runs, 1650 calls | real | Dream round trip median 1115 ms, 90th percentile 2732 ms, success not logged | `data/station_nuc_20261108_late/` |
+
+Plots are in `results/plots/`. The notes and briefs from the night are in `docs/notes_20261108/`. Joint traces
+(`joints.jsonl`) stayed in the GCS bucket because of their size.
+
+To rerun: `cluster/run_stress.sh 50 7 sweep1` for the offline sweep and `cluster/run_matches.sh` for MuJoCo, see
+[On the cluster](#on-the-cluster). To aggregate the final runs, use `results/stress/final_20261108/analyze.py`. Probe
+Dream with one call first, a disabled key fails every match. The GCP Batch jobs live on hill-climb-harness branch
+`cloud-sims`.
+
+To do, in order: pick the match branch, settle the tower order (IMG_2697 is blue, pink, blue, IMG_2699 is pink, blue,
+blue), add the Dream check before batches, fix the 4 failing tests on `cloud-sims`, copy station logs, run matches on
+the real table with per-stage logging, record stack and golf ball demos in the chosen order, and rerun round 1 with
+fewer sessions.
+
 ## Results so far
 
 Offline sim, 4 seeds each, points (full tables in `results/stress/`, write-up in `experiments/STRESS_FINDINGS.md`):
