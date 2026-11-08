@@ -22,6 +22,19 @@ results/            stress sim tables (before / after the fixes) and the cluster
 HARNESS_GUIDE.md    full harness manual;  HARNESS_README.md, DESIGN*.md, TELEOP_PLAN.md  harness design notes
 ```
 
+## The real station
+
+![Station C on 7 Nov](docs/station_c_setup.jpg)
+
+Station C at the hackathon (Darsh's photo, Drive IMG_2699, 7 Nov 21:30). Two MakerMods Metal arms (7 Damiao motors,
+brakeless, *not* YAM) on a rail at the table's near edge, with the overhead camera on a pole between them and a wrist
+camera on each gripper. On the table: the power strip with the orange USB cables (Stage 1, the strip is unplugged
+from the wall), blue and pink foam cubes with a hole and yellow / pink foam sticks (Stage 2), golf balls (Stage 3:
+the coloured ones are legal, the **white** one is illegal) and the white bin. The target tower is Drive IMG_2697:
+bottom to top blue cube, pink cube, blue cube (holes sideways), yellow square stick and pink round stick standing
+upright (`tower_target` in `plans/hill_climb_v4.yaml`). The MuJoCo table in `sim_scenes/hill_climb_table.py` is an
+estimate of this layout with the hub in front of the right arm; check its coordinates against the photo.
+
 ## Setup
 
 Python 3.12 or 3.13.
