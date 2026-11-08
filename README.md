@@ -189,9 +189,8 @@ To rerun: `cluster/run_stress.sh 50 7 sweep1` for the offline sweep and `cluster
 Dream with one call first, a disabled key fails every match. The GCP Batch jobs live on hill-climb-harness branch
 `cloud-sims`.
 
-To do, in order: pick the match branch, settle the tower order (IMG_2697 is blue, pink, blue, IMG_2699 is pink, blue,
-blue), add the Dream check before batches, fix the 4 failing tests on `cloud-sims`, copy station logs, run matches on
-the real table with per-stage logging, record stack and golf ball demos in the chosen order, and rerun round 1 with
+To do, in order: pick the match branch, add the Dream check before batches, fix the 4 failing tests on `cloud-sims`, copy station logs, run matches on
+the real table with per-stage logging, record stack and golf ball demos (colour order doesn't matter), and rerun round 1 with
 fewer sessions.
 
 ## Results so far
