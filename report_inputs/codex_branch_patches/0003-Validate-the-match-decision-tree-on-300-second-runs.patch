@@ -1,0 +1,404 @@
+From 189c39db6e24e5a7ca13fc18ff5d85009a3cbdd5 Mon Sep 17 00:00:00 2001
+From: darshp848 <75503951+darshp848@users.noreply.github.com>
+Date: Sat, 7 Nov 2026 16:57:44 -0600
+Subject: [PATCH 3/3] Validate the match decision tree on 300-second runs
+
+Add a deterministic decision matrix over the shipped v4 plan and an opt-in
+five-minute wall-clock run against the local station HTTP API. The matrix
+found three gaps, fixed here:
+
+- a match reset now gets its full settle time plus a verification window
+  before it can time out
+- after an unverified reset, only another reset may follow (no plain retry)
+- a stop acknowledged at or after the 300 s deadline no longer counts as an
+  on-time finish (runner and CLI stop cue)
+
+The plug stage budget rises to 30 s to fit a verified reset. The wall-clock
+test accepts an early stop when under one verification check remains.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ harness/cli.py                   |   4 +-
+ harness/runner.py                |  23 +++--
+ plans/hill_climb_full.yaml       |   2 +-
+ tests/test_match_five_minutes.py |  77 ++++++++++++++
+ tests/test_match_matrix.py       | 172 +++++++++++++++++++++++++++++++
+ 5 files changed, 270 insertions(+), 8 deletions(-)
+ create mode 100644 tests/test_match_five_minutes.py
+ create mode 100644 tests/test_match_matrix.py
+
+diff --git a/harness/cli.py b/harness/cli.py
+index 4ea9469..e650f6c 100644
+--- a/harness/cli.py
++++ b/harness/cli.py
+@@ -126,7 +126,9 @@ def main(argv: list[str] | None = None) -> int:
+             label = "ok" if r.ok else ("SKIP" if r.abandoned else "FAIL")
+             print(f"  {label:<4} {r.name:<20} attempts={r.attempts} {r.seconds:6.1f}s  {r.reason}")
+         print(f"{'SUCCESS' if result.ok else 'FAILED'}: {result.reason}  ({result.seconds:.1f}s)  log: {log.path}")
+-        call_stop = result.match_gates_passed and result.stop_confirmed if plan.match else result.ok
++        call_stop = result.ok
++        if plan.match:
++            call_stop = result.match_gates_passed and result.stop_confirmed and result.seconds < plan.time_budget_s
+         if call_stop and plan.done_message:
+             bar = "#" * (len(plan.done_message) + 8)
+             print(f"\a\n{bar}\n#   {plan.done_message}   #\n{bar}\n")
+diff --git a/harness/runner.py b/harness/runner.py
+index ea949ac..40798be 100644
+--- a/harness/runner.py
++++ b/harness/runner.py
+@@ -153,12 +153,16 @@ class Runner:
+         except TimeoutError as exc:
+             ok, reason = False, str(exc)
+             self._safe_stop(reason)
++        seconds = self._clock() - self._t0
+         gates_passed = None
+         if self.plan.match:
+             gates_passed = set(self.plan.match.gates) <= {r.name for r in results if r.ok}
+             if ok and not self._stop_confirmed:
+                 ok, reason = False, "station stop was not confirmed"
+-        result = RunResult(ok=ok, stages=results, seconds=self._clock() - self._t0, reason=reason,
++            if self._stop_confirmed and seconds >= self.plan.time_budget_s:
++                late = "station stop acknowledged after the match deadline"
++                ok, reason = False, late if ok else f"{reason}. {late}"
++        result = RunResult(ok=ok, stages=results, seconds=seconds, reason=reason,
+                            match_gates_passed=gates_passed, stop_confirmed=self._stop_confirmed)
+         self.log.update_manifest(end_time=datetime.now(timezone.utc).isoformat(), ok=ok, reason=reason)
+         self.log.event("run_end", ok=ok, reason=reason, seconds=result.seconds)
+@@ -459,8 +463,9 @@ class Runner:
+ 
+     def _reset_scene(self, stage: Stage, rec: Recovery, verifier: Verifier) -> tuple[bool, str]:
+         """kind reset: run the recovery prompt, then wait (up to the cap) for the verifier's scene_ok."""
+-        cap = min(stage.timeout_s / 2, 20.0)
+-        settle = min(rec.settle_s, cap)
++        verification_window = min(stage.timeout_s / 2, 20.0)
++        settle = rec.settle_s if self.plan.match else min(rec.settle_s, verification_window)
++        cap = settle + verification_window if self.plan.match else verification_window
+         t0 = self._clock()
+         scene: bool | None = None
+         while True:
+@@ -492,10 +497,12 @@ class Runner:
+                     return False, f"scene still not ok after recovery {rec.name!r}"
+                 return True, "scene ok" if scene else "no scene verdict, assumed ok"
+ 
+-    def _pick_recovery(self, stage: Stage, uses: dict[int, int], last: int | None, hint: int | None) -> int | None:
++    def _pick_recovery(self, stage: Stage, uses: dict[int, int], last: int | None, hint: int | None,
++                       *, reset_required: bool = False) -> int | None:
+         menu = stage.menu()
+         usable = [i for i, r in enumerate(menu)
+                   if uses.get(i, 0) < r.max_uses and i != last
++                  and (not reset_required or r.kind == "reset")
+                   and (not r.legacy or stage.on_fail in ("retry_in_place", "abandon"))]
+         if hint in usable:
+             return hint
+@@ -523,7 +530,7 @@ class Runner:
+         self.log.event("recovery", stage=stage.name, name=rec.name, kind=rec.kind, prompt=rec.prompt, attempt=attempt)
+         outcome, reason, ok = "ok", "", True
+         try:
+-            if rec.legacy:
++            if rec.legacy and not self.plan.match:
+                 self._issue(rec.prompt, f"recovery {rec.name}")
+                 self._hold(min(stage.timeout_s / 2, 20.0))
+             elif rec.kind == "reset":
+@@ -607,20 +614,24 @@ class Runner:
+             if stage.on_fail == "skip":
+                 self.log.event("stage_skipped", stage=stage.name, reason=reason)
+                 return StageResult(stage.name, False, attempts, self._clock() - t0, reason)
++            reset_required = False
+             while True:   # choose a recovery; a reset that leaves the scene broken burns an attempt
+                 if attempts >= stage.max_attempts:
+                     return self._exhausted(active, reason)
+                 remaining = self._check_global()
+                 if stage.on_fail == "abandon" and remaining <= max(stage.min_run_s, stage.effective_settle()):
+                     return self._abandon(active, "insufficient time to verify another attempt")
+-                idx = self._pick_recovery(stage, uses, last_rec, hint)
++                idx = self._pick_recovery(stage, uses, last_rec, hint, reset_required=reset_required)
+                 if idx is None:
++                    if reset_required:
++                        return self._exhausted(active, reason)
+                     break
+                 uses[idx] = uses.get(idx, 0) + 1
+                 last_rec = idx
+                 scene_ok, rreason = self._recover(stage, verifier, attempts, idx)
+                 if scene_ok:
+                     break
++                reset_required = self.plan.match is not None
+                 attempts += 1
+                 active.attempts = attempts
+                 reason, hint = rreason, None
+diff --git a/plans/hill_climb_full.yaml b/plans/hill_climb_full.yaml
+index 1711879..65b04f4 100644
+--- a/plans/hill_climb_full.yaml
++++ b/plans/hill_climb_full.yaml
+@@ -89,7 +89,7 @@ stages:
+       "{watch_cam}": "side view from the {watch_arm} arm, which is only watching: use it for the plug's distance to the port, its height and whether it is pushed fully in"
+       "{work_cam}": "close view from the gripper doing the plugging"
+     timeout_s: 12
+-    stage_budget_s: 20
++    stage_budget_s: 30
+     reserve_after_s: 173
+     max_attempts: 2
+     min_run_s: 4
+diff --git a/tests/test_match_five_minutes.py b/tests/test_match_five_minutes.py
+new file mode 100644
+index 0000000..f86246d
+--- /dev/null
++++ b/tests/test_match_five_minutes.py
+@@ -0,0 +1,77 @@
++"""Opt-in five-minute run of the full plan against the local station HTTP API."""
++
++import json
++import os
++import time
++from pathlib import Path
++
++import pytest
++
++from fake_station import FakeStation
++from harness.frames import FrameSource
++from harness.log import RunLog
++from harness.plan import load_plan
++from harness.runner import Runner
++from harness.station_client import StationClient
++from harness.verifiers import Verdict
++
++FULL_PLAN = Path(__file__).resolve().parents[1] / "plans" / "hill_climb_full.yaml"
++
++
++class SlowProgress:
++    """Script visual decisions so the real match approaches its work cutoff."""
++
++    def __init__(self, clock=time.monotonic):
++        self.clock = clock
++        self.started = {}
++        self.thresholds = {
++            "unplug_cable": 60,
++            "put_cable_down": 20.5,
++            "watcher_into_place": float("inf"),
++            "release_before_stack": 8.5,
++            "stack_two": 44.5,
++            "raise_stack": 44.5,
++            "clear_of_stack": 14.5,
++        }
++
++    def check(self, stage, frames, elapsed):
++        now = self.clock()
++        started = self.started.setdefault(stage.name, now - elapsed)
++        verified = now - started >= self.thresholds.get(stage.name, 5.5)
++        return Verdict(True if verified else None, 1.0 if verified else 0.0, "scripted camera verdict")
++
++
++@pytest.mark.skipif(os.getenv("HILL_CLIMB_WALL_CLOCK") != "1", reason="opt in to the five-minute HTTP run")
++def test_full_match_wall_clock(tmp_path):
++    plan = load_plan(FULL_PLAN)
++    log = RunLog(os.getenv("HILL_CLIMB_VALIDATION_LOGS") or tmp_path)
++    print(f"Five-minute HTTP run logs: {log.path}", flush=True)
++
++    with FakeStation(tick_s=0.25) as fake:
++        client = StationClient(fake.api_url)
++        runner = Runner(plan, client, FrameSource(fake.view_url), {"monitor": SlowProgress()}, log)
++        result = runner.run()
++
++        events = [json.loads(line) for line in (log.path / "events.jsonl").read_text().splitlines()]
++        match_start = next(event["t"] for event in events if event["event"] == "match_clock_start")
++        stop_requested = next(event["t"] for event in events if event["event"] == "stop") - match_start
++        stop_reply = next(event["t"] for event in events if event["event"] == "stop_reply") - match_start
++        prompts = [event for event in events if event["event"] == "prompt_change"]
++        assert all(event["t"] - match_start < 295 for event in prompts)
++        # Stop follows the last abandonment; with under one check left before the 295 s cutoff that is early.
++        abandoned_last = next(e["t"] for e in reversed(events) if e["event"] == "stage_abandoned") - match_start
++        assert 290 <= abandoned_last <= stop_requested < 297, result
++        assert stop_requested <= stop_reply < 300
++        assert result.ok and result.match_gates_passed and result.stop_confirmed
++        results = {stage.name: stage for stage in result.stages}
++        assert results["unplug_cable"].attempts == 2
++        assert results["watcher_into_place"].abandoned and results["plug_loose_cable"].attempts == 0
++        assert results["ball_1"].ok and results["ball_8"].abandoned
++        assert "insufficient time" in results["ball_8"].reason
++        posts = fake.posts()
++
++        # Observe the remaining stop reserve through the end of the match.
++        time.sleep(max(0, 300 - (time.time() - match_start)))
++        assert client.status()["state"] == "idle" and fake.posts() == posts
++        assert [route for _, route, _ in posts].count("/stop") == 1 and posts[-1][1] == "/stop"
++        print(f"Stop requested at {stop_requested:.3f}s, acknowledged at {stop_reply:.3f}s", flush=True)
+diff --git a/tests/test_match_matrix.py b/tests/test_match_matrix.py
+new file mode 100644
+index 0000000..3fae714
+--- /dev/null
++++ b/tests/test_match_matrix.py
+@@ -0,0 +1,172 @@
++"""Decision matrix using the shipped v4 plan and a deterministic 300-second match clock."""
++
++import json
++from dataclasses import dataclass
++
++import pytest
++
++from fake_station import TINY_JPEG
++from harness.frames import CameraTrip
++from harness.log import RunLog
++from harness.plan import load_plan
++from harness.runner import Runner
++from harness.verifiers import MonitorVerdict, Verdict
++from test_match_five_minutes import FULL_PLAN, SlowProgress
++from test_match_supervisor import Clock, Station
++
++
++@dataclass(frozen=True)
++class Case:
++    name: str
++    gates_pass: bool
++    ok: bool
++    stop_confirmed: bool
++    reached: str
++    blocked: tuple[str, ...] = ()
++
++
++CASES = (
++    Case("nominal", True, True, True, "ball_8"),
++    Case("occupied_station", False, False, False, "", ("unplug_cable",)),
++    Case("unplug_exhaustion", False, False, True, "unplug_cable", ("stack_two", "ball_1")),
++    Case("wrong_prompt", False, False, True, "clear_of_stack", ("ball_1",)),
++    Case("replayed_trip", False, False, True, "clear_of_stack", ("ball_1",)),
++    Case("late_gate_verdict", False, False, True, "clear_of_stack", ("ball_1",)),
++    Case("missing_wrist", True, True, True, "ball_1", ("plug_loose_cable",)),
++    Case("verified_plug_reset", True, True, True, "ball_1"),
++    Case("unknown_plug_reset", True, True, True, "ball_1"),
++    Case("unknown_required_reset", False, False, True, "unplug_cable", ("stack_two", "ball_1")),
++    Case("ball_failure", True, True, True, "ball_1", ("ball_2",)),
++    Case("arm_fault", False, False, True, "raise_stack", ("clear_of_stack", "ball_1")),
++    Case("prompt_ack_missing", False, False, True, "watcher_into_place", ("plug_loose_cable", "stack_two")),
++    Case("work_cutoff", True, True, True, "ball_8"),
++    Case("stop_ack_missing", True, False, False, "ball_8"),
++    Case("stop_ack_after_deadline", True, False, True, "ball_8"),
++)
++
++
++class MatchFixture(Station):
++    """Script station replies and debug trips on the same monotonic clock as the runner."""
++
++    def __init__(self, clock, plan, case):
++        self.prompts = {stage.name: stage.prompt for stage in plan.stages}
++        self.case = case
++        super().__init__(clock, stop_fails=case == "stop_ack_missing",
++                         ambiguous_prompt=self.prompts["watcher_into_place"] if case == "prompt_ack_missing" else None)
++        if case == "occupied_station":
++            self.state = "running"
++        self.frozen_trip = None
++
++    def status(self, *, timeout_s):
++        status = super().status(timeout_s=timeout_s)
++        if self.case == "arm_fault" and self.prompt == self.prompts["raise_stack"]:
++            status["arms"] = {"left": True, "right": False}
++        return status
++
++    def latest_n(self, *, timeout_s):
++        return round(self.clock.read() * 1000) if self.prompt else None
++
++    def latest(self, *, timeout_s):
++        frames = {"overhead": TINY_JPEG, "wrist_l": TINY_JPEG, "wrist_r": TINY_JPEG}
++        if self.case == "missing_wrist" and self.prompt == self.prompts["watcher_into_place"]:
++            del frames["wrist_l"]
++        return frames
++
++    def latest_trip(self, *, timeout_s):
++        if self.prompt is None:
++            return None
++        trip = self.latest_n(timeout_s=timeout_s)
++        prompt = self.prompt
++        if prompt == self.prompts["clear_of_stack"]:
++            if self.case == "wrong_prompt":
++                prompt = self.prompts["raise_stack"]
++            elif self.case == "replayed_trip":
++                if self.frozen_trip is None:
++                    self.frozen_trip = trip
++                trip = self.frozen_trip
++        return CameraTrip(trip, prompt, self.latest(timeout_s=timeout_s))
++
++    def stop(self, *, timeout_s):
++        reply = super().stop(timeout_s=timeout_s)
++        if self.case == "stop_ack_after_deadline":
++            self.clock.sleep(6)
++        return reply
++
++
++class Judge:
++    def __init__(self, fixture):
++        self.fixture = fixture
++        self.slow = SlowProgress(fixture.clock.read)
++
++    def check(self, stage, frames, elapsed):
++        case = self.fixture.case
++        if case in ("work_cutoff", "stop_ack_after_deadline"):
++            return self.slow.check(stage, frames, elapsed)
++        if case == "unplug_exhaustion" and stage.name == "unplug_cable":
++            return Verdict(None)
++        if case == "late_gate_verdict" and stage.name == "clear_of_stack":
++            self.fixture.clock.sleep(31)
++        if case == "ball_failure" and stage.name == "ball_1":
++            return Verdict(False, 1, "ball outcome did not meet the success question")
++
++        plug_reset = case in ("verified_plug_reset", "unknown_plug_reset") and stage.name == "plug_loose_cable"
++        required_reset = case == "unknown_required_reset" and stage.name == "unplug_cable"
++        if plug_reset or required_reset:
++            resets = {r.prompt for r in stage.menu() if r.kind == "reset"}
++            if self.fixture.prompt in resets:
++                return MonitorVerdict(None, scene_ok=True if case == "verified_plug_reset" else None)
++            issued = sum(command[1] == stage.prompt for command in self.fixture.commands)
++            if issued == 1:
++                return MonitorVerdict(None, 1, "stalled", status="stalled", progress=0.1, recovery=1)
++        return Verdict(True, 1, "verified by fixture")
++
++
++@pytest.mark.parametrize("case", CASES, ids=lambda case: case.name)
++def test_full_v4_decision_matrix(case, tmp_path):
++    plan = load_plan(FULL_PLAN)
++    assert plan.time_budget_s == 300 and plan.match.stop_reserve_s == 5
++    clock = Clock()
++    fixture = MatchFixture(clock, plan, case.name)
++    log = RunLog(tmp_path)
++    result = Runner(plan, fixture, fixture, {"monitor": Judge(fixture)}, log,
++                    clock=clock.read, sleep=clock.sleep).run()
++    events = [json.loads(line) for line in (log.path / "events.jsonl").read_text().splitlines()]
++    starts = [e["stage"] for e in events if e["event"] == "stage_start"]
++    results = {s.name: s for s in result.stages}
++
++    assert result.ok is case.ok, result
++    assert result.match_gates_passed is case.gates_pass, result
++    assert result.stop_confirmed is (None if case.name == "occupied_station" else case.stop_confirmed)
++    assert all(stage not in starts for stage in case.blocked)
++    if not case.reached:
++        assert not starts and not fixture.commands
++        return
++
++    assert case.reached in starts
++    assert all(t < 295 for route, _, t, _ in fixture.commands if route != "stop")
++    assert [c[0] for c in fixture.commands].count("stop") == 1 and fixture.commands[-1][0] == "stop"
++    assert fixture.commands[-1][2] <= 295
++    if "ball_1" in starts:
++        gate_end = next(i for i, event in enumerate(events)
++                        if event["event"] == "attempt_end" and event["stage"] == "clear_of_stack" and event["ok"])
++        ball_start = next(i for i, event in enumerate(events)
++                          if event["event"] == "stage_start" and event["stage"] == "ball_1")
++        assert gate_end < ball_start
++
++    if case.name == "work_cutoff":
++        assert fixture.commands[-1][2] == pytest.approx(295)
++        assert results["ball_7"].ok and results["ball_8"].abandoned
++    elif case.name == "stop_ack_after_deadline":
++        assert result.seconds > 300 and "deadline" in result.reason
++    elif case.name == "replayed_trip":
++        assert any(e["event"] == "camera_evidence_wait" and "new camera trip" in e["reason"] for e in events)
++    elif case.name == "wrong_prompt":
++        assert any(e["event"] == "camera_evidence_wait" and "different prompt" in e["reason"] for e in events)
++    elif case.name == "verified_plug_reset":
++        assert results["plug_loose_cable"].ok and results["plug_loose_cable"].attempts == 2
++        assert any(e["event"] == "scene_check" and e["scene_ok"] for e in events)
++    elif case.name in ("unknown_plug_reset", "unknown_required_reset"):
++        stage_name = "plug_loose_cable" if case.name == "unknown_plug_reset" else "unplug_cable"
++        assert sum(c[1] == fixture.prompts[stage_name] for c in fixture.commands) == 1
++        if case.name == "unknown_plug_reset":
++            assert results[stage_name].abandoned
+-- 
+2.55.0.windows.2
+

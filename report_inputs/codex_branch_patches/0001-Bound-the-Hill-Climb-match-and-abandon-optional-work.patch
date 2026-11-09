@@ -1,0 +1,1353 @@
+From 9e97ba8ac83b9cf5e433c6ca6bdbfa217c23b4f4 Mon Sep 17 00:00:00 2001
+From: darshp848 <75503951+darshp848@users.noreply.github.com>
+Date: Sat, 7 Nov 2026 16:12:58 -0600
+Subject: [PATCH 1/3] Bound the Hill Climb match and abandon optional work
+
+---
+ HARNESS_GUIDE.md               |  21 ++--
+ MATCH_DESIGN.md                |  41 +++++++
+ harness/cli.py                 |  23 ++--
+ harness/frames.py              |  28 +++--
+ harness/plan.py                |  62 +++++++++--
+ harness/runner.py              | 193 ++++++++++++++++++++++++++++-----
+ harness/station_client.py      |  27 +++--
+ plans/hill_climb_full.yaml     |  60 ++++++----
+ plans/hill_climb_sprint.yaml   |  12 +-
+ tests/test_match_plans.py      |  10 +-
+ tests/test_match_supervisor.py | 171 +++++++++++++++++++++++++++++
+ tests/test_watcher.py          |   2 +-
+ 12 files changed, 549 insertions(+), 101 deletions(-)
+ create mode 100644 MATCH_DESIGN.md
+ create mode 100644 tests/test_match_supervisor.py
+
+diff --git a/HARNESS_GUIDE.md b/HARNESS_GUIDE.md
+index ddc0f3c..e64bf3a 100644
+--- a/HARNESS_GUIDE.md
++++ b/HARNESS_GUIDE.md
+@@ -136,12 +136,12 @@ stages:
+         when: "the cube was dropped or knocked over"
+         settle_s: 8
+       - "move the arm back above the cube"   # a plain v1 string still works
+-    on_fail: retry_in_place              # retry_in_place | home_and_retry | skip | abort
++    on_fail: retry_in_place              # retry_in_place | home_and_retry | skip | abort | abandon
+ ```
+ 
+ ### How a run flows
+ 
+-- **Starting.** The first stage starts the run. Each later stage changes the prompt live (`/prompt`), with no stop in between. If the run has ended, the harness starts a new one.
++- **Starting.** The first stage starts the run. Each later stage changes the prompt live (`/prompt`), with no stop in between. If the station goes idle, a match plan ends. Other plans can start a new run.
+ - **When an attempt fails,** the harness picks the next recovery:
+   - the monitor's suggestion, if that item still has uses left;
+   - otherwise the next unused item;
+@@ -150,10 +150,11 @@ stages:
+   When the menu is used up, `on_fail` takes over:
+   - `retry_in_place` runs the recovery prompt, then the stage prompt again.
+   - `home_and_retry` does stop, home, start.
+-  - `skip` marks the stage failed and moves on.
+-  - `abort` stops the run.
++  - `skip` marks the stage failed and moves on after the first failure.
++  - `abort` stops the run after the first failure.
++  - `abandon` retries within `max_attempts` and `stage_budget_s`, then records optional work as abandoned and proceeds to the next eligible stage.
+ 
+-  When the attempts run out, `skip` moves on and anything else fails the run.
++  `stage_budget_s` includes retries, recovery, and verification. An optional stage can use `reserve_after_s` to leave time for later work.
+ - **Rules from the papers:**
+   - Ask for at least 2 confirmations (`confirm: 2`) before accepting a success. A false success is expensive.
+   - A "failing" verdict only counts after 50% of the timeout.
+@@ -169,7 +170,7 @@ stages:
+ | `plans/example_hill_climb_v2.yaml` | Uses every v2 field, with comments |
+ | `plans/sim_fruit_bowl.yaml` | For the MuJoCo sim scene (apple, orange, banana, bowl, plate) |
+ | `plans/hill_climb_sprint.yaml` | **Match plan.** Unplug 1 cable, put it down, then stack 2, stack 3, move clear. Then it prints "CALL STOP NOW". |
+-| `plans/hill_climb_full.yaml` | The sprint stages, then up to 8 balls of your colour. Needs `--var color=<colour>`. |
++| `plans/hill_climb_full.yaml` | Required unplug and stack, optional watcher-assisted plug, then up to 8 balls of your colour. Needs `--var color=<colour>`. |
+ 
+ ## 6b. Match rules and how the plans follow them (from `hillclimb_rubric_v2.pdf`)
+ 
+@@ -186,10 +187,12 @@ What the rules mean for the harness:
+ - **No human input after "go".** In a match, use only `verifier: monitor` (the plans set it). Typing `y`/`n` is human input and gets you DQ'd, so never use `manual` or `monitor+manual` in a match. Don't use `time` either: it would move on without the pass bar being met.
+ - **A false "done" is a DQ.** Touching a later stage's objects before the pass bar is met is a DQ. That's why the plans:
+   - require `confirm: 2`,
+-  - never use `on_fail: skip` on Stages 1-2 (they retry until the clock runs out),
+-  - make the last stack check need two "done" verdicts 3 s apart.
++  - end the run if a required stage exhausts its allocation,
++  - ask for fresh evidence of a stack at least six inches and three layers tall, stable for three seconds after release.
+ - **Stop early.** Stopping right after Stage 2 usually wins. A ball pays only if it takes under 10 s (it costs 5 bonus points of clock), and an extra block pays only if it takes under 20 s. So the sprint plan ends after the stack and prints `CALL STOP NOW`, and the designated member says "stop" out loud. Use the full plan only if practice shows balls are fast.
+-- The run time budget is 295 s.
++- The match budget is 300 s. After preflight, the runner allocates up to 295 s for work and reserves the final 5 s for requesting stop. The full plan preserves 173 s for clearance and stack while attempting the optional plug. It stops chasing balls after the first unverified count.
++
++See [the match design](MATCH_DESIGN.md) for timing, simulator coverage, and the LiveKit training and observation paths.
+ 
+ ```bash
+ python -m harness plans/hill_climb_sprint.yaml --live
+diff --git a/MATCH_DESIGN.md b/MATCH_DESIGN.md
+new file mode 100644
+index 0000000..0c2672b
+--- /dev/null
++++ b/MATCH_DESIGN.md
+@@ -0,0 +1,41 @@
++# Five-minute Hill Climb supervisor
++
++## Usage
++
++Run the sprint plan for unplug and stack, or the full plan to exercise the optional plug and balls. Use a mock station and a scripted monitor for scheduling tests.
++
++```python
++plan = load_plan("plans/hill_climb_full.yaml", {"color": "orange"})
++result = Runner(plan, station, frames, {"monitor": monitor}, log).run()
++abandoned = [stage.name for stage in result.stages if stage.abandoned]
++```
++
++The match plans use 300 seconds, with the last five reserved for requesting stop. The runner starts its clock after preflight. Match procedure still needs to align this start with the organizer's go signal. The time bonus depends on the designated person calling stop after both pass bars.
++
++## Shape
++
++`Plan.match: MatchRules | None` enables the match clock and validates the named unplug and stack gates. Required stages run in plan order and halt on exhaustion. `Stage.stage_budget_s` caps total work, including retries and resets. `on_fail: abandon` marks an optional stage. Its `reserve_after_s` protects time for later stages. A dependent optional stage only runs after its prerequisite passes. The runner records abandonment separately from success and continues to the next eligible stage.
++
++The runner checks the remaining budget before commands, when it sleeps or polls, and after a verifier returns. A timed-out command is ambiguous and terminates the run. The station's reply is separate from the stop request. HTTP timeouts are socket bounds. Physical stop and command ordering after a network failure depend on the station.
++
++The unplug gate needs visual evidence of a cable clear of the hub. The stack gate asks for a free-standing stack at least six inches and three layers tall for three seconds after release. Current camera evidence and monitor prompts are proxies for the judge. The hardware validation needs a height reference and a check that the release and three-second dwell are visible.
++
++## Design selection
++
++The design review preferred a separate hierarchy with typed proof and action leases for a later version. The first slice keeps the existing runner because it already owns prompt changes, resets, and stop. The separate controller would need those paths extracted before it could run a match. This slice borrows explicit gate roles, an absolute clock, and separate abandonment and stop outcomes. It keeps generic plans and the legacy immediate `skip` behavior.
++
++## Evidence and next tests
++
++REFLECT uses observations around a failed subgoal to choose a bounded correction. Inner Monologue shows how false success can lead planning astray. LIBERO-RECOVER separates a retry from restoring a disrupted scene. Those distinctions map to stage verdicts, the authored recovery menu, and bounded abandonment. [REFLECT](https://proceedings.mlr.press/v229/liu23g.html) · [Inner Monologue](https://proceedings.mlr.press/v205/huang23c.html) · [LIBERO-RECOVER](https://arxiv.org/abs/2609.05178)
++
++IntervenGen supports labeling mistakes and their corrections separately in future demonstrations. FORGE uses estimated Cartesian contact force and an impedance controller. Gripper motor torque is a separate observation and needs a bench calibration before it can support any insertion judgement. [IntervenGen](https://doi.org/10.1109/IROS58592.2024.10801523) · [FORGE](https://doi.org/10.1109/LRA.2025.3551637)
++
++Sentinel supports comparing timestamped observations asynchronously. Hi Robot separates short task commands from the controller that executes them. Use a fake clock and scripted station to check that late verdicts never unlock another task, recovery consumes the stage budget, and optional failure preserves verified core progress. [Sentinel](https://proceedings.mlr.press/v270/agia25a.html) · [Hi Robot](https://www.pi.website/research/hirobot)
++
++## LiveKit
++
++The event advertises LiveKit for streaming and voice agents. The Hill Climb rubric restricts human input after go. Keep tele-op handoffs in practice and demonstration collection. [Event page](https://luma.com/pah)
++
++For training, Portal can record synchronized observations, executed actions, and which operator supplied each action. Use the capture timeline to label the policy mistake, human correction, and recovery result. Verify the event's Metal/Dream adapter, feature schema, and Dream import against a recorded sample before relying on this path. The public Portal HITL tutorial uses a different arm and an ACT policy. [LiveKit Portal](https://github.com/livekit/portal) · [HITL reference](https://github.com/livekit-examples/portal-hitl)
++
++For detection, start with a passive subscriber and compare its capture timestamps, view coverage, and detection latency with Dream's debug trips. A detector can flag an empty grasp, loss of the watcher view, or stalled progress. Associate observations with the current prompt and discard stale results. Keep control and task advancement with the runner. [Robot camera tracks](https://docs.livekit.io/robotics/media/video/video-tracks/)
+diff --git a/harness/cli.py b/harness/cli.py
+index 983b73b..4ea9469 100644
+--- a/harness/cli.py
++++ b/harness/cli.py
+@@ -21,7 +21,7 @@ SAFETY = """\
+ LIVE RUN. This drives the real robot through the station agent.
+   - Keep your hand on the e-stop for the whole run.
+   - Make sure the workspace is clear of people and loose objects.
+-  - Ctrl+C (or typing s + Enter) stops the run; the arms hold where they are."""
++  - Ctrl+C requests a stop; the station holds the arms in place."""
+ 
+ 
+ def _parser() -> argparse.ArgumentParser:
+@@ -57,6 +57,9 @@ def main(argv: list[str] | None = None) -> int:
+         print(f"plan error: {exc}", file=sys.stderr)
+         return 2
+     if args.verifier:
++        if plan.match and args.verifier != "monitor":
++            print("match plans require the monitor verifier", file=sys.stderr)
++            return 2
+         for stage in plan.stages:
+             stage.verifier = args.verifier
+ 
+@@ -93,9 +96,12 @@ def main(argv: list[str] | None = None) -> int:
+         manual = None
+         verifiers: dict[str, Verifier] = {}
+         try:
+-            # One stdin reader serves y/n answers and the s + Enter stop.
+-            manual = ManualVerifier(on_stop=lambda: holder["r"].request_stop())
+-            for name in {s.verifier for s in plan.stages} | {"manual"}:
++            names = {s.verifier for s in plan.stages}
++            if not plan.match:
++                # One stdin reader serves y/n answers and the s + Enter stop.
++                manual = ManualVerifier(on_stop=lambda: holder["r"].request_stop())
++                names.add("manual")
++            for name in names:
+                 verifiers[name] = make_verifier(name, plan, manual=manual)
+         except ValueError as exc:
+             print(f"verifier error: {exc}", file=sys.stderr)
+@@ -109,16 +115,19 @@ def main(argv: list[str] | None = None) -> int:
+         except ValueError:
+             pass
+         mode = "DRY RUN" if dry else ("MOCK" if args.mock else "LIVE")
+-        print(f"{mode}: {plan.task or '(no task)'}  [{len(plan.stages)} stages]  type s + Enter to stop")
++        controls = "" if plan.match else "  type s + Enter to stop"
++        print(f"{mode}: {plan.task or '(no task)'}  [{len(plan.stages)} stages]{controls}")
+         try:
+             result = runner.run()
+         except StationError as exc:
+             print(f"station error: {exc.message}", file=sys.stderr)
+             return 1
+         for r in result.stages:
+-            print(f"  {'ok  ' if r.ok else 'FAIL'} {r.name:<20} attempts={r.attempts} {r.seconds:6.1f}s  {r.reason}")
++            label = "ok" if r.ok else ("SKIP" if r.abandoned else "FAIL")
++            print(f"  {label:<4} {r.name:<20} attempts={r.attempts} {r.seconds:6.1f}s  {r.reason}")
+         print(f"{'SUCCESS' if result.ok else 'FAILED'}: {result.reason}  ({result.seconds:.1f}s)  log: {log.path}")
+-        if result.ok and plan.done_message:
++        call_stop = result.match_gates_passed and result.stop_confirmed if plan.match else result.ok
++        if call_stop and plan.done_message:
+             bar = "#" * (len(plan.done_message) + 8)
+             print(f"\a\n{bar}\n#   {plan.done_message}   #\n{bar}\n")
+         if not dry and not args.mock:
+diff --git a/harness/frames.py b/harness/frames.py
+index f4caabf..a0db454 100644
+--- a/harness/frames.py
++++ b/harness/frames.py
+@@ -4,6 +4,7 @@ from __future__ import annotations
+ 
+ import base64
+ import json
++import time
+ import urllib.error
+ import urllib.request
+ from dataclasses import dataclass
+@@ -39,14 +40,17 @@ class FrameSource:
+         self.last_error: str | None = None
+         self._cache: CameraTrip | None = None
+ 
+-    def _get_json(self, route: str) -> Any:
+-        with urllib.request.urlopen(self.base_url + route, timeout=self.timeout_s) as resp:
++    def _get_json(self, route: str, timeout_s: float | None = None) -> Any:
++        timeout = self.timeout_s if timeout_s is None else min(self.timeout_s, timeout_s)
++        if timeout <= 0:
++            raise TimeoutError("camera request budget expired")
++        with urllib.request.urlopen(self.base_url + route, timeout=timeout) as resp:
+             return json.loads(resp.read())
+ 
+-    def latest_n(self) -> int | None:
++    def latest_n(self, *, timeout_s: float | None = None) -> int | None:
+         """Number of the newest round trip, or None."""
+         try:
+-            trips = self._get_json("/trips")
++            trips = self._get_json("/trips", timeout_s)
+             self.last_error = None
+             if isinstance(trips, list) and trips:
+                 return int(trips[-1]["n"])
+@@ -54,15 +58,21 @@ class FrameSource:
+             self.last_error = f"{type(exc).__name__}: {exc}"
+         return None
+ 
+-    def latest(self) -> dict[str, bytes]:
++    def latest(self, *, timeout_s: float | None = None) -> dict[str, bytes]:
+         """role -> JPEG bytes: the newest frame of each camera in the newest round trip. {} if none."""
+-        trip = self.latest_trip(fallback=True)
++        trip = (self.latest_trip(fallback=True) if timeout_s is None
++                else self.latest_trip(fallback=True, timeout_s=timeout_s))
+         return dict(trip.frames) if trip is not None else {}
+ 
+-    def latest_trip(self, *, fallback: bool = False) -> CameraTrip | None:
++    def latest_trip(self, *, fallback: bool = False, timeout_s: float | None = None) -> CameraTrip | None:
+         """Read frames and prompt from the same trip. Evidence checks use only the newest trip."""
++        deadline = None if timeout_s is None else time.monotonic() + timeout_s
++
++        def read(route: str) -> Any:
++            return self._get_json(route, None if deadline is None else deadline - time.monotonic())
++
+         try:
+-            trips = self._get_json("/trips")
++            trips = read("/trips")
+             if not isinstance(trips, list) or not trips:
+                 self.last_error = None
+                 return None
+@@ -72,7 +82,7 @@ class FrameSource:
+                     self.last_error = None
+                     return self._cache
+                 try:
+-                    trip = self._get_json(f"/trip/{n}")
++                    trip = read(f"/trip/{n}")
+                 except urllib.error.HTTPError as exc:
+                     if exc.code == 404:
+                         continue
+diff --git a/harness/plan.py b/harness/plan.py
+index 1c90cf3..1f1cefb 100644
+--- a/harness/plan.py
++++ b/harness/plan.py
+@@ -3,6 +3,7 @@
+ from __future__ import annotations
+ 
+ from dataclasses import dataclass, field
++import math
+ import re
+ from pathlib import Path
+ from typing import Any
+@@ -13,13 +14,14 @@ import yaml
+ 
+ VERIFIERS = ("manual", "claude", "time", "claude+manual", "monitor", "monitor+manual")
+ RECOVERY_KINDS = ("retry", "reset")
+-ON_FAIL = ("retry_in_place", "home_and_retry", "skip", "abort")
++ON_FAIL = ("retry_in_place", "home_and_retry", "skip", "abort", "abandon")
+ MAX_PROMPT_CHARS = 512
+ 
+-_PLAN_KEYS = {"task", "checkpoint", "time_budget_s", "check_every_s", "verifier", "claude", "cameras_for_check", "stages", "confirm", "done_message", "vars"}
++_PLAN_KEYS = {"task", "checkpoint", "time_budget_s", "check_every_s", "verifier", "claude", "cameras_for_check", "stages", "confirm", "done_message", "vars", "match"}
+ _STAGE_KEYS = {"name", "prompt", "success", "timeout_s", "max_attempts", "min_run_s", "verifier", "recovery", "on_fail",
+                "stall_s", "settle_s", "skip_if_done", "expect",
+-               "cameras", "camera_notes", "history_cameras", "required_cameras", "requires_stage"}
++               "cameras", "camera_notes", "history_cameras", "required_cameras", "requires_stage",
++               "stage_budget_s", "reserve_after_s"}
+ _RECOVERY_KEYS = {"name", "prompt", "when", "kind", "settle_s", "max_uses"}
+ 
+ 
+@@ -56,6 +58,8 @@ class Stage:
+     history_cameras: list[str] = field(default_factory=list)  # extra roles whose frame history the monitor keeps
+     required_cameras: list[str] = field(default_factory=list)  # distinct current trips must include these views
+     requires_stage: str | None = None  # skip this stage if the named earlier stage failed
++    stage_budget_s: float | None = None  # includes all attempts, observations and recoveries
++    reserve_after_s: float = 0.0  # stop optional work early to leave time for later stages
+ 
+     def note_for(self, role: str) -> str:
+         return next((n for k, n in self.camera_notes.items() if camera_matches(role, k)), "")
+@@ -69,6 +73,12 @@ class Stage:
+         return self.min_run_s if self.settle_s is None else self.settle_s
+ 
+ 
++@dataclass(frozen=True)
++class MatchRules:
++    gates: tuple[str, str]  # unplug, then free-standing stack
++    stop_reserve_s: float
++
++
+ @dataclass
+ class Plan:
+     task: str
+@@ -82,6 +92,7 @@ class Plan:
+     confirm: int = 1
+     claude_user: dict[str, Any] = field(default_factory=dict)  # only the keys the plan file set
+     done_message: str = ""  # printed large (with a bell) when every stage passed, e.g. "CALL STOP NOW"
++    match: MatchRules | None = None
+ 
+ 
+ def _roles(value: Any, where: str) -> list[str]:
+@@ -95,8 +106,8 @@ def _roles(value: Any, where: str) -> list[str]:
+ def _num(value: Any, where: str, *, integer: bool = False) -> float:
+     if isinstance(value, bool) or not isinstance(value, (int, float)) or (integer and not isinstance(value, int)):
+         raise ValueError(f"{where}: must be {'an integer' if integer else 'a number'}, got {value!r}")
+-    if value <= 0:
+-        raise ValueError(f"{where}: must be positive, got {value!r}")
++    if value <= 0 or not math.isfinite(value):
++        raise ValueError(f"{where}: must be finite and positive, got {value!r}")
+     return value
+ 
+ 
+@@ -219,6 +230,11 @@ def parse_plan(data: Any) -> Plan:
+         if not isinstance(notes, dict) or not all(isinstance(k, str) and isinstance(v, str) and v.strip()
+                                                   for k, v in notes.items()):
+             raise ValueError(f"{label}.camera_notes: must map camera role names to non-empty text")
++        on_fail = _enum(raw.get("on_fail", "retry_in_place"), ON_FAIL, f"{label}.on_fail")
++        budget = raw.get("stage_budget_s")
++        reserve = raw.get("reserve_after_s")
++        if reserve is not None and on_fail != "abandon":
++            raise ValueError(f"{label}.reserve_after_s: only optional stages can reserve time")
+         stages.append(
+             Stage(
+                 name=name,
+@@ -229,7 +245,7 @@ def parse_plan(data: Any) -> Plan:
+                 min_run_s=float(_num(raw.get("min_run_s", 4.0), f"{label}.min_run_s")),
+                 verifier=_enum(raw.get("verifier", default_verifier), VERIFIERS, f"{label}.verifier"),
+                 recovery=recs,
+-                on_fail=_enum(raw.get("on_fail", "retry_in_place"), ON_FAIL, f"{label}.on_fail"),
++                on_fail=on_fail,
+                 stall_s=None if stall is None else float(_num(stall, f"{label}.stall_s")),
+                 settle_s=None if settle is None else float(_num(settle, f"{label}.settle_s")),
+                 skip_if_done=skip_if_done,
+@@ -239,6 +255,8 @@ def parse_plan(data: Any) -> Plan:
+                 history_cameras=hist,
+                 required_cameras=required,
+                 requires_stage=prerequisite,
++                stage_budget_s=None if budget is None else float(_num(budget, f"{label}.stage_budget_s")),
++                reserve_after_s=0.0 if reserve is None else float(_num(reserve, f"{label}.reserve_after_s")),
+             )
+         )
+ 
+@@ -261,21 +279,49 @@ def parse_plan(data: Any) -> Plan:
+     done_message = data.get("done_message", "") or ""
+     if not isinstance(done_message, str):
+         raise ValueError("plan.done_message: must be a string")
++    time_budget = float(_num(data.get("time_budget_s", 900.0), "plan.time_budget_s"))
++    confirm = int(_num(data.get("confirm", 1), "plan.confirm", integer=True))
++    match = _match_rules(data.get("match"), stages, time_budget, confirm)
+     return Plan(
+         task=task,
+         done_message=done_message,
+         stages=stages,
+         checkpoint=checkpoint,
+-        time_budget_s=float(_num(data.get("time_budget_s", 900.0), "plan.time_budget_s")),
++        time_budget_s=time_budget,
+         check_every_s=float(_num(data.get("check_every_s", 3.0), "plan.check_every_s")),
+         verifier=default_verifier,
+         claude=claude,
+         cameras_for_check=list(cams),
+-        confirm=int(_num(data.get("confirm", 1), "plan.confirm", integer=True)),
++        confirm=confirm,
+         claude_user=claude_user,
++        match=match,
+     )
+ 
+ 
++def _match_rules(raw: Any, stages: list[Stage], time_budget: float, confirm: int) -> MatchRules | None:
++    if raw is None:
++        return None
++    if not isinstance(raw, dict) or set(raw) - {"gates", "stop_reserve_s"}:
++        raise ValueError("plan.match: expected gates and stop_reserve_s")
++    reserve = float(_num(raw.get("stop_reserve_s", 5), "plan.match.stop_reserve_s"))
++    if not reserve < time_budget <= 300:
++        raise ValueError("plan.match: time_budget_s must exceed stop_reserve_s and be at most 300")
++    names = [stage.name for stage in stages]
++    gates = raw.get("gates")
++    if (not isinstance(gates, list) or len(gates) != 2 or any(gate not in names for gate in gates)
++            or names.index(gates[0]) >= names.index(gates[1])):
++        raise ValueError("plan.match.gates: name two distinct stages in unplug, stack order")
++    optional = {stage.name for stage in stages if stage.on_fail == "abandon"}
++    if optional.intersection(gates):
++        raise ValueError("plan.match.gates: gates must be required stages")
++    if confirm < 2 or any(s.verifier != "monitor" or s.skip_if_done for s in stages):
++        raise ValueError("plan.match: use monitor, at least two confirmations, and no entry skips")
++    if any(s.on_fail in ("skip", "home_and_retry") or
++           (s.name not in optional and s.requires_stage in optional) for s in stages):
++        raise ValueError("plan.match: only optional stages can be abandoned; homing and legacy skips are disabled")
++    return MatchRules((gates[0], gates[1]), reserve)
++
++
+ _VAR = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
+ 
+ 
+diff --git a/harness/runner.py b/harness/runner.py
+index 3b96dfb..ea949ac 100644
+--- a/harness/runner.py
++++ b/harness/runner.py
+@@ -24,6 +24,7 @@ REGRESSION_DROP = 0.3      # a drop this far below the attempt's max counts as a
+ FAIL_MIN_FRACTION = 0.5    # a monitor "failing" ends an attempt only after this share of timeout_s
+ SKIP_MIN_CONFIDENCE = 0.8  # skip_if_done needs this much confidence from a non-manual verifier
+ MOVED_DELTA = 0.02         # progress change that counts as "moved" after a prompt change
++MATCH_REQUEST_S = 5.0      # cap a station or camera request before applying the remaining budget
+ 
+ 
+ @dataclass
+@@ -33,6 +34,7 @@ class StageResult:
+     attempts: int
+     seconds: float
+     reason: str
++    abandoned: bool = False
+ 
+ 
+ @dataclass
+@@ -49,6 +51,16 @@ class RunResult:
+     stages: list[StageResult] = field(default_factory=list)
+     seconds: float = 0.0
+     reason: str = ""
++    match_gates_passed: bool | None = None
++    stop_confirmed: bool | None = None
++
++
++@dataclass
++class _StageRun:
++    stage: Stage
++    started: float
++    deadline: float
++    attempts: int = 0
+ 
+ 
+ def _err(last_error: Any) -> str:
+@@ -70,6 +82,10 @@ class _Stop(Exception):
+     """request_stop() was called."""
+ 
+ 
++class _StageExpired(Exception):
++    """The active stage used its allocation."""
++
++
+ class Runner:
+     def __init__(self, plan: Plan, station: StationClient, frames: FrameSource, verifiers: dict[str, Verifier],
+                  log: RunLog, *, clock: Callable[[], float] = time.monotonic,
+@@ -78,6 +94,10 @@ class Runner:
+         self._clock, self._sleep = clock, sleep
+         self._stop_event = threading.Event()
+         self._t0 = 0.0
++        self._work_end = 0.0
++        self._active: _StageRun | None = None
++        self._motion_requested = False
++        self._stop_confirmed: bool | None = None
+         self._last_progress: float | None = None
+         self._change: dict[str, Any] | None = None   # the latest prompt change, for the progress_moved event
+ 
+@@ -87,20 +107,33 @@ class Runner:
+     # -- top level -----------------------------------------------------------------------------
+     def run(self) -> RunResult:
+         self._t0 = self._clock()
++        self._work_end = self._t0 + self.plan.time_budget_s
++        self._motion_requested = False
++        self._stop_confirmed = None
+         results: list[StageResult] = []
+         dry = self.station.dry_run
+         self.log.update_manifest(start_time=datetime.now(timezone.utc).isoformat())
+         self.log.event("run_start", task=self.plan.task, dry_run=dry, stages=[s.name for s in self.plan.stages])
+         try:
+             self._preflight()
++            if self.plan.match:
++                self._t0 = self._clock()
++                self._work_end = self._t0 + self.plan.time_budget_s - self.plan.match.stop_reserve_s
++                self.log.event("match_clock_start", budget_s=self.plan.time_budget_s,
++                               stop_reserve_s=self.plan.match.stop_reserve_s)
+             for i, stage in enumerate(self.plan.stages):
+                 if stage.requires_stage and not any(r.name == stage.requires_stage and r.ok for r in results):
+                     reason = f"prerequisite {stage.requires_stage!r} was not verified"
+-                    self.log.event("stage_skipped", stage=stage.name, reason=reason)
+-                    results.append(StageResult(stage.name, False, 0, 0.0, reason))
++                    if stage.on_fail == "abandon":
++                        results.append(self._abandon(_StageRun(stage, self._clock(), self._work_end), reason))
++                    elif self.plan.match:
++                        raise _Fail(f"required stage {stage.name!r}: {reason}")
++                    else:
++                        self.log.event("stage_skipped", stage=stage.name, reason=reason)
++                        results.append(StageResult(stage.name, False, 0, 0.0, reason))
+                     continue
+                 results.append(self._run_stage(stage, first=(i == 0)))
+-            failed = [r.name for r in results if not r.ok]
++            failed = [r.name for r in results if not r.ok and not r.abandoned]
+             ok, reason = (not failed), ("completed" if not failed else f"completed with failed stages: {', '.join(failed)}")
+             self._safe_stop("end of plan")
+         except _Refuse as exc:
+@@ -120,7 +153,13 @@ class Runner:
+         except TimeoutError as exc:
+             ok, reason = False, str(exc)
+             self._safe_stop(reason)
+-        result = RunResult(ok=ok, stages=results, seconds=self._clock() - self._t0, reason=reason)
++        gates_passed = None
++        if self.plan.match:
++            gates_passed = set(self.plan.match.gates) <= {r.name for r in results if r.ok}
++            if ok and not self._stop_confirmed:
++                ok, reason = False, "station stop was not confirmed"
++        result = RunResult(ok=ok, stages=results, seconds=self._clock() - self._t0, reason=reason,
++                           match_gates_passed=gates_passed, stop_confirmed=self._stop_confirmed)
+         self.log.update_manifest(end_time=datetime.now(timezone.utc).isoformat(), ok=ok, reason=reason)
+         self.log.event("run_end", ok=ok, reason=reason, seconds=result.seconds)
+         self.log.write_summary({"task": self.plan.task, "dry_run": dry, **asdict(result)})
+@@ -128,10 +167,12 @@ class Runner:
+ 
+     # -- pieces --------------------------------------------------------------------------------
+     def _preflight(self) -> None:
++        if self.plan.match and any(s.verifier != "monitor" for s in self.plan.stages):
++            raise _Refuse("match plans require the monitor verifier")
+         if any(s.required_cameras and s.verifier == "time" for s in self.plan.stages):
+             raise _Refuse("stages with required_cameras need a visual verifier")
+         dry = self.station.dry_run
+-        st = self.station.status()
++        st = self.station.status(timeout_s=MATCH_REQUEST_S) if self.plan.match else self.station.status()
+         problems: list[str] = []
+         if st.get("_synthetic"):
+             problems.append("station unreachable (dry run continues with a synthetic status)")
+@@ -152,24 +193,36 @@ class Runner:
+             for p in problems:
+                 self.log.event("warning", message=f"preflight: {p}")
+ 
+-    def _check_global(self) -> None:
++    def _check_global(self) -> float:
+         if self._stop_event.is_set():
+             raise _Stop()
+-        if self._clock() - self._t0 > self.plan.time_budget_s:
++        now = self._clock()
++        active = self._active
++        if active and now >= active.deadline and (active.deadline < self._work_end or
++                                                  active.stage.on_fail == "abandon"):
++            raise _StageExpired()
++        if now >= self._work_end:
++            if self.plan.match:
++                raise _Fail(f"match work cutoff reached ({self.plan.match.stop_reserve_s:g} s stop reserve)")
+             raise _Fail(f"time budget of {self.plan.time_budget_s:g} s exceeded")
++        return min(self._work_end, active.deadline if active else self._work_end) - now
++
++    def _in_budget(self, call: Callable[..., Any], *args: Any) -> Any:
++        remaining = self._check_global()
++        reply = call(*args, timeout_s=min(remaining, MATCH_REQUEST_S)) if self.plan.match else call(*args)
++        self._check_global()
++        return reply
+ 
+     def _nap(self, seconds: float) -> None:
+         remaining = seconds
+         while remaining > 1e-9:
+-            step = min(_SLEEP_STEP_S, remaining)
++            step = min(_SLEEP_STEP_S, remaining, self._check_global())
+             self._sleep(step)
+             remaining -= step
+-            if self._stop_event.is_set():
+-                raise _Stop()
++        self._check_global()
+ 
+     def _poll_health(self) -> dict[str, Any]:
+-        self._check_global()
+-        st = self.station.status()
++        st = self._in_budget(self.station.status)
+         if st.get("state") == "error":
+             raise _Fail(f"station error: {_err(st.get('last_error'))}")
+         dead = [a for a, alive in (st.get("arms") or {}).items() if not alive]
+@@ -178,13 +231,31 @@ class Runner:
+         return st
+ 
+     def _safe_stop(self, why: str) -> None:
++        if self.plan.match and not self._motion_requested:
++            return
+         self.log.event("stop", why=why)
+         try:
+-            self.station.stop()
++            if self.plan.match:
++                remaining = self._t0 + self.plan.time_budget_s - self._clock()
++                status = self.station.stop(timeout_s=min(MATCH_REQUEST_S, max(0.05, remaining)))
++                self._stop_confirmed = status.get("state") == "idle" and not self.station.dry_run
++                self.log.event("stop_reply", state=status.get("state"), confirmed=self._stop_confirmed)
++            else:
++                self.station.stop()
+         except (StationError, OSError) as exc:
++            if self.plan.match:
++                self._stop_confirmed = False
+             self.log.event("stop_failed", error=str(exc))
+ 
+     def _wait(self, states: set[str], timeout_s: float, what: str) -> dict[str, Any]:
++        if self.plan.match:
++            until = self._clock() + timeout_s
++            while self._clock() < until:
++                st = self._poll_health()
++                if st.get("state") in states:
++                    return st
++                self._nap(min(0.5, until - self._clock()))
++            raise _Fail(f"timed out waiting for {what}")
+         try:
+             st = self.station.wait_for_state(states | {"error"}, timeout_s)
+         except TimeoutError as exc:
+@@ -195,18 +266,29 @@ class Runner:
+ 
+     def _start_run(self, prompt: str) -> dict[str, Any]:
+         self.log.event("start", prompt=prompt, checkpoint=self.plan.checkpoint)
+-        self.station.start(prompt, self.plan.checkpoint)
++        self._check_global()
++        self._motion_requested = True
++        try:
++            self._in_budget(self.station.start, prompt, self.plan.checkpoint)
++        except StationError as exc:
++            if exc.status_code in (400, 409):
++                self._motion_requested = False
++            raise
+         return self._wait({"running"}, START_TIMEOUT_S, "running")
+ 
+     def _issue(self, prompt: str, why: str, *, force_start: bool = False,
+                require_new_trip: bool = False) -> int | None:
+         """Gets `prompt` to the robot: set_prompt on a running station, else a fresh start. Logs a prompt_change
+         event with the chunk count and tells verifiers (a monitor drops answers computed on the old prompt)."""
+-        previous_trip = self.frames.latest_n() if require_new_trip else None
+-        if force_start or self.station.status().get("state") != "running":
++        previous_trip = self._in_budget(self.frames.latest_n) if require_new_trip else None
++        if force_start or (self.plan.match and not self._motion_requested):
++            reply, how = self._start_run(prompt), "start"
++        elif self._in_budget(self.station.status).get("state") != "running":
++            if self.plan.match:
++                raise _Fail("match station is no longer running")
+             reply, how = self._start_run(prompt), "start"
+         else:
+-            reply, how = self.station.set_prompt(prompt), "set_prompt"
++            reply, how = self._in_budget(self.station.set_prompt, prompt), "set_prompt"
+             self.log.event("set_prompt", prompt=prompt)
+         chunks = reply.get("chunks") if isinstance(reply, dict) else None
+         self.log.event("prompt_change", prompt=prompt, why=why, how=how, chunks=chunks)
+@@ -222,7 +304,7 @@ class Runner:
+     def _frames_for_check(self, stage: Stage | None = None, *,
+                           frames: dict[str, bytes] | None = None) -> dict[str, bytes]:
+         if frames is None:
+-            frames = self.frames.latest()
++            frames = self._in_budget(self.frames.latest) if self.plan.match else self.frames.latest()
+         wanted = (stage.cameras if stage is not None and stage.cameras else None) or self.plan.cameras_for_check
+         if wanted:
+             frames = {r: j for r, j in frames.items() if any(camera_matches(r, w) for w in wanted)}
+@@ -270,14 +352,19 @@ class Runner:
+         rise_ref = last_rise = None
+         hint: int | None = None
+         while True:
+-            self._nap(self.plan.check_every_s)
++            interval = self.plan.check_every_s
++            if self.plan.match:
++                interval = min(interval, stage.timeout_s - (self._clock() - t0))
++            self._nap(interval)
+             st = self._poll_health()
+             elapsed = self._clock() - t0
++            if self.plan.match and elapsed >= stage.timeout_s:
++                return _Attempt(False, f"timeout after {stage.timeout_s:g} s", max_p, hint)
+             if st.get("state") == "idle":
+                 return _Attempt(False, "station went idle during the stage", max_p, hint)
+             if elapsed >= gate:
+                 if stage.required_cameras:
+-                    trip = self.frames.latest_trip()
++                    trip = self._in_budget(self.frames.latest_trip)
+                     repeated = trip is not None and last_trip is not None and trip.n <= last_trip
+                     frames = self._frames_for_check(stage, frames=trip.frames if trip is not None else {})
+                     problem = None
+@@ -312,8 +399,12 @@ class Runner:
+                 else:
+                     frames = self._frames_for_check(stage)
+                 verdict = self._ask(verifier, stage, frames, elapsed)
++                self._check_global()
++                if self.plan.match and self._clock() - t0 >= stage.timeout_s:
++                    return _Attempt(False, f"timeout after {stage.timeout_s:g} s", max_p, hint)
+                 saved = [p.name for p in self.log.save_frames(f"{stage.name}_a{attempt}", frames)]
+                 self._log_verdict(stage, attempt, elapsed, verdict, saved, st, last_trip)
++                self._check_global()
+                 monitor = isinstance(verdict, MonitorVerdict) and verdict.status is not None
+                 failing, why = verdict.done is False, f"verifier said no: {verdict.reason}"
+                 if monitor:
+@@ -376,9 +467,18 @@ class Runner:
+             self._nap(min(self.plan.check_every_s, max(cap - (self._clock() - t0), 0.01)))
+             st = self._poll_health()
+             elapsed = self._clock() - t0
++            if self.plan.match and elapsed >= cap:
++                return False, f"scene not verified within recovery {rec.name!r} budget"
+             if elapsed >= settle:
+-                frames = self._frames_for_check(stage)
+-                verdict = self._ask(verifier, stage, frames, elapsed)
++                if self.plan.match:
++                    trip = self._in_budget(self.frames.latest_trip)
++                    frames = trip.frames if trip is not None and trip.prompt == rec.prompt else {}
++                else:
++                    frames = self._frames_for_check(stage)
++                verdict = self._ask(verifier, stage, frames, elapsed) if frames or not self.plan.match else Verdict(None)
++                self._check_global()
++                if self.plan.match and self._clock() - t0 >= cap:
++                    return False, f"scene not verified within recovery {rec.name!r} budget"
+                 self._note_progress(stage, verdict, st)
+                 ok = getattr(verdict, "scene_ok", None)
+                 if ok is not None:
+@@ -388,7 +488,7 @@ class Runner:
+                     if ok:
+                         return True, "scene ok"
+             if elapsed >= cap:
+-                if scene is False:
++                if scene is False or self.plan.match:
+                     return False, f"scene still not ok after recovery {rec.name!r}"
+                 return True, "scene ok" if scene else "no scene verdict, assumed ok"
+ 
+@@ -396,7 +496,7 @@ class Runner:
+         menu = stage.menu()
+         usable = [i for i, r in enumerate(menu)
+                   if uses.get(i, 0) < r.max_uses and i != last
+-                  and (not r.legacy or stage.on_fail == "retry_in_place")]
++                  and (not r.legacy or stage.on_fail in ("retry_in_place", "abandon"))]
+         if hint in usable:
+             return hint
+         return usable[0] if usable else None
+@@ -446,29 +546,58 @@ class Runner:
+         """skip_if_done: one synchronous look before the prompt is sent."""
+         frames = self._frames_for_check(stage)
+         verdict = self._ask(verifier, stage, frames, 0.0, sync=True)
++        self._check_global()
+         done = verdict.done is True and (verdict.immediate or (frames and verdict.confidence >= SKIP_MIN_CONFIDENCE))
+         self.log.event("entry_check", stage=stage.name, done=verdict.done, confidence=verdict.confidence,
+                        reason=verdict.reason, skipped=bool(done))
+         return bool(done)
+ 
+     def _run_stage(self, stage: Stage, first: bool) -> StageResult:
+-        t0 = self._clock()
++        started = self._clock()
++        deadline = self._work_end - stage.reserve_after_s
++        if stage.stage_budget_s is not None:
++            deadline = min(deadline, started + stage.stage_budget_s)
++        active = _StageRun(stage, started, deadline)
++        self._active = active
++        try:
++            return self._run_stage_attempts(active, first)
++        except _StageExpired:
++            reason = ("stage time budget exhausted" if active.attempts else
++                      "insufficient time for the stage after its reserve")
++            return self._exhausted(active, reason)
++        finally:
++            self._active = None
++
++    def _abandon(self, active: _StageRun, reason: str) -> StageResult:
++        self.log.event("stage_abandoned", stage=active.stage.name, attempts=active.attempts, reason=reason)
++        return StageResult(active.stage.name, False, active.attempts, self._clock() - active.started,
++                           reason, abandoned=True)
++
++    def _exhausted(self, active: _StageRun, reason: str) -> StageResult:
++        if active.stage.on_fail == "abandon":
++            return self._abandon(active, reason)
++        raise _Fail(f"stage {active.stage.name!r} failed after {active.attempts} attempts: {reason}")
++
++    def _run_stage_attempts(self, active: _StageRun, first: bool) -> StageResult:
++        stage, t0 = active.stage, active.started
++        remaining = self._check_global()
++        if stage.on_fail == "abandon" and remaining <= max(stage.min_run_s, stage.effective_settle()):
++            return self._abandon(active, "insufficient time for a verification check")
+         verifier = self.verifiers.get(stage.verifier)
+         if verifier is None:
+             raise _Fail(f"stage {stage.name!r}: no {stage.verifier!r} verifier configured")
+-        self._check_global()
+         self._last_progress = None
+         self.log.event("stage_start", stage=stage.name, prompt=stage.prompt)
+         if stage.skip_if_done and self._entry_check(stage, verifier):
+             self.log.event("stage_already_done", stage=stage.name)
+             return StageResult(stage.name, True, 0, self._clock() - t0, "already done at entry")
+         require_new_trip = bool(stage.required_cameras)
++        active.attempts = 1
+         last_trip = self._issue(stage.prompt, "stage", force_start=first, require_new_trip=require_new_trip)
+-        attempts = 0
+         uses: dict[int, int] = {}
+         last_rec: int | None = None
+         while True:
+-            attempts += 1
++            attempts = active.attempts
+             out = self._attempt(stage, verifier, attempts, stage.prompt, last_trip)
+             if out.ok:
+                 return StageResult(stage.name, True, attempts, self._clock() - t0, out.reason)
+@@ -480,7 +609,10 @@ class Runner:
+                 return StageResult(stage.name, False, attempts, self._clock() - t0, reason)
+             while True:   # choose a recovery; a reset that leaves the scene broken burns an attempt
+                 if attempts >= stage.max_attempts:
+-                    raise _Fail(f"stage {stage.name!r} failed after {attempts} attempts: {reason}")
++                    return self._exhausted(active, reason)
++                remaining = self._check_global()
++                if stage.on_fail == "abandon" and remaining <= max(stage.min_run_s, stage.effective_settle()):
++                    return self._abandon(active, "insufficient time to verify another attempt")
+                 idx = self._pick_recovery(stage, uses, last_rec, hint)
+                 if idx is None:
+                     break
+@@ -490,8 +622,11 @@ class Runner:
+                 if scene_ok:
+                     break
+                 attempts += 1
++                active.attempts = attempts
+                 reason, hint = rreason, None
+                 self.log.event("attempt_end", stage=stage.name, attempt=attempts, ok=False, reason=rreason)
++            self._check_global()
++            active.attempts = attempts + 1
+             if idx is None and stage.on_fail == "home_and_retry":
+                 self.log.event("retry", stage=stage.name, attempt=attempts + 1, mode="home_and_retry")
+                 self.station.stop()
+diff --git a/harness/station_client.py b/harness/station_client.py
+index 3e84554..7409a5b 100644
+--- a/harness/station_client.py
++++ b/harness/station_client.py
+@@ -46,7 +46,8 @@ class StationClient:
+         if self._log is not None:
+             self._log(message)
+ 
+-    def _request(self, method: str, route: str, body: dict | None = None) -> dict[str, Any]:
++    def _request(self, method: str, route: str, body: dict | None = None, *,
++                 timeout_s: float | None = None) -> dict[str, Any]:
+         data = None
+         headers = {"Accept": "application/json"}
+         if method == "POST":
+@@ -54,7 +55,8 @@ class StationClient:
+             headers["Content-Type"] = "application/json"
+         req = urllib.request.Request(self.base_url + route, data=data, method=method, headers=headers)
+         try:
+-            with urllib.request.urlopen(req, timeout=self.timeout_s) as resp:
++            timeout = self.timeout_s if timeout_s is None else min(self.timeout_s, timeout_s)
++            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                 raw = resp.read()
+         except urllib.error.HTTPError as exc:
+             raw = exc.read()
+@@ -70,11 +72,11 @@ class StationClient:
+             raise StationError(0, f"unexpected reply from {route}")
+         return payload
+ 
+-    def _post(self, route: str, body: dict) -> dict[str, Any]:
++    def _post(self, route: str, body: dict, *, timeout_s: float | None = None) -> dict[str, Any]:
+         if self.dry_run:
+             self._say(f"DRY RUN: would POST {route} {json.dumps(body)}")
+             return self._simulate(route, body)
+-        return self._request("POST", route, body)
++        return self._request("POST", route, body, timeout_s=timeout_s)
+ 
+     def _simulate(self, route: str, body: dict) -> dict[str, Any]:
+         if route == "/start":
+@@ -93,11 +95,11 @@ class StationClient:
+         return status
+ 
+     # -- API -----------------------------------------------------------------------------------
+-    def status(self) -> dict[str, Any]:
++    def status(self, *, timeout_s: float | None = None) -> dict[str, Any]:
+         """GET /status. In dry run an unreachable station yields a synthetic status flagged
+         "_synthetic": True, and the state reflects the simulated POSTs."""
+         try:
+-            status = self._request("GET", "/status")
++            status = self._request("GET", "/status", timeout_s=timeout_s)
+         except StationError:
+             if not self.dry_run:
+                 raise
+@@ -105,17 +107,18 @@ class StationClient:
+         self.last_status = status
+         return self._overlay(dict(status)) if self.dry_run else status
+ 
+-    def start(self, prompt: str, checkpoint: str | None = None) -> dict[str, Any]:
++    def start(self, prompt: str, checkpoint: str | None = None, *,
++              timeout_s: float | None = None) -> dict[str, Any]:
+         body: dict[str, Any] = {"prompt": prompt}
+         if checkpoint:
+             body["checkpoint"] = checkpoint
+-        return self._post("/start", body)
++        return self._post("/start", body, timeout_s=timeout_s)
+ 
+-    def set_prompt(self, prompt: str) -> dict[str, Any]:
+-        return self._post("/prompt", {"prompt": prompt})
++    def set_prompt(self, prompt: str, *, timeout_s: float | None = None) -> dict[str, Any]:
++        return self._post("/prompt", {"prompt": prompt}, timeout_s=timeout_s)
+ 
+-    def stop(self) -> dict[str, Any]:
+-        return self._post("/stop", {})
++    def stop(self, *, timeout_s: float | None = None) -> dict[str, Any]:
++        return self._post("/stop", {}, timeout_s=timeout_s)
+ 
+     def home(self) -> dict[str, Any]:
+         return self._post("/home", {})
+diff --git a/plans/hill_climb_full.yaml b/plans/hill_climb_full.yaml
+index 9eaee95..b2cd70f 100644
+--- a/plans/hill_climb_full.yaml
++++ b/plans/hill_climb_full.yaml
+@@ -19,11 +19,12 @@ task: >-
+   free-standing tower at least 3 layers (6 inches) tall and move the arms away from it.
+   Do not touch the blocks before a cable is unplugged. Then put {color} ping-pong balls into the bin, one at a time, never the black ball and never another color, without touching the stack.
+ checkpoint: null            # set to your dream-1-ft:... fine-tune
+-time_budget_s: 295          # 5-minute match; a little margin for the start
++time_budget_s: 300
++match: {gates: [unplug_cable, clear_of_stack], stop_reserve_s: 5}
+ check_every_s: 3.0
+ verifier: monitor
+ confirm: 2
+-done_message: "ALL STAGES DONE: CALL STOP NOW"
++done_message: "CORE GATES VERIFIED: CALL STOP NOW"
+ # Which arm plugs the loose cable in and which one only watches with its wrist camera (a second viewpoint,
+ # because the overhead camera is poor at depth). Override at the match: --var work_arm=left --var watch_arm=right
+ # --var work_cam=wrist_l --var watch_cam=wrist_r
+@@ -36,6 +37,8 @@ stages:
+     success: "Is at least one USB cable that started in the hub now fully pulled out of the hub?"
+     expect: "A gripper closes on the plug of a cable in the hub and pulls it straight out until the plug is clear."
+     timeout_s: 45
++    stage_budget_s: 75
++    required_cameras: [overhead]
+     max_attempts: 8
+     min_run_s: 4
+     settle_s: 4
+@@ -51,6 +54,7 @@ stages:
+     success: "Are both grippers empty, with the unplugged cable lying on the table outside the hub?"
+     expect: "The arm moves the loose cable away from the hub, lowers it to the table and opens."
+     timeout_s: 25
++    stage_budget_s: 30
+     max_attempts: 4
+     min_run_s: 3
+     recovery:
+@@ -59,7 +63,7 @@ stages:
+     on_fail: retry_in_place
+ 
+   # Optional +20 per cable: plug a LOOSE cable (one that started on the table) into a free hub port.
+-  # Stage 1's pass bar is already met, so these are allowed; on_fail skip keeps them from eating the clock.
++  # Reserve the remaining mandatory clearance and stack allocations before optional cable work.
+   - name: watcher_into_place
+     prompt: "park the {watch_arm} arm beside the hub, with its wrist camera looking across the table at the hub ports; keep both grippers clear"
+     success: "Do the newest {watch_cam} and overhead views confirm the watcher is beside the hub, its gripper is clear, and its wrist camera sees a free port side-on? A top-down view does not count."
+@@ -70,14 +74,16 @@ stages:
+     camera_notes:
+       "{watch_cam}": "wrist camera of the {watch_arm} arm, which should end up looking at the hub ports from the side"
+     timeout_s: 15
++    stage_budget_s: 15
++    reserve_after_s: 173
+     max_attempts: 1
+     min_run_s: 3
+-    on_fail: skip             # skip the optional plug-in if the watcher cannot be verified
++    on_fail: abandon
+ 
+   - name: plug_loose_cable
+     requires_stage: watcher_into_place
+-    prompt: "with the {work_arm} arm, plug the loose USB cable on the table into a free port on the hub while the {watch_arm} arm stays still"
+-    success: "Use the newest {watch_cam} side view and overhead view together. Is the plug of a formerly loose cable fully seated in a free port, with the watcher still aimed at the port? If the side view lost the port or cannot show the plug depth, withhold success."
++    prompt: "with the {work_arm} arm, insert a USB cable that started loose into a free hub port; leave the cable just unplugged untouched and keep the {watch_arm} arm still"
++    success: "Use the newest {watch_cam} and overhead views. Is a cable that started the run loose fully seated in a free port, with the watcher still aimed at the port? Withhold success if the side view cannot show the insertion depth."
+     expect: "The {work_arm} gripper picks the loose cable up by its plug, lines the plug up with a free port and pushes it in until it is seated, while the {watch_arm} arm holds still."
+     cameras: [overhead, "{watch_cam}", "{work_cam}"]
+     required_cameras: [overhead, "{watch_cam}"]
+@@ -86,20 +92,23 @@ stages:
+       "scene": "top view: shows which port and the left-right alignment; poor at depth and insertion"
+       "{watch_cam}": "side view from the {watch_arm} arm, which is only watching: use it for the plug's distance to the port, its height and whether it is pushed fully in"
+       "{work_cam}": "close view from the gripper doing the plugging"
+-    timeout_s: 40
++    timeout_s: 12
++    stage_budget_s: 20
++    reserve_after_s: 173
+     max_attempts: 2
+     min_run_s: 4
+-    stall_s: 15
++    stall_s: 8
+     recovery:
+       - {name: realign, kind: retry, when: "the plug is held and near the port but not lined up", max_uses: 1}
+       - {name: back_off, kind: reset, prompt: "move the {work_arm} arm up and away from the hub while holding the cable",
+          when: "the plug is jammed against the hub or pushing the hub", settle_s: 4, max_uses: 1}
+-    on_fail: skip             # +20 is worth it only if it is fast (it costs 1 point of clock per 2 s)
++    on_fail: abandon
+ 
+   - name: release_before_stack
+     prompt: "open both grippers and move both arms up, away from the hub"
+     success: "Are both grippers empty and clear of the hub and cables?"
+     timeout_s: 15
++    stage_budget_s: 18
+     max_attempts: 2
+     min_run_s: 3
+     on_fail: retry_in_place
+@@ -109,6 +118,7 @@ stages:
+     success: "Is one block resting on top of another block, with no gripper holding it?"
+     expect: "An arm picks up a block and sets it squarely on another block, then opens."
+     timeout_s: 50
++    stage_budget_s: 60
+     max_attempts: 6
+     min_run_s: 4
+     stall_s: 20
+@@ -123,6 +133,7 @@ stages:
+     success: "Is the stack three blocks tall, standing on its own with no gripper touching it?"
+     expect: "An arm picks up a third block and places it on the two-block stack without knocking it, then opens."
+     timeout_s: 50
++    stage_budget_s: 65
+     max_attempts: 6
+     min_run_s: 4
+     stall_s: 20
+@@ -134,9 +145,11 @@ stages:
+ 
+   - name: clear_of_stack
+     prompt: "move the arms up and away from the stack without touching it"
+-    success: "Is the stack at least three blocks tall and standing on its own, with both arms clear of it?"
++    success: "Is the stack at least six inches and three layers tall, free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
+     expect: "Both arms rise and move back; the stack stays standing."
+     timeout_s: 20
++    stage_budget_s: 30
++    required_cameras: [overhead]
+     max_attempts: 3
+     min_run_s: 3
+     recovery:
+@@ -146,40 +159,41 @@ stages:
+ 
+   - &ball
+     name: ball_1
+-    prompt: "put a {color} ping-pong ball in the bin without touching the stack"
++    requires_stage: clear_of_stack
++    prompt: "put one {color} ping-pong ball in the bin; avoid the black ball and keep clear of the stack"
+     success: "Is at least 1 {color} ball resting inside the bin, with no black ball in the bin?"
+     expect: "An arm picks up one {color} ball, avoiding the black ball and the stack, and drops it into the bin."
+-    timeout_s: 30
+-    max_attempts: 3
++    timeout_s: 10
++    stage_budget_s: 10
++    max_attempts: 1
+     min_run_s: 3
+-    stall_s: 15
+-    recovery:
+-      - {name: drop_black, kind: reset, prompt: "put the black ball down on the table far from the bin",
+-         when: "a gripper is holding the black ball", settle_s: 5, max_uses: 3}
+-      - {name: remove_black, kind: reset, prompt: "take the black ball out of the bin and put it on the table",
+-         when: "the black ball is inside the bin", settle_s: 10, max_uses: 3}
+-      - {name: drop_wrong, kind: reset, prompt: "put the ball down on the table away from the bin",
+-         when: "a gripper is holding a ball that is not {color}", settle_s: 5, max_uses: 3}
+-      - {name: keep_going, kind: retry, when: "a {color} ball is held or close to the gripper", max_uses: 2}
+-    on_fail: skip             # no pass bar on Stage 3; a missed ball just moves on
++    required_cameras: [overhead]
++    on_fail: abandon
+   - <<: *ball
+     name: ball_2
++    requires_stage: ball_1
+     success: "Are at least 2 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_3
++    requires_stage: ball_2
+     success: "Are at least 3 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_4
++    requires_stage: ball_3
+     success: "Are at least 4 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_5
++    requires_stage: ball_4
+     success: "Are at least 5 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_6
++    requires_stage: ball_5
+     success: "Are at least 6 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_7
++    requires_stage: ball_6
+     success: "Are at least 7 {color} balls resting inside the bin, with no black ball in the bin?"
+   - <<: *ball
+     name: ball_8
++    requires_stage: ball_7
+     success: "Are at least 8 {color} balls resting inside the bin, with no black ball in the bin?"
+diff --git a/plans/hill_climb_sprint.yaml b/plans/hill_climb_sprint.yaml
+index 4eb9daf..2178d40 100644
+--- a/plans/hill_climb_sprint.yaml
++++ b/plans/hill_climb_sprint.yaml
+@@ -16,7 +16,8 @@ task: >-
+   free-standing tower at least 3 layers (6 inches) tall and move the arms away from it.
+   Do not touch the blocks before a cable is unplugged. Do not touch the ping-pong balls.
+ checkpoint: null            # set to your dream-1-ft:... fine-tune
+-time_budget_s: 295          # 5-minute match; a little margin for the start
++time_budget_s: 300
++match: {gates: [unplug_cable, clear_of_stack], stop_reserve_s: 5}
+ check_every_s: 3.0
+ verifier: monitor
+ confirm: 2
+@@ -29,6 +30,8 @@ stages:
+     success: "Is at least one USB cable that started in the hub now fully pulled out of the hub?"
+     expect: "A gripper closes on the plug of a cable in the hub and pulls it straight out until the plug is clear."
+     timeout_s: 45
++    stage_budget_s: 75
++    required_cameras: [overhead]
+     max_attempts: 8
+     min_run_s: 4
+     settle_s: 4
+@@ -44,6 +47,7 @@ stages:
+     success: "Are both grippers empty, with the unplugged cable lying on the table outside the hub?"
+     expect: "The arm moves the loose cable away from the hub, lowers it to the table and opens."
+     timeout_s: 25
++    stage_budget_s: 30
+     max_attempts: 4
+     min_run_s: 3
+     recovery:
+@@ -56,6 +60,7 @@ stages:
+     success: "Is one block resting on top of another block, with no gripper holding it?"
+     expect: "An arm picks up a block and sets it squarely on another block, then opens."
+     timeout_s: 50
++    stage_budget_s: 65
+     max_attempts: 6
+     min_run_s: 4
+     stall_s: 20
+@@ -70,6 +75,7 @@ stages:
+     success: "Is the stack three blocks tall, standing on its own with no gripper touching it?"
+     expect: "An arm picks up a third block and places it on the two-block stack without knocking it, then opens."
+     timeout_s: 50
++    stage_budget_s: 70
+     max_attempts: 6
+     min_run_s: 4
+     stall_s: 20
+@@ -81,9 +87,11 @@ stages:
+ 
+   - name: clear_of_stack
+     prompt: "move the arms up and away from the stack without touching it"
+-    success: "Is the stack at least three blocks tall and standing on its own, with both arms clear of it?"
++    success: "Is the stack at least six inches and three layers tall, free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
+     expect: "Both arms rise and move back; the stack stays standing."
+     timeout_s: 20
++    stage_budget_s: 30
++    required_cameras: [overhead]
+     max_attempts: 3
+     min_run_s: 3
+     recovery:
+diff --git a/tests/test_match_plans.py b/tests/test_match_plans.py
+index ab58e91..86477b3 100644
+--- a/tests/test_match_plans.py
++++ b/tests/test_match_plans.py
+@@ -25,11 +25,14 @@ def test_match_plans_load_and_follow_the_rules(name):
+     assert plan.verifier == "monitor"            # no human input after "go"
+     assert plan.confirm >= 2                     # a false "done" is a DQ
+     assert plan.time_budget_s <= 300
++    assert plan.match is not None and plan.match.gates == ("unplug_cable", "clear_of_stack")
++    assert plan.match.stop_reserve_s == 5
+     assert plan.done_message
+     optional = ("ball_", "watcher_into_place", "plug_loose_cable")   # after Stage 1 passed: skipping is safe
+     gated = [s for s in plan.stages if not s.name.startswith(optional)]
+     assert [s.name for s in gated][:2] == ["unplug_cable", "put_cable_down"]
+-    assert all(s.on_fail != "skip" for s in gated)   # Stages 1-2 are never skipped
++    assert all(s.on_fail not in ("skip", "abandon") for s in gated)
++    assert all(s.stage_budget_s is not None for s in plan.stages)
+     assert all(s.verifier == "monitor" for s in plan.stages)
+     assert "{color}" not in " ".join(s.prompt + s.success for s in plan.stages)
+ 
+@@ -51,3 +54,8 @@ def test_done_message_printed_on_success(tmp_path, capsys):
+ 
+ def test_bad_var_rejected(tmp_path):
+     assert main([str(PLANS / "hill_climb_full.yaml"), "--mock", "--var", "color"]) == 2
++
++
++def test_match_rejects_time_override_before_station_start(capsys):
++    assert main([str(PLANS / "hill_climb_sprint.yaml"), "--live", "--verifier", "time"]) == 2
++    assert "match plans require the monitor verifier" in capsys.readouterr().err
+diff --git a/tests/test_match_supervisor.py b/tests/test_match_supervisor.py
+new file mode 100644
+index 0000000..fb32915
+--- /dev/null
++++ b/tests/test_match_supervisor.py
+@@ -0,0 +1,171 @@
++"""Exercise match authorization and deadlines without a robot or inference service."""
++
++import json
++
++import pytest
++
++from conftest import stage
++from fake_station import FakeVerifier
++from harness.frames import FrameSource
++from harness.log import RunLog
++from harness.plan import parse_plan
++from harness.runner import Runner
++from harness.station_client import StationClient, StationError
++from harness.verifiers import Verdict
++
++
++def match(stages, *, budget=20, reserve=2):
++    return parse_plan({
++        "task": "test match", "time_budget_s": budget, "check_every_s": 0.25,
++        "verifier": "monitor", "confirm": 2,
++        "match": {"gates": ["unplug", "stack"], "stop_reserve_s": reserve},
++        "stages": stages,
++    })
++
++
++class Clock:
++    now = 0.0
++
++    def read(self):
++        return self.now
++
++    def sleep(self, seconds):
++        self.now += seconds
++
++
++class Station:
++    dry_run = False
++
++    def __init__(self, clock, *, stop_fails=False, ambiguous_prompt=None):
++        self.clock = clock
++        self.stop_fails = stop_fails
++        self.ambiguous_prompt = ambiguous_prompt
++        self.commands = []
++        self.state = "idle"
++        self.prompt = None
++
++    def status(self, *, timeout_s):
++        return {"state": self.state, "prompt": self.prompt, "arms": {}, "cameras": {}}
++
++    def start(self, prompt, checkpoint, *, timeout_s):
++        self.state = "running"
++        self.commands.append(("start", prompt, self.clock.read(), timeout_s))
++        self.prompt = prompt
++        return self.status(timeout_s=timeout_s)
++
++    def set_prompt(self, prompt, *, timeout_s):
++        self.commands.append(("prompt", prompt, self.clock.read(), timeout_s))
++        self.prompt = prompt
++        if prompt == self.ambiguous_prompt:
++            raise StationError(0, "prompt reply missing")
++        return self.status(timeout_s=timeout_s)
++
++    def stop(self, *, timeout_s):
++        self.commands.append(("stop", None, self.clock.read(), timeout_s))
++        if self.stop_fails:
++            raise StationError(0, "stop reply missing")
++        self.state = "idle"
++        return self.status(timeout_s=timeout_s)
++
++
++class Frames:
++    def latest(self, *, timeout_s):
++        return {"overhead": b"frame"}
++
++    def latest_trip(self, *, timeout_s):
++        return None
++
++
++def run(plan, tmp_path, verdicts, *, late=None, stop_fails=False, ambiguous_prompt=None):
++    clock = Clock()
++    station = Station(clock, stop_fails=stop_fails, ambiguous_prompt=ambiguous_prompt)
++    verifier = FakeVerifier(verdicts)
++
++    class Judge:
++        def check(self, stage, frames, elapsed):
++            if late == stage.name:
++                clock.sleep(8)
++                return Verdict(True, 1.0, "late")
++            return verifier.check(stage, frames, elapsed)
++
++    runner = Runner(plan, station, Frames(), {"monitor": Judge()}, RunLog(tmp_path / "runs"),
++                    clock=clock.read, sleep=clock.sleep)
++    return runner.run(), station.commands
++
++
++def test_optional_retries_then_abandons_without_losing_match_result(tmp_path):
++    plan = match([stage("unplug"), stage("plug", on_fail="abandon", stage_budget_s=3),
++                  stage("stack"), stage("ball", on_fail="abandon", requires_stage="stack")])
++    result, commands = run(plan, tmp_path, {
++        "unplug": [True, True], "plug": [False] * 4, "stack": [True, True], "ball": [True, True],
++    })
++    assert result.ok and result.match_gates_passed and result.stop_confirmed
++    assert result.stages[1].abandoned and result.stages[1].attempts == 2
++    assert [c[1] for c in commands] == ["do unplug", "do plug", "do plug", "do stack", "do ball", None]
++
++
++def test_required_exhaustion_never_issues_later_prompt(tmp_path):
++    plan = match([stage("unplug", max_attempts=1), stage("stack"), stage("ball", on_fail="abandon")])
++    result, commands = run(plan, tmp_path, {"unplug": [False, False]})
++    assert not result.ok and not result.match_gates_passed and result.stop_confirmed
++    assert [c[:2] for c in commands] == [("start", "do unplug"), ("stop", None)]
++
++
++def test_deadline_discards_a_late_positive_verdict(tmp_path):
++    plan = match([stage("unplug"), stage("stack")], budget=5, reserve=2)
++    result, commands = run(plan, tmp_path, {}, late="unplug")
++    assert not result.ok and not result.match_gates_passed and result.stop_confirmed
++    assert "match work cutoff" in result.reason
++    assert [c[0] for c in commands] == ["start", "stop"]
++    assert commands[0][3] == pytest.approx(3)
++    assert commands[1][3] == pytest.approx(0.05)
++
++
++def test_stage_allocation_includes_reset_and_preserves_later_reserve(tmp_path):
++    plan = match([
++        stage("unplug"),
++        stage("plug", on_fail="abandon", stage_budget_s=1, max_attempts=3,
++              recovery=[{"name": "back_off", "prompt": "back off", "kind": "reset", "settle_s": 0.1}]),
++        stage("extra", on_fail="abandon", reserve_after_s=17),
++        stage("stack"),
++    ])
++    result, commands = run(plan, tmp_path, {"unplug": [True, True], "plug": [False, False],
++                                            "stack": [True, True]})
++    assert result.ok and [s.abandoned for s in result.stages] == [False, True, True, False]
++    assert result.stages[1].seconds == pytest.approx(1)
++    assert result.stages[2].attempts == 0
++    assert [c[1] for c in commands] == ["do unplug", "do plug", "back off", "do stack", None]
++
++
++def test_gate_progress_is_reported_even_when_stop_reply_is_missing(tmp_path):
++    plan = match([stage("unplug"), stage("stack")])
++    result, _ = run(plan, tmp_path, {"unplug": [True, True], "stack": [True, True]}, stop_fails=True)
++    assert result.match_gates_passed and not result.stop_confirmed and not result.ok
++
++
++def test_ambiguous_optional_prompt_stops_instead_of_retrying_or_advancing(tmp_path):
++    plan = match([stage("unplug"), stage("plug", on_fail="abandon"), stage("stack")])
++    result, commands = run(plan, tmp_path, {"unplug": [True, True]}, ambiguous_prompt="do plug")
++    assert not result.ok and result.stop_confirmed
++    assert "prompt reply missing" in result.reason
++    assert [c[:2] for c in commands] == [("start", "do unplug"), ("prompt", "do plug"), ("stop", None)]
++
++
++def test_match_against_fake_station_http(fake, tmp_path):
++    plan = match([
++        stage("unplug", required_cameras=["overhead"]),
++        stage("watcher", required_cameras=["wrist_l"], max_attempts=1, on_fail="abandon"),
++        stage("plug", requires_stage="watcher", on_fail="abandon"),
++        stage("stack", required_cameras=["overhead"]),
++    ])
++    log = RunLog(tmp_path / "runs")
++    runner = Runner(plan, StationClient(fake.api_url), FrameSource(fake.view_url),
++                    {"monitor": FakeVerifier({"unplug": [True, True], "watcher": [False, False],
++                                               "stack": [True, True]})}, log)
++    result = runner.run()
++    assert result.ok and result.match_gates_passed and result.stop_confirmed
++    assert [r.name for r in result.stages if r.abandoned] == ["watcher", "plug"]
++    assert [route for _, route, _ in fake.posts()] == ["/start", "/prompt", "/prompt", "/stop"]
++    assert [body.get("prompt") for _, _, body in fake.posts()] == ["do unplug", "do watcher", "do stack", None]
++    summary = json.loads((log.path / "summary.json").read_text())
++    assert summary["match_gates_passed"] and summary["stop_confirmed"]
+diff --git a/tests/test_watcher.py b/tests/test_watcher.py
+index e4dd201..11ea580 100644
+--- a/tests/test_watcher.py
++++ b/tests/test_watcher.py
+@@ -86,7 +86,7 @@ def test_full_plan_watcher_stages():
+     names = [s.name for s in plan.stages]
+     assert names.index("unplug_cable") < names.index("plug_loose_cable") < names.index("stack_two")
+     plug = plan.stages[names.index("plug_loose_cable")]
+-    assert plug.history_cameras == ["wrist_l"] and "right arm" in plug.prompt and plug.on_fail == "skip"
++    assert plug.history_cameras == ["wrist_l"] and "right arm" in plug.prompt and plug.on_fail == "abandon"
+     assert plug.requires_stage == "watcher_into_place"
+     assert plug.required_cameras == ["overhead", "wrist_l"]
+ 
+-- 
+2.55.0.windows.2
+

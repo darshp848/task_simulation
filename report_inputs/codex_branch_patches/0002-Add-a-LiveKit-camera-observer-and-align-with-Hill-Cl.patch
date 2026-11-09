@@ -1,0 +1,621 @@
+From 569607e1afbecabe732f69c4b82944a53f0b217c Mon Sep 17 00:00:00 2001
+From: darshp848 <75503951+darshp848@users.noreply.github.com>
+Date: Sat, 7 Nov 2026 16:39:09 -0600
+Subject: [PATCH 2/3] Add a LiveKit camera observer and align with Hill Climb
+ v4
+
+---
+ HARNESS_GUIDE.md             |  36 +++--
+ MATCH_DESIGN.md              |  10 +-
+ harness/livekit_observer.py  | 274 +++++++++++++++++++++++++++++++++++
+ plans/hill_climb_full.yaml   |  46 +++---
+ plans/hill_climb_sprint.yaml |  21 ++-
+ tests/test_match_plans.py    |  13 +-
+ tests/test_watcher.py        |   2 +-
+ 7 files changed, 342 insertions(+), 60 deletions(-)
+ create mode 100644 harness/livekit_observer.py
+
+diff --git a/HARNESS_GUIDE.md b/HARNESS_GUIDE.md
+index e64bf3a..884d644 100644
+--- a/HARNESS_GUIDE.md
++++ b/HARNESS_GUIDE.md
+@@ -76,7 +76,7 @@ Other options:
+ - `--view URL` (default `http://127.0.0.1:8093`)
+ - `--runs-dir DIR` (default `runs`)
+ - `--verifier NAME` overrides every stage's verifier.
+-- `--var NAME=VALUE` fills a `{NAME}` placeholder in the plan, for example `--var color=orange`. It can be repeated.
++- `--var NAME=VALUE` fills a `{NAME}` placeholder in the plan, for example `--var watch_arm=right`. It can be repeated.
+ 
+ While it runs, type `y` / `n` + Enter to answer a manual check, or `s` + Enter to stop.
+ 
+@@ -170,17 +170,17 @@ stages:
+ | `plans/example_hill_climb_v2.yaml` | Uses every v2 field, with comments |
+ | `plans/sim_fruit_bowl.yaml` | For the MuJoCo sim scene (apple, orange, banana, bowl, plate) |
+ | `plans/hill_climb_sprint.yaml` | **Match plan.** Unplug 1 cable, put it down, then stack 2, stack 3, move clear. Then it prints "CALL STOP NOW". |
+-| `plans/hill_climb_full.yaml` | Required unplug and stack, optional watcher-assisted plug, then up to 8 balls of your colour. Needs `--var color=<colour>`. |
++| `plans/hill_climb_full.yaml` | Required unplug and stack, optional watcher-assisted plug, then up to eight shared golf balls. |
+ 
+-## 6b. Match rules and how the plans follow them (from `hillclimb_rubric_v2.pdf`)
++## 6b. Match rules and how the plans follow them
+ 
+-The match is a 5-minute 1v1. The stages, in order:
++Rubric v4 gives each team five minutes. The stages are ordered.
+ 
+-1. **Unplug.** The pass bar is 1 cable out: +10, and +5 for each further unplug. Plugging a loose cable into a free port is +20.
+-2. **Stack.** The pass bar is a free-standing stack 3 layers / 6 inches tall that still stands 3 s after release: +20, and +10 for each further block. If the stack falls later, those points are lost.
+-3. **Balls.** Own colour +5, other colour -5. A black 8-ball in the bin loses the match.
++1. **Unplug.** One cable out passes the stage and scores +10. Further unplugs score +5 each. Each originally loose cable plugged into a free port scores +20, up to four.
++2. **Stack.** The pass bar is four inches and three seconds of standing freely after release. The scoring table awards +20 for a tower over four inches, +3 per full inch remaining at the end if the stage passed, and +10 for the taller qualifying tower in head-to-head matches.
++3. **Balls.** Each shared golf ball resting in our bin at the end scores +5. Either black 8-ball in our bin loses the match.
+ 
+-Time bonus: +1 per 2 s left on the clock, but only if Stages 1 and 2 passed and a team member calls "stop".
++The rubric awards +10 for LiveKit and +5 for Dimensional when the team shows its use to the referee before the match.
+ 
+ What the rules mean for the harness:
+ 
+@@ -188,15 +188,15 @@ What the rules mean for the harness:
+ - **A false "done" is a DQ.** Touching a later stage's objects before the pass bar is met is a DQ. That's why the plans:
+   - require `confirm: 2`,
+   - end the run if a required stage exhausts its allocation,
+-  - ask for fresh evidence of a stack at least six inches and three layers tall, stable for three seconds after release.
+-- **Stop early.** Stopping right after Stage 2 usually wins. A ball pays only if it takes under 10 s (it costs 5 bonus points of clock), and an extra block pays only if it takes under 20 s. So the sprint plan ends after the stack and prints `CALL STOP NOW`, and the designated member says "stop" out loud. Use the full plan only if practice shows balls are fast.
++  - ask for fresh evidence of a stack at least four inches tall, stable for three seconds after release.
++- The sprint plan ends after the stack. The full plan attempts optional points within its allocations. The designated team member can call stop.
+ - The match budget is 300 s. After preflight, the runner allocates up to 295 s for work and reserves the final 5 s for requesting stop. The full plan preserves 173 s for clearance and stack while attempting the optional plug. It stops chasing balls after the first unverified count.
+ 
+ See [the match design](MATCH_DESIGN.md) for timing, simulator coverage, and the LiveKit training and observation paths.
+ 
+ ```bash
+ python -m harness plans/hill_climb_sprint.yaml --live
+-python -m harness plans/hill_climb_full.yaml --live --var color=orange   # colour from the coin flip
++python -m harness plans/hill_climb_full.yaml --live
+ ```
+ 
+ Still unclear in the rubric (ask the organizers):
+@@ -239,6 +239,18 @@ python -m dimos_skills
+ 
+ Connect an MCP client to `http://127.0.0.1:9990/mcp` and call `inspect_watcher` with `arm` set to `left` or `right`. It returns the current station status and labelled JPEGs for the overhead and selected wrist when the latest camera trip matches the active prompt. Use `--station` and `--view` if the simulator uses different ports. This skill reads the station and debug view over HTTP.
+ 
++### Observe a stage through LiveKit
++
++Install `livekit==1.2.1` and `pillow` in the harness environment. Set `LIVEKIT_URL` and `LIVEKIT_TOKEN` for the station's room. Use a room token with `canSubscribe` enabled and `canPublish` and `canPublishData` disabled.
++
++```bash
++python -m harness.livekit_observer --publisher metal-station \
++  --track overhead=table_top --track wrist_l=left_wrist \
++  --plan plans/hill_climb_full.yaml --stage watcher_into_place
++```
++
++Use the publisher identity and exact video track names from the room. With a plan and stage, the observer uses the existing Anthropic monitor and `ANTHROPIC_API_KEY`. Omit both options to capture camera evidence alone. It writes camera JPEGs and optional advisory verdicts under `runs_livekit/`. The logged receive age measures time since the local subscriber received each frame. The RTC timestamp is stored separately. The observer reports on the selected stage while the runner continues to verify its own stage transitions.
++
+ ## 7. Test in simulation (before the robot)
+ 
+ `sim_station.py` serves the same API (8091) and debug view (8093), driven by Dream's MuJoCo YAM simulator (`dream_examples/yam_mujoco`). The harness can't tell it apart from a real station, and nothing physical moves, so `--live` is safe here. Note that the Hill Climb uses Metal arms, while the sim is YAM only. That makes it a test of the harness logic and prompts, not of the real task.
+@@ -354,4 +366,4 @@ If the adapters are CANables in slcan mode (a `/dev/tty…` serial device), the
+ - Can an outside model (Claude) check stages during a match? (Human `y`/`n` is clearly not allowed.)
+ - How do we start the harness at "go" without it counting as keyboard input?
+ - Can the harness change the prompt live during a match, or is it one prompt per run?
+-- Is Ethernet hard mode on, and how tall is one block (are 3 layers already 6 inches)?
++- Is Ethernet hard mode on, and what fixed reference in the camera views gives the four-inch height?
+diff --git a/MATCH_DESIGN.md b/MATCH_DESIGN.md
+index 0c2672b..d7e9a0c 100644
+--- a/MATCH_DESIGN.md
++++ b/MATCH_DESIGN.md
+@@ -5,12 +5,12 @@
+ Run the sprint plan for unplug and stack, or the full plan to exercise the optional plug and balls. Use a mock station and a scripted monitor for scheduling tests.
+ 
+ ```python
+-plan = load_plan("plans/hill_climb_full.yaml", {"color": "orange"})
++plan = load_plan("plans/hill_climb_full.yaml")
+ result = Runner(plan, station, frames, {"monitor": monitor}, log).run()
+ abandoned = [stage.name for stage in result.stages if stage.abandoned]
+ ```
+ 
+-The match plans use 300 seconds, with the last five reserved for requesting stop. The runner starts its clock after preflight. Match procedure still needs to align this start with the organizer's go signal. The time bonus depends on the designated person calling stop after both pass bars.
++The match plans use 300 seconds, with the last five reserved for requesting stop. The runner starts its clock after preflight. Match procedure still needs to align this start with the organizer's go signal. A designated team member can call stop.
+ 
+ ## Shape
+ 
+@@ -18,7 +18,7 @@ The match plans use 300 seconds, with the last five reserved for requesting stop
+ 
+ The runner checks the remaining budget before commands, when it sleeps or polls, and after a verifier returns. A timed-out command is ambiguous and terminates the run. The station's reply is separate from the stop request. HTTP timeouts are socket bounds. Physical stop and command ordering after a network failure depend on the station.
+ 
+-The unplug gate needs visual evidence of a cable clear of the hub. The stack gate asks for a free-standing stack at least six inches and three layers tall for three seconds after release. Current camera evidence and monitor prompts are proxies for the judge. The hardware validation needs a height reference and a check that the release and three-second dwell are visible.
++The unplug gate needs visual evidence of a cable clear of the hub. Rubric v4 requires a stack at least four inches tall that stands freely for three seconds after release. Current camera evidence and monitor prompts are proxies for the judge. Hardware validation needs a height reference and a check that the release and three-second dwell are visible.
+ 
+ ## Design selection
+ 
+@@ -34,8 +34,8 @@ Sentinel supports comparing timestamped observations asynchronously. Hi Robot se
+ 
+ ## LiveKit
+ 
+-The event advertises LiveKit for streaming and voice agents. The Hill Climb rubric restricts human input after go. Keep tele-op handoffs in practice and demonstration collection. [Event page](https://luma.com/pah)
++Rubric v4 awards 10 points when the team shows its use of LiveKit to the referee before the match. The same rubric restricts human input after go, including voice. Keep tele-op handoffs in practice and demonstration collection. [Event page](https://luma.com/pah)
+ 
+ For training, Portal can record synchronized observations, executed actions, and which operator supplied each action. Use the capture timeline to label the policy mistake, human correction, and recovery result. Verify the event's Metal/Dream adapter, feature schema, and Dream import against a recorded sample before relying on this path. The public Portal HITL tutorial uses a different arm and an ACT policy. [LiveKit Portal](https://github.com/livekit/portal) · [HITL reference](https://github.com/livekit-examples/portal-hitl)
+ 
+-For detection, start with a passive subscriber and compare its capture timestamps, view coverage, and detection latency with Dream's debug trips. A detector can flag an empty grasp, loss of the watcher view, or stalled progress. Associate observations with the current prompt and discard stale results. Keep control and task advancement with the runner. [Robot camera tracks](https://docs.livekit.io/robotics/media/video/video-tracks/)
++For detection, the optional LiveKit observer subscribes to named camera tracks and can run the existing monitor for a selected stage. It logs locally received frames and advisory verdicts. Comparing view coverage and detection latency with Dream debug trips requires paired recordings with a shared capture clock. The runner retains control and task advancement. [Robot camera tracks](https://docs.livekit.io/robotics/media/video/video-tracks/)
+diff --git a/harness/livekit_observer.py b/harness/livekit_observer.py
+new file mode 100644
+index 0000000..70e0a30
+--- /dev/null
++++ b/harness/livekit_observer.py
+@@ -0,0 +1,274 @@
++"""Read-only LiveKit camera observer for Hill Climb practice and evaluation."""
++
++from __future__ import annotations
++
++import argparse
++import asyncio
++import io
++import logging
++import math
++import os
++import time
++from dataclasses import asdict, dataclass
++from typing import TYPE_CHECKING
++
++from .frames import camera_matches
++from .log import RunLog
++from .plan import Stage, load_plan
++from .verifiers import MonitorVerifier
++
++if TYPE_CHECKING:
++    from livekit import rtc
++
++
++@dataclass(frozen=True)
++class ReceivedFrame:
++    event: rtc.VideoFrameEvent
++    received_at: float
++
++    def jpeg(self) -> bytes:
++        from PIL import Image
++
++        frame = self.event.frame
++        image = Image.frombytes("RGB", (frame.width, frame.height), bytes(frame.data))
++        # The SDK enumerates clockwise rotation in quarter turns.
++        if self.event.rotation:
++            image = image.rotate(-90 * int(self.event.rotation), expand=True)
++        buffer = io.BytesIO()
++        image.save(buffer, format="JPEG", quality=85)
++        return buffer.getvalue()
++
++
++class LiveKitCameras:
++    """Keep only the latest frame for each explicitly named camera."""
++
++    def __init__(self, publisher: str, tracks: dict[str, str]):
++        from livekit import rtc
++
++        self.room = rtc.Room()
++        self.publisher = publisher
++        self._roles = {name: role for role, name in tracks.items()}
++        self._latest: dict[str, ReceivedFrame] = {}
++        self._streams: dict[str, tuple[str, asyncio.Task]] = {}
++        self._tasks: set[asyncio.Task] = set()
++        self._reconnecting = False
++        self._closing = False
++        self.closed = False
++        self.room.on("track_published", self._subscribe)
++        self.room.on("track_subscribed", self._start_stream)
++        self.room.on("track_unsubscribed", self._end_stream)
++        self.room.on("track_muted", self._mute)
++        self.room.on("reconnecting", self._pause)
++        self.room.on("reconnected", self._resume)
++        self.room.on("disconnected", self._disconnected)
++
++    async def connect(self, url: str, token: str) -> None:
++        from livekit import rtc
++
++        await self.room.connect(url, token, rtc.RoomOptions(auto_subscribe=False, connect_timeout=10))
++        for participant in self.room.remote_participants.values():
++            for publication in participant.track_publications.values():
++                self._subscribe(publication, participant)
++
++    def _subscribe(self, publication: rtc.RemoteTrackPublication, participant: rtc.RemoteParticipant) -> None:
++        from livekit import rtc
++
++        if (participant.identity == self.publisher and publication.name in self._roles
++                and publication.kind == rtc.TrackKind.KIND_VIDEO):
++            publication.set_subscribed(True)
++
++    def _start_stream(self, track: rtc.RemoteVideoTrack, publication: rtc.RemoteTrackPublication,
++                      participant: rtc.RemoteParticipant) -> None:
++        role = self._roles.get(publication.name)
++        if participant.identity != self.publisher or role is None:
++            return
++        previous = self._streams.get(role)
++        if previous is not None:
++            sid, task = previous
++            if sid == publication.sid and not task.done():
++                return
++            task.cancel()
++        self._latest.pop(role, None)
++        task = asyncio.create_task(self._receive(role, track, publication))
++        self._streams[role] = (publication.sid, task)
++        self._tasks.add(task)
++        task.add_done_callback(self._stream_done)
++
++    def _stream_done(self, task: asyncio.Task) -> None:
++        self._tasks.discard(task)
++        if not task.cancelled() and (error := task.exception()) is not None:
++            logging.getLogger(__name__).warning("LiveKit video stream failed (%s)", type(error).__name__)
++
++    async def _receive(self, role: str, track: rtc.RemoteVideoTrack,
++                       publication: rtc.RemoteTrackPublication) -> None:
++        from livekit import rtc
++
++        stream = rtc.VideoStream.from_track(track=track, capacity=1, format=rtc.VideoBufferType.RGB24)
++        owner = (publication.sid, asyncio.current_task())
++        try:
++            async for event in stream:
++                if (self._streams.get(role) == owner and not publication.muted
++                        and not self._reconnecting and self.room.isconnected()):
++                    self._latest[role] = ReceivedFrame(event, time.monotonic())
++        finally:
++            if self._streams.get(role) == owner:
++                self._streams.pop(role)
++                self._latest.pop(role, None)
++            await stream.aclose()
++
++    def _end_stream(self, track: rtc.RemoteTrack, publication: rtc.RemoteTrackPublication,
++                    participant: rtc.RemoteParticipant) -> None:
++        role = self._roles.get(publication.name)
++        active = self._streams.get(role) if role is not None else None
++        if active is not None and active[0] == publication.sid:
++            _, task = self._streams.pop(role)
++            self._latest.pop(role, None)
++            task.cancel()
++
++    def _mute(self, participant: rtc.RemoteParticipant, publication: rtc.RemoteTrackPublication) -> None:
++        role = self._roles.get(publication.name)
++        active = self._streams.get(role) if role is not None else None
++        if active is not None and active[0] == publication.sid:
++            self._latest.pop(role, None)
++
++    def _pause(self) -> None:
++        self._reconnecting = True
++        self._latest.clear()
++
++    def _resume(self) -> None:
++        self._reconnecting = False
++
++    def _disconnected(self, reason: object) -> None:
++        self._latest.clear()
++        self.closed = not self._closing
++
++    def sample(self, now: float, max_age: float, previous: dict[str, ReceivedFrame]) -> dict[str, ReceivedFrame]:
++        """Return a complete set only when each view is fresh and new to the caller."""
++        if self._reconnecting or not self.room.isconnected() or len(self._latest) != len(self._roles):
++            return {}
++        if any(now - frame.received_at > max_age or frame is previous.get(role)
++               for role, frame in self._latest.items()):
++            return {}
++        return dict(self._latest)
++
++    async def close(self) -> None:
++        self._closing = True
++        tasks = tuple(self._tasks)
++        for task in tasks:
++            if not task.done() and not task.cancelling():
++                task.cancel()
++        await asyncio.gather(*tasks, return_exceptions=True)
++        if self.room.isconnected():
++            await self.room.disconnect()
++
++
++async def observe(publisher: str, tracks: dict[str, str], url: str, token: str, log: RunLog, *,
++                  duration: float, interval: float, max_age: float, monitor: MonitorVerifier | None,
++                  stage: Stage | None) -> tuple[int, bool]:
++    cameras = LiveKitCameras(publisher, tracks)
++    previous: dict[str, ReceivedFrame] = {}
++    samples = 0
++    try:
++        await cameras.connect(url, token)
++        started = next_sample = time.monotonic()
++        end = started + duration
++        while time.monotonic() < end and not cameras.closed:
++            now = time.monotonic()
++            current = cameras.sample(now, max_age, previous) if now >= next_sample else {}
++            if not current:
++                await asyncio.sleep(min(0.1, end - now))
++                continue
++            samples += 1
++            previous = current
++            next_sample = now + interval
++            frames = {role: frame.jpeg() for role, frame in current.items()}
++            files = log.save_frames("livekit", frames)
++            log.event("livekit_sample", sample=samples, frames=[file.name for file in files],
++                      cameras={role: {"rtc_timestamp_us": frame.event.timestamp_us,
++                                      "receive_age_ms": round(1000 * (now - frame.received_at), 1)}
++                               for role, frame in current.items()})
++            if monitor is not None and stage is not None:
++                request_started = time.monotonic()
++                verdict = await asyncio.to_thread(monitor.check_now, stage, frames, now - started)
++                log.event("livekit_verdict", sample=samples, stage=stage.name,
++                          request_ms=round(1000 * (time.monotonic() - request_started), 1), **asdict(verdict))
++        return samples, cameras.closed
++    finally:
++        await cameras.close()
++
++
++def positive_seconds(value: str) -> float:
++    number = float(value)
++    if not math.isfinite(number) or number <= 0:
++        raise argparse.ArgumentTypeError("expected a finite positive number")
++    return number
++
++
++def main(argv: list[str] | None = None) -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--publisher", required=True, help="LiveKit participant identity that owns the cameras")
++    parser.add_argument("--track", action="append", required=True, metavar="ROLE=NAME",
++                        help="published video track name for overhead, wrist_l or wrist_r")
++    parser.add_argument("--seconds", type=positive_seconds, default=30, help="observation window after connecting")
++    parser.add_argument("--interval", type=positive_seconds, default=3, help="minimum seconds between samples")
++    parser.add_argument("--max-age", type=positive_seconds, default=1, help="max seconds since local frame receipt")
++    parser.add_argument("--runs-dir", default="runs_livekit")
++    parser.add_argument("--plan", help="optional harness YAML for an advisory verdict")
++    parser.add_argument("--stage", help="stage to assess in the observer")
++    parser.add_argument("--var", action="append", default=[], metavar="NAME=VALUE")
++    args = parser.parse_args(argv)
++    tracks = {}
++    for item in args.track:
++        role, _, name = item.partition("=")
++        if role not in ("overhead", "wrist_l", "wrist_r") or not name or role in tracks or name in tracks.values():
++            parser.error("--track needs a unique overhead, wrist_l or wrist_r role and a unique track name")
++        tracks[role] = name
++    if bool(args.plan) != bool(args.stage):
++        parser.error("--plan and --stage must be used together")
++    url, token = os.getenv("LIVEKIT_URL"), os.getenv("LIVEKIT_TOKEN")
++    if not url or not token:
++        parser.error("set LIVEKIT_URL and LIVEKIT_TOKEN")
++    try:
++        from livekit import rtc
++        from PIL import Image
++    except ImportError:
++        parser.error("install livekit and pillow to use the observer")
++    monitor, stage = None, None
++    if args.plan:
++        variables = {}
++        for item in args.var:
++            name, _, value = item.partition("=")
++            if not name or not value:
++                parser.error("--var expects NAME=VALUE")
++            variables[name] = value
++        try:
++            plan = load_plan(args.plan, variables)
++            stage = next((stage for stage in plan.stages if stage.name == args.stage), None)
++            if stage is None:
++                parser.error(f"unknown stage {args.stage!r}")
++            missing = [role for role in stage.required_cameras if not any(camera_matches(r, role) for r in tracks)]
++            if missing:
++                parser.error(f"stage requires camera roles {', '.join(missing)}")
++            monitor = MonitorVerifier(plan, history_frames=2, timeout_s=5)
++        except (OSError, ValueError) as exc:
++            parser.error(str(exc))
++    log = RunLog(args.runs_dir)
++    log.update_manifest(source="livekit", publisher=args.publisher, tracks=tracks, stage=args.stage)
++    try:
++        samples, disconnected = asyncio.run(observe(args.publisher, tracks, url, token, log, duration=args.seconds,
++                                                    interval=args.interval, max_age=args.max_age,
++                                                    monitor=monitor, stage=stage))
++    except KeyboardInterrupt:
++        print(f"Observer stopped. Logs at {log.path}")
++        return 130
++    except (rtc.ConnectError, TimeoutError) as exc:
++        log.event("livekit_connect_failed", error_type=type(exc).__name__)
++        print(f"LiveKit connection failed. Logs at {log.path}")
++        return 1
++    log.write_summary({"samples": samples, "disconnected": disconnected})
++    print(f"Saved {samples} LiveKit camera sets to {log.path}")
++    return 0 if samples and not disconnected else 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/plans/hill_climb_full.yaml b/plans/hill_climb_full.yaml
+index b2cd70f..1711879 100644
+--- a/plans/hill_climb_full.yaml
++++ b/plans/hill_climb_full.yaml
+@@ -1,11 +1,6 @@
+-# Hill Climb relay, FULL plan: the sprint stages, then Stage 3 balls until the clock runs out.
+-# Run with: --var color=<your color>  (assigned by coin flip at the match, e.g. orange or white).
+-# Each ball: own color +5, other color -5, black 8-ball in the bin = match lost.
+-# Base: the SPRINT plan (from hillclimb_rubric_v2.pdf, 7-8 Nov 2026).
+-# Pass Stage 1 (unplug one cable, +10) and Stage 2 (a free-standing 3-layer / 6 inch stack, +20), then end the
+-# run so the designated team member calls "stop" for the time bonus (+1 per 2 s left, only if Stages 1 and 2
+-# passed). At that rate a ball (+5) is only worth chasing if it takes under 10 s, an extra block (+10) under
+-# 20 s, so stopping early usually wins. Use hill_climb_full.yaml if the balls turn out to be fast.
++# Hill Climb relay, FULL plan (hillclimb_rubric_v4.pdf, 7–8 Nov 2026).
++# Required unplug and four-inch stack, optional loose-cable insertion, then shared golf balls.
++# Each golf ball in our bin scores +5. Either black 8-ball in our bin loses the match.
+ #
+ # Rules that shape this plan:
+ # - Touching a later stage's object before the current pass bar is met is a DQ. So a false "done" is a DQ:
+@@ -16,8 +11,9 @@
+ # - An unplugged cable may not be plugged back in, so the cable is put down away from the hub.
+ task: >-
+   Hill Climb relay: first unplug one USB cable from the hub and put it down, then stack blocks into a
+-  free-standing tower at least 3 layers (6 inches) tall and move the arms away from it.
+-  Do not touch the blocks before a cable is unplugged. Then put {color} ping-pong balls into the bin, one at a time, never the black ball and never another color, without touching the stack.
++  free-standing tower at least four inches tall and move the arms away from it.
++  Keep clear of the blocks until a cable is unplugged. Once the stack passes, put shared golf balls
++  into our bin one at a time, keeping clear of both black 8-balls and the tower.
+ checkpoint: null            # set to your dream-1-ft:... fine-tune
+ time_budget_s: 300
+ match: {gates: [unplug_cable, clear_of_stack], stop_reserve_s: 5}
+@@ -128,10 +124,10 @@ stages:
+          when: "a block was dropped, knocked over, or the gripper is stuck", settle_s: 6, max_uses: 3}
+     on_fail: retry_in_place
+ 
+-  - name: stack_three
+-    prompt: "put another block on top of the stack"
+-    success: "Is the stack three blocks tall, standing on its own with no gripper touching it?"
+-    expect: "An arm picks up a third block and places it on the two-block stack without knocking it, then opens."
++  - name: raise_stack
++    prompt: "build the tower to at least four inches high, adding blocks if needed, then release it"
++    success: "Is the stack at least four inches tall and standing on its own with no gripper touching it?"
++    expect: "The arm adds a block if needed to reach four inches, then opens and moves clear."
+     timeout_s: 50
+     stage_budget_s: 65
+     max_attempts: 6
+@@ -145,7 +141,7 @@ stages:
+ 
+   - name: clear_of_stack
+     prompt: "move the arms up and away from the stack without touching it"
+-    success: "Is the stack at least six inches and three layers tall, free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
++    success: "Is the stack at least four inches tall and free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
+     expect: "Both arms rise and move back; the stack stays standing."
+     timeout_s: 20
+     stage_budget_s: 30
+@@ -160,9 +156,9 @@ stages:
+   - &ball
+     name: ball_1
+     requires_stage: clear_of_stack
+-    prompt: "put one {color} ping-pong ball in the bin; avoid the black ball and keep clear of the stack"
+-    success: "Is at least 1 {color} ball resting inside the bin, with no black ball in the bin?"
+-    expect: "An arm picks up one {color} ball, avoiding the black ball and the stack, and drops it into the bin."
++    prompt: "put one shared golf ball in our bin; avoid both black 8-balls and keep clear of the stack"
++    success: "Is at least one golf ball resting inside our bin, with no black 8-ball in our bin?"
++    expect: "An arm picks up a golf ball, keeping clear of both black 8-balls and the stack, and drops it into our bin."
+     timeout_s: 10
+     stage_budget_s: 10
+     max_attempts: 1
+@@ -172,28 +168,28 @@ stages:
+   - <<: *ball
+     name: ball_2
+     requires_stage: ball_1
+-    success: "Are at least 2 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 2 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_3
+     requires_stage: ball_2
+-    success: "Are at least 3 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 3 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_4
+     requires_stage: ball_3
+-    success: "Are at least 4 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 4 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_5
+     requires_stage: ball_4
+-    success: "Are at least 5 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 5 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_6
+     requires_stage: ball_5
+-    success: "Are at least 6 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 6 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_7
+     requires_stage: ball_6
+-    success: "Are at least 7 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 7 golf balls resting inside our bin, with no black 8-ball in our bin?"
+   - <<: *ball
+     name: ball_8
+     requires_stage: ball_7
+-    success: "Are at least 8 {color} balls resting inside the bin, with no black ball in the bin?"
++    success: "Are at least 8 golf balls resting inside our bin, with no black 8-ball in our bin?"
+diff --git a/plans/hill_climb_sprint.yaml b/plans/hill_climb_sprint.yaml
+index 2178d40..9d73079 100644
+--- a/plans/hill_climb_sprint.yaml
++++ b/plans/hill_climb_sprint.yaml
+@@ -1,8 +1,5 @@
+-# Hill Climb relay, SPRINT plan (from hillclimb_rubric_v2.pdf, 7-8 Nov 2026).
+-# Pass Stage 1 (unplug one cable, +10) and Stage 2 (a free-standing 3-layer / 6 inch stack, +20), then end the
+-# run so the designated team member calls "stop" for the time bonus (+1 per 2 s left, only if Stages 1 and 2
+-# passed). At that rate a ball (+5) is only worth chasing if it takes under 10 s, an extra block (+10) under
+-# 20 s, so stopping early usually wins. Use hill_climb_full.yaml if the balls turn out to be fast.
++# Hill Climb relay, SPRINT plan (hillclimb_rubric_v4.pdf, 7–8 Nov 2026).
++# Verify the unplug and four-inch stack gates, then end the run. The full plan adds optional scoring tasks.
+ #
+ # Rules that shape this plan:
+ # - Touching a later stage's object before the current pass bar is met is a DQ. So a false "done" is a DQ:
+@@ -13,8 +10,8 @@
+ # - An unplugged cable may not be plugged back in, so the cable is put down away from the hub.
+ task: >-
+   Hill Climb relay: first unplug one USB cable from the hub and put it down, then stack blocks into a
+-  free-standing tower at least 3 layers (6 inches) tall and move the arms away from it.
+-  Do not touch the blocks before a cable is unplugged. Do not touch the ping-pong balls.
++  free-standing tower at least four inches tall and move the arms away from it.
++  Keep clear of the blocks until a cable is unplugged and leave all balls alone.
+ checkpoint: null            # set to your dream-1-ft:... fine-tune
+ time_budget_s: 300
+ match: {gates: [unplug_cable, clear_of_stack], stop_reserve_s: 5}
+@@ -70,10 +67,10 @@ stages:
+          when: "a block was dropped, knocked over, or the gripper is stuck", settle_s: 6, max_uses: 3}
+     on_fail: retry_in_place
+ 
+-  - name: stack_three
+-    prompt: "put another block on top of the stack"
+-    success: "Is the stack three blocks tall, standing on its own with no gripper touching it?"
+-    expect: "An arm picks up a third block and places it on the two-block stack without knocking it, then opens."
++  - name: raise_stack
++    prompt: "build the tower to at least four inches high, adding blocks if needed, then release it"
++    success: "Is the stack at least four inches tall and standing on its own with no gripper touching it?"
++    expect: "The arm adds a block if needed to reach four inches, then opens and moves clear."
+     timeout_s: 50
+     stage_budget_s: 70
+     max_attempts: 6
+@@ -87,7 +84,7 @@ stages:
+ 
+   - name: clear_of_stack
+     prompt: "move the arms up and away from the stack without touching it"
+-    success: "Is the stack at least six inches and three layers tall, free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
++    success: "Is the stack at least four inches tall and free-standing for three seconds after release, with both arms clear? Withhold success if the views cannot establish the height, release, or stability."
+     expect: "Both arms rise and move back; the stack stays standing."
+     timeout_s: 20
+     stage_budget_s: 30
+diff --git a/tests/test_match_plans.py b/tests/test_match_plans.py
+index 86477b3..a88725a 100644
+--- a/tests/test_match_plans.py
++++ b/tests/test_match_plans.py
+@@ -21,7 +21,7 @@ def test_substitute_missing_var_is_an_error():
+ 
+ @pytest.mark.parametrize("name", ["hill_climb_sprint.yaml", "hill_climb_full.yaml"])
+ def test_match_plans_load_and_follow_the_rules(name):
+-    plan = load_plan(PLANS / name, {"color": "orange"})
++    plan = load_plan(PLANS / name)
+     assert plan.verifier == "monitor"            # no human input after "go"
+     assert plan.confirm >= 2                     # a false "done" is a DQ
+     assert plan.time_budget_s <= 300
+@@ -34,12 +34,15 @@ def test_match_plans_load_and_follow_the_rules(name):
+     assert all(s.on_fail not in ("skip", "abandon") for s in gated)
+     assert all(s.stage_budget_s is not None for s in plan.stages)
+     assert all(s.verifier == "monitor" for s in plan.stages)
+-    assert "{color}" not in " ".join(s.prompt + s.success for s in plan.stages)
++    stack = next(s for s in plan.stages if s.name == "clear_of_stack")
++    assert "four inches" in stack.success and "three seconds after release" in stack.success
+ 
+ 
+-def test_full_plan_needs_the_color():
+-    with pytest.raises(ValueError, match="color"):
+-        load_plan(PLANS / "hill_climb_full.yaml")
++def test_full_plan_uses_shared_golf_balls_after_stack():
++    plan = load_plan(PLANS / "hill_climb_full.yaml")
++    first_ball = next(s for s in plan.stages if s.name == "ball_1")
++    assert first_ball.requires_stage == "clear_of_stack"
++    assert "shared golf ball" in first_ball.prompt and "both black 8-balls" in first_ball.prompt
+ 
+ 
+ def test_done_message_printed_on_success(tmp_path, capsys):
+diff --git a/tests/test_watcher.py b/tests/test_watcher.py
+index 11ea580..5fcff22 100644
+--- a/tests/test_watcher.py
++++ b/tests/test_watcher.py
+@@ -82,7 +82,7 @@ def test_plan_vars_defaults_and_override(tmp_path):
+ 
+ 
+ def test_full_plan_watcher_stages():
+-    plan = load_plan(Path(__file__).resolve().parent.parent / "plans" / "hill_climb_full.yaml", {"color": "white"})
++    plan = load_plan(Path(__file__).resolve().parent.parent / "plans" / "hill_climb_full.yaml")
+     names = [s.name for s in plan.stages]
+     assert names.index("unplug_cable") < names.index("plug_loose_cable") < names.index("stack_two")
+     plug = plan.stages[names.index("plug_loose_cable")]
+-- 
+2.55.0.windows.2
+
