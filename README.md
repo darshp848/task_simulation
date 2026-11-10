@@ -25,10 +25,10 @@ HARNESS_GUIDE.md    full harness manual;  HARNESS_README.md, DESIGN*.md, TELEOP_
 
 ## The real station
 
-![Station C on 7 Nov](docs/station_c_setup.jpg)
+![Station C from above](docs/station_overhead.jpg)
 
-Station C at the hackathon (Darsh's photo, Drive IMG_2699, 7 Nov 21:30). Two MakerMods Metal arms (7 Damiao motors,
-brakeless, *not* YAM) on a rail at the table's near edge, with the overhead camera on a pole between them and a wrist
+Station C at the hackathon, seen from above. Two MakerMods Metal arms (7 Damiao motors, brakeless, *not* YAM) sit on a
+rail at the table's near edge (the bottom of the photo), with the overhead camera on a pole between them and a wrist
 camera on each gripper. On the table: the power strip with the orange USB cables (Stage 1, the strip is unplugged
 from the wall), blue and pink foam cubes with a hole and yellow / pink foam sticks (Stage 2), golf balls (Stage 3:
 the coloured ones are legal, the **white** one is illegal) and the white bin. The target tower is Drive IMG_2697:
