@@ -41,19 +41,19 @@
 
 \begin{figure}[h]
 \centering
-\begin{minipage}[b]{0.21\linewidth}\centering
-  \includegraphics[height=4.0cm]{../docs/station_c_setup.jpg}\\[1pt]{\small (a) Station C}
+\begin{minipage}[b]{0.36\linewidth}\centering
+  \includegraphics[width=\linewidth]{figs/station_overhead.jpg}\\[1pt]{\small (a) Station C from above}
 \end{minipage}\hspace{6pt}%
-\begin{minipage}[b]{0.33\linewidth}\centering
-  \includegraphics[height=4.0cm]{figs/sim_v2_topdown.png}\\[1pt]{\small (b) Simulated table, top-down}
+\begin{minipage}[b]{0.27\linewidth}\centering
+  \includegraphics[width=\linewidth]{figs/sim_v2_topdown.png}\\[1pt]{\small (b) Simulated table, top-down}
 \end{minipage}\hspace{6pt}%
-\begin{minipage}[b]{0.40\linewidth}\centering
+\begin{minipage}[b]{0.32\linewidth}\centering
   \includegraphics[width=\linewidth]{figs/sim_v2_cam_top.png}\\[2pt]
   \includegraphics[width=0.49\linewidth]{figs/sim_v2_cam_left.png}\hfill
   \includegraphics[width=0.49\linewidth]{figs/sim_v2_cam_right.png}\\[1pt]{\small (c) Simulated policy cameras}
 \end{minipage}
-\caption{The relay and its simulation. (a) The physical station: two MakerMods Metal arms, an overhead camera on
-the pole, a wrist camera per gripper, a power strip with orange USB cables, foam cubes and sticks, golf balls and
+\caption{The relay and its simulation. (a) The physical table on 7 Nov, cropped to the table: the grippers of two
+MakerMods Metal arms at the bottom edge, a power strip with orange USB cables, foam cubes and sticks, golf balls and
 a white bin; the white ball is illegal. (b) Our MuJoCo model of the same table after its 8 Nov rebuild: the
 strip's real dimensions and ports, holed cubes, sticks, a slotted basket and the station's ball colours.
 (c) What the policy sees in simulation: overhead, left wrist and right wrist at the station's 640$\times$360.}
@@ -77,8 +77,9 @@ detector on station frames raised held-out ball recall from 20/27 to 26/27 at 10
 cable-end classifier on 478 wrist crops raised USB-A recall from 0.68 to 0.84. In 185 simulated matches, a fast
 judge without the local guard lost 28 matches to the illegal ball and with it lost none. A study of 101 station
 rollouts found that naming the goal, not the motion, and adding a scripted pull made unplugging work: 8 of 12
-harness pulls kept the plug. The team's fine-tune was worse than the base model because its Quest demonstrations
-carried a 5.5\,cm gravity-sag offset. We state throughout which numbers are simulated and which are real.
+harness pulls kept the plug. The team's fine-tune was worse than the base model, and we trace this to its Quest
+demonstrations, whose commands sit 3.7 to 5.4\,cm above the measured tool because of gravity sag. The team placed
+5th of 8. We state throughout which numbers are simulated and which are real.
 \end{abstract}
 
 \section{Introduction}
@@ -115,10 +116,11 @@ to the policy, and how to test all of this before a station slot.
   \item \textbf{Two simulators} (Section~\ref{sec:sims}): a virtual-clock stress simulator that runs the real harness
   code against scripted faults, and a MuJoCo table driven by the live policy, rebuilt to match the station.
   \item \textbf{An evaluation} (Section~\ref{sec:experiments}) organised around six questions, from the serving loop to
-  the fine-tune's failure, using station logs, 101 scored station rollouts, 185-match sweeps, a 30-configuration judge
+  the fine-tune's failure, using station logs, 101 scored station rollouts, 185-match sweeps, a 25-configuration judge
   benchmark and MuJoCo matches.
 \end{itemize}
-The work spans three public repositories: the harness, the simulators and results, and the teleoperation tools. We have
+The work spans three public repositories: the harness, the simulators and results, and the teleoperation tools. Our team
+placed 5th of 8 at the event. We have
 no logged per-stage success rate from complete harness matches on the station; Section~\ref{sec:limits} says what that
 leaves open.
 
@@ -160,7 +162,7 @@ detector, because no judge we benchmarked was reliable enough on the safety ques
 
 \paragraph{Teleoperation and data.} Leader-follower arms~\cite{zhao2023aloha,wu2023gello} and LeRobot
 datasets~\cite{cadene2024lerobot} are the usual route to fine-tuning data. Section~\ref{sec:q-ft} documents two
-collection paths on the same arm that disagreed by 5.5\,cm in steady state.
+collection paths on the same arm that disagreed by 3.7 to 5.4\,cm in steady state.
 
 \paragraph{Evaluation in simulation.} SIMPLER~\cite{li2024simpler} shows that simulated evaluation predicts real
 performance only when control and visual gaps are closed. That motivated rebuilding our MuJoCo table to the station's
@@ -171,7 +173,7 @@ bootstrap intervals as advocated by Agarwal et al.~\cite{agarwal2021precipice}.
 \label{sec:platform}
 
 \paragraph{Station.} Each Metal arm has six joints and a gripper, driven by Damiao motors over CAN at 1\,Mbit/s from
-an Intel NUC. There are no brakes. An overhead camera on a centre pole and one camera per wrist stream 640$\times$360
+a NUC mini PC. There are no brakes. An overhead camera on a centre pole and one camera per wrist stream 640$\times$360
 frames (Figure~\ref{fig:teaser}a). On our table the strip is a black 12-outlet surge protector with a bank of USB
 ports at the robot end; the cables run USB-A to USB-C; the foam pieces are three 6\,cm cubes with a through hole and two
 sticks; the legal balls are green, yellow and orange, and the white ball is illegal.
@@ -236,9 +238,10 @@ Dream's control loop.}
 
 Figure~\ref{fig:arch} shows the structure. Four principles shaped it.
 \begin{enumerate}
-  \item \textbf{Never command a motor.} The harness has no robot driver. Safety caps and the control loop stay with the
-  provider. Preflight refuses to start if the station is busy, an arm is down, or a frame is older than 2\,s; faults,
-  the clock and an operator stop all send \texttt{/stop}, which holds the arms.
+  \item \textbf{No motor driver in the harness.} All motion goes through the station agent, so safety caps and the control
+  loop stay with the provider. Preflight refuses to start unless the station reports idle or error, both arms are alive and
+  no frame is older than 2\,s; faults, the clock and an operator stop all send \texttt{/stop}, which holds the arms. At the
+  end of a run the bot plans send \texttt{/reset} to return the arms to the start pose.
   \item \textbf{Keep safety off the slow path.} Anything that must stop the arms runs locally at frame rate and can act
   without the supervisor.
   \item \textbf{Confirm from independent evidence.} A false ``done'' on a pass bar is a disqualification, so passes need
@@ -274,7 +277,8 @@ sentence (the strip is unplugged, the cords are insulated low-voltage USB); with
 \subsection{Harness skills}
 Two unplug failures resisted wording: the policy often closed the gripper on the way in, and it pulled sideways so the
 plug came half out. Two narrow skills act through the station's bounded move. \emph{Regrip}: if the gripper shut on
-nothing, open to 0.6, lower 1.5\,cm and close. \emph{Pull}: lift 6\,cm and then 4\,cm, 3\,s per step, then hand back to the
+nothing, open to 0.6, lower 1.5\,cm and close; the match plan lowers 2.5\,cm, after 0 of 6 regrips held at 1.5\,cm. \emph{Pull}: lift 6\,cm
+and then 4\,cm, 3\,s per step, or one 10\,cm lift over 4\,s in the match plan, then hand back to the
 policy with ``put the held cable down on the table to the right''. An opt-in station hook adds a 20\,N upward force while
 the right gripper holds. \emph{Lock}: at the first look that would pass a stage, the harness switches the policy to ``open
 both grippers and move the arms up'' before the confirming look, because on the station a ``stack as high as possible''
@@ -284,14 +288,14 @@ prompt built a tower and then took it apart.
 Three changes target the serving loop (Section~\ref{sec:q-latency}). The harness stopped pulling 2\,MB debug-view frames,
 which had slowed calls to 2--6\,s, and reads 35\,KB frames instead. In simulation, asynchronous pacing with a 10-row
 execution horizon at 20\,Hz requests a chunk every 0.5\,s, and pipelining two sessions in turn lets a new request leave
-before the previous answer returns; one laptop match logged 5.96 requests/s at a 0.63\,s median round trip. A station-side
+before the previous answer returns; one laptop match logged 5.5 requests/s over the whole match at a 0.61\,s median round trip. A station-side
 option hedges each request across two sessions and keeps the first answer~\cite{dean2013tail}, with a cutoff and a cap on
 calls. Pipelining and hedging multiply policy usage, which matters on a metered API (Section~\ref{sec:limits}).
 
 \subsection{How the design evolved}
-The harness was written in parallel by four people and several AI coding agents, on separate branches. Table~\ref{tab:branches}
-lists the lines that fed the final version. The match-day configuration ran the base model with the gripper-assisted unplug
-loop, short stacking prompts with no arm named, a writer for one-ball prompts, the lock, the live guard, station-side hedged
+The team and several AI coding agents wrote the harness in parallel, on separate branches. Table~\ref{tab:branches}
+lists the lines that fed the final version. The last station plan on \texttt{main}, \texttt{bot\_v1}, runs the base model with the
+gripper-assisted unplug loop, short stacking prompts with no arm named, a writer for one-ball prompts, the lock, the live guard, station-side hedged
 calls, and a view-only LiveKit observer for the integration points.
 
 \begin{table}[t]
@@ -307,12 +311,13 @@ Branch & Contribution \\
 \texttt{start-pose-live-guard} & 10\,Hz live guard, start-pose gate, cable-end classifier, decision equations in shadow mode \\
 \texttt{hybrid-harness} & colour/position prompts, judge-written prompt rewrites, safety sentence, light frames, gripper overrides \\
 \texttt{final-harness} & merge of the three above with \texttt{--match} checks that refuse DQ-prone options \\
-\texttt{cloud-sims} & async 2\,Hz pacing, operator decisions as plan data, rebuilt sim table, cloud and cluster jobs, joint telemetry and fault nets \\
-\texttt{hedged-calls} & hedged policy and judge calls, OpenRouter judge benchmark \\
+\texttt{cloud-sims} & async 2\,Hz pacing, hedged policy calls, operator decisions as plan data, rebuilt sim table, cloud and cluster jobs, joint telemetry and fault nets \\
+\texttt{hedged-calls} & hedged judge calls, OpenRouter judge benchmark \\
 \texttt{fix/classifiers-8nov} & detector and cable-end classifier retuned on station frames \\
 \texttt{prompt-engine} & template engine, relay state machine in the operator's order, sim-time clock \\
-\texttt{claude/harness-stitch} & bot harness used on the station: grip assist, lock, hands-off mode, panel, LiveKit viewer \\
-\texttt{relay-on-stitch} & prompt engine and relay order merged into the bot harness (PR \#8) \\
+\texttt{claude/harness-stitch} & bot harness used on the station: grip assist, lock, hands-off mode, panel, station-side hedged calls \\
+\texttt{claude/livekit-viewer} & view-only LiveKit observer, merged to \texttt{main} through PR \#9 \\
+\texttt{relay-on-stitch} & prompt engine and relay order on top of the bot harness (PR \#8, open) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -337,7 +342,7 @@ illegal-ball risk, and $W(L)$ the expected points of the remaining stages with $
 stage's success-versus-time curve $F_s$. Continuing on stage $s$ pays while $\frac{f_s(\tau)}{1-F_s(\tau)}V_s \ge
 \frac{dW}{dL}$, which gives each stage a timeout tied to its own hazard and to the time left. The implementation runs in shadow
 mode beside the runner and reproduces its decisions exactly on 5{,}000 random look sequences. Stage curves fitted by censored
-maximum likelihood to the simulator's runs give the unplug a 0.64 ceiling, no success before about 23\,s and a 56\,s median. We
+maximum likelihood to the simulator's runs give the unplug a 0.64 ceiling, no success before about 23\,s, and half of that ceiling by about 96\,s. We
 did not let the model decide during the event; the curves need station data first.
 
 \section{Perception and monitoring}
@@ -356,7 +361,7 @@ while fast, narrow ones guard safety and veto the slow ones.
 \toprule
 Component & Decides & Model & Latency & Evidence \\
 \midrule
-VLM judge & stage done, progress, holding, next-slot hints & Haiku 5.5, Gemini 3.1 Flash-Lite, GPT-6.1 Terra, Sonnet 5.5 (confirm) & 2--9\,s & 60-decision benchmark, 30 configurations \\
+VLM judge & stage done, progress, holding, next-slot hints & Haiku 5.5, Gemini 3.1 Flash-Lite, GPT-6.1 Terra, Sonnet 5.5 (confirm) & 2--9\,s & 60-decision benchmark, 25 configurations \\
 Colour + shape detector & balls, cubes, sticks, hole direction & HSV thresholds, blobs, shape tests; no learned weights & 76\,ms (two wrists) & hand labels on 26 station frames \\
 Live guard & illegal ball in a gripper & detector on wrist frames, 3 frames in a row & 10\,Hz; stop in 0.3--0.5\,s & 0 trips on 2{,}145 station wrist frames \\
 Cable-end classifier & USB-A / USB-C end / neither & orange-blob proposals + MobileNetV3-small, 96\,px, ONNX & 12\,ms per frame & 137 held-out wrist crops, 25 runs \\
@@ -483,11 +488,12 @@ logged; medians are not additive.}
 \end{figure}
 
 The median round trip was 1{,}116\,ms (p10 800, p90 2{,}733, max 8{,}655; Figure~\ref{fig:latency}). Model serving took 293\,ms and
-the network 40\,ms; the rest is gateway overhead outside our control. Each request carries about 1.6\,MB of images, so uplink matters:
+the network 40\,ms at the median, and the provider's gateway 993\,ms. Each request carries about 1.6\,MB of images, so uplink matters:
 at 8.8\,Mbit/s up, calls took 4.7\,s. Because the median sits on the pacer's 900\,ms threshold, 67\% of chunks (1{,}101 of 1{,}650)
-ran stop-and-wait, arriving every 3.54\,s for 2.4\,s of motion, against every 1.55\,s with no gap in async mode. The arms stood still
-about 30\% of the time. The harness adds 5--8\,s per stage boundary (a poll, a judge call, a confirming look), 25--40\,s of a
-300\,s match. There were 16 policy errors in the window: 4 safety refusals (one triggered by a person's hand holding a plug),
+ran stop-and-wait, arriving every 3.54\,s for 2.4\,s of motion, against every 1.55\,s with no gap in async mode. In stop-and-wait mode the arms
+therefore had motion queued for about two thirds of each cycle; we computed this from the log and did not watch the arms to
+confirm it. The harness adds 5--8\,s per stage boundary (a poll, a judge call, a confirming look). For four or five
+stages we estimate 25--40\,s of a match from those times. There were 16 policy errors in the window: 4 safety refusals (one triggered by a person's hand holding a plug),
 4 \texttt{SVD did not converge} errors in the client IK, 4 empty action buffers and 4 replaced sessions. The harness recovers from the
 first three without ending the match.
 
@@ -518,7 +524,7 @@ Stock: 30\,Hz, FF $\tau$ 0.8\,s & 30.0 & 2.24 & 2.89 & 3.64 & 4.46 & 1.73 & 1.74
 \centering
 \includegraphics[width=\linewidth]{figs/stress.pdf}
 \caption{Stress simulator, 185 matches per configuration (37 scenarios $\times$ 5 seeds). ``Fast'' judge: 4--6\,s per call;
-otherwise 6.5--13\,s as measured for Haiku 5.5. Blue: configurations with the live guard and gripper overrides. Per-scenario means
+otherwise 6.5--13\,s, taken from our Haiku 5.5 latency check. Both ranges are inputs. Blue: the final build with the live guard. Per-scenario means
 are in Appendix~\ref{app:scen}.}
 \label{fig:stress}
 \end{figure}
@@ -527,10 +533,13 @@ Overnight fixes turned faults that used to end a match into small losses (Table~
 the policy kept holding an unplugged plug, the old harness's next prompt led it to plug the cable back in, which the rubric forbids,
 in 4 of 4 seeds; the fixed harness never did. Across whole configurations (Figure~\ref{fig:stress}), judge speed is the main lever on
 points because a slow judge rarely leaves time for balls: at measured latency, configurations binned 0 to 0.09 balls per match. But a
-fast judge without the live guard reached the balls and lost 28 of 185 matches to the illegal ball. With the guard and sensor
-overrides, the hybrid plan kept 69.8 points (95\% CI 65.3--74.4) and lost none to the ball. Its 4 remaining losses are disqualifications
-in a scenario where the policy brushes a block during the unplug, which no supervisor can undo. Removing synchronous judge checks
-from stages the sensors can answer raised mean points from 54.9 to 60.0 with no new losses. These scores test harness logic against a
+fast judge without the live guard reached the balls and lost 28 of 185 matches to the illegal ball, at a mean of 70.5 points.
+The final build with the guard scored 69.8 points (95\% CI 65.3--74.4) and lost none to the ball. The two runs also differ in
+harness build, and the guard's detector in this simulator reads the simulated held object. In a separate six-seed test with
+frames 2\,s old, the harness lost 4 of 6 matches to the illegal ball without the local detector and 2 of 6 with it. The final
+hybrid plan's 4 remaining losses are disqualifications
+in a scenario where the policy brushes a block during the unplug, which no supervisor can undo. In a separate sweep of 24 scenarios and 4 seeds, removing
+synchronous judge checks from stages the sensors can answer raised mean points from 54.9 to 60.0 with no new losses. These scores test harness logic against a
 scripted world whose unplug probability (0.8 per try) is far above the real policy's.
 
 \begin{table}[t]
@@ -548,7 +557,6 @@ Empty action buffer mid-run & 10, 10, 15, 15 (ended) & 79, 94, 95, 100 \\
 IK SVD failure & 10, 0, 10, 10 (ended) & 83, 84, 95, 95 \\
 12\,s of corrupt frames & 20, 15, 20, 20 & 83--90 \\
 Policy keeps the unplugged plug & plugged it back in, 4/4 & never \\
-Illegal ball picked on 30\% of tries (6 seeds) & lost 4/6 & lost 2/6 (detector guard) \\
 Unplug brushes a block & DQ 4/4 & DQ 4/4 \\
 \bottomrule
 \end{tabular}
@@ -560,17 +568,19 @@ Unplug brushes a block & DQ 4/4 & DQ 4/4 \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figs/judges.pdf}
-\caption{Judge benchmark: 30 model and reasoning-level configurations, 60 decisions each (30 guard questions) on the same frames,
-via OpenRouter or the Claude CLI. One configuration whose every call failed is omitted.}
+\caption{Judge benchmark: 25 model and reasoning-level configurations, 60 decisions each (30 guard questions) on the same frames,
+via OpenRouter or the Claude CLI. One configuration whose every call failed is omitted, leaving 24.}
 \label{fig:judges}
 \end{figure}
 
 Stage-done questions were easy for strong models; the guard question (``is a gripper holding the illegal ball?'') separated them
 (Figure~\ref{fig:judges}). GPT-6.1 Terra reached 98\% done and 97\% guard accuracy at a 2.8\,s median with no reasoning, and 100\% on
-both at 3.7\,s with low reasoning, for about \$0.07 per 60-decision match. Haiku 5.5 was perfect on done but 77--93\% on the guard;
-Sonnet 5.5 was perfect on both at 7.1\,s. On a separate 120-decision run, Haiku 5.5 caught a held illegal ball 55\% of the time. With 30
-guard questions per configuration a perfect score has a 95\% lower bound near 88\%, so the ranking is coarse. Two conclusions held on
-the station as well: no judge stands alone on safety, and a fast judge needs a slower one to confirm pass bars.
+both at 3.7\,s with low reasoning, for about \$0.07 per 60-decision match. Haiku 5.5 was perfect on done, but through OpenRouter it
+caught the held ball in 3 of 10 looks with no reasoning and 8 of 10 with low reasoning. Sonnet 5.5 was perfect on both at 7.1\,s through
+the CLI, which includes launching the process. On a separate 120-decision run, Haiku 5.5 caught a held illegal ball 55\% of the time. The
+30 guard questions per configuration are ten looks at one simulated image of a held 8-ball and twenty looks at frames with none, and every
+configuration we report answered the twenty correctly. The ranking is therefore coarse. Two conclusions held on the station as well: no
+judge stands alone on safety, and a fast judge needs a slower one to confirm pass bars.
 
 \subsection{\q4: Local classifiers on station data}
 \label{sec:q-classifiers}
@@ -658,12 +668,32 @@ home and every return home projects past it. Faults in all of these sets are inj
 \subsection{\q5: The policy under the harness}
 \label{sec:q-real}
 
+\begin{figure}[t]
+\centering
+\begin{minipage}[b]{0.235\linewidth}\centering
+  \includegraphics[height=4.6cm]{figs/station_tower_masked.jpg}\\[1pt]{\small (a)}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.335\linewidth}\centering
+  \includegraphics[height=4.6cm]{figs/station_stick_grasp.jpg}\\[1pt]{\small (b)}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.40\linewidth}\centering
+  \includegraphics[height=4.6cm]{figs/station_ball_in_bin.jpg}\\[1pt]{\small (c)}
+\end{minipage}
+\caption{Station C on 7 Nov. (a) The target tower for the stacking stage: three cubes, a yellow stick and a pink stick. The
+background behind the table is replaced with flat grey to remove bystanders. (b) A gripper holding the pink stick, with the cables
+still seated in the strip. (c) The table late in the evening with an orange ball in the bin. All three are cropped to the table.}
+\label{fig:station}
+\end{figure}
+
 \paragraph{Station rollouts.} Daniel Carrera scored 101 station rollouts (171 prompt steps, 8 Nov) against before-and-after overhead
 frames and the 20\,Hz joint log. Table~\ref{tab:prompts} summarises the families. The clearest result is to name the goal, not the motion:
 the policy carries out the first verb of a chained prompt and dithers on the rest. Coached prompts did worst; a 574-character cable prompt
 unplugged nothing in 286\,s. For cables, the best approach prompt ended with the jaws on the plug body in 15 of 26 steps, and with the
 harness pull, 8 of 12 pulls still held the plug after a 10\,cm lift, meaning the plug was out. Balls worked when one named ball lay near the
-right arm (2 of 5 in the bin; the misses were a ball in mid-table). The rubric's own wording, ``stack the blocks and sticks as high as
+right arm (2 of 5 in the bin; the misses were a ball in mid-table). The half-open approach prompt came from a session in which a
+Claude Opus model operated the station directly: between 11:10 and 13:04 on 8 Nov it sent prompts and scripted pulls by hand, in
+15--30\,s steps, outside the harness. The policy itself rarely pulled. It lifted a plug 4 times all day, and the other cables came
+out through the scripted pull. The rubric's own wording, ``stack the blocks and sticks as high as
 possible'', stacked in 2 of 3 runs. The fine-tune made no cable grip in about 10 minutes.
 
 \begin{table}[t]
@@ -690,15 +720,16 @@ Stack & ``put the pink cube on top of a blue cube'' & most decisive grasps (6 of
 \end{table}
 
 \paragraph{MuJoCo, first table.} Base \dream{} through the harness unplugged a cable in 14 of 25 matches (first unplug median 57\,s,
-range 28--269\,s), then kept holding the plug: 0 of 54 put-down tries and 0 of 25 stacking tries. All 3 disqualifications came with the hub
-on the left, where the prompts no longer matched the scene. Naming an arm in the prompt failed 0 of 4 times, and the other arm still moved
+range 28--269\,s for the stage), then kept holding the plug: our notes count 0 of 54 put-down tries. Nine matches reached a stacking stage,
+and all 23 stacking tries in them failed. Three matches were disqualified, two for touching a block before a cable was out and one for touching a ball before the tower passed. In a separate 12-trial two-arm test, naming an arm in the prompt succeeded 0 of 4 times, and the other arm still moved
 for 10--19\,s. On simulation time, six matches of the template-engine plan scored 42, 42, 41, 15, 15 and 15 points (mean 28.3), passed the
 tower bar in 3 of 6, and binned no balls. A relay-order batch got the first unplug in 12 of 12 matches and a second in 8 of 12, seated no
-plug, then crashed at the first stacking stage on a slot-filler bug, now fixed with a fallback and a test.
+plug, then crashed at the first stacking stage on a slot-filler bug, now fixed with a fallback and a test. These two sim-time batches are
+recorded in our notes only; their logs were not kept.
 
 \paragraph{MuJoCo, cloud round 1.} A comparison of async pacing, operator notes and judge choice (about 28 concurrent sessions) ran while
 the table was being rebuilt, and its saved frames show both versions. It stopped when the account's inference credits ran out: the service reports this as an unauthorised, disabled key while
-account calls keep working. Only 10 of 28 matches were valid, scoring 0--42 points, which cannot separate the arms. A rerun of the relay batch
+account calls keep working. Only 10 of 29 matches were valid, scoring 0--42 points, too few to compare the configurations. A rerun of the relay batch
 hit the same limit 34--99\,s into each match. We now probe the policy with one call before every batch.
 
 \subsection{\q6: Why the fine-tune aimed high}
@@ -717,14 +748,15 @@ are medians. The fine-tune never reached the height at which demonstrations gras
 gravity-compensated leader mode ($k_p=0$, Pinocchio~\cite{carpentier2019pinocchio} gravity and friction feed-forward) and the other follows;
 we added the leader's gravity model to the follower's frames, which brought shoulder-lift tracking from 4--6$^\circ$ low to $+0.2^\circ$. In
 the Quest headset path we added heading calibration, a One Euro filter~\cite{casiez2012oneeuro}, a wrist-flip guard, a jump guard and gravity
-feed-forward. Replaying 40 fast-wrist events through the IK, swings over $90^\circ$ fell from 7 to 2 with tool position held within 8\,mm,
-and wrist lag fell from 105 to 27\,ms. These Quest fixes came after the fine-tune's data was recorded.
+feed-forward. Replaying 40 fast-wrist events through the IK, swings over $90^\circ$ fell from 7 to 2 with tool position held within 8\,mm.
+On a separate leader-motion bench, wrist lag fell from 105 to 27\,ms. These Quest fixes came after the fine-tune's data was recorded.
 
 \paragraph{Diagnosis.} The team fine-tuned \dream{} on 170 episodes (48{,}413 frames), 1{,}000 steps, learning rate $10^{-5}$, batch 32,
 end-effector actions. On the station its tool stayed 8--13\,cm above the table while reaching and closed at 11--16\,cm, where demonstrations
 grasp at 4--6\,cm and the base model reached 0--6\,cm the same day (Figure~\ref{fig:ft}b). The cause is in the data (Figure~\ref{fig:ft}a). The
-73 Quest episodes were recorded through the kit's follower, which sends zero torque, so each joint sagged; their actions sit about 5.5\,cm
-above the measured tool. The 97 leader episodes and the live station apply gravity feed-forward and agree to within 5--8\,mm. The model
+73 Quest episodes were recorded through the kit's follower, which sends zero torque, so each joint sagged. On slow frames their actions
+sit 3.7, 4.8 and 5.4\,cm above the measured tool in the three Quest recording sets. The 97 leader episodes apply gravity feed-forward, as
+the live station does, and their offsets lie between $-5$ and $+7$\,mm. The model
 learned two incompatible maps from state to action, and live, the Quest map makes the arm rise and be asked to rise again. We ruled out camera
 mapping, view swaps, rotation, colour, resolution, camera position, joint order, units, gripper scale, tool frame and schema. Only 9 of 69
 unplug demonstrations start near the home pose every live run starts from, which the start-pose gate now logs. An open-loop replay on a fitted
